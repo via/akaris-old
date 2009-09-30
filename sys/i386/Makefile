@@ -6,12 +6,19 @@ OBJS = start.o cmain.o cpuid.o bootvideo.o asmutil.o gdt.o asm_interrupts.o inte
 default: ${OBJS}
 	@ld ${LDFLAGS} -o i386.k ${OBJS}
 	@echo "[LD] ${<}"
-install:
+install_linux:
 #	mdconfig -a -t vnode -f ../bootdisk.img
 	mount -o loop ../bootdisk.img /mnt/floppy
 	cp i386.k /mnt/floppy
 	umount /mnt/floppy
 	#mdconfig -d -u 0
+
+install_freebsd:
+	mdconfig -a -t vnode -f ../bootdisk.img
+	mount -t msdosfs /dev/md0 /mnt/floppy
+	cp i386.k /mnt/floppy
+	umount /mnt/floppy
+	mdconfig -d -u 0
 clean:
 	-rm *.k
 	-rm *.o

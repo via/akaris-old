@@ -5,12 +5,20 @@ LDFLAGS = -T linker.ld
 OBJS = test2.o
 default: ${OBJS}
 	ld ${LDFLAGS} -o test2.k test2.o
-install:
+install_linux:
 #	mdconfig -a -t vnode -f ../bootdisk.img
 	mount -o loop ../bootdisk.img /mnt/floppy
-	cp test2.k /mnt/floppy
+	cp ${OBJS} /mnt/floppy
 	umount /mnt/floppy
 	#mdconfig -d -u 0
+
+install_freebsd:
+	mdconfig -a -t vnode -f ../bootdisk.img
+	mount -t msdosfs /dev/md0 /mnt/floppy
+	cp ${OBJS} /mnt/floppy
+	umount /mnt/floppy
+	mdconfig -d -u 0
+
 clean:
 	-rm *.k
 	-rm *.o
