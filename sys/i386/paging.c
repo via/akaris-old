@@ -77,7 +77,7 @@ void page_fault_handler(isr_regs * regs) {
   bootvideo_printf("Offending address: %x @ %x\n", address, regs->eip);
   bootvideo_printf("Error code: %x\n", regs->err_code);
 
-  /*Check to see if area is stack region*/
+  /*Check to see if area 
 
   while (1);
 }
