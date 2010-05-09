@@ -32,11 +32,11 @@ int create_process(int addr, int length) {
   new_context->registers.eip = 0x40000000;
   new_context->registers.cs = 0x1B;
   new_context->registers.eflags = 0x200; /*IF set*/
-  new_context->registers.useresp = 0xC0000FFF; /*0xC0000FFF;*/
+  new_context->registers.useresp = 0xBFFFFFF0; /*0xC0000FFF;*/
 
   new_context->space = create_address_space();
   expand_region(new_context->space->core, length / 4096 + 1);
-  expand_region(new_context->space->stack, 1);
+  expand_region(new_context->space->stack, -1);
   set_cr3(new_context->space->cr3);
   
   char * s, * d;

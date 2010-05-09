@@ -7,15 +7,15 @@
 #include <i386/paging.h>
 #include <i386/bootvideo.h>
 
-#define MR_TYPE_STACK 1;
-#define MR_TYPE_CORE 2;
-#define MR_TYPE_LIBRARY 3;
-#define MR_TYPE_ANON 4;
-#define MR_TYPE_IPC 5;
-#define MR_TYPE_SENTINAL 6;
+#define MR_TYPE_STACK 1
+#define MR_TYPE_CORE 2
+#define MR_TYPE_LIBRARY 3
+#define MR_TYPE_ANON 4
+#define MR_TYPE_IPC 5
+#define MR_TYPE_SENTINAL 6
 
-#define MR_ATTR_COW 1; /*parameter is pointer to other region*/
-#define MR_ATTR_RO 2;
+#define MR_ATTR_COW 1 /*parameter is pointer to other region*/
+#define MR_ATTR_RO 2
 
 
 struct memory_region_t {

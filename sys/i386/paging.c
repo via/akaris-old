@@ -77,9 +77,23 @@ void page_fault_handler(isr_regs * regs) {
   bootvideo_printf("Offending address: %x @ %x\n", address, regs->eip);
   bootvideo_printf("Error code: %x\n", regs->err_code);
 
-  /*Check to see if area is a stack region*/ 
 
-  while (1);
+
+  /*Check to see if area is a stack region*/ 
+  context_t * context = get_process (get_current_process ());
+  if ( (address < context->space->stack->virtual_address +
+	(4096 * context->space->stack->length)) && 
+       (address > context->space->stack->virtual_address + 
+	(4096 * context->space->stack->length) - 4096)) {
+						  
+    bootvideo_printf ("Offending address is below stack!\n");
+    expand_region (context->space->stack, -1);
+  }
+      
+  for (address = 0; address < 200000000; ++address);
+
+
+
 }
 
 int get_unused_kernel_virtual_page() {

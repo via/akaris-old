@@ -81,10 +81,15 @@ int expand_region(memory_region * mr, int size) {
 
   if (size < 0) {
     bootvideo_printf("Expanding downwards!\n");
+
+    if (mr->type != MR_TYPE_STACK) {
+      bootvideo_printf ("Trying to downward expand a nonstack area!\n");
+      while (1);
+    }
     inc_amount = -1;
   }
   int curpage;
-  for (curpage = oldsize; curpage < size; curpage += inc_amount) {
+  for (curpage = (inc_amount > 0 ? oldsize : oldsize - 1); (inc_amount > 0 ? curpage < oldsize + size : curpage >= oldsize + size); curpage += inc_amount) {
     /*First verify a pde exists*/
     unsigned int cur_pde = (((unsigned)mr->virtual_address / PAGE_SIZE) + curpage) / 1024;
     unsigned int cur_pte = (((unsigned)mr->virtual_address / PAGE_SIZE) + curpage) % 1024;
@@ -113,6 +118,8 @@ int expand_region(memory_region * mr, int size) {
 
     __asm__("invlpg (%0)" : : "a" (mr->virtual_address + curpage * 4096));
   }	      
+  mr->length += size;
+
   return 0;
 }
          
