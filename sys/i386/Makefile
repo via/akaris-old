@@ -8,9 +8,9 @@ default: ${OBJS}
 	@echo "[LD] ${<}"
 install:
 #	mdconfig -a -t vnode -f ../bootdisk.img
-	mount -o loop ../bootdisk.img /mnt/floppy
-	cp i386.k /mnt/floppy
-	umount /mnt/floppy
+	mount -o loop ../bootdisk.img ../../mnt
+	cp i386.k ../../mnt/
+	umount ../../mnt
 	#mdconfig -d -u 0
 clean:
 	-rm *.k

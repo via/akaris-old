@@ -7,9 +7,9 @@ default: ${OBJS}
 	ld ${LDFLAGS} -o test2.k test2.o
 install:
 #	mdconfig -a -t vnode -f ../bootdisk.img
-	mount -o loop ../bootdisk.img /mnt/floppy
-	cp test2.k /mnt/floppy
-	umount /mnt/floppy
+	mount -o loop ../bootdisk.img ../../mnt
+	cp test2.k ../../mnt/
+	umount ../../mnt
 	#mdconfig -d -u 0
 clean:
 	-rm *.k
