@@ -89,7 +89,7 @@ void page_fault_handler(isr_regs * regs) {
     bootvideo_printf ("Offending address is below stack!\n");
     expand_region (context->space->stack, -1);
   }
-      
+  /*Delay loop to easily see page fault info*/
   for (address = 0; address < 200000000; ++address);
 
 

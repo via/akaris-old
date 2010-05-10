@@ -54,6 +54,7 @@ address_space * create_address_space() {
   as->core = core;
   as->stack = stack;
   as->mappings = last;
+  as->mappings = last;
 
   core->virtual_address = 0x40000000;
   core->length = 0;
