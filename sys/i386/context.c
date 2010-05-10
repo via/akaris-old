@@ -5,8 +5,6 @@
 slab_entry * address_slab;
 slab_entry * regions_slab;
 
-memory_region* first;
-memory_region* last;
 
 pte ** kpt;
 
@@ -15,14 +13,7 @@ void init_address_space_system() {
   address_slab = create_slab(sizeof(address_space));
   regions_slab = create_slab(sizeof(memory_region));
 
-  first = (memory_region*)allocate_from_slab(regions_slab);
-  last = (memory_region*)allocate_from_slab (regions_slab);
   
-  first->type = MR_TYPE_SENTINAL;
-  first->next = last;
-  last->type  = MR_TYPE_SENTINAL;
-  last->next = (memory_region *) 0;
-
   kpt = get_kernel_page_tables();
 }
 
@@ -30,11 +21,22 @@ address_space * create_address_space() {
 
   int c;
   address_space * as = (address_space *)allocate_from_slab(address_slab);
-  
   memory_region * core;
   memory_region * stack;
+  memory_region * free;
+
 
   pde * pages;
+
+
+  as->first = (memory_region*)allocate_from_slab(regions_slab);
+  as->last = (memory_region*)allocate_from_slab (regions_slab);
+  
+  as->first->type = MR_TYPE_SENTINAL;
+  as->first->next = as->last;
+  as->last->type  = MR_TYPE_SENTINAL;
+  as->last->next = (memory_region *) 0;
+
 
   core = (memory_region *)allocate_from_slab(regions_slab);
   stack= (memory_region *)allocate_from_slab(regions_slab);
@@ -53,15 +55,13 @@ address_space * create_address_space() {
   as->virt_cr3 = pages;
   as->core = core;
   as->stack = stack;
-  as->mappings = last;
-  as->mappings = last;
 
   core->virtual_address = 0x40000000;
   core->length = 0;
   core->type = MR_TYPE_CORE;
   core->attributes = 0;
   core->parent = as;
-  core->next = first->next;
+  core->next = as->last;
 
   stack->virtual_address = 0xC0000000;
   stack->length = 0;
@@ -70,7 +70,26 @@ address_space * create_address_space() {
   stack->parent = as;
   stack->next = core;
   
-  first->next = stack;
+  free = (memory_region *)allocate_from_slab(regions_slab);
+  free->virtual_address = (4096 * 1024) * NUM_KERNEL_PDES;
+  free->length = (0x40000000 - ((4096 * 1024) * NUM_KERNEL_PDES)) / 4096;
+  free->attributes = 0;
+  free->type = MR_TYPE_FREE;
+  free->parent = as;
+  free->next = stack;
+  as->first->next = free;
+  
+  free = (memory_region *)allocate_from_slab(regions_slab);
+  free->virtual_address = 0x40000000;
+  free->length = (0xC0000000 - 0x40000000) / 4096;
+  free->attributes = 0;
+  free->type = MR_TYPE_FREE;
+  free->parent = as;
+  free->next = as->first->next;
+  as->first->next = free;
+  
+
+  
 
  return as;
 
@@ -95,6 +114,20 @@ int expand_region(memory_region * mr, int size) {
     unsigned int cur_pde = (((unsigned)mr->virtual_address / PAGE_SIZE) + curpage) / 1024;
     unsigned int cur_pte = (((unsigned)mr->virtual_address / PAGE_SIZE) + curpage) % 1024;
 
+    memory_region * newrange = determine_memory_region (mr->parent, mr->virtual_address + curpage * 4096);
+    
+    if (newrange->type != MR_TYPE_FREE) {
+      bootvideo_printf ("Start address: %x\n", newrange);
+      bootvideo_printf ("Unable to expand! Memory range is blocked off!\n");
+      while (1);
+    } else {
+      if (inc_amount > 0) {
+	newrange->length--;
+	newrange->virtual_address += 4096;
+      } else {
+	newrange->length--;
+      }
+    }
     pte * pt;
   
     if (((mr->parent->virt_cr3)[cur_pde] & PTE_PRESENT_BIT) == 0) {
@@ -124,3 +157,23 @@ int expand_region(memory_region * mr, int size) {
   return 0;
 }
          
+memory_region * determine_memory_region (address_space * as, unsigned long addr) {
+  /*Traverse the mappings*/
+  memory_region * m; 
+  for (m = as->first->next; m != as->last; m = m->next) {
+    if (m->type == MR_TYPE_STACK) {
+      if ( (addr < m->virtual_address) &&
+	   (addr >= m->virtual_address + 
+	    (4096 * m->length))) {
+	return m;
+      }
+    } else {
+      if ( (addr >= m->virtual_address) &&
+	   (addr < m->virtual_address + 
+	    (4096 * m->length))) {
+	return m;
+      }
+    }
+  }
+  return 0;
+}

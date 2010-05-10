@@ -72,7 +72,7 @@ void enable_paging() {
 void page_fault_handler(isr_regs * regs) {
 
   bootvideo_printf("Page Fault! %x \n", regs->int_no);
-  int address;
+  unsigned long address;
   __asm__("movl %%cr2, %0" : "=r" (address));
   bootvideo_printf("Offending address: %x @ %x\n", address, regs->eip);
   bootvideo_printf("Error code: %x\n", regs->err_code);
@@ -80,19 +80,34 @@ void page_fault_handler(isr_regs * regs) {
 
 
   /*Check to see if area is a stack region*/ 
+  if (!get_current_process ()) {
+    bootvideo_printf ("Haven't set up processes yet. hanging\n");
+    while (1);
+  }
   context_t * context = get_process (get_current_process ());
-  if ( (address < context->space->stack->virtual_address +
-	(4096 * context->space->stack->length)) && 
-       (address > context->space->stack->virtual_address + 
-	(4096 * context->space->stack->length) - 4096)) {
-						  
-    bootvideo_printf ("Offending address is below stack!\n");
-    expand_region (context->space->stack, -1);
+  
+  memory_region * mr = determine_memory_region (context->space, (unsigned long) regs->eip);
+
+  if (mr == context->space->stack) {
+    bootvideo_printf ("Page fault in stack of pid %d!\n", context->pid);
+    while (1); /*Kill task*/
+  } else if (mr == context->space->core) {
+    bootvideo_printf ("Page fault in core of pid %d!\n", context->pid);
+    if ( (address < context->space->stack->virtual_address +
+	  (4096 * context->space->stack->length)) && 
+	 (address > context->space->stack->virtual_address + 
+	  (4096 * context->space->stack->length) - 4096)) {
+      
+      bootvideo_printf ("Offending address is below stack!\n");
+      expand_region (context->space->stack, -1);
+
+    }
   }
   /*Delay loop to easily see page fault info*/
+  dump_slab_info ();
   for (address = 0; address < 200000000; ++address);
 
-
+  
 
 }
 

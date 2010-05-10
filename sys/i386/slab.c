@@ -99,7 +99,28 @@ void * allocate_from_slab(slab_entry * se) {
   return result;
 }
 
+void dump_slab_info () {
+  int c;
+  int objs = 0;
+  int tot_bytes = 0;
 
+  bootvideo_printf ("Slab Size    Num Objs\n");
+  for (c = 0; c < MAX_SLABS; c++) {
+    if (slabs[c].first_sbuf == 0)
+      break;
+    bootvideo_printf("%d           %d\n",
+		     slabs[c].size, slabs[c].num_objects);
+    tot_bytes += slabs[c].size * slabs[c].num_objects;
+    objs += slabs[c].num_objects;
+  }
+
+  bootvideo_printf ("Total Bytes: %d -- Objs: %d\n",
+		    tot_bytes, objs);
+
+
+    
+}
+  
     
 
 

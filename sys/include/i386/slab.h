@@ -42,6 +42,6 @@ void         delete_slab(slab_entry *);
 void *       allocate_from_slab(slab_entry *);
 void         deallocate_from_slab(slab_entry *, void *);
 
-
+void         dump_slab_info ();
 
 #endif
