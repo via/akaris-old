@@ -3,7 +3,7 @@
 
 
 /* Vendor-strings. */
-#define CPUID_VENDOR_OLDAMD       "AMDisbetter!" //early engineering samples of AMD K5 processor
+#define CPUID_VENDOR_OLDAMD       "AMDisbetter!" 
 #define CPUID_VENDOR_AMD          "AuthenticAMD"
 #define CPUID_VENDOR_INTEL        "GenuineIntel"
 #define CPUID_VENDOR_VIA          "CentaurHauls"

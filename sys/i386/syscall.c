@@ -18,6 +18,10 @@ void syscall_handler(isr_regs * regs) {
   case SYSCALL_FUNCTION_KDEBUG:
     bootvideo_printf("%s", regs->edx);
     break;
+  case SYSCALL_FUNCTION_MMAP_LIST:
+    context_print_mmap ();
+    break;
+
   default:
     bootvideo_printf("Undefined Syscall requested!\n");
   }

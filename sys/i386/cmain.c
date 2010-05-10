@@ -45,7 +45,7 @@ void cmain(multiboot_info_t * mb_info, int magic) {
 
   link_irq(32, &timer_interrupt);
 
-  get_process(2);
+  set_current_process (2);
   begin_schedule(&(get_process(2)->registers));
   while (1);
   

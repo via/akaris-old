@@ -1,6 +1,6 @@
 CFLAGS = -std=c89 -O0 -g -Wall -Wextra -Werror  -nostdlib -nostartfiles -nodefaultlibs -I../include/ -c -fno-builtin
 LDFLAGS = -T linker.ld
-
+CC=gcc
 OBJS = start.o cmain.o cpuid.o bootvideo.o asmutil.o gdt.o asm_interrupts.o interrupt.o pic.o physical_memory.o slab.o paging.o context.o process.o syscall.o
 
 default: ${OBJS}
@@ -17,8 +17,8 @@ clean:
 	-rm *.o
 	-rm *.lst
 .c.o:
-	@gcc -o $@ -Wa,-a,-ad ${CFLAGS} $< > ${<}.lst
+	@ ${CC} -o $@ -Wa,-a,-ad ${CFLAGS} $< > ${<}.lst
 	@echo "[CC] ${<}"
 .s.o:
-	@gcc -o $@ -Wa,-a,-ad  ${CFLAGS} $< > ${<}.lst
+	@ ${CC} -o $@ -Wa,-a,-ad  ${CFLAGS} $< > ${<}.lst
 	@echo "[AS] ${<}"

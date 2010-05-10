@@ -28,4 +28,5 @@ int create_process(int addr, int length);
 context_t * get_process(int);
 void begin_schedule (isr_regs *);
 int get_current_process();
+void set_current_process (int);
 #endif

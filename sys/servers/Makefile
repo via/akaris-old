@@ -1,8 +1,8 @@
 CFLAGS = -std=c89 -O0 -g -Wall -Wextra -Werror  -nostdlib -nostartfiles -nodefaultlibs -I../include/ -c -fno-builtin
 LDFLAGS = -T linker.ld
-
-#OBJS = start.o cmain.o cpuid.o bootvideo.o asmutil.o gdt.o asm_interrupts.o interrupt.o pic.o physical_memory.o slab.o paging.o context.o
+CC=gcc
 OBJS = test2.o
+
 default: ${OBJS}
 	ld ${LDFLAGS} -o test2.k test2.o
 install:
@@ -16,8 +16,8 @@ clean:
 	-rm *.o
 	-rm *.lst
 .c.o:
-	gcc -o $@ -Wa,-a,-ad ${CFLAGS} $< > ${<}.lst
+	${CC} -o $@ -Wa,-a,-ad ${CFLAGS} $< > ${<}.lst
 
 .s.o:
-	gcc -o $@ ${CFLAGS} $<
+	${CC} -o $@ ${CFLAGS} $<
 

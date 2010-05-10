@@ -1,6 +1,6 @@
 /*context.c*/
 #include <i386/context.h>
-
+#include <i386/process.h>
 
 slab_entry * address_slab;
 slab_entry * regions_slab;
@@ -81,7 +81,17 @@ address_space * create_address_space() {
   
   free = (memory_region *)allocate_from_slab(regions_slab);
   free->virtual_address = 0x40000000;
-  free->length = (0xC0000000 - 0x40000000) / 4096;
+  free->length = (0x80000000 - 0x40000000) / 4096;
+  free->attributes = MR_ATTR_PRIO_TOP;
+  free->type = MR_TYPE_FREE;
+  free->parent = as;
+  free->next = as->first->next;
+  as->first->next = free;
+  
+
+  free = (memory_region *)allocate_from_slab(regions_slab);
+  free->virtual_address = 0x80000000;
+  free->length = (0xC0000000 - 0x80000000) / 4096;
   free->attributes = 0;
   free->type = MR_TYPE_FREE;
   free->parent = as;
@@ -176,4 +186,71 @@ memory_region * determine_memory_region (address_space * as, unsigned long addr)
     }
   }
   return 0;
+}
+
+memory_region * create_region (address_space * as,
+			       int length,
+			       int flags, int attr,
+			       int param) {
+  /*First we find a free memory region*/
+  memory_region * smallest = 0, *current;
+  memory_region * new_region;
+  for (current = as->first->next; current != as->last; current = current->next) {
+    if (current->type == MR_TYPE_FREE) {
+      if (current->length >= length) {
+	if (smallest == 0) {
+	  smallest = current;
+	} else {
+	  if (current->length <= smallest->length) {
+	    smallest = current;
+	  }
+	}
+      }
+    }
+  }
+  if (smallest == 0) {
+    bootvideo_printf ("Unable to find available memory block!\n");
+    return 0;
+  }
+  
+  new_region = (memory_region *)allocate_from_slab (regions_slab);
+  
+  /*Subdivide the block*/
+  if (smallest->attributes | MR_ATTR_PRIO_TOP) {
+    smallest->length -= length;
+    new_region->virtual_address = smallest->virtual_address + (smallest->length * PAGE_SIZE);
+  } else {
+    new_region->virtual_address = smallest->virtual_address;
+    smallest->virtual_address += (length * PAGE_SIZE);
+    smallest->length -= length;
+  }
+  new_region->length = length;
+  new_region->type = flags;
+  new_region->attributes = attr;
+  new_region->parameter = param;
+  new_region->parent = as;
+  new_region->next = as->first->next;
+  as->first->next = new_region;
+  
+  
+  return new_region;
+  
+
+}
+
+
+void context_print_mmap () {
+  context_t * c = get_process (get_current_process ());
+  
+  address_space * as = c->space;
+
+  memory_region * r;
+  for (r = as->first->next; r != as->last; r = r->next) {
+    bootvideo_printf ("%x    %x    %s\n", r->virtual_address,
+		      r->length * 4096 + r->virtual_address,
+		      (r->type == MR_TYPE_FREE ?
+		       "FREE" : "USED"));
+  }
+
+  while (1);
 }

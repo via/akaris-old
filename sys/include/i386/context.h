@@ -7,6 +7,8 @@
 #include <i386/paging.h>
 #include <i386/bootvideo.h>
 
+
+
 #define MR_TYPE_STACK 1
 #define MR_TYPE_CORE 2
 #define MR_TYPE_LIBRARY 3
@@ -19,6 +21,7 @@
 
 #define MR_ATTR_COW 1 /*parameter is pointer to other region*/
 #define MR_ATTR_RO 2
+#define MR_ATTR_PRIO_TOP 4
 
 
 struct memory_region_t {
@@ -53,7 +56,9 @@ address_space * create_address_space();
 memory_region * determine_memory_region(address_space *, unsigned long address);
 int             expand_region(memory_region*, int size);
 
-memory_region * create_region(address_space *, int flags, int attr, int param);
+memory_region * create_region(address_space *, int length, int flags, int attr, int param);
 int             map_region(memory_region *, int phys, int length);
+
+void context_print_mmap ();
 
 #endif

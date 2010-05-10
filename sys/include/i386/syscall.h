@@ -12,7 +12,7 @@
 #define SYSCALL_FUNCTION_MAILBOX_CREATE 3
 #define SYSCALL_FUNCTION_MAILBOX_SEND 4
 #define SYSCALL_FUNCTION_MAILBOX_RECEIVE 5
-
+#define SYSCALL_FUNCTION_MMAP_LIST 6
 /*For ALL syscalls, EAX defines the function, EDX defines parameter*/
 
 

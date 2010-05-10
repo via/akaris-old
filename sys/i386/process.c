@@ -64,11 +64,9 @@ context_t * get_process(int pid) {
        c = c->next);
   if (c->pid != pid) {
     bootvideo_printf("Invalid pid %d\n", c->pid);
-    cur_process = 0;
     return 0;
   } else {
     bootvideo_printf("Returning pid %d\n", c->pid);
-    cur_process = c;
     return c;
   }
 }
@@ -85,4 +83,8 @@ void schedule(isr_regs * regs) {
 
 int get_current_process() {
   return cur_process->pid;
+}
+
+void set_current_process (int pid) {
+  cur_process = get_process ( pid );
 }
