@@ -1,3 +1,6 @@
+
+#include <libak.h>
+
 char gstr[] = "pid2 iterate\n";
 char pay[] = "From 2: Payload!\n";
 void mod_start() {
@@ -6,17 +9,12 @@ void mod_start() {
     int i;
     for (i = 0; i < 10000000; i++);
 
-    __asm__("movl $1, %%eax\n"
-	    "movl %0, %%edx\n"
-	    "int $0x80" : : "d" (gstr));
+    puts (gstr);
+
       
 
     if (c % 3 == 0) {
-      
-      
-      __asm__("movl $4, %%eax\n"
-	      "movl %0, %%edx\n"
-	      "int $0x80" : : "d" (pay));
+      ak_mailbox_send (1, (message *)pay);
     }
     ++c;    
   }

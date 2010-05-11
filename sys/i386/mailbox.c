@@ -82,7 +82,7 @@ next_message (mailbox * mb) {
   
 
 int send_message (int pid, message * m) {
-  
+
   /*Find the destination mailbox*/
   context_t * c = get_process (pid);
   mailbox * mb = c->mailboxes;
@@ -126,6 +126,10 @@ int send_message (int pid, message * m) {
   mb->first = (mb->first + 1) % mb->size;
 
   test_and_set (0, &mb->mutex);
+
+  if (c->status == PROCESS_STATUS_WAITING) {
+    c->status = PROCESS_STATUS_RUNNING;
+  }
 
   return 1;
   

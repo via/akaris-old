@@ -24,6 +24,7 @@ int create_process(int addr, int length) {
 	 t = t->next); /*Get to end*/
     t->next = new_context;
   }
+  new_context->next = 0;
   new_context->mailboxes = 0;
   new_context->registers.eax = 0xDEADBEEF;
   new_context->registers.gs = 0x23;
@@ -51,7 +52,7 @@ int create_process(int addr, int length) {
   new_context->pid = next_avail_pid;
   next_avail_pid++;
 
-  new_context->status = PROCESS_STATUS_YIELDING;
+  new_context->status = PROCESS_STATUS_RUNNING;
 
   return new_context->pid;
 }
@@ -62,10 +63,10 @@ context_t * get_process(int pid) {
 
   context_t * c;
   for (c = context_list;
-       (c->pid != pid);
+       (c->pid != pid) && (c->next != 0);
        c = c->next);
   if (c->pid != pid) {
-    bootvideo_printf("Invalid pid %d\n", c->pid);
+    bootvideo_printf("Invalid pid %d\n", pid);
     return 0;
   } else {
     return c;
@@ -74,9 +75,12 @@ context_t * get_process(int pid) {
   
 void schedule(isr_regs * regs) {
   memcpy((char*)&cur_process->registers, (char*)regs, sizeof(isr_regs));
-  cur_process = cur_process->next;
-  if (cur_process == 0)
-    cur_process = context_list;
+
+  do {
+    cur_process = cur_process->next;
+    if (cur_process == 0)
+      cur_process = context_list;
+  } while (cur_process->status != PROCESS_STATUS_RUNNING);
   memcpy((char*)regs,(char*) &cur_process->registers, sizeof(isr_regs));
   
   set_cr3(cur_process->space->cr3);

@@ -3,10 +3,14 @@ LDFLAGS = -T linker.ld
 CC=gcc
 OBJS = test2.o test1.o
 
-default: ${OBJS}
-	ld ${LDFLAGS} -o test2.k test2.o
-	ld ${LDFLAGS} -o test1.k test1.o
 
+
+default: libak/libak.o ${OBJS}
+	ld ${LDFLAGS} -o test2.k test2.o libak/libak.o
+	ld ${LDFLAGS} -o test1.k test1.o libak/libak.o
+
+libak/libak.o:
+	(cd libak; make);
 
 install:
 #	mdconfig -a -t vnode -f ../bootdisk.img
@@ -18,6 +22,7 @@ clean:
 	-rm *.k
 	-rm *.o
 	-rm *.lst
+	(cd libak; make clean;);
 .c.o:
 	${CC} -o $@ -Wa,-a,-ad ${CFLAGS} $< > ${<}.lst
 

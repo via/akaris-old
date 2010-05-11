@@ -1,27 +1,29 @@
 
+#include <libak.h>
+char buf[100];
+
 void mod_start() {
-  char *m;
-  int mb;    
-  __asm__("movl $3, %%eax\n"
-	  "movl %0, %%edx\n"
-	  "int $0x80" : "=d"(mb) : "d" (5));
+  message *m;
+  mailbox * mb = ak_mailbox_create (20, 0);
+  
+
   
   while (1) {
     int i;
 
     for (i = 0; i < 5000; i++);
     
-    while (1);
+    while (1)
       {
-      __asm__("movl $5, %%eax\n"
-	      "movl %0, %%edx\n"
-	      "int $0x80" :"=d"(m) : "d" (mb));
+	ak_block_on_message ();
+	m = ak_mailbox_receive (mb);
       if (m != 0) break;
     }
-    __asm__("movl $1, %%eax\n"
-	    "movl %0, %%edx\n"
-	    "int $0x80" : : "d" (m));
+    sprintf (buf, "message received: %s\n", (char *) m);
+    puts (buf);
+
   }
+
 
   
 }

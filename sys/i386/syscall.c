@@ -23,16 +23,20 @@ void syscall_handler(isr_regs * regs) {
     context_print_mmap ();
     break;
   case SYSCALL_FUNCTION_MAILBOX_CREATE:
-    bootvideo_printf("Creating mailbox!\n");
-    regs->edx = (int) create_mailbox (c, regs->edx, 0);
+    regs->edx = (int) create_mailbox (c, regs->edx, regs->ecx);
     break;
   case SYSCALL_FUNCTION_MAILBOX_SEND:
-    regs->edx = send_message (1, (message *)regs->edx);
+    regs->edx = send_message (regs->ecx, (message *)regs->edx);
     break;
 
   case SYSCALL_FUNCTION_MAILBOX_RECEIVE:
     regs->edx = (int) next_message ((mailbox *)regs->edx);
     break;
+  case SYSCALL_FUNCTION_BLOCK:
+    c->status = PROCESS_STATUS_WAITING;
+      schedule (regs);
+    break;
+
   default:
     bootvideo_printf("Undefined Syscall requested!\n");
   }
