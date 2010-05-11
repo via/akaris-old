@@ -148,6 +148,18 @@ int get_usable_kernel_virtual_page() {
   return virt_addr * PAGE_SIZE;
 }
 
+unsigned long get_mapped_kernel_virtual_page (unsigned long addr) {
+  int virt_addr = get_unused_kernel_virtual_page();
+  virt_addr /= PAGE_SIZE;
+  int cur_pde = virt_addr / 1024;
+  int cur_pte = virt_addr % 1024;
+
+ 
+  kernel_page_tables[cur_pde][cur_pte] |= addr;
+  __asm__("invlpg (%0)" : : "a" (virt_addr * PAGE_SIZE));
+  return virt_addr * PAGE_SIZE;
+}  
+
 int get_physical_address_from_kernel_virtual(int addr) {
   if (addr > NUM_KERNEL_PDES * 4 * 1024 * 1024) 
     return -1;
@@ -158,6 +170,18 @@ int get_physical_address_from_kernel_virtual(int addr) {
   int phys_addr = kernel_page_tables[cur_pde][cur_pte] & 0xFFFFF000;
   return phys_addr;
 }
+
+unsigned long map_user_virtual_to_kernel(context_t * c, unsigned long addr) {
+  addr /= 4096;
+  int cur_pde = addr / 1024;
+  int cur_pte = addr % 1024;
+  
+  pte * list = (pte *) get_mapped_kernel_virtual_page(c->space->virt_cr3[cur_pde]);
+  unsigned long p_addr = list[cur_pte] & 0xFFFFF000;
+  free_kernel_virtual_page((int)list);
+  return get_mapped_kernel_virtual_page (p_addr);
+}
+						     
   
 void free_kernel_virtual_page (int addr) {
   addr /= 4096;

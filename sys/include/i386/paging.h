@@ -8,6 +8,7 @@
 #include <i386/interrupt.h>
 #include <i386/physical_memory.h>
 
+
 /*PDE/PTE flag defines*/
 #define PTE_PRESENT_BIT (1 << 0)
 #define PTE_RW_BIT      (1 << 1)
@@ -28,7 +29,7 @@ typedef int pde;
 void initialize_kernel_paging();
 pte ** get_kernel_page_tables();
 
-
+struct context;
 
 void set_pte(pte *, int address, int flags);
 void set_pde(pde *, int address, int flags);
@@ -41,6 +42,9 @@ int get_physical_address_from_kernel_virtual(int);
 
 int get_unused_kernel_virtual_page();
 int get_usable_kernel_virtual_page();
+unsigned long get_mapped_kernel_virtual_page (unsigned long addr);
+unsigned long map_user_virtual_to_kernel(struct context *,
+					 unsigned long);
 void free_kernel_virtual_page(int);
   
 void page_fault_handler(isr_regs *);

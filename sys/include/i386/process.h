@@ -12,11 +12,14 @@
 #define PROCESS_STATUS_WAITING 2
 #define PROCESS_STATUS_YIELDING 3
 
+struct mailbox_t;
+
 struct context {
   isr_regs registers;
   address_space * space;
   int pid;
   int status;
+  struct mailbox_t * mailboxes;
   struct context * next;
 };
 

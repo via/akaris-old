@@ -1,4 +1,5 @@
 #include <i386/process.h>
+#include <i386/mailbox.h>
 
 slab_entry * context_slab;
 context_t * context_list;
@@ -23,6 +24,7 @@ int create_process(int addr, int length) {
 	 t = t->next); /*Get to end*/
     t->next = new_context;
   }
+  new_context->mailboxes = 0;
   new_context->registers.eax = 0xDEADBEEF;
   new_context->registers.gs = 0x23;
   new_context->registers.fs = 0x23;
@@ -38,7 +40,7 @@ int create_process(int addr, int length) {
   expand_region(new_context->space->core, length / 4096 + 1);
   expand_region(new_context->space->stack, -1);
   set_cr3(new_context->space->cr3);
-  
+
   char * s, * d;
   for (d = (char *)0x40000000, s = (char*)addr;
        (int)s < addr + length;
@@ -66,7 +68,6 @@ context_t * get_process(int pid) {
     bootvideo_printf("Invalid pid %d\n", c->pid);
     return 0;
   } else {
-    bootvideo_printf("Returning pid %d\n", c->pid);
     return c;
   }
 }

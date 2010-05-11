@@ -5,7 +5,7 @@
 #include <i386/process.h>
 #include <i386/context.h>
 
-#define SYSCALL_MAX_SYSCALLS 5
+#define SYSCALL_MAX_SYSCALLS 6
 
 #define SYSCALL_FUNCTION_KDEBUG 1
 #define SYSCALL_FUNCTION_MMAP 2

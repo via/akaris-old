@@ -1,7 +1,7 @@
 /*syscall.c*/
 
 #include <i386/syscall.h>
-
+#include <i386/mailbox.h>
 void enable_syscall() {
 
   link_irq(0x80, &syscall_handler);
@@ -13,6 +13,7 @@ void enable_syscall() {
 
 void syscall_handler(isr_regs * regs) {
   
+  context_t * c = get_process (get_current_process ());
 
   switch (regs->eax) {
   case SYSCALL_FUNCTION_KDEBUG:
@@ -21,7 +22,17 @@ void syscall_handler(isr_regs * regs) {
   case SYSCALL_FUNCTION_MMAP_LIST:
     context_print_mmap ();
     break;
+  case SYSCALL_FUNCTION_MAILBOX_CREATE:
+    bootvideo_printf("Creating mailbox!\n");
+    regs->edx = (int) create_mailbox (c, regs->edx, 0);
+    break;
+  case SYSCALL_FUNCTION_MAILBOX_SEND:
+    regs->edx = send_message (1, (message *)regs->edx);
+    break;
 
+  case SYSCALL_FUNCTION_MAILBOX_RECEIVE:
+    regs->edx = (int) next_message ((mailbox *)regs->edx);
+    break;
   default:
     bootvideo_printf("Undefined Syscall requested!\n");
   }

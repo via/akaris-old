@@ -11,7 +11,7 @@
 #include <i386/context.h>
 #include <i386/process.h>
 #include <i386/syscall.h>
-
+#include <i386/mailbox.h>
 
 address_space *A, *B;
 
@@ -39,7 +39,7 @@ void cmain(multiboot_info_t * mb_info, int magic) {
   init_address_space_system();
   initialize_scheduler();
   enable_syscall();
-
+  init_mailboxes ();
   load_module (mb_info, 0);
   load_module (mb_info, 1);
 

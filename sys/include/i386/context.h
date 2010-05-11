@@ -23,7 +23,6 @@
 #define MR_ATTR_RO 2
 #define MR_ATTR_PRIO_TOP 4
 
-
 struct memory_region_t {
   unsigned long virtual_address;
   int length;  /*In pages*/

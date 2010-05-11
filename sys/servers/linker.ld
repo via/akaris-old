@@ -1,4 +1,4 @@
-ENTRY (test1)
+ENTRY (mod_start)
 OUTPUT_FORMAT(binary)
 SECTIONS{
     . = 0x40000000;

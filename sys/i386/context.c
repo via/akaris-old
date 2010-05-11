@@ -89,6 +89,7 @@ address_space * create_address_space() {
   as->first->next = free;
   
 
+  
   free = (memory_region *)allocate_from_slab(regions_slab);
   free->virtual_address = 0x80000000;
   free->length = (0xC0000000 - 0x80000000) / 4096;
@@ -216,7 +217,7 @@ memory_region * create_region (address_space * as,
   new_region = (memory_region *)allocate_from_slab (regions_slab);
   
   /*Subdivide the block*/
-  if (smallest->attributes | MR_ATTR_PRIO_TOP) {
+  if (smallest->attributes & MR_ATTR_PRIO_TOP) {
     smallest->length -= length;
     new_region->virtual_address = smallest->virtual_address + (smallest->length * PAGE_SIZE);
   } else {
@@ -252,5 +253,5 @@ void context_print_mmap () {
 		       "FREE" : "USED"));
   }
 
-  while (1);
+
 }
