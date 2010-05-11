@@ -19,7 +19,7 @@ void mod_start() {
 	m = ak_mailbox_receive (mb);
       if (m != 0) break;
     }
-    sprintf (buf, "message received: %s\n", (char *) m);
+    sprintf (buf, "message received: %s\n",  m->payload);
     puts (buf);
 
   }

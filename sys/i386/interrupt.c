@@ -1,6 +1,6 @@
 #include <i386/interrupt.h>
 #include <i386/bootvideo.h>
-
+#include <i386/mailbox.h>
 
 idt_entry interrupt_descriptors[MAX_INTS];
 idtr      idt_pointer = {sizeof(interrupt_descriptors) - 1,
@@ -8,20 +8,33 @@ idtr      idt_pointer = {sizeof(interrupt_descriptors) - 1,
 
 
 void (*int_handler[256])(isr_regs*);
+int int_to_pid[256];
 
 void 
 link_irq(int irq, void (*func)(isr_regs*)) {
   int_handler[irq] = func;
 }
 
+void
+link_irq_to_pid(int irq, int pid) {
 
+  int_to_pid[irq] = pid;
+
+}
 
 isr_regs* c_isr(isr_regs* regs_in) {
+
+  message m;
 
   if (int_handler[regs_in->int_no] != 0) {
     int_handler[regs_in->int_no](regs_in);
   }
   
+  if (int_to_pid[regs_in->int_no]) {
+    m.src_pid = -1;
+    m.dest_pid = int_to_pid[regs_in->int_no];
+    send_message (&m, 1);
+  }
 
   /*acknowledge interrupts*/
   if (regs_in->int_no >= 40) {
@@ -50,6 +63,7 @@ initialize_interrupts() {
   int a;
   for (a = 0; a < 256; a++) {
     int_handler[a] = 0;
+    int_to_pid[a] = 0;
   }
   if (picAvailable()) {
     picRemapIRQs();

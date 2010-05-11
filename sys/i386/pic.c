@@ -7,6 +7,13 @@ void outportb(unsigned short port, unsigned char data)
 {
     __asm__ __volatile__ ("outb %1, %0" : : "dN" (port), "a" (data));
 }
+unsigned char inportb(unsigned short port)
+{
+  unsigned char d;
+  __asm__ __volatile__ ("inb %%dx,%%al":"=a"(d):"d"(port));
+
+  return d;
+}
 
 
 int picAvailable() {

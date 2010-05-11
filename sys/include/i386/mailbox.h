@@ -15,8 +15,16 @@ struct mailbox_t {
 };
 
 struct message_t {
+  int src_pid;
+  int dest_pid;
+  short size;
   char payload[128];
 };
+
+#define MAILBOX_ERR_EMPTY 0
+#define MAILBOX_ERR_PERM 1
+#define MAILBOX_ERR_FULL 2
+#define MAILBOX_ERR_LOCKED 3
 
 typedef struct message_t message;
 typedef struct mailbox_t mailbox;
@@ -24,7 +32,7 @@ typedef struct mailbox_t mailbox;
 void      init_mailboxes ();
 mailbox * create_mailbox (context_t *, int size, int recv_pid);
 message * next_message (mailbox *);
-int       send_message (int pid, message *);
+int       send_message (message *, int);
 
 
 

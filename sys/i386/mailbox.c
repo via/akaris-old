@@ -36,7 +36,7 @@ create_mailbox (context_t * c, int size, int recv_pid) {
   if (!mb) {
     return 0;
   }
-  
+
   mb->recv_pid = recv_pid;
   mb->size = size;
   mb->mb_mr = mr;
@@ -56,24 +56,21 @@ next_message (mailbox * mb) {
   
   if (test_and_set(1, &mb->mutex)) {
     bootvideo_printf ("Mailbox locked!\n");
-    return 0;
+    return (message *) MAILBOX_ERR_LOCKED;
   }
 
   message * m;
-  int size = (mb->size * PAGE_SIZE) / sizeof (message);
   if (mb->first == mb->last) {
     test_and_set (0, &mb->mutex);
-    return 0;
+    return (message *) MAILBOX_ERR_EMPTY;
   }
-  if (mb->first == (mb->last + 1 % size)) {
+  if (mb->first == (mb->last + 1 % mb->size)) {
     test_and_set (0, &mb->mutex);
-    return 0;
+    return (message *)MAILBOX_ERR_EMPTY;
   }
   
-  m = &((message *)(mb->mb_mr->virtual_address))[(mb->last + 1) % size];
-  ++mb->last;
-  if (mb->last == mb->size)
-    mb->last = 0;
+  m = &((message *)(mb->mb_mr->virtual_address))[(mb->last + 1) % mb->size];
+  mb->last = (mb->last + 1) % mb->size;
 
   test_and_set (0, &mb->mutex);
 
@@ -81,16 +78,22 @@ next_message (mailbox * mb) {
 }
   
 
-int send_message (int pid, message * m) {
+int send_message (message * m, int kmode) {
 
   /*Find the destination mailbox*/
-  context_t * c = get_process (pid);
+  
+  context_t * c = get_process (m->dest_pid);
+  if (!c) {
+    return MAILBOX_ERR_PERM;
+  }
   mailbox * mb = c->mailboxes;
 
-
+  if ((m->src_pid != get_current_process ()) && !kmode) {
+    return MAILBOX_ERR_PERM;
+  }
 
   while (mb != 0) {
-    if (mb->recv_pid == pid) break;
+    if (mb->recv_pid == m->src_pid) break;
     mb = mb->next;
   }
 
@@ -102,15 +105,14 @@ int send_message (int pid, message * m) {
     }
   }
 
-  if (!mb) return 0;
+  if (!mb) return MAILBOX_ERR_PERM;
   if (test_and_set (1, &mb->mutex)) {
-    return 0;
+    return MAILBOX_ERR_LOCKED;
   }
 
   if ((mb->first + 1) % mb->size == mb->last) {
-    bootvideo_printf ("Mailbox Full!\n");
     test_and_set (0, &mb->mutex);
-    return 0;
+    return MAILBOX_ERR_FULL;
   }
   
   unsigned long addr = mb->mb_mr->virtual_address + mb->first * sizeof(message);
@@ -134,7 +136,7 @@ int send_message (int pid, message * m) {
     c->status = PROCESS_STATUS_RUNNING;
   }
 
-  return 1;
+  return 0;
   
 
 }

@@ -8,6 +8,24 @@ void puts(char * s) {
 	  "int $0x80" : : "d" (s));
 }
 
+void ak_outb (unsigned short port, unsigned char val) {
+  int reg = (val << 16) + port;
+  __asm__("movl $9, %%eax\n"
+	  "int $0x80" : : "d" (reg));
+}
+unsigned char ak_inb (unsigned short port) {
+  int reg = 0xFF000000 | (port);
+
+  __asm__("movl $9, %%eax\n"
+	  "int $0x80" : "=d" (reg): "d" (reg));
+  return (unsigned char)(0x000000FF & reg);
+}
+  
+void ak_link_irq (int irq) {
+  __asm__("movl $8, %%eax\n"
+	  "int $0x80" : : "d" (irq));
+}
+
 mailbox * ak_mailbox_create (int max, int pid_filter) {
   mailbox * m;
 
@@ -23,11 +41,11 @@ void ak_block_on_message () {
 	  "int $0x80" : :);
 }
 
-int ak_mailbox_send (int pid, message * m) {
+int ak_mailbox_send (message * m) {
 
   int ret;
   __asm__("movl $4, %%eax\n"
-	"int $0x80" : "=d" (ret) : "c" (pid), "d" (m));
+	"int $0x80" : "=d" (ret) : "d" (m));
   return ret;
 }
 

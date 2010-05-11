@@ -47,6 +47,7 @@ void cmain(multiboot_info_t * mb_info, int magic) {
 
   set_current_process (2);
   begin_schedule(&(get_process(2)->registers));
+  
   while (1);
   
 }
