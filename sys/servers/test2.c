@@ -2,7 +2,7 @@
 #include <libak.h>
 
 char gstr[] = "pid2 iterate\n";
-char pay[] = "From 2: Payload!\n";
+char pay[30];
 void mod_start() {
   int c = 0;
   while (1) {
@@ -14,6 +14,7 @@ void mod_start() {
       
 
     if (c % 3 == 0) {
+      sprintf (pay, "payload # %d\n", c);
       ak_mailbox_send (1, (message *)pay);
     }
     ++c;    

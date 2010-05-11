@@ -72,7 +72,7 @@ next_message (mailbox * mb) {
   
   m = &((message *)(mb->mb_mr->virtual_address))[(mb->last + 1) % size];
   ++mb->last;
-  if (mb->last == size)
+  if (mb->last == mb->size)
     mb->last = 0;
 
   test_and_set (0, &mb->mutex);
@@ -123,9 +123,12 @@ int send_message (int pid, message * m) {
     list[index].payload[i] = m->payload[i];
   }
 
+
   mb->first = (mb->first + 1) % mb->size;
 
   test_and_set (0, &mb->mutex);
+
+  free_kernel_virtual_page ( (int)list);
 
   if (c->status == PROCESS_STATUS_WAITING) {
     c->status = PROCESS_STATUS_RUNNING;

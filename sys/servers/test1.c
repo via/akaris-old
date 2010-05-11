@@ -4,7 +4,7 @@ char buf[100];
 
 void mod_start() {
   message *m;
-  mailbox * mb = ak_mailbox_create (20, 0);
+  mailbox * mb = ak_mailbox_create (10, 0);
   
 
   
