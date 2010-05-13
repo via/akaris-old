@@ -14,4 +14,5 @@ void ak_block_on_message ();
 void ak_outb (unsigned short port, unsigned char);
 unsigned char ak_inb (unsigned short port);
 void ak_link_irq (int);
+
 #endif

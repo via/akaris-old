@@ -3,6 +3,7 @@
 
 #include <i386/mailbox.h>
 
+
 void puts(char * s) {
   __asm__("movl $1, %%eax\n"
 	  "int $0x80" : : "d" (s));

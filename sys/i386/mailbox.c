@@ -122,7 +122,7 @@ int send_message (message * m, int kmode) {
   message * list = (message *)map_user_virtual_to_kernel (c, addr);
   unsigned int i;
   for (i = 0; i < sizeof (message); ++i) {
-    list[index].payload[i] = m->payload[i];
+    *((char*)&list[index] + i) = *((char*)m + i);
   }
 
 
