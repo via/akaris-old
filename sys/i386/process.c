@@ -1,5 +1,7 @@
 #include <i386/process.h>
 #include <i386/mailbox.h>
+#include <i386/gdt.h>
+
 
 slab_entry * context_slab;
 context_t * context_list;
@@ -72,14 +74,30 @@ context_t * get_process(int pid) {
     return c;
   }
 }
-  
+
+int temp_stack[100];
+
 void schedule(isr_regs * regs) {
   memcpy((char*)&cur_process->registers, (char*)regs, sizeof(isr_regs));
+
+  context_t *orig = cur_process;
 
   do {
     cur_process = cur_process->next;
     if (cur_process == 0)
       cur_process = context_list;
+    if (cur_process == orig) { /*We've looped the whole list*/
+      if (cur_process->status != PROCESS_STATUS_RUNNING) {
+	kernel_reenter = 1;
+	set_kernel_tss_stack ((void*)temp_stack);
+	__asm__("sti\n"
+		"hlt");
+	set_kernel_tss_stack (0);
+	__asm__("cli");
+	kernel_reenter = 0;
+
+      }
+    }
   } while (cur_process->status != PROCESS_STATUS_RUNNING);
   memcpy((char*)regs,(char*) &cur_process->registers, sizeof(isr_regs));
   

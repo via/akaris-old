@@ -9,9 +9,12 @@ ak_kbd_request_t r;
 ak_kbd_response_t *re;
 void mcpy (char * d, char * s, int l);
 
+
+
 void mod_start() {
-
-
+  char buf[100];
+  int i;
+  for (i = 0; i < 1000000; ++i);
   mb = ak_mailbox_create (30, 1);
 
   m.src_pid = 2;
@@ -19,8 +22,7 @@ void mod_start() {
   r.type = AK_KBD_REQ_TYPE_ASCII;
   r.stop_delimiter = 1;
   mcpy (m.payload, (char*)&r, sizeof (r));
-  /* ak_mailbox_send (&m);*/
-  
+  ak_mailbox_send (&m);
 
   while (1) {
 
@@ -29,8 +31,9 @@ void mod_start() {
     
     
 
-    sprintf (m.payload, "Received keypress %d\n", ((ak_kbd_response_t*)&(in->payload))->c);
-
+    sprintf (buf, "Received keypress %d\n", ((ak_kbd_response_t*)&(in->payload))->c);
+    puts (buf);
+    
   }
 }
 void mcpy (char * d, char * s, int l) {

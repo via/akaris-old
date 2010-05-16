@@ -5,6 +5,16 @@ gdtr gdtr_entry = { (uint2)(sizeof(gdt) - 1), (uint4)&gdt};
 
 tss tss_list[MAX_CPUS];
 
+void set_kernel_tss_stack (void * sp) {
+
+  if (sp != 0) {
+    tss_list[0].esp0 = (uint4)sp;
+    /*TODO: Change this to alter current cpu*/
+  } else {
+    tss_list[0].esp0 = ((unsigned int)stack + 0x4000);
+  }
+}
+
 void initialize_gdt() {
 
 
@@ -24,7 +34,7 @@ void initialize_gdt() {
   set_gdt_entry(4, 0, 0xFFFFFFFF, GDT_USER   | GDT_DATA);
 
   for (index = 0; index < MAX_CPUS; index++) {
-    tss_list[index].esp0 = (uint4)(0x104020 + 0x4000);
+    tss_list[index].esp0 = (uint4)(stack + 0x4000);
     tss_list[index].ss0  = INDEX_TO_DESCRIPTOR(2);
     
     set_gdt_entry(index + 5,(int) &tss_list[index], sizeof(tss) - 1, GDT_TSS);

@@ -9,6 +9,8 @@
 
 #define MAX_INTS 0x81
 
+extern int kernel_reenter;
+
 typedef struct  {
   uint4 gs, fs, es, ds;      
   uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;

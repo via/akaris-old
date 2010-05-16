@@ -89,6 +89,7 @@ typedef struct {
 void initialize_gdt();
 extern void load_gdt (gdtr*);
 extern void load_tr  (uint2);
+void set_kernel_tss_stack (void *);
 void set_gdt_entry(int index,
 		   int base,
 		   int length,

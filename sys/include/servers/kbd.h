@@ -8,7 +8,7 @@ struct ak_kbd_request {
 };
 
 struct ak_kbd_response {
-  char c;
+  unsigned char c;
   short complete;
 };
 

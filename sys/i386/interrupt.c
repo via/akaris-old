@@ -5,7 +5,7 @@
 idt_entry interrupt_descriptors[MAX_INTS];
 idtr      idt_pointer = {sizeof(interrupt_descriptors) - 1,
 			 (uint4) &interrupt_descriptors};
-
+int kernel_reenter;
 
 void (*int_handler[256])(isr_regs*);
 int int_to_pid[256];
@@ -24,18 +24,26 @@ link_irq_to_pid(int irq, int pid) {
 
 isr_regs* c_isr(isr_regs* regs_in) {
 
+  if (kernel_reenter == 1) {
+    if (regs_in->int_no == 32) { /*timer /schedule*/
+      goto finish_ints;
+    }
+
+  }
+  
+
   message m;
 
   if (int_handler[regs_in->int_no] != 0) {
     int_handler[regs_in->int_no](regs_in);
   }
-  
+
   if (int_to_pid[regs_in->int_no]) {
     m.src_pid = -1;
     m.dest_pid = int_to_pid[regs_in->int_no];
     send_message (&m, 1);
   }
-
+ finish_ints:
   /*acknowledge interrupts*/
   if (regs_in->int_no >= 40) {
         outportb(0xA0, 0x20);
@@ -68,6 +76,8 @@ initialize_interrupts() {
   if (picAvailable()) {
     picRemapIRQs();
   }
+
+  kernel_reenter = 0;
 
 }
 
