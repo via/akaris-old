@@ -24,14 +24,6 @@ link_irq_to_pid(int irq, int pid) {
 
 isr_regs* c_isr(isr_regs* regs_in) {
 
-  if (kernel_reenter == 1) {
-    if (regs_in->int_no == 32) { /*timer /schedule*/
-      goto finish_ints;
-    }
-
-  }
-  
-
   message m;
 
   if (int_handler[regs_in->int_no] != 0) {
@@ -43,7 +35,7 @@ isr_regs* c_isr(isr_regs* regs_in) {
     m.dest_pid = int_to_pid[regs_in->int_no];
     send_message (&m, 1);
   }
- finish_ints:
+
   /*acknowledge interrupts*/
   if (regs_in->int_no >= 40) {
         outportb(0xA0, 0x20);

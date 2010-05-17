@@ -4,7 +4,7 @@
 
 struct ak_kbd_request {
   int type;
-  char stop_delimiter;
+  unsigned char stop_delimiter;
 };
 
 struct ak_kbd_response {

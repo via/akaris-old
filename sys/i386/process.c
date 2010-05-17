@@ -75,9 +75,15 @@ context_t * get_process(int pid) {
   }
 }
 
-int temp_stack[100];
+
 
 void schedule(isr_regs * regs) {
+
+  int temp_stack[100];
+
+  if (kernel_reenter) {
+    return;
+  }
   memcpy((char*)&cur_process->registers, (char*)regs, sizeof(isr_regs));
 
   context_t *orig = cur_process;
