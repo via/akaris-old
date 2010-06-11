@@ -27,6 +27,7 @@ mailbox *
 create_mailbox (context_t * c, int size, int recv_pid) {
 
   memory_region * mr = create_region (c->space, 0,
+              0,
 				      MR_TYPE_IPC, 
 				      MR_ATTR_RO,
 				      0);

@@ -32,9 +32,9 @@ address_space * create_address_space() {
   as->first = (memory_region*)allocate_from_slab(regions_slab);
   as->last = (memory_region*)allocate_from_slab (regions_slab);
   
-  as->first->type = MR_TYPE_SENTINAL;
+  as->first->type = MR_TYPE_SENTINEL;
   as->first->next = as->last;
-  as->last->type  = MR_TYPE_SENTINAL;
+  as->last->type  = MR_TYPE_SENTINEL;
   as->last->next = (memory_region *) 0;
 
 
@@ -189,41 +189,54 @@ memory_region * determine_memory_region (address_space * as, unsigned long addr)
   return 0;
 }
 
+/*!\brief Create a memory region in virtual address space
+ *
+ * Given an address space, if addr is NULL it will search for a free block
+ * of user address space and split it to create a region with the given
+ * flags, attributes, and a parameter.  If addr is non-null, the memory
+ * region will be created at the given virtual address, with no overlap
+ * checking*/
 memory_region * create_region (address_space * as,
+             unsigned long addr,
 			       int length,
-			       int flags, int attr,
+			       memory_region_type flags, int attr,
 			       int param) {
   /*First we find a free memory region*/
   memory_region * smallest = 0, *current;
   memory_region * new_region;
-  for (current = as->first->next; current != as->last; current = current->next) {
-    if (current->type == MR_TYPE_FREE) {
-      if (current->length >= length) {
-	if (smallest == 0) {
-	  smallest = current;
-	} else {
-	  if (current->length <= smallest->length) {
-	    smallest = current;
-	  }
-	}
+  if (addr == 0) {
+    for (current = as->first->next; current != as->last; current = current->next) {
+      if (current->type == MR_TYPE_FREE) {
+        if (current->length >= length) {
+    if (smallest == 0) {
+      smallest = current;
+    } else {
+      if (current->length <= smallest->length) {
+        smallest = current;
       }
     }
-  }
-  if (smallest == 0) {
-    bootvideo_printf ("Unable to find available memory block!\n");
-    return 0;
-  }
-  
-  new_region = (memory_region *)allocate_from_slab (regions_slab);
-  
-  /*Subdivide the block*/
-  if (smallest->attributes & MR_ATTR_PRIO_TOP) {
-    smallest->length -= length;
-    new_region->virtual_address = smallest->virtual_address + (smallest->length * PAGE_SIZE);
+        }
+      }
+    }
+    if (smallest == 0) {
+      bootvideo_printf ("Unable to find available memory block!\n");
+      return 0;
+    }
+    
+    new_region = (memory_region *)allocate_from_slab (regions_slab);
+    
+    /*Subdivide the block*/
+    if (smallest->attributes & MR_ATTR_PRIO_TOP) {
+      smallest->length -= length;
+      new_region->virtual_address = smallest->virtual_address + (smallest->length * PAGE_SIZE);
+    } else {
+      new_region->virtual_address = smallest->virtual_address;
+      smallest->virtual_address += (length * PAGE_SIZE);
+      smallest->length -= length;
+    }
   } else {
-    new_region->virtual_address = smallest->virtual_address;
-    smallest->virtual_address += (length * PAGE_SIZE);
-    smallest->length -= length;
+    new_region = (memory_region *)allocate_from_slab (regions_slab);
+    new_region->virtual_address = addr;
   }
   new_region->length = length;
   new_region->type = flags;

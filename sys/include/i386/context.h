@@ -8,7 +8,17 @@
 #include <i386/bootvideo.h>
 
 
-
+typedef enum {
+  MR_TYPE_STACK,
+  MR_TYPE_CORE,
+  MR_TYPE_LIBRARY,
+  MR_TYPE_ANON,
+  MR_TYPE_IPC,
+  MR_TYPE_SENTINEL,
+  MR_TYPE_FREE,
+  MR_TYPE_KERNEL,
+} memory_region_type;
+/*
 #define MR_TYPE_STACK 1
 #define MR_TYPE_CORE 2
 #define MR_TYPE_LIBRARY 3
@@ -17,7 +27,7 @@
 #define MR_TYPE_SENTINAL 6
 #define MR_TYPE_FREE 7
 #define MR_TYPE_KERNEL 8
-
+*/
 
 #define MR_ATTR_COW 1 /*parameter is pointer to other region*/
 #define MR_ATTR_RO 2
@@ -26,7 +36,7 @@
 struct memory_region_t {
   unsigned long virtual_address;
   int length;  /*In pages*/
-  int type;
+  memory_region_type type;
   int attributes;
   int parameter;
   struct address_space_t *parent;
@@ -55,7 +65,7 @@ address_space * create_address_space();
 memory_region * determine_memory_region(address_space *, unsigned long address);
 int             expand_region(memory_region*, int size);
 
-memory_region * create_region(address_space *, int length, int flags, int attr, int param);
+memory_region * create_region(address_space *, unsigned long addr, int length, memory_region_type flags, int attr, int param);
 int             map_region(memory_region *, int phys, int length);
 
 void context_print_mmap ();
