@@ -190,3 +190,41 @@ void free_kernel_virtual_page (int addr) {
 
   kernel_page_tables[cur_pde][cur_pte] = 0;
 }
+
+/*! \brief Map a userspace memory region to physical addresses.
+ * 
+ * Given a memory region, maps to a given physical address.  If phys_addr is
+ * NULL, will allocate physical memory (useful for anonymous mmap).  Note this
+ * function must be called from within the context of the process to be
+ * modified.
+ */
+void map_user_region_to_physical (memory_region * mr, unsigned long phys_addr) {
+  unsigned long cur_virt = mr->virtual_address;
+  pde * cur_pd = mr->parent->virt_cr3;
+  if ((cur_virt & 0xFFF) != 0) {/*If it doesn't start on a page boundary...*/ 
+    return;
+  }
+
+  unsigned long cur_phys = phys_addr;
+
+  for (; cur_virt < mr->virtual_address + mr->length * PAGE_SIZE; cur_virt += PAGE_SIZE) {
+    unsigned long cur_pde = (cur_virt / PAGE_SIZE) / 1024;
+    unsigned long cur_pte = (cur_virt / PAGE_SIZE) % 1024;
+    pte * cur_pde_virt;
+    if (phys_addr == 0) {
+      cur_phys =  allocate_page (0) * PAGE_SIZE;
+    }
+    
+    if ((cur_pd[cur_pde] & PTE_PRESENT_BIT) == 0) {
+      set_pde ( &cur_pd[cur_pde], allocate_page (0), PTE_PRESENT_BIT | 
+          PTE_RW_BIT | PTE_US_BIT);
+    }    
+    cur_pde_virt = (pte *) get_mapped_kernel_virtual_page (cur_pd[cur_pde] & 0xFFFFF000);
+    set_pte (&cur_pde_virt[cur_pte], cur_phys, PTE_PRESENT_BIT | PTE_US_BIT | PTE_RW_BIT);
+    cur_phys += 4096;
+  }
+
+}
+
+
+

@@ -47,6 +47,7 @@ unsigned long map_user_virtual_to_kernel(struct context *,
 					 unsigned long);
 void free_kernel_virtual_page(int);
   
+void map_user_region_to_physical (memory_region * mr, unsigned long phys_addr); 
 void page_fault_handler(isr_regs *);
 
 

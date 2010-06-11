@@ -1,0 +1,2963 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+A	i386/cmain.c	/^address_space *A, *B;$/;"	v
+AK_KBD_REQ_TYPE_ASCII	include/servers/kbd.h	20;"	d
+ALLOW_PIC	include/config.h	8;"	d
+AT_BASE	include/elf.h	955;"	d
+AT_BASE_PLATFORM	include/elf.h	985;"	d
+AT_CLKTCK	include/elf.h	963;"	d
+AT_DCACHEBSIZE	include/elf.h	975;"	d
+AT_EGID	include/elf.h	962;"	d
+AT_ENTRY	include/elf.h	957;"	d
+AT_EUID	include/elf.h	960;"	d
+AT_EXECFD	include/elf.h	950;"	d
+AT_EXECFN	include/elf.h	989;"	d
+AT_FLAGS	include/elf.h	956;"	d
+AT_FPUCW	include/elf.h	972;"	d
+AT_GID	include/elf.h	961;"	d
+AT_HWCAP	include/elf.h	967;"	d
+AT_ICACHEBSIZE	include/elf.h	976;"	d
+AT_IGNORE	include/elf.h	949;"	d
+AT_IGNOREPPC	include/elf.h	981;"	d
+AT_L1D_CACHESHAPE	include/elf.h	999;"	d
+AT_L1I_CACHESHAPE	include/elf.h	998;"	d
+AT_L2_CACHESHAPE	include/elf.h	1000;"	d
+AT_L3_CACHESHAPE	include/elf.h	1001;"	d
+AT_NOTELF	include/elf.h	958;"	d
+AT_NULL	include/elf.h	948;"	d
+AT_PAGESZ	include/elf.h	954;"	d
+AT_PHDR	include/elf.h	951;"	d
+AT_PHENT	include/elf.h	952;"	d
+AT_PHNUM	include/elf.h	953;"	d
+AT_PLATFORM	include/elf.h	966;"	d
+AT_RANDOM	include/elf.h	987;"	d
+AT_SECURE	include/elf.h	983;"	d
+AT_SYSINFO	include/elf.h	993;"	d
+AT_SYSINFO_EHDR	include/elf.h	994;"	d
+AT_UCACHEBSIZE	include/elf.h	977;"	d
+AT_UID	include/elf.h	959;"	d
+B	i386/cmain.c	/^address_space *A, *B;$/;"	v
+CC	i386/Makefile	/^CC=gcc$/;"	m
+CC	servers/Makefile	/^CC=gcc$/;"	m
+CC	servers/libak/Makefile	/^CC=gcc$/;"	m
+CFLAGS	i386/Makefile	/^CFLAGS = -std=c89 -O0 -g -Wall -Wextra -Werror  -nostdlib -nostartfiles -nodefaultlibs -I..\/include\/ -c -fno-builtin$/;"	m
+CFLAGS	servers/Makefile	/^CFLAGS = -std=c89 -O0 -g -Wall -Wextra -Werror  -nostdlib -nostartfiles -nodefaultlibs -I..\/include\/ -c -fno-builtin$/;"	m
+CFLAGS	servers/libak/Makefile	/^CFLAGS = -std=c89 -O0 -g -Wall -Wextra -Werror  -nostdlib -nostartfiles -nodefaultlibs -I..\/..\/include\/ -c -fno-builtin$/;"	m
+CONFIG_H	include/config.h	2;"	d
+CPUID_FEAT_ECX_AVX	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_AVX          = 1 << 28,$/;"	e	enum:__anon43
+CPUID_FEAT_ECX_CID	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_CID          = 1 << 10,$/;"	e	enum:__anon43
+CPUID_FEAT_ECX_CX16	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_CX16         = 1 << 13, $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_DCA	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_DCA          = 1 << 18, $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_DS_CPL	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_DS_CPL       = 1 << 4,  $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_DTES64	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_DTES64       = 1 << 2,$/;"	e	enum:__anon43
+CPUID_FEAT_ECX_EST	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_EST          = 1 << 7,  $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_ETPRD	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_ETPRD        = 1 << 14, $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_FMA	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_FMA          = 1 << 12,$/;"	e	enum:__anon43
+CPUID_FEAT_ECX_MONITOR	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_MONITOR      = 1 << 3,  $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_MOVBE	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_MOVBE        = 1 << 22, $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_OSXSAVE	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_OSXSAVE      = 1 << 27, $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_PCLMUL	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_PCLMUL       = 1 << 1,$/;"	e	enum:__anon43
+CPUID_FEAT_ECX_PDCM	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_PDCM         = 1 << 15, $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_POPCNT	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_POPCNT       = 1 << 23, $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_SMX	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_SMX          = 1 << 6,  $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_SSE3	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_SSE3         = 1 << 0, $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_SSE4_1	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_SSE4_1       = 1 << 19, $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_SSE4_2	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_SSE4_2       = 1 << 20, $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_SSSE3	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_SSSE3        = 1 << 9,  $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_TM2	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_TM2          = 1 << 8,  $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_VMX	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_VMX          = 1 << 5,  $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_XSAVE	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_XSAVE        = 1 << 26, $/;"	e	enum:__anon43
+CPUID_FEAT_ECX_x2APIC	include/i386/cpuid.h	/^    CPUID_FEAT_ECX_x2APIC       = 1 << 21, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_ACPI	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_ACPI         = 1 << 22, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_APIC	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_APIC         = 1 << 9,  $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_CLF	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_CLF          = 1 << 19, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_CMOV	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_CMOV         = 1 << 15, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_CX8	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_CX8          = 1 << 8,  $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_DE	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_DE           = 1 << 2,  $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_DTES	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_DTES         = 1 << 21, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_FPU	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_FPU          = 1 << 0,  $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_FXSR	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_FXSR         = 1 << 24, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_HTT	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_HTT          = 1 << 28, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_IA64	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_IA64         = 1 << 30,$/;"	e	enum:__anon43
+CPUID_FEAT_EDX_MCA	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_MCA          = 1 << 14, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_MCE	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_MCE          = 1 << 7,  $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_MMX	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_MMX          = 1 << 23, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_MSR	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_MSR          = 1 << 5,  $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_MTRR	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_MTRR         = 1 << 12, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_PAE	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_PAE          = 1 << 6,  $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_PAT	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_PAT          = 1 << 16, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_PBE	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_PBE          = 1 << 31$/;"	e	enum:__anon43
+CPUID_FEAT_EDX_PGE	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_PGE          = 1 << 13, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_PSE	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_PSE          = 1 << 3,  $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_PSE36	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_PSE36        = 1 << 17, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_PSN	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_PSN          = 1 << 18, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_SEP	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_SEP          = 1 << 11, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_SS	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_SS           = 1 << 27, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_SSE	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_SSE          = 1 << 25, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_SSE2	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_SSE2         = 1 << 26, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_TM1	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_TM1          = 1 << 29, $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_TSC	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_TSC          = 1 << 4,  $/;"	e	enum:__anon43
+CPUID_FEAT_EDX_VME	include/i386/cpuid.h	/^    CPUID_FEAT_EDX_VME          = 1 << 1,  $/;"	e	enum:__anon43
+CPUID_VENDOR_AMD	include/i386/cpuid.h	7;"	d
+CPUID_VENDOR_CENTAUR	include/i386/cpuid.h	13;"	d
+CPUID_VENDOR_CYRIX	include/i386/cpuid.h	12;"	d
+CPUID_VENDOR_INTEL	include/i386/cpuid.h	8;"	d
+CPUID_VENDOR_NEXGEN	include/i386/cpuid.h	14;"	d
+CPUID_VENDOR_NSC	include/i386/cpuid.h	17;"	d
+CPUID_VENDOR_OLDAMD	include/i386/cpuid.h	6;"	d
+CPUID_VENDOR_OLDTRANSMETA	include/i386/cpuid.h	10;"	d
+CPUID_VENDOR_RISE	include/i386/cpuid.h	18;"	d
+CPUID_VENDOR_SIS	include/i386/cpuid.h	16;"	d
+CPUID_VENDOR_TRANSMETA	include/i386/cpuid.h	11;"	d
+CPUID_VENDOR_UMC	include/i386/cpuid.h	15;"	d
+CPUID_VENDOR_VIA	include/i386/cpuid.h	9;"	d
+DF_1_CONFALT	include/elf.h	783;"	d
+DF_1_DIRECT	include/elf.h	778;"	d
+DF_1_DISPRELDNE	include/elf.h	785;"	d
+DF_1_DISPRELPND	include/elf.h	786;"	d
+DF_1_ENDFILTEE	include/elf.h	784;"	d
+DF_1_GLOBAL	include/elf.h	771;"	d
+DF_1_GROUP	include/elf.h	772;"	d
+DF_1_INITFIRST	include/elf.h	775;"	d
+DF_1_INTERPOSE	include/elf.h	780;"	d
+DF_1_LOADFLTR	include/elf.h	774;"	d
+DF_1_NODEFLIB	include/elf.h	781;"	d
+DF_1_NODELETE	include/elf.h	773;"	d
+DF_1_NODUMP	include/elf.h	782;"	d
+DF_1_NOOPEN	include/elf.h	776;"	d
+DF_1_NOW	include/elf.h	770;"	d
+DF_1_ORIGIN	include/elf.h	777;"	d
+DF_1_TRANS	include/elf.h	779;"	d
+DF_BIND_NOW	include/elf.h	765;"	d
+DF_ORIGIN	include/elf.h	762;"	d
+DF_P1_GROUPPERM	include/elf.h	794;"	d
+DF_P1_LAZYLOAD	include/elf.h	793;"	d
+DF_STATIC_TLS	include/elf.h	766;"	d
+DF_SYMBOLIC	include/elf.h	763;"	d
+DF_TEXTREL	include/elf.h	764;"	d
+DTF_1_CONFEXP	include/elf.h	790;"	d
+DTF_1_PARINIT	include/elf.h	789;"	d
+DT_ADDRNUM	include/elf.h	734;"	d
+DT_ADDRRNGHI	include/elf.h	732;"	d
+DT_ADDRRNGLO	include/elf.h	720;"	d
+DT_ADDRTAGIDX	include/elf.h	733;"	d
+DT_ALPHA_NUM	include/elf.h	1994;"	d
+DT_ALPHA_PLTRO	include/elf.h	1993;"	d
+DT_AUDIT	include/elf.h	728;"	d
+DT_AUXILIARY	include/elf.h	756;"	d
+DT_BIND_NOW	include/elf.h	678;"	d
+DT_CHECKSUM	include/elf.h	702;"	d
+DT_CONFIG	include/elf.h	726;"	d
+DT_DEBUG	include/elf.h	675;"	d
+DT_DEPAUDIT	include/elf.h	727;"	d
+DT_ENCODING	include/elf.h	685;"	d
+DT_EXTRANUM	include/elf.h	759;"	d
+DT_EXTRATAGIDX	include/elf.h	758;"	d
+DT_FEATURE_1	include/elf.h	706;"	d
+DT_FILTER	include/elf.h	757;"	d
+DT_FINI	include/elf.h	667;"	d
+DT_FINI_ARRAY	include/elf.h	680;"	d
+DT_FINI_ARRAYSZ	include/elf.h	682;"	d
+DT_FLAGS	include/elf.h	684;"	d
+DT_FLAGS_1	include/elf.h	744;"	d
+DT_GNU_CONFLICT	include/elf.h	724;"	d
+DT_GNU_CONFLICTSZ	include/elf.h	700;"	d
+DT_GNU_HASH	include/elf.h	721;"	d
+DT_GNU_LIBLIST	include/elf.h	725;"	d
+DT_GNU_LIBLISTSZ	include/elf.h	701;"	d
+DT_GNU_PRELINKED	include/elf.h	699;"	d
+DT_HASH	include/elf.h	658;"	d
+DT_HIOS	include/elf.h	690;"	d
+DT_HIPROC	include/elf.h	692;"	d
+DT_IA_64_NUM	include/elf.h	2393;"	d
+DT_IA_64_PLT_RESERVE	include/elf.h	2392;"	d
+DT_INIT	include/elf.h	666;"	d
+DT_INIT_ARRAY	include/elf.h	679;"	d
+DT_INIT_ARRAYSZ	include/elf.h	681;"	d
+DT_JMPREL	include/elf.h	677;"	d
+DT_LOOS	include/elf.h	689;"	d
+DT_LOPROC	include/elf.h	691;"	d
+DT_MIPS_AUX_DYNAMIC	include/elf.h	1670;"	d
+DT_MIPS_BASE_ADDRESS	include/elf.h	1624;"	d
+DT_MIPS_COMPACT_SIZE	include/elf.h	1668;"	d
+DT_MIPS_CONFLICT	include/elf.h	1626;"	d
+DT_MIPS_CONFLICTNO	include/elf.h	1629;"	d
+DT_MIPS_CXX_FLAGS	include/elf.h	1653;"	d
+DT_MIPS_DELTA_CLASS	include/elf.h	1636;"	d
+DT_MIPS_DELTA_CLASSSYM	include/elf.h	1649;"	d
+DT_MIPS_DELTA_CLASSSYM_NO	include/elf.h	1651;"	d
+DT_MIPS_DELTA_CLASS_NO	include/elf.h	1637;"	d
+DT_MIPS_DELTA_INSTANCE	include/elf.h	1639;"	d
+DT_MIPS_DELTA_INSTANCE_NO	include/elf.h	1640;"	d
+DT_MIPS_DELTA_RELOC	include/elf.h	1642;"	d
+DT_MIPS_DELTA_RELOC_NO	include/elf.h	1643;"	d
+DT_MIPS_DELTA_SYM	include/elf.h	1645;"	d
+DT_MIPS_DELTA_SYM_NO	include/elf.h	1647;"	d
+DT_MIPS_DYNSTR_ALIGN	include/elf.h	1662;"	d
+DT_MIPS_FLAGS	include/elf.h	1623;"	d
+DT_MIPS_GOTSYM	include/elf.h	1633;"	d
+DT_MIPS_GP_VALUE	include/elf.h	1669;"	d
+DT_MIPS_HIDDEN_GOTIDX	include/elf.h	1658;"	d
+DT_MIPS_HIPAGENO	include/elf.h	1634;"	d
+DT_MIPS_ICHECKSUM	include/elf.h	1621;"	d
+DT_MIPS_INTERFACE	include/elf.h	1661;"	d
+DT_MIPS_INTERFACE_SIZE	include/elf.h	1663;"	d
+DT_MIPS_IVERSION	include/elf.h	1622;"	d
+DT_MIPS_LIBLIST	include/elf.h	1627;"	d
+DT_MIPS_LIBLISTNO	include/elf.h	1630;"	d
+DT_MIPS_LOCALPAGE_GOTIDX	include/elf.h	1656;"	d
+DT_MIPS_LOCAL_GOTIDX	include/elf.h	1657;"	d
+DT_MIPS_LOCAL_GOTNO	include/elf.h	1628;"	d
+DT_MIPS_MSYM	include/elf.h	1625;"	d
+DT_MIPS_NUM	include/elf.h	1677;"	d
+DT_MIPS_OPTIONS	include/elf.h	1660;"	d
+DT_MIPS_PERF_SUFFIX	include/elf.h	1666;"	d
+DT_MIPS_PIXIE_INIT	include/elf.h	1654;"	d
+DT_MIPS_PLTGOT	include/elf.h	1672;"	d
+DT_MIPS_PROTECTED_GOTIDX	include/elf.h	1659;"	d
+DT_MIPS_RLD_MAP	include/elf.h	1635;"	d
+DT_MIPS_RLD_TEXT_RESOLVE_ADDR	include/elf.h	1664;"	d
+DT_MIPS_RLD_VERSION	include/elf.h	1619;"	d
+DT_MIPS_RWPLT	include/elf.h	1676;"	d
+DT_MIPS_SYMBOL_LIB	include/elf.h	1655;"	d
+DT_MIPS_SYMTABNO	include/elf.h	1631;"	d
+DT_MIPS_TIME_STAMP	include/elf.h	1620;"	d
+DT_MIPS_UNREFEXTNO	include/elf.h	1632;"	d
+DT_MOVEENT	include/elf.h	704;"	d
+DT_MOVESZ	include/elf.h	705;"	d
+DT_MOVETAB	include/elf.h	730;"	d
+DT_NEEDED	include/elf.h	655;"	d
+DT_NULL	include/elf.h	654;"	d
+DT_NUM	include/elf.h	688;"	d
+DT_PLTGOT	include/elf.h	657;"	d
+DT_PLTPAD	include/elf.h	729;"	d
+DT_PLTPADSZ	include/elf.h	703;"	d
+DT_PLTREL	include/elf.h	674;"	d
+DT_PLTRELSZ	include/elf.h	656;"	d
+DT_POSFLAG_1	include/elf.h	707;"	d
+DT_PPC64_GLINK	include/elf.h	2240;"	d
+DT_PPC64_NUM	include/elf.h	2243;"	d
+DT_PPC64_OPD	include/elf.h	2241;"	d
+DT_PPC64_OPDSZ	include/elf.h	2242;"	d
+DT_PPC_GOT	include/elf.h	2116;"	d
+DT_PPC_NUM	include/elf.h	2117;"	d
+DT_PREINIT_ARRAY	include/elf.h	686;"	d
+DT_PREINIT_ARRAYSZ	include/elf.h	687;"	d
+DT_PROCNUM	include/elf.h	693;"	d
+DT_REL	include/elf.h	671;"	d
+DT_RELA	include/elf.h	661;"	d
+DT_RELACOUNT	include/elf.h	740;"	d
+DT_RELAENT	include/elf.h	663;"	d
+DT_RELASZ	include/elf.h	662;"	d
+DT_RELCOUNT	include/elf.h	741;"	d
+DT_RELENT	include/elf.h	673;"	d
+DT_RELSZ	include/elf.h	672;"	d
+DT_RPATH	include/elf.h	669;"	d
+DT_RUNPATH	include/elf.h	683;"	d
+DT_SONAME	include/elf.h	668;"	d
+DT_SPARC_NUM	include/elf.h	1340;"	d
+DT_SPARC_REGISTER	include/elf.h	1339;"	d
+DT_STRSZ	include/elf.h	664;"	d
+DT_STRTAB	include/elf.h	659;"	d
+DT_SYMBOLIC	include/elf.h	670;"	d
+DT_SYMENT	include/elf.h	665;"	d
+DT_SYMINENT	include/elf.h	710;"	d
+DT_SYMINFO	include/elf.h	731;"	d
+DT_SYMINSZ	include/elf.h	709;"	d
+DT_SYMTAB	include/elf.h	660;"	d
+DT_TEXTREL	include/elf.h	676;"	d
+DT_TLSDESC_GOT	include/elf.h	723;"	d
+DT_TLSDESC_PLT	include/elf.h	722;"	d
+DT_VALNUM	include/elf.h	713;"	d
+DT_VALRNGHI	include/elf.h	711;"	d
+DT_VALRNGLO	include/elf.h	698;"	d
+DT_VALTAGIDX	include/elf.h	712;"	d
+DT_VERDEF	include/elf.h	745;"	d
+DT_VERDEFNUM	include/elf.h	747;"	d
+DT_VERNEED	include/elf.h	748;"	d
+DT_VERNEEDNUM	include/elf.h	750;"	d
+DT_VERSIONTAGIDX	include/elf.h	751;"	d
+DT_VERSIONTAGNUM	include/elf.h	752;"	d
+DT_VERSYM	include/elf.h	738;"	d
+EFA_PARISC_1_0	include/elf.h	1749;"	d
+EFA_PARISC_1_1	include/elf.h	1750;"	d
+EFA_PARISC_2_0	include/elf.h	1751;"	d
+EF_ALPHA_32BIT	include/elf.h	1929;"	d
+EF_ALPHA_CANRELAX	include/elf.h	1930;"	d
+EF_ARM_ALIGN8	include/elf.h	2255;"	d
+EF_ARM_APCS_26	include/elf.h	2252;"	d
+EF_ARM_APCS_FLOAT	include/elf.h	2253;"	d
+EF_ARM_BE8	include/elf.h	2271;"	d
+EF_ARM_DYNSYMSUSESEGIDX	include/elf.h	2266;"	d
+EF_ARM_EABIMASK	include/elf.h	2268;"	d
+EF_ARM_EABI_UNKNOWN	include/elf.h	2275;"	d
+EF_ARM_EABI_VER1	include/elf.h	2276;"	d
+EF_ARM_EABI_VER2	include/elf.h	2277;"	d
+EF_ARM_EABI_VER3	include/elf.h	2278;"	d
+EF_ARM_EABI_VER4	include/elf.h	2279;"	d
+EF_ARM_EABI_VER5	include/elf.h	2280;"	d
+EF_ARM_EABI_VERSION	include/elf.h	2274;"	d
+EF_ARM_HASENTRY	include/elf.h	2250;"	d
+EF_ARM_INTERWORK	include/elf.h	2251;"	d
+EF_ARM_LE8	include/elf.h	2272;"	d
+EF_ARM_MAPSYMSFIRST	include/elf.h	2267;"	d
+EF_ARM_MAVERICK_FLOAT	include/elf.h	2260;"	d
+EF_ARM_NEW_ABI	include/elf.h	2256;"	d
+EF_ARM_OLD_ABI	include/elf.h	2257;"	d
+EF_ARM_PIC	include/elf.h	2254;"	d
+EF_ARM_RELEXEC	include/elf.h	2249;"	d
+EF_ARM_SOFT_FLOAT	include/elf.h	2258;"	d
+EF_ARM_SYMSARESORTED	include/elf.h	2265;"	d
+EF_ARM_VFP_FLOAT	include/elf.h	2259;"	d
+EF_CPU32	include/elf.h	1101;"	d
+EF_IA_64_ABI64	include/elf.h	2370;"	d
+EF_IA_64_ARCH	include/elf.h	2371;"	d
+EF_IA_64_MASKOS	include/elf.h	2369;"	d
+EF_MIPS_64BIT_WHIRL	include/elf.h	1361;"	d
+EF_MIPS_ABI2	include/elf.h	1362;"	d
+EF_MIPS_ABI_ON32	include/elf.h	1363;"	d
+EF_MIPS_ARCH	include/elf.h	1364;"	d
+EF_MIPS_ARCH_1	include/elf.h	1368;"	d
+EF_MIPS_ARCH_2	include/elf.h	1369;"	d
+EF_MIPS_ARCH_3	include/elf.h	1370;"	d
+EF_MIPS_ARCH_32	include/elf.h	1373;"	d
+EF_MIPS_ARCH_4	include/elf.h	1371;"	d
+EF_MIPS_ARCH_5	include/elf.h	1372;"	d
+EF_MIPS_ARCH_64	include/elf.h	1374;"	d
+EF_MIPS_CPIC	include/elf.h	1359;"	d
+EF_MIPS_NOREORDER	include/elf.h	1357;"	d
+EF_MIPS_PIC	include/elf.h	1358;"	d
+EF_MIPS_XGOT	include/elf.h	1360;"	d
+EF_PARISC_ARCH	include/elf.h	1745;"	d
+EF_PARISC_EXT	include/elf.h	1739;"	d
+EF_PARISC_LAZYSWAP	include/elf.h	1744;"	d
+EF_PARISC_LSB	include/elf.h	1740;"	d
+EF_PARISC_NO_KABP	include/elf.h	1742;"	d
+EF_PARISC_TRAPNIL	include/elf.h	1738;"	d
+EF_PARISC_WIDE	include/elf.h	1741;"	d
+EF_PPC_EMB	include/elf.h	1999;"	d
+EF_PPC_RELOCATABLE	include/elf.h	2002;"	d
+EF_PPC_RELOCATABLE_LIB	include/elf.h	2003;"	d
+EF_S390_HIGH_GPRS	include/elf.h	2549;"	d
+EF_SH1	include/elf.h	2483;"	d
+EF_SH2	include/elf.h	2484;"	d
+EF_SH2A	include/elf.h	2493;"	d
+EF_SH2A_NOFPU	include/elf.h	2497;"	d
+EF_SH2A_SH3E	include/elf.h	2502;"	d
+EF_SH2A_SH3_NOFPU	include/elf.h	2500;"	d
+EF_SH2A_SH4	include/elf.h	2501;"	d
+EF_SH2A_SH4_NOFPU	include/elf.h	2499;"	d
+EF_SH2E	include/elf.h	2491;"	d
+EF_SH3	include/elf.h	2485;"	d
+EF_SH3E	include/elf.h	2489;"	d
+EF_SH3_DSP	include/elf.h	2487;"	d
+EF_SH3_NOMMU	include/elf.h	2498;"	d
+EF_SH4	include/elf.h	2490;"	d
+EF_SH4A	include/elf.h	2492;"	d
+EF_SH4AL_DSP	include/elf.h	2488;"	d
+EF_SH4A_NOFPU	include/elf.h	2495;"	d
+EF_SH4_NOFPU	include/elf.h	2494;"	d
+EF_SH4_NOMMU_NOFPU	include/elf.h	2496;"	d
+EF_SH_DSP	include/elf.h	2486;"	d
+EF_SH_MACH_MASK	include/elf.h	2481;"	d
+EF_SH_UNKNOWN	include/elf.h	2482;"	d
+EF_SPARCV9_MM	include/elf.h	1225;"	d
+EF_SPARCV9_PSO	include/elf.h	1227;"	d
+EF_SPARCV9_RMO	include/elf.h	1228;"	d
+EF_SPARCV9_TSO	include/elf.h	1226;"	d
+EF_SPARC_32PLUS	include/elf.h	1231;"	d
+EF_SPARC_EXT_MASK	include/elf.h	1230;"	d
+EF_SPARC_HAL_R1	include/elf.h	1233;"	d
+EF_SPARC_LEDATA	include/elf.h	1229;"	d
+EF_SPARC_SUN_US1	include/elf.h	1232;"	d
+EF_SPARC_SUN_US3	include/elf.h	1234;"	d
+EI_ABIVERSION	include/elf.h	157;"	d
+EI_CLASS	include/elf.h	125;"	d
+EI_DATA	include/elf.h	131;"	d
+EI_MAG0	include/elf.h	109;"	d
+EI_MAG1	include/elf.h	112;"	d
+EI_MAG2	include/elf.h	115;"	d
+EI_MAG3	include/elf.h	118;"	d
+EI_NIDENT	include/elf.h	67;"	d
+EI_OSABI	include/elf.h	140;"	d
+EI_PAD	include/elf.h	159;"	d
+EI_VERSION	include/elf.h	137;"	d
+ELF32_M_INFO	include/elf.h	1091;"	d
+ELF32_M_SIZE	include/elf.h	1090;"	d
+ELF32_M_SYM	include/elf.h	1089;"	d
+ELF32_R_INFO	include/elf.h	530;"	d
+ELF32_R_SYM	include/elf.h	528;"	d
+ELF32_R_TYPE	include/elf.h	529;"	d
+ELF32_ST_BIND	include/elf.h	432;"	d
+ELF32_ST_INFO	include/elf.h	434;"	d
+ELF32_ST_TYPE	include/elf.h	433;"	d
+ELF32_ST_VISIBILITY	include/elf.h	479;"	d
+ELF64_M_INFO	include/elf.h	1095;"	d
+ELF64_M_SIZE	include/elf.h	1094;"	d
+ELF64_M_SYM	include/elf.h	1093;"	d
+ELF64_R_INFO	include/elf.h	534;"	d
+ELF64_R_SYM	include/elf.h	532;"	d
+ELF64_R_TYPE	include/elf.h	533;"	d
+ELF64_ST_BIND	include/elf.h	437;"	d
+ELF64_ST_INFO	include/elf.h	439;"	d
+ELF64_ST_TYPE	include/elf.h	438;"	d
+ELF64_ST_VISIBILITY	include/elf.h	482;"	d
+ELFCLASS32	include/elf.h	127;"	d
+ELFCLASS64	include/elf.h	128;"	d
+ELFCLASSNONE	include/elf.h	126;"	d
+ELFCLASSNUM	include/elf.h	129;"	d
+ELFDATA2LSB	include/elf.h	133;"	d
+ELFDATA2MSB	include/elf.h	134;"	d
+ELFDATANONE	include/elf.h	132;"	d
+ELFDATANUM	include/elf.h	135;"	d
+ELFMAG	include/elf.h	122;"	d
+ELFMAG0	include/elf.h	110;"	d
+ELFMAG1	include/elf.h	113;"	d
+ELFMAG2	include/elf.h	116;"	d
+ELFMAG3	include/elf.h	119;"	d
+ELFOSABI_AIX	include/elf.h	147;"	d
+ELFOSABI_ARM	include/elf.h	154;"	d
+ELFOSABI_ARM_AEABI	include/elf.h	153;"	d
+ELFOSABI_FREEBSD	include/elf.h	149;"	d
+ELFOSABI_HPUX	include/elf.h	143;"	d
+ELFOSABI_IRIX	include/elf.h	148;"	d
+ELFOSABI_LINUX	include/elf.h	145;"	d
+ELFOSABI_MODESTO	include/elf.h	151;"	d
+ELFOSABI_NETBSD	include/elf.h	144;"	d
+ELFOSABI_NONE	include/elf.h	141;"	d
+ELFOSABI_OPENBSD	include/elf.h	152;"	d
+ELFOSABI_SOLARIS	include/elf.h	146;"	d
+ELFOSABI_STANDALONE	include/elf.h	155;"	d
+ELFOSABI_SYSV	include/elf.h	142;"	d
+ELFOSABI_TRU64	include/elf.h	150;"	d
+ELF_NOTE_ABI	include/elf.h	1044;"	d
+ELF_NOTE_GNU	include/elf.h	1026;"	d
+ELF_NOTE_OS_FREEBSD	include/elf.h	1051;"	d
+ELF_NOTE_OS_GNU	include/elf.h	1049;"	d
+ELF_NOTE_OS_LINUX	include/elf.h	1048;"	d
+ELF_NOTE_OS_SOLARIS2	include/elf.h	1050;"	d
+ELF_NOTE_PAGESIZE_HINT	include/elf.h	1032;"	d
+ELF_NOTE_SOLARIS	include/elf.h	1023;"	d
+EM_386	include/elf.h	179;"	d
+EM_68HC05	include/elf.h	230;"	d
+EM_68HC08	include/elf.h	229;"	d
+EM_68HC11	include/elf.h	228;"	d
+EM_68HC12	include/elf.h	212;"	d
+EM_68HC16	include/elf.h	227;"	d
+EM_68K	include/elf.h	180;"	d
+EM_860	include/elf.h	182;"	d
+EM_88K	include/elf.h	181;"	d
+EM_960	include/elf.h	190;"	d
+EM_ALPHA	include/elf.h	259;"	d
+EM_ARC	include/elf.h	204;"	d
+EM_ARC_A5	include/elf.h	251;"	d
+EM_ARM	include/elf.h	199;"	d
+EM_AVR	include/elf.h	241;"	d
+EM_COLDFIRE	include/elf.h	211;"	d
+EM_CRIS	include/elf.h	234;"	d
+EM_D10V	include/elf.h	243;"	d
+EM_D30V	include/elf.h	244;"	d
+EM_FAKE_ALPHA	include/elf.h	200;"	d
+EM_FIREPATH	include/elf.h	236;"	d
+EM_FR20	include/elf.h	196;"	d
+EM_FR30	include/elf.h	242;"	d
+EM_FX66	include/elf.h	224;"	d
+EM_H8S	include/elf.h	207;"	d
+EM_H8_300	include/elf.h	205;"	d
+EM_H8_300H	include/elf.h	206;"	d
+EM_H8_500	include/elf.h	208;"	d
+EM_HUANY	include/elf.h	239;"	d
+EM_IA_64	include/elf.h	209;"	d
+EM_JAVELIN	include/elf.h	235;"	d
+EM_M32	include/elf.h	177;"	d
+EM_M32R	include/elf.h	246;"	d
+EM_ME16	include/elf.h	218;"	d
+EM_MIPS	include/elf.h	183;"	d
+EM_MIPS_RS3_LE	include/elf.h	185;"	d
+EM_MIPS_X	include/elf.h	210;"	d
+EM_MMA	include/elf.h	213;"	d
+EM_MMIX	include/elf.h	238;"	d
+EM_MN10200	include/elf.h	248;"	d
+EM_MN10300	include/elf.h	247;"	d
+EM_NCPU	include/elf.h	215;"	d
+EM_NDR1	include/elf.h	216;"	d
+EM_NONE	include/elf.h	176;"	d
+EM_NUM	include/elf.h	253;"	d
+EM_OPENRISC	include/elf.h	250;"	d
+EM_PARISC	include/elf.h	187;"	d
+EM_PCP	include/elf.h	214;"	d
+EM_PDSP	include/elf.h	222;"	d
+EM_PJ	include/elf.h	249;"	d
+EM_PPC	include/elf.h	191;"	d
+EM_PPC64	include/elf.h	192;"	d
+EM_PRISM	include/elf.h	240;"	d
+EM_RCE	include/elf.h	198;"	d
+EM_RH32	include/elf.h	197;"	d
+EM_S370	include/elf.h	184;"	d
+EM_S390	include/elf.h	193;"	d
+EM_SH	include/elf.h	201;"	d
+EM_SPARC	include/elf.h	178;"	d
+EM_SPARC32PLUS	include/elf.h	189;"	d
+EM_SPARCV9	include/elf.h	202;"	d
+EM_ST100	include/elf.h	219;"	d
+EM_ST19	include/elf.h	232;"	d
+EM_ST7	include/elf.h	226;"	d
+EM_ST9PLUS	include/elf.h	225;"	d
+EM_STARCORE	include/elf.h	217;"	d
+EM_SVX	include/elf.h	231;"	d
+EM_TINYJ	include/elf.h	220;"	d
+EM_TRICORE	include/elf.h	203;"	d
+EM_V800	include/elf.h	195;"	d
+EM_V850	include/elf.h	245;"	d
+EM_VAX	include/elf.h	233;"	d
+EM_VPP500	include/elf.h	188;"	d
+EM_X86_64	include/elf.h	221;"	d
+EM_XTENSA	include/elf.h	252;"	d
+EM_ZSP	include/elf.h	237;"	d
+ET_CORE	include/elf.h	167;"	d
+ET_DYN	include/elf.h	166;"	d
+ET_EXEC	include/elf.h	165;"	d
+ET_HIOS	include/elf.h	170;"	d
+ET_HIPROC	include/elf.h	172;"	d
+ET_LOOS	include/elf.h	169;"	d
+ET_LOPROC	include/elf.h	171;"	d
+ET_NONE	include/elf.h	163;"	d
+ET_NUM	include/elf.h	168;"	d
+ET_REL	include/elf.h	164;"	d
+EV_CURRENT	include/elf.h	264;"	d
+EV_NONE	include/elf.h	263;"	d
+EV_NUM	include/elf.h	265;"	d
+EXT_C	include/i386/multiboot.h	40;"	d
+EXT_C	include/i386/multiboot.h	42;"	d
+E_MIPS_ARCH_1	include/elf.h	1378;"	d
+E_MIPS_ARCH_2	include/elf.h	1379;"	d
+E_MIPS_ARCH_3	include/elf.h	1380;"	d
+E_MIPS_ARCH_32	include/elf.h	1383;"	d
+E_MIPS_ARCH_4	include/elf.h	1381;"	d
+E_MIPS_ARCH_5	include/elf.h	1382;"	d
+E_MIPS_ARCH_64	include/elf.h	1384;"	d
+Elf32_Addr	include/elf.h	/^typedef uint32_t Elf32_Addr;$/;"	t
+Elf32_Conflict	include/elf.h	/^typedef Elf32_Addr Elf32_Conflict;$/;"	t
+Elf32_Dyn	include/elf.h	/^} Elf32_Dyn;$/;"	t	typeref:struct:__anon15
+Elf32_Ehdr	include/elf.h	/^} Elf32_Ehdr;$/;"	t	typeref:struct:__anon1
+Elf32_Half	include/elf.h	/^typedef uint16_t Elf32_Half;$/;"	t
+Elf32_Lib	include/elf.h	/^} Elf32_Lib;$/;"	t	typeref:struct:__anon41
+Elf32_Move	include/elf.h	/^} Elf32_Move;$/;"	t	typeref:struct:__anon33
+Elf32_Nhdr	include/elf.h	/^} Elf32_Nhdr;$/;"	t	typeref:struct:__anon31
+Elf32_Off	include/elf.h	/^typedef uint32_t Elf32_Off;$/;"	t
+Elf32_Phdr	include/elf.h	/^} Elf32_Phdr;$/;"	t	typeref:struct:__anon13
+Elf32_RegInfo	include/elf.h	/^} Elf32_RegInfo;$/;"	t	typeref:struct:__anon38
+Elf32_Rel	include/elf.h	/^} Elf32_Rel;$/;"	t	typeref:struct:__anon9
+Elf32_Rela	include/elf.h	/^} Elf32_Rela;$/;"	t	typeref:struct:__anon11
+Elf32_Section	include/elf.h	/^typedef uint16_t Elf32_Section;$/;"	t
+Elf32_Shdr	include/elf.h	/^} Elf32_Shdr;$/;"	t	typeref:struct:__anon3
+Elf32_Sword	include/elf.h	/^typedef	int32_t  Elf32_Sword;$/;"	t
+Elf32_Sxword	include/elf.h	/^typedef	int64_t  Elf32_Sxword;$/;"	t
+Elf32_Sym	include/elf.h	/^} Elf32_Sym;$/;"	t	typeref:struct:__anon5
+Elf32_Syminfo	include/elf.h	/^} Elf32_Syminfo;$/;"	t	typeref:struct:__anon7
+Elf32_Verdaux	include/elf.h	/^} Elf32_Verdaux;$/;"	t	typeref:struct:__anon21
+Elf32_Verdef	include/elf.h	/^} Elf32_Verdef;$/;"	t	typeref:struct:__anon19
+Elf32_Vernaux	include/elf.h	/^} Elf32_Vernaux;$/;"	t	typeref:struct:__anon25
+Elf32_Verneed	include/elf.h	/^} Elf32_Verneed;$/;"	t	typeref:struct:__anon23
+Elf32_Versym	include/elf.h	/^typedef Elf32_Half Elf32_Versym;$/;"	t
+Elf32_Word	include/elf.h	/^typedef uint32_t Elf32_Word;$/;"	t
+Elf32_Xword	include/elf.h	/^typedef uint64_t Elf32_Xword;$/;"	t
+Elf32_auxv_t	include/elf.h	/^} Elf32_auxv_t;$/;"	t	typeref:struct:__anon27
+Elf32_gptab	include/elf.h	/^} Elf32_gptab;$/;"	t	typeref:union:__anon35
+Elf64_Addr	include/elf.h	/^typedef uint64_t Elf64_Addr;$/;"	t
+Elf64_Dyn	include/elf.h	/^} Elf64_Dyn;$/;"	t	typeref:struct:__anon17
+Elf64_Ehdr	include/elf.h	/^} Elf64_Ehdr;$/;"	t	typeref:struct:__anon2
+Elf64_Half	include/elf.h	/^typedef uint16_t Elf64_Half;$/;"	t
+Elf64_Lib	include/elf.h	/^} Elf64_Lib;$/;"	t	typeref:struct:__anon42
+Elf64_Move	include/elf.h	/^} Elf64_Move;$/;"	t	typeref:struct:__anon34
+Elf64_Nhdr	include/elf.h	/^} Elf64_Nhdr;$/;"	t	typeref:struct:__anon32
+Elf64_Off	include/elf.h	/^typedef uint64_t Elf64_Off;$/;"	t
+Elf64_Phdr	include/elf.h	/^} Elf64_Phdr;$/;"	t	typeref:struct:__anon14
+Elf64_Rel	include/elf.h	/^} Elf64_Rel;$/;"	t	typeref:struct:__anon10
+Elf64_Rela	include/elf.h	/^} Elf64_Rela;$/;"	t	typeref:struct:__anon12
+Elf64_Section	include/elf.h	/^typedef uint16_t Elf64_Section;$/;"	t
+Elf64_Shdr	include/elf.h	/^} Elf64_Shdr;$/;"	t	typeref:struct:__anon4
+Elf64_Sword	include/elf.h	/^typedef	int32_t  Elf64_Sword;$/;"	t
+Elf64_Sxword	include/elf.h	/^typedef	int64_t  Elf64_Sxword;$/;"	t
+Elf64_Sym	include/elf.h	/^} Elf64_Sym;$/;"	t	typeref:struct:__anon6
+Elf64_Syminfo	include/elf.h	/^} Elf64_Syminfo;$/;"	t	typeref:struct:__anon8
+Elf64_Verdaux	include/elf.h	/^} Elf64_Verdaux;$/;"	t	typeref:struct:__anon22
+Elf64_Verdef	include/elf.h	/^} Elf64_Verdef;$/;"	t	typeref:struct:__anon20
+Elf64_Vernaux	include/elf.h	/^} Elf64_Vernaux;$/;"	t	typeref:struct:__anon26
+Elf64_Verneed	include/elf.h	/^} Elf64_Verneed;$/;"	t	typeref:struct:__anon24
+Elf64_Versym	include/elf.h	/^typedef Elf64_Half Elf64_Versym;$/;"	t
+Elf64_Word	include/elf.h	/^typedef uint32_t Elf64_Word;$/;"	t
+Elf64_Xword	include/elf.h	/^typedef uint64_t Elf64_Xword;$/;"	t
+Elf64_auxv_t	include/elf.h	/^} Elf64_auxv_t;$/;"	t	typeref:struct:__anon29
+Elf_Options	include/elf.h	/^} Elf_Options;$/;"	t	typeref:struct:__anon39
+Elf_Options_Hw	include/elf.h	/^} Elf_Options_Hw;$/;"	t	typeref:struct:__anon40
+GDT_CODE	include/i386/gdt.h	9;"	d
+GDT_DATA	include/i386/gdt.h	10;"	d
+GDT_FLAGS_PRESENT	include/i386/gdt.h	13;"	d
+GDT_SYSTEM	include/i386/gdt.h	7;"	d
+GDT_TSS	include/i386/gdt.h	11;"	d
+GDT_USER	include/i386/gdt.h	8;"	d
+GRP_COMDAT	include/elf.h	374;"	d
+HWCAP_SPARC_BLKINIT	include/elf.h	1350;"	d
+HWCAP_SPARC_FLUSH	include/elf.h	1344;"	d
+HWCAP_SPARC_MULDIV	include/elf.h	1347;"	d
+HWCAP_SPARC_N2	include/elf.h	1351;"	d
+HWCAP_SPARC_STBAR	include/elf.h	1345;"	d
+HWCAP_SPARC_SWAP	include/elf.h	1346;"	d
+HWCAP_SPARC_ULTRA3	include/elf.h	1349;"	d
+HWCAP_SPARC_V9	include/elf.h	1348;"	d
+I386	include/config.h	4;"	d
+I386_BOOTVIDEO	include/i386/bootvideo.h	2;"	d
+I386_CONTEXT_H	include/i386/context.h	2;"	d
+I386_CPUID_H	include/i386/cpuid.h	2;"	d
+I386_GDT_H	include/i386/gdt.h	2;"	d
+I386_INTERRUPT_H	include/i386/interrupt.h	2;"	d
+I386_MAILBOX_H	include/i386/mailbox.h	2;"	d
+I386_MAILBOX_H	include/mailbox.h	2;"	d
+I386_MULTIBOOT_H	include/i386/multiboot.h	22;"	d
+I386_PAGING_H	include/i386/paging.h	2;"	d
+I386_PHYSICAL_MEMORY_H	include/i386/physical_memory.h	2;"	d
+I386_PIC_H	include/i386/pic.h	2;"	d
+I386_PROCESS_H	include/i386/process.h	2;"	d
+I386_SLAB_H	include/i386/slab.h	2;"	d
+I386_SYSCALL_H	include/i386/syscall.h	2;"	d
+I386_TYPES_H	include/i386/types.h	2;"	d
+IDT_INTGATE	include/i386/interrupt.h	8;"	d
+IDT_PRESENT	include/i386/interrupt.h	7;"	d
+INDEX_TO_DESCRIPTOR	include/i386/gdt.h	15;"	d
+LDFLAGS	i386/Makefile	/^LDFLAGS = -T linker.ld$/;"	m
+LDFLAGS	servers/Makefile	/^LDFLAGS = -T linker.ld$/;"	m
+LIBAK_H	include/libak.h	2;"	d
+LITUSE_ALPHA_ADDR	include/elf.h	1985;"	d
+LITUSE_ALPHA_BASE	include/elf.h	1986;"	d
+LITUSE_ALPHA_BYTOFF	include/elf.h	1987;"	d
+LITUSE_ALPHA_JSR	include/elf.h	1988;"	d
+LITUSE_ALPHA_TLS_GD	include/elf.h	1989;"	d
+LITUSE_ALPHA_TLS_LDM	include/elf.h	1990;"	d
+LL_DELAY_LOAD	include/elf.h	1726;"	d
+LL_DELTA	include/elf.h	1727;"	d
+LL_EXACT_MATCH	include/elf.h	1722;"	d
+LL_EXPORTS	include/elf.h	1725;"	d
+LL_IGNORE_INT_VER	include/elf.h	1723;"	d
+LL_NONE	include/elf.h	1721;"	d
+LL_REQUIRE_MINOR	include/elf.h	1724;"	d
+MAILBOX_ERR_EMPTY	include/i386/mailbox.h	24;"	d
+MAILBOX_ERR_FULL	include/i386/mailbox.h	26;"	d
+MAILBOX_ERR_LOCKED	include/i386/mailbox.h	27;"	d
+MAILBOX_ERR_PERM	include/i386/mailbox.h	25;"	d
+MAX_CPUS	include/config.h	7;"	d
+MAX_INTS	include/i386/interrupt.h	10;"	d
+MAX_MEMORY_DOMAINS	include/config.h	9;"	d
+MAX_SLABS	include/config.h	10;"	d
+MR_ATTR_COW	include/i386/context.h	32;"	d
+MR_ATTR_PRIO_TOP	include/i386/context.h	34;"	d
+MR_ATTR_RO	include/i386/context.h	33;"	d
+MR_TYPE_ANON	include/i386/context.h	/^  MR_TYPE_ANON,$/;"	e	enum:__anon49
+MR_TYPE_CORE	include/i386/context.h	/^  MR_TYPE_CORE,$/;"	e	enum:__anon49
+MR_TYPE_FREE	include/i386/context.h	/^  MR_TYPE_FREE,$/;"	e	enum:__anon49
+MR_TYPE_IPC	include/i386/context.h	/^  MR_TYPE_IPC,$/;"	e	enum:__anon49
+MR_TYPE_KERNEL	include/i386/context.h	/^  MR_TYPE_KERNEL,$/;"	e	enum:__anon49
+MR_TYPE_LIBRARY	include/i386/context.h	/^  MR_TYPE_LIBRARY,$/;"	e	enum:__anon49
+MR_TYPE_SENTINEL	include/i386/context.h	/^  MR_TYPE_SENTINEL,$/;"	e	enum:__anon49
+MR_TYPE_STACK	include/i386/context.h	/^  MR_TYPE_STACK,$/;"	e	enum:__anon49
+MULTIBOOT_BOOTLOADER_MAGIC	include/i386/multiboot.h	33;"	d
+MULTIBOOT_HEADER_FLAGS	include/i386/multiboot.h	27;"	d
+MULTIBOOT_HEADER_FLAGS	include/i386/multiboot.h	29;"	d
+MULTIBOOT_HEADER_MAGIC	include/i386/multiboot.h	23;"	d
+MUTEX_H	include/mutex.h	2;"	d
+NT_386_IOPERM	include/elf.h	622;"	d
+NT_386_TLS	include/elf.h	621;"	d
+NT_ASRS	include/elf.h	609;"	d
+NT_AUXV	include/elf.h	607;"	d
+NT_FPREGSET	include/elf.h	602;"	d
+NT_GNU_ABI_TAG	include/elf.h	1043;"	d
+NT_GNU_BUILD_ID	include/elf.h	1063;"	d
+NT_GNU_GOLD_VERSION	include/elf.h	1066;"	d
+NT_GNU_HWCAP	include/elf.h	1059;"	d
+NT_GWINDOWS	include/elf.h	608;"	d
+NT_LWPSINFO	include/elf.h	615;"	d
+NT_LWPSTATUS	include/elf.h	614;"	d
+NT_PLATFORM	include/elf.h	606;"	d
+NT_PPC_SPE	include/elf.h	619;"	d
+NT_PPC_VMX	include/elf.h	618;"	d
+NT_PPC_VSX	include/elf.h	620;"	d
+NT_PRCRED	include/elf.h	612;"	d
+NT_PRFPXREG	include/elf.h	616;"	d
+NT_PRPSINFO	include/elf.h	603;"	d
+NT_PRSTATUS	include/elf.h	601;"	d
+NT_PRXFPREG	include/elf.h	617;"	d
+NT_PRXREG	include/elf.h	604;"	d
+NT_PSINFO	include/elf.h	611;"	d
+NT_PSTATUS	include/elf.h	610;"	d
+NT_TASKSTRUCT	include/elf.h	605;"	d
+NT_UTSNAME	include/elf.h	613;"	d
+NT_VERSION	include/elf.h	627;"	d
+NT_X86_XSTATE	include/elf.h	623;"	d
+NUM_COLS	include/i386/bootvideo.h	4;"	d
+NUM_KERNEL_PDES	include/i386/paging.h	24;"	d
+NUM_ROWS	include/i386/bootvideo.h	5;"	d
+OBJS	i386/Makefile	/^OBJS = start.o cmain.o cpuid.o bootvideo.o asmutil.o gdt.o asm_interrupts.o interrupt.o pic.o physical_memory.o slab.o paging.o context.o process.o syscall.o mailbox.o$/;"	m
+OBJS	servers/Makefile	/^OBJS = test2.o test1.o kbd.o$/;"	m
+OBJS	servers/libak/Makefile	/^OBJS = syscall.o$/;"	m
+ODK_EXCEPTIONS	include/elf.h	1502;"	d
+ODK_FILL	include/elf.h	1505;"	d
+ODK_HWAND	include/elf.h	1507;"	d
+ODK_HWOR	include/elf.h	1508;"	d
+ODK_HWPATCH	include/elf.h	1504;"	d
+ODK_NULL	include/elf.h	1500;"	d
+ODK_PAD	include/elf.h	1503;"	d
+ODK_REGINFO	include/elf.h	1501;"	d
+ODK_TAGS	include/elf.h	1506;"	d
+OEX_DISMISS	include/elf.h	1518;"	d
+OEX_FPDBUG	include/elf.h	1516;"	d
+OEX_FPU_DIV0	include/elf.h	1521;"	d
+OEX_FPU_INEX	include/elf.h	1524;"	d
+OEX_FPU_INVAL	include/elf.h	1520;"	d
+OEX_FPU_MAX	include/elf.h	1513;"	d
+OEX_FPU_MIN	include/elf.h	1512;"	d
+OEX_FPU_OFLO	include/elf.h	1522;"	d
+OEX_FPU_UFLO	include/elf.h	1523;"	d
+OEX_PAGE0	include/elf.h	1514;"	d
+OEX_PRECISEFP	include/elf.h	1517;"	d
+OEX_SMM	include/elf.h	1515;"	d
+OHWA0_R4KEOP_CHECKED	include/elf.h	1547;"	d
+OHWA1_R4KEOP_CLEAN	include/elf.h	1548;"	d
+OHW_R4KEOP	include/elf.h	1528;"	d
+OHW_R5KCVTL	include/elf.h	1531;"	d
+OHW_R5KEOP	include/elf.h	1530;"	d
+OHW_R8KPFETCH	include/elf.h	1529;"	d
+OPAD_POSTFIX	include/elf.h	1534;"	d
+OPAD_PREFIX	include/elf.h	1533;"	d
+OPAD_SYMBOL	include/elf.h	1535;"	d
+PAGE_SIZE	include/config.h	5;"	d
+PF_ARM_ABS	include/elf.h	2295;"	d
+PF_ARM_PI	include/elf.h	2294;"	d
+PF_ARM_SB	include/elf.h	2292;"	d
+PF_HP_CODE	include/elf.h	1919;"	d
+PF_HP_FAR_SHARED	include/elf.h	1917;"	d
+PF_HP_LAZYSWAP	include/elf.h	1921;"	d
+PF_HP_MODIFY	include/elf.h	1920;"	d
+PF_HP_NEAR_SHARED	include/elf.h	1918;"	d
+PF_HP_PAGE_SIZE	include/elf.h	1916;"	d
+PF_HP_SBP	include/elf.h	1922;"	d
+PF_IA_64_NORECOV	include/elf.h	2381;"	d
+PF_MASKOS	include/elf.h	596;"	d
+PF_MASKPROC	include/elf.h	597;"	d
+PF_MIPS_LOCAL	include/elf.h	1615;"	d
+PF_PARISC_SBP	include/elf.h	1914;"	d
+PF_R	include/elf.h	595;"	d
+PF_W	include/elf.h	594;"	d
+PF_X	include/elf.h	593;"	d
+PN_XNUM	include/elf.h	566;"	d
+PROCESS_STATUS_RUNNING	include/i386/process.h	11;"	d
+PROCESS_STATUS_WAITING	include/i386/process.h	12;"	d
+PROCESS_STATUS_YIELDING	include/i386/process.h	13;"	d
+PTE_ACCESS_BIT	include/i386/paging.h	18;"	d
+PTE_DIRTY_BIT	include/i386/paging.h	19;"	d
+PTE_GLOBAL_BIT	include/i386/paging.h	21;"	d
+PTE_KUSED_BIT	include/i386/paging.h	22;"	d
+PTE_PCD_BIT	include/i386/paging.h	17;"	d
+PTE_PRESENT_BIT	include/i386/paging.h	13;"	d
+PTE_PS_BIT	include/i386/paging.h	20;"	d
+PTE_PWT_BIT	include/i386/paging.h	16;"	d
+PTE_RW_BIT	include/i386/paging.h	14;"	d
+PTE_US_BIT	include/i386/paging.h	15;"	d
+PT_ARM_EXIDX	include/elf.h	2298;"	d
+PT_DYNAMIC	include/elf.h	572;"	d
+PT_GNU_EH_FRAME	include/elf.h	580;"	d
+PT_GNU_RELRO	include/elf.h	582;"	d
+PT_GNU_STACK	include/elf.h	581;"	d
+PT_HIOS	include/elf.h	587;"	d
+PT_HIPROC	include/elf.h	589;"	d
+PT_HISUNW	include/elf.h	586;"	d
+PT_HP_CORE_COMM	include/elf.h	1897;"	d
+PT_HP_CORE_KERNEL	include/elf.h	1896;"	d
+PT_HP_CORE_LOADABLE	include/elf.h	1899;"	d
+PT_HP_CORE_MMF	include/elf.h	1902;"	d
+PT_HP_CORE_NONE	include/elf.h	1894;"	d
+PT_HP_CORE_PROC	include/elf.h	1898;"	d
+PT_HP_CORE_SHM	include/elf.h	1901;"	d
+PT_HP_CORE_STACK	include/elf.h	1900;"	d
+PT_HP_CORE_VERSION	include/elf.h	1895;"	d
+PT_HP_FASTBIND	include/elf.h	1904;"	d
+PT_HP_HSL_ANNOT	include/elf.h	1906;"	d
+PT_HP_OPT_ANNOT	include/elf.h	1905;"	d
+PT_HP_PARALLEL	include/elf.h	1903;"	d
+PT_HP_STACK	include/elf.h	1907;"	d
+PT_HP_TLS	include/elf.h	1893;"	d
+PT_IA_64_ARCHEXT	include/elf.h	2374;"	d
+PT_IA_64_HP_HSL_ANOT	include/elf.h	2377;"	d
+PT_IA_64_HP_OPT_ANOT	include/elf.h	2376;"	d
+PT_IA_64_HP_STACK	include/elf.h	2378;"	d
+PT_IA_64_UNWIND	include/elf.h	2375;"	d
+PT_INTERP	include/elf.h	573;"	d
+PT_LOAD	include/elf.h	571;"	d
+PT_LOOS	include/elf.h	579;"	d
+PT_LOPROC	include/elf.h	588;"	d
+PT_LOSUNW	include/elf.h	583;"	d
+PT_MIPS_OPTIONS	include/elf.h	1611;"	d
+PT_MIPS_REGINFO	include/elf.h	1609;"	d
+PT_MIPS_RTPROC	include/elf.h	1610;"	d
+PT_NOTE	include/elf.h	574;"	d
+PT_NULL	include/elf.h	570;"	d
+PT_NUM	include/elf.h	578;"	d
+PT_PARISC_ARCHEXT	include/elf.h	1909;"	d
+PT_PARISC_UNWIND	include/elf.h	1910;"	d
+PT_PHDR	include/elf.h	576;"	d
+PT_SHLIB	include/elf.h	575;"	d
+PT_SUNWBSS	include/elf.h	584;"	d
+PT_SUNWSTACK	include/elf.h	585;"	d
+PT_TLS	include/elf.h	577;"	d
+RHF_CORD	include/elf.h	1694;"	d
+RHF_DEFAULT_DELAY_LOAD	include/elf.h	1691;"	d
+RHF_DELTA_C_PLUS_PLUS	include/elf.h	1688;"	d
+RHF_GUARANTEE_INIT	include/elf.h	1687;"	d
+RHF_GUARANTEE_START_INIT	include/elf.h	1689;"	d
+RHF_NONE	include/elf.h	1681;"	d
+RHF_NOTPOT	include/elf.h	1683;"	d
+RHF_NO_LIBRARY_REPLACEMENT	include/elf.h	1684;"	d
+RHF_NO_MOVE	include/elf.h	1685;"	d
+RHF_NO_UNRES_UNDEF	include/elf.h	1695;"	d
+RHF_PIXIE	include/elf.h	1690;"	d
+RHF_QUICKSTART	include/elf.h	1682;"	d
+RHF_REQUICKSTART	include/elf.h	1692;"	d
+RHF_REQUICKSTARTED	include/elf.h	1693;"	d
+RHF_RLD_ORDER_SAFE	include/elf.h	1696;"	d
+RHF_SGI_ONLY	include/elf.h	1686;"	d
+R_386_16	include/elf.h	1180;"	d
+R_386_32	include/elf.h	1157;"	d
+R_386_32PLT	include/elf.h	1167;"	d
+R_386_8	include/elf.h	1182;"	d
+R_386_COPY	include/elf.h	1161;"	d
+R_386_GLOB_DAT	include/elf.h	1162;"	d
+R_386_GOT32	include/elf.h	1159;"	d
+R_386_GOTOFF	include/elf.h	1165;"	d
+R_386_GOTPC	include/elf.h	1166;"	d
+R_386_IRELATIVE	include/elf.h	1213;"	d
+R_386_JMP_SLOT	include/elf.h	1163;"	d
+R_386_NONE	include/elf.h	1156;"	d
+R_386_NUM	include/elf.h	1215;"	d
+R_386_PC16	include/elf.h	1181;"	d
+R_386_PC32	include/elf.h	1158;"	d
+R_386_PC8	include/elf.h	1183;"	d
+R_386_PLT32	include/elf.h	1160;"	d
+R_386_RELATIVE	include/elf.h	1164;"	d
+R_386_TLS_DESC	include/elf.h	1209;"	d
+R_386_TLS_DESC_CALL	include/elf.h	1206;"	d
+R_386_TLS_DTPMOD32	include/elf.h	1201;"	d
+R_386_TLS_DTPOFF32	include/elf.h	1202;"	d
+R_386_TLS_GD	include/elf.h	1175;"	d
+R_386_TLS_GD_32	include/elf.h	1184;"	d
+R_386_TLS_GD_CALL	include/elf.h	1187;"	d
+R_386_TLS_GD_POP	include/elf.h	1189;"	d
+R_386_TLS_GD_PUSH	include/elf.h	1186;"	d
+R_386_TLS_GOTDESC	include/elf.h	1205;"	d
+R_386_TLS_GOTIE	include/elf.h	1171;"	d
+R_386_TLS_IE	include/elf.h	1169;"	d
+R_386_TLS_IE_32	include/elf.h	1197;"	d
+R_386_TLS_LDM	include/elf.h	1177;"	d
+R_386_TLS_LDM_32	include/elf.h	1190;"	d
+R_386_TLS_LDM_CALL	include/elf.h	1193;"	d
+R_386_TLS_LDM_POP	include/elf.h	1195;"	d
+R_386_TLS_LDM_PUSH	include/elf.h	1192;"	d
+R_386_TLS_LDO_32	include/elf.h	1196;"	d
+R_386_TLS_LE	include/elf.h	1173;"	d
+R_386_TLS_LE_32	include/elf.h	1199;"	d
+R_386_TLS_TPOFF	include/elf.h	1168;"	d
+R_386_TLS_TPOFF32	include/elf.h	1203;"	d
+R_390_12	include/elf.h	2555;"	d
+R_390_16	include/elf.h	2556;"	d
+R_390_20	include/elf.h	2627;"	d
+R_390_32	include/elf.h	2557;"	d
+R_390_64	include/elf.h	2575;"	d
+R_390_8	include/elf.h	2554;"	d
+R_390_COPY	include/elf.h	2562;"	d
+R_390_GLOB_DAT	include/elf.h	2563;"	d
+R_390_GOT12	include/elf.h	2559;"	d
+R_390_GOT16	include/elf.h	2568;"	d
+R_390_GOT20	include/elf.h	2628;"	d
+R_390_GOT32	include/elf.h	2560;"	d
+R_390_GOT64	include/elf.h	2577;"	d
+R_390_GOTENT	include/elf.h	2579;"	d
+R_390_GOTOFF16	include/elf.h	2580;"	d
+R_390_GOTOFF32	include/elf.h	2566;"	d
+R_390_GOTOFF64	include/elf.h	2581;"	d
+R_390_GOTPC	include/elf.h	2567;"	d
+R_390_GOTPCDBL	include/elf.h	2574;"	d
+R_390_GOTPLT12	include/elf.h	2582;"	d
+R_390_GOTPLT16	include/elf.h	2583;"	d
+R_390_GOTPLT20	include/elf.h	2629;"	d
+R_390_GOTPLT32	include/elf.h	2584;"	d
+R_390_GOTPLT64	include/elf.h	2585;"	d
+R_390_GOTPLTENT	include/elf.h	2586;"	d
+R_390_JMP_SLOT	include/elf.h	2564;"	d
+R_390_NONE	include/elf.h	2553;"	d
+R_390_NUM	include/elf.h	2633;"	d
+R_390_PC16	include/elf.h	2569;"	d
+R_390_PC16DBL	include/elf.h	2570;"	d
+R_390_PC32	include/elf.h	2558;"	d
+R_390_PC32DBL	include/elf.h	2572;"	d
+R_390_PC64	include/elf.h	2576;"	d
+R_390_PLT16DBL	include/elf.h	2571;"	d
+R_390_PLT32	include/elf.h	2561;"	d
+R_390_PLT32DBL	include/elf.h	2573;"	d
+R_390_PLT64	include/elf.h	2578;"	d
+R_390_PLTOFF16	include/elf.h	2587;"	d
+R_390_PLTOFF32	include/elf.h	2588;"	d
+R_390_PLTOFF64	include/elf.h	2589;"	d
+R_390_RELATIVE	include/elf.h	2565;"	d
+R_390_TLS_DTPMOD	include/elf.h	2623;"	d
+R_390_TLS_DTPOFF	include/elf.h	2624;"	d
+R_390_TLS_GD32	include/elf.h	2595;"	d
+R_390_TLS_GD64	include/elf.h	2597;"	d
+R_390_TLS_GDCALL	include/elf.h	2591;"	d
+R_390_TLS_GOTIE12	include/elf.h	2599;"	d
+R_390_TLS_GOTIE20	include/elf.h	2630;"	d
+R_390_TLS_GOTIE32	include/elf.h	2601;"	d
+R_390_TLS_GOTIE64	include/elf.h	2603;"	d
+R_390_TLS_IE32	include/elf.h	2609;"	d
+R_390_TLS_IE64	include/elf.h	2611;"	d
+R_390_TLS_IEENT	include/elf.h	2613;"	d
+R_390_TLS_LDCALL	include/elf.h	2593;"	d
+R_390_TLS_LDM32	include/elf.h	2605;"	d
+R_390_TLS_LDM64	include/elf.h	2607;"	d
+R_390_TLS_LDO32	include/elf.h	2619;"	d
+R_390_TLS_LDO64	include/elf.h	2621;"	d
+R_390_TLS_LE32	include/elf.h	2615;"	d
+R_390_TLS_LE64	include/elf.h	2617;"	d
+R_390_TLS_LOAD	include/elf.h	2590;"	d
+R_390_TLS_TPOFF	include/elf.h	2625;"	d
+R_68K_16	include/elf.h	1107;"	d
+R_68K_32	include/elf.h	1106;"	d
+R_68K_8	include/elf.h	1108;"	d
+R_68K_COPY	include/elf.h	1124;"	d
+R_68K_GLOB_DAT	include/elf.h	1125;"	d
+R_68K_GOT16	include/elf.h	1113;"	d
+R_68K_GOT16O	include/elf.h	1116;"	d
+R_68K_GOT32	include/elf.h	1112;"	d
+R_68K_GOT32O	include/elf.h	1115;"	d
+R_68K_GOT8	include/elf.h	1114;"	d
+R_68K_GOT8O	include/elf.h	1117;"	d
+R_68K_JMP_SLOT	include/elf.h	1126;"	d
+R_68K_NONE	include/elf.h	1105;"	d
+R_68K_NUM	include/elf.h	1150;"	d
+R_68K_PC16	include/elf.h	1110;"	d
+R_68K_PC32	include/elf.h	1109;"	d
+R_68K_PC8	include/elf.h	1111;"	d
+R_68K_PLT16	include/elf.h	1119;"	d
+R_68K_PLT16O	include/elf.h	1122;"	d
+R_68K_PLT32	include/elf.h	1118;"	d
+R_68K_PLT32O	include/elf.h	1121;"	d
+R_68K_PLT8	include/elf.h	1120;"	d
+R_68K_PLT8O	include/elf.h	1123;"	d
+R_68K_RELATIVE	include/elf.h	1127;"	d
+R_68K_TLS_DTPMOD32	include/elf.h	1146;"	d
+R_68K_TLS_DTPREL32	include/elf.h	1147;"	d
+R_68K_TLS_GD16	include/elf.h	1129;"	d
+R_68K_TLS_GD32	include/elf.h	1128;"	d
+R_68K_TLS_GD8	include/elf.h	1130;"	d
+R_68K_TLS_IE16	include/elf.h	1138;"	d
+R_68K_TLS_IE32	include/elf.h	1137;"	d
+R_68K_TLS_IE8	include/elf.h	1139;"	d
+R_68K_TLS_LDM16	include/elf.h	1132;"	d
+R_68K_TLS_LDM32	include/elf.h	1131;"	d
+R_68K_TLS_LDM8	include/elf.h	1133;"	d
+R_68K_TLS_LDO16	include/elf.h	1135;"	d
+R_68K_TLS_LDO32	include/elf.h	1134;"	d
+R_68K_TLS_LDO8	include/elf.h	1136;"	d
+R_68K_TLS_LE16	include/elf.h	1142;"	d
+R_68K_TLS_LE32	include/elf.h	1140;"	d
+R_68K_TLS_LE8	include/elf.h	1144;"	d
+R_68K_TLS_TPREL32	include/elf.h	1148;"	d
+R_ALPHA_BRADDR	include/elf.h	1955;"	d
+R_ALPHA_COPY	include/elf.h	1963;"	d
+R_ALPHA_DTPMOD64	include/elf.h	1970;"	d
+R_ALPHA_DTPREL16	include/elf.h	1975;"	d
+R_ALPHA_DTPREL64	include/elf.h	1972;"	d
+R_ALPHA_DTPRELHI	include/elf.h	1973;"	d
+R_ALPHA_DTPRELLO	include/elf.h	1974;"	d
+R_ALPHA_GLOB_DAT	include/elf.h	1964;"	d
+R_ALPHA_GOTDTPREL	include/elf.h	1971;"	d
+R_ALPHA_GOTTPREL	include/elf.h	1976;"	d
+R_ALPHA_GPDISP	include/elf.h	1954;"	d
+R_ALPHA_GPREL16	include/elf.h	1962;"	d
+R_ALPHA_GPREL32	include/elf.h	1951;"	d
+R_ALPHA_GPRELHIGH	include/elf.h	1960;"	d
+R_ALPHA_GPRELLOW	include/elf.h	1961;"	d
+R_ALPHA_HINT	include/elf.h	1956;"	d
+R_ALPHA_JMP_SLOT	include/elf.h	1965;"	d
+R_ALPHA_LITERAL	include/elf.h	1952;"	d
+R_ALPHA_LITUSE	include/elf.h	1953;"	d
+R_ALPHA_NONE	include/elf.h	1948;"	d
+R_ALPHA_NUM	include/elf.h	1982;"	d
+R_ALPHA_REFLONG	include/elf.h	1949;"	d
+R_ALPHA_REFQUAD	include/elf.h	1950;"	d
+R_ALPHA_RELATIVE	include/elf.h	1966;"	d
+R_ALPHA_SREL16	include/elf.h	1957;"	d
+R_ALPHA_SREL32	include/elf.h	1958;"	d
+R_ALPHA_SREL64	include/elf.h	1959;"	d
+R_ALPHA_TLSGD	include/elf.h	1968;"	d
+R_ALPHA_TLS_GD_HI	include/elf.h	1967;"	d
+R_ALPHA_TLS_LDM	include/elf.h	1969;"	d
+R_ALPHA_TPREL16	include/elf.h	1980;"	d
+R_ALPHA_TPREL64	include/elf.h	1977;"	d
+R_ALPHA_TPRELHI	include/elf.h	1978;"	d
+R_ALPHA_TPRELLO	include/elf.h	1979;"	d
+R_ARM_ABS12	include/elf.h	2314;"	d
+R_ARM_ABS16	include/elf.h	2313;"	d
+R_ARM_ABS32	include/elf.h	2310;"	d
+R_ARM_ABS8	include/elf.h	2316;"	d
+R_ARM_ALU_PCREL_15_8	include/elf.h	2337;"	d
+R_ARM_ALU_PCREL_23_15	include/elf.h	2338;"	d
+R_ARM_ALU_PCREL_7_0	include/elf.h	2336;"	d
+R_ARM_ALU_SBREL_19_12	include/elf.h	2340;"	d
+R_ARM_ALU_SBREL_27_20	include/elf.h	2341;"	d
+R_ARM_AMP_VCALL9	include/elf.h	2320;"	d
+R_ARM_COPY	include/elf.h	2328;"	d
+R_ARM_GLOB_DAT	include/elf.h	2329;"	d
+R_ARM_GNU_VTENTRY	include/elf.h	2342;"	d
+R_ARM_GNU_VTINHERIT	include/elf.h	2343;"	d
+R_ARM_GOT32	include/elf.h	2334;"	d
+R_ARM_GOTOFF	include/elf.h	2332;"	d
+R_ARM_GOTPC	include/elf.h	2333;"	d
+R_ARM_JUMP_SLOT	include/elf.h	2330;"	d
+R_ARM_LDR_SBREL_11_0	include/elf.h	2339;"	d
+R_ARM_NONE	include/elf.h	2308;"	d
+R_ARM_NUM	include/elf.h	2364;"	d
+R_ARM_PC13	include/elf.h	2312;"	d
+R_ARM_PC24	include/elf.h	2309;"	d
+R_ARM_PLT32	include/elf.h	2335;"	d
+R_ARM_RABS22	include/elf.h	2360;"	d
+R_ARM_RBASE	include/elf.h	2362;"	d
+R_ARM_REL32	include/elf.h	2311;"	d
+R_ARM_RELATIVE	include/elf.h	2331;"	d
+R_ARM_RPC24	include/elf.h	2361;"	d
+R_ARM_RREL32	include/elf.h	2359;"	d
+R_ARM_RSBREL32	include/elf.h	2357;"	d
+R_ARM_RXPC25	include/elf.h	2356;"	d
+R_ARM_SBREL32	include/elf.h	2317;"	d
+R_ARM_SWI24	include/elf.h	2321;"	d
+R_ARM_THM_ABS5	include/elf.h	2315;"	d
+R_ARM_THM_PC11	include/elf.h	2344;"	d
+R_ARM_THM_PC22	include/elf.h	2318;"	d
+R_ARM_THM_PC8	include/elf.h	2319;"	d
+R_ARM_THM_PC9	include/elf.h	2345;"	d
+R_ARM_THM_RPC22	include/elf.h	2358;"	d
+R_ARM_THM_SWI8	include/elf.h	2322;"	d
+R_ARM_THM_XPC22	include/elf.h	2324;"	d
+R_ARM_TLS_DTPMOD32	include/elf.h	2325;"	d
+R_ARM_TLS_DTPOFF32	include/elf.h	2326;"	d
+R_ARM_TLS_GD32	include/elf.h	2346;"	d
+R_ARM_TLS_IE32	include/elf.h	2352;"	d
+R_ARM_TLS_LDM32	include/elf.h	2348;"	d
+R_ARM_TLS_LDO32	include/elf.h	2350;"	d
+R_ARM_TLS_LE32	include/elf.h	2354;"	d
+R_ARM_TLS_TPOFF32	include/elf.h	2327;"	d
+R_ARM_XPC25	include/elf.h	2323;"	d
+R_CRIS_16	include/elf.h	2639;"	d
+R_CRIS_16_GOT	include/elf.h	2650;"	d
+R_CRIS_16_GOTPLT	include/elf.h	2652;"	d
+R_CRIS_16_PCREL	include/elf.h	2642;"	d
+R_CRIS_32	include/elf.h	2640;"	d
+R_CRIS_32_GOT	include/elf.h	2651;"	d
+R_CRIS_32_GOTPLT	include/elf.h	2653;"	d
+R_CRIS_32_GOTREL	include/elf.h	2654;"	d
+R_CRIS_32_PCREL	include/elf.h	2643;"	d
+R_CRIS_32_PLT_GOTREL	include/elf.h	2655;"	d
+R_CRIS_32_PLT_PCREL	include/elf.h	2656;"	d
+R_CRIS_8	include/elf.h	2638;"	d
+R_CRIS_8_PCREL	include/elf.h	2641;"	d
+R_CRIS_COPY	include/elf.h	2646;"	d
+R_CRIS_GLOB_DAT	include/elf.h	2647;"	d
+R_CRIS_GNU_VTENTRY	include/elf.h	2645;"	d
+R_CRIS_GNU_VTINHERIT	include/elf.h	2644;"	d
+R_CRIS_JUMP_SLOT	include/elf.h	2648;"	d
+R_CRIS_NONE	include/elf.h	2637;"	d
+R_CRIS_NUM	include/elf.h	2658;"	d
+R_CRIS_RELATIVE	include/elf.h	2649;"	d
+R_IA64_COPY	include/elf.h	2456;"	d
+R_IA64_DIR32LSB	include/elf.h	2401;"	d
+R_IA64_DIR32MSB	include/elf.h	2400;"	d
+R_IA64_DIR64LSB	include/elf.h	2403;"	d
+R_IA64_DIR64MSB	include/elf.h	2402;"	d
+R_IA64_DTPMOD64LSB	include/elf.h	2467;"	d
+R_IA64_DTPMOD64MSB	include/elf.h	2466;"	d
+R_IA64_DTPREL14	include/elf.h	2469;"	d
+R_IA64_DTPREL22	include/elf.h	2470;"	d
+R_IA64_DTPREL32LSB	include/elf.h	2473;"	d
+R_IA64_DTPREL32MSB	include/elf.h	2472;"	d
+R_IA64_DTPREL64I	include/elf.h	2471;"	d
+R_IA64_DTPREL64LSB	include/elf.h	2475;"	d
+R_IA64_DTPREL64MSB	include/elf.h	2474;"	d
+R_IA64_FPTR32LSB	include/elf.h	2418;"	d
+R_IA64_FPTR32MSB	include/elf.h	2417;"	d
+R_IA64_FPTR64I	include/elf.h	2416;"	d
+R_IA64_FPTR64LSB	include/elf.h	2420;"	d
+R_IA64_FPTR64MSB	include/elf.h	2419;"	d
+R_IA64_GPREL22	include/elf.h	2404;"	d
+R_IA64_GPREL32LSB	include/elf.h	2407;"	d
+R_IA64_GPREL32MSB	include/elf.h	2406;"	d
+R_IA64_GPREL64I	include/elf.h	2405;"	d
+R_IA64_GPREL64LSB	include/elf.h	2409;"	d
+R_IA64_GPREL64MSB	include/elf.h	2408;"	d
+R_IA64_IMM14	include/elf.h	2397;"	d
+R_IA64_IMM22	include/elf.h	2398;"	d
+R_IA64_IMM64	include/elf.h	2399;"	d
+R_IA64_IPLTLSB	include/elf.h	2455;"	d
+R_IA64_IPLTMSB	include/elf.h	2454;"	d
+R_IA64_LDXMOV	include/elf.h	2459;"	d
+R_IA64_LTOFF22	include/elf.h	2410;"	d
+R_IA64_LTOFF22X	include/elf.h	2458;"	d
+R_IA64_LTOFF64I	include/elf.h	2411;"	d
+R_IA64_LTOFF_DTPMOD22	include/elf.h	2468;"	d
+R_IA64_LTOFF_DTPREL22	include/elf.h	2476;"	d
+R_IA64_LTOFF_FPTR22	include/elf.h	2429;"	d
+R_IA64_LTOFF_FPTR32LSB	include/elf.h	2432;"	d
+R_IA64_LTOFF_FPTR32MSB	include/elf.h	2431;"	d
+R_IA64_LTOFF_FPTR64I	include/elf.h	2430;"	d
+R_IA64_LTOFF_FPTR64LSB	include/elf.h	2434;"	d
+R_IA64_LTOFF_FPTR64MSB	include/elf.h	2433;"	d
+R_IA64_LTOFF_TPREL22	include/elf.h	2465;"	d
+R_IA64_LTV32LSB	include/elf.h	2448;"	d
+R_IA64_LTV32MSB	include/elf.h	2447;"	d
+R_IA64_LTV64LSB	include/elf.h	2450;"	d
+R_IA64_LTV64MSB	include/elf.h	2449;"	d
+R_IA64_NONE	include/elf.h	2396;"	d
+R_IA64_PCREL21B	include/elf.h	2422;"	d
+R_IA64_PCREL21BI	include/elf.h	2451;"	d
+R_IA64_PCREL21F	include/elf.h	2424;"	d
+R_IA64_PCREL21M	include/elf.h	2423;"	d
+R_IA64_PCREL22	include/elf.h	2452;"	d
+R_IA64_PCREL32LSB	include/elf.h	2426;"	d
+R_IA64_PCREL32MSB	include/elf.h	2425;"	d
+R_IA64_PCREL60B	include/elf.h	2421;"	d
+R_IA64_PCREL64I	include/elf.h	2453;"	d
+R_IA64_PCREL64LSB	include/elf.h	2428;"	d
+R_IA64_PCREL64MSB	include/elf.h	2427;"	d
+R_IA64_PLTOFF22	include/elf.h	2412;"	d
+R_IA64_PLTOFF64I	include/elf.h	2413;"	d
+R_IA64_PLTOFF64LSB	include/elf.h	2415;"	d
+R_IA64_PLTOFF64MSB	include/elf.h	2414;"	d
+R_IA64_REL32LSB	include/elf.h	2444;"	d
+R_IA64_REL32MSB	include/elf.h	2443;"	d
+R_IA64_REL64LSB	include/elf.h	2446;"	d
+R_IA64_REL64MSB	include/elf.h	2445;"	d
+R_IA64_SECREL32LSB	include/elf.h	2440;"	d
+R_IA64_SECREL32MSB	include/elf.h	2439;"	d
+R_IA64_SECREL64LSB	include/elf.h	2442;"	d
+R_IA64_SECREL64MSB	include/elf.h	2441;"	d
+R_IA64_SEGREL32LSB	include/elf.h	2436;"	d
+R_IA64_SEGREL32MSB	include/elf.h	2435;"	d
+R_IA64_SEGREL64LSB	include/elf.h	2438;"	d
+R_IA64_SEGREL64MSB	include/elf.h	2437;"	d
+R_IA64_SUB	include/elf.h	2457;"	d
+R_IA64_TPREL14	include/elf.h	2460;"	d
+R_IA64_TPREL22	include/elf.h	2461;"	d
+R_IA64_TPREL64I	include/elf.h	2462;"	d
+R_IA64_TPREL64LSB	include/elf.h	2464;"	d
+R_IA64_TPREL64MSB	include/elf.h	2463;"	d
+R_M32R_10_PCREL	include/elf.h	2746;"	d
+R_M32R_10_PCREL_RELA	include/elf.h	2759;"	d
+R_M32R_16	include/elf.h	2743;"	d
+R_M32R_16_RELA	include/elf.h	2756;"	d
+R_M32R_18_PCREL	include/elf.h	2747;"	d
+R_M32R_18_PCREL_RELA	include/elf.h	2760;"	d
+R_M32R_24	include/elf.h	2745;"	d
+R_M32R_24_RELA	include/elf.h	2758;"	d
+R_M32R_26_PCREL	include/elf.h	2748;"	d
+R_M32R_26_PCREL_RELA	include/elf.h	2761;"	d
+R_M32R_26_PLTREL	include/elf.h	2771;"	d
+R_M32R_32	include/elf.h	2744;"	d
+R_M32R_32_RELA	include/elf.h	2757;"	d
+R_M32R_COPY	include/elf.h	2772;"	d
+R_M32R_GLOB_DAT	include/elf.h	2773;"	d
+R_M32R_GNU_VTENTRY	include/elf.h	2754;"	d
+R_M32R_GNU_VTINHERIT	include/elf.h	2753;"	d
+R_M32R_GOT16_HI_SLO	include/elf.h	2780;"	d
+R_M32R_GOT16_HI_ULO	include/elf.h	2778;"	d
+R_M32R_GOT16_LO	include/elf.h	2782;"	d
+R_M32R_GOT24	include/elf.h	2770;"	d
+R_M32R_GOTOFF	include/elf.h	2776;"	d
+R_M32R_GOTOFF_HI_SLO	include/elf.h	2791;"	d
+R_M32R_GOTOFF_HI_ULO	include/elf.h	2789;"	d
+R_M32R_GOTOFF_LO	include/elf.h	2793;"	d
+R_M32R_GOTPC24	include/elf.h	2777;"	d
+R_M32R_GOTPC_HI_SLO	include/elf.h	2785;"	d
+R_M32R_GOTPC_HI_ULO	include/elf.h	2783;"	d
+R_M32R_GOTPC_LO	include/elf.h	2787;"	d
+R_M32R_HI16_SLO	include/elf.h	2750;"	d
+R_M32R_HI16_SLO_RELA	include/elf.h	2763;"	d
+R_M32R_HI16_ULO	include/elf.h	2749;"	d
+R_M32R_HI16_ULO_RELA	include/elf.h	2762;"	d
+R_M32R_JMP_SLOT	include/elf.h	2774;"	d
+R_M32R_LO16	include/elf.h	2751;"	d
+R_M32R_LO16_RELA	include/elf.h	2764;"	d
+R_M32R_NONE	include/elf.h	2742;"	d
+R_M32R_NUM	include/elf.h	2794;"	d
+R_M32R_REL32	include/elf.h	2768;"	d
+R_M32R_RELATIVE	include/elf.h	2775;"	d
+R_M32R_RELA_GNU_VTENTRY	include/elf.h	2767;"	d
+R_M32R_RELA_GNU_VTINHERIT	include/elf.h	2766;"	d
+R_M32R_SDA16	include/elf.h	2752;"	d
+R_M32R_SDA16_RELA	include/elf.h	2765;"	d
+R_MIPS_16	include/elf.h	1553;"	d
+R_MIPS_26	include/elf.h	1556;"	d
+R_MIPS_32	include/elf.h	1554;"	d
+R_MIPS_64	include/elf.h	1568;"	d
+R_MIPS_ADD_IMMEDIATE	include/elf.h	1584;"	d
+R_MIPS_CALL16	include/elf.h	1563;"	d
+R_MIPS_CALL_HI16	include/elf.h	1580;"	d
+R_MIPS_CALL_LO16	include/elf.h	1581;"	d
+R_MIPS_COPY	include/elf.h	1602;"	d
+R_MIPS_DELETE	include/elf.h	1577;"	d
+R_MIPS_GLOB_DAT	include/elf.h	1601;"	d
+R_MIPS_GOT16	include/elf.h	1561;"	d
+R_MIPS_GOT_DISP	include/elf.h	1569;"	d
+R_MIPS_GOT_HI16	include/elf.h	1572;"	d
+R_MIPS_GOT_LO16	include/elf.h	1573;"	d
+R_MIPS_GOT_OFST	include/elf.h	1571;"	d
+R_MIPS_GOT_PAGE	include/elf.h	1570;"	d
+R_MIPS_GPREL16	include/elf.h	1559;"	d
+R_MIPS_GPREL32	include/elf.h	1564;"	d
+R_MIPS_HI16	include/elf.h	1557;"	d
+R_MIPS_HIGHER	include/elf.h	1578;"	d
+R_MIPS_HIGHEST	include/elf.h	1579;"	d
+R_MIPS_INSERT_A	include/elf.h	1575;"	d
+R_MIPS_INSERT_B	include/elf.h	1576;"	d
+R_MIPS_JALR	include/elf.h	1587;"	d
+R_MIPS_JUMP_SLOT	include/elf.h	1603;"	d
+R_MIPS_LITERAL	include/elf.h	1560;"	d
+R_MIPS_LO16	include/elf.h	1558;"	d
+R_MIPS_NONE	include/elf.h	1552;"	d
+R_MIPS_NUM	include/elf.h	1605;"	d
+R_MIPS_PC16	include/elf.h	1562;"	d
+R_MIPS_PJUMP	include/elf.h	1585;"	d
+R_MIPS_REL16	include/elf.h	1583;"	d
+R_MIPS_REL32	include/elf.h	1555;"	d
+R_MIPS_RELGOT	include/elf.h	1586;"	d
+R_MIPS_SCN_DISP	include/elf.h	1582;"	d
+R_MIPS_SHIFT5	include/elf.h	1566;"	d
+R_MIPS_SHIFT6	include/elf.h	1567;"	d
+R_MIPS_SUB	include/elf.h	1574;"	d
+R_MIPS_TLS_DTPMOD32	include/elf.h	1588;"	d
+R_MIPS_TLS_DTPMOD64	include/elf.h	1590;"	d
+R_MIPS_TLS_DTPREL32	include/elf.h	1589;"	d
+R_MIPS_TLS_DTPREL64	include/elf.h	1591;"	d
+R_MIPS_TLS_DTPREL_HI16	include/elf.h	1594;"	d
+R_MIPS_TLS_DTPREL_LO16	include/elf.h	1595;"	d
+R_MIPS_TLS_GD	include/elf.h	1592;"	d
+R_MIPS_TLS_GOTTPREL	include/elf.h	1596;"	d
+R_MIPS_TLS_LDM	include/elf.h	1593;"	d
+R_MIPS_TLS_TPREL32	include/elf.h	1597;"	d
+R_MIPS_TLS_TPREL64	include/elf.h	1598;"	d
+R_MIPS_TLS_TPREL_HI16	include/elf.h	1599;"	d
+R_MIPS_TLS_TPREL_LO16	include/elf.h	1600;"	d
+R_MN10300_16	include/elf.h	2715;"	d
+R_MN10300_24	include/elf.h	2722;"	d
+R_MN10300_32	include/elf.h	2714;"	d
+R_MN10300_8	include/elf.h	2716;"	d
+R_MN10300_COPY	include/elf.h	2733;"	d
+R_MN10300_GLOB_DAT	include/elf.h	2734;"	d
+R_MN10300_GNU_VTENTRY	include/elf.h	2721;"	d
+R_MN10300_GNU_VTINHERIT	include/elf.h	2720;"	d
+R_MN10300_GOT16	include/elf.h	2732;"	d
+R_MN10300_GOT24	include/elf.h	2731;"	d
+R_MN10300_GOT32	include/elf.h	2730;"	d
+R_MN10300_GOTOFF16	include/elf.h	2727;"	d
+R_MN10300_GOTOFF24	include/elf.h	2726;"	d
+R_MN10300_GOTOFF32	include/elf.h	2725;"	d
+R_MN10300_GOTPC16	include/elf.h	2724;"	d
+R_MN10300_GOTPC32	include/elf.h	2723;"	d
+R_MN10300_JMP_SLOT	include/elf.h	2735;"	d
+R_MN10300_NONE	include/elf.h	2713;"	d
+R_MN10300_NUM	include/elf.h	2738;"	d
+R_MN10300_PCREL16	include/elf.h	2718;"	d
+R_MN10300_PCREL32	include/elf.h	2717;"	d
+R_MN10300_PCREL8	include/elf.h	2719;"	d
+R_MN10300_PLT16	include/elf.h	2729;"	d
+R_MN10300_PLT32	include/elf.h	2728;"	d
+R_MN10300_RELATIVE	include/elf.h	2736;"	d
+R_PARISC_COPY	include/elf.h	1848;"	d
+R_PARISC_DIR14DR	include/elf.h	1818;"	d
+R_PARISC_DIR14R	include/elf.h	1785;"	d
+R_PARISC_DIR14WR	include/elf.h	1817;"	d
+R_PARISC_DIR16DF	include/elf.h	1821;"	d
+R_PARISC_DIR16F	include/elf.h	1819;"	d
+R_PARISC_DIR16WF	include/elf.h	1820;"	d
+R_PARISC_DIR17F	include/elf.h	1784;"	d
+R_PARISC_DIR17R	include/elf.h	1783;"	d
+R_PARISC_DIR21L	include/elf.h	1782;"	d
+R_PARISC_DIR32	include/elf.h	1781;"	d
+R_PARISC_DIR64	include/elf.h	1816;"	d
+R_PARISC_DPREL14R	include/elf.h	1792;"	d
+R_PARISC_DPREL21L	include/elf.h	1791;"	d
+R_PARISC_EPLT	include/elf.h	1850;"	d
+R_PARISC_FPTR64	include/elf.h	1805;"	d
+R_PARISC_GNU_VTENTRY	include/elf.h	1869;"	d
+R_PARISC_GNU_VTINHERIT	include/elf.h	1870;"	d
+R_PARISC_GPREL14DR	include/elf.h	1824;"	d
+R_PARISC_GPREL14R	include/elf.h	1794;"	d
+R_PARISC_GPREL14WR	include/elf.h	1823;"	d
+R_PARISC_GPREL16DF	include/elf.h	1827;"	d
+R_PARISC_GPREL16F	include/elf.h	1825;"	d
+R_PARISC_GPREL16WF	include/elf.h	1826;"	d
+R_PARISC_GPREL21L	include/elf.h	1793;"	d
+R_PARISC_GPREL64	include/elf.h	1822;"	d
+R_PARISC_HIRESERVE	include/elf.h	1889;"	d
+R_PARISC_IPLT	include/elf.h	1849;"	d
+R_PARISC_LORESERVE	include/elf.h	1847;"	d
+R_PARISC_LTOFF14DR	include/elf.h	1830;"	d
+R_PARISC_LTOFF14R	include/elf.h	1796;"	d
+R_PARISC_LTOFF14WR	include/elf.h	1829;"	d
+R_PARISC_LTOFF16DF	include/elf.h	1833;"	d
+R_PARISC_LTOFF16F	include/elf.h	1831;"	d
+R_PARISC_LTOFF16WF	include/elf.h	1832;"	d
+R_PARISC_LTOFF21L	include/elf.h	1795;"	d
+R_PARISC_LTOFF64	include/elf.h	1828;"	d
+R_PARISC_LTOFF_FPTR14DR	include/elf.h	1843;"	d
+R_PARISC_LTOFF_FPTR14R	include/elf.h	1804;"	d
+R_PARISC_LTOFF_FPTR14WR	include/elf.h	1842;"	d
+R_PARISC_LTOFF_FPTR16DF	include/elf.h	1846;"	d
+R_PARISC_LTOFF_FPTR16F	include/elf.h	1844;"	d
+R_PARISC_LTOFF_FPTR16WF	include/elf.h	1845;"	d
+R_PARISC_LTOFF_FPTR21L	include/elf.h	1803;"	d
+R_PARISC_LTOFF_FPTR32	include/elf.h	1802;"	d
+R_PARISC_LTOFF_FPTR64	include/elf.h	1841;"	d
+R_PARISC_LTOFF_TP14DR	include/elf.h	1865;"	d
+R_PARISC_LTOFF_TP14F	include/elf.h	1856;"	d
+R_PARISC_LTOFF_TP14R	include/elf.h	1855;"	d
+R_PARISC_LTOFF_TP14WR	include/elf.h	1864;"	d
+R_PARISC_LTOFF_TP16DF	include/elf.h	1868;"	d
+R_PARISC_LTOFF_TP16F	include/elf.h	1866;"	d
+R_PARISC_LTOFF_TP16WF	include/elf.h	1867;"	d
+R_PARISC_LTOFF_TP21L	include/elf.h	1854;"	d
+R_PARISC_LTOFF_TP64	include/elf.h	1863;"	d
+R_PARISC_NONE	include/elf.h	1780;"	d
+R_PARISC_PCREL14DR	include/elf.h	1812;"	d
+R_PARISC_PCREL14R	include/elf.h	1790;"	d
+R_PARISC_PCREL14WR	include/elf.h	1811;"	d
+R_PARISC_PCREL16DF	include/elf.h	1815;"	d
+R_PARISC_PCREL16F	include/elf.h	1813;"	d
+R_PARISC_PCREL16WF	include/elf.h	1814;"	d
+R_PARISC_PCREL17F	include/elf.h	1789;"	d
+R_PARISC_PCREL17R	include/elf.h	1788;"	d
+R_PARISC_PCREL21L	include/elf.h	1787;"	d
+R_PARISC_PCREL22F	include/elf.h	1810;"	d
+R_PARISC_PCREL32	include/elf.h	1786;"	d
+R_PARISC_PCREL64	include/elf.h	1809;"	d
+R_PARISC_PLABEL14R	include/elf.h	1808;"	d
+R_PARISC_PLABEL21L	include/elf.h	1807;"	d
+R_PARISC_PLABEL32	include/elf.h	1806;"	d
+R_PARISC_PLTOFF14DR	include/elf.h	1837;"	d
+R_PARISC_PLTOFF14R	include/elf.h	1801;"	d
+R_PARISC_PLTOFF14WR	include/elf.h	1836;"	d
+R_PARISC_PLTOFF16DF	include/elf.h	1840;"	d
+R_PARISC_PLTOFF16F	include/elf.h	1838;"	d
+R_PARISC_PLTOFF16WF	include/elf.h	1839;"	d
+R_PARISC_PLTOFF21L	include/elf.h	1800;"	d
+R_PARISC_SECREL32	include/elf.h	1797;"	d
+R_PARISC_SECREL64	include/elf.h	1834;"	d
+R_PARISC_SEGBASE	include/elf.h	1798;"	d
+R_PARISC_SEGREL32	include/elf.h	1799;"	d
+R_PARISC_SEGREL64	include/elf.h	1835;"	d
+R_PARISC_TLS_DTPMOD32	include/elf.h	1879;"	d
+R_PARISC_TLS_DTPMOD64	include/elf.h	1880;"	d
+R_PARISC_TLS_DTPOFF32	include/elf.h	1881;"	d
+R_PARISC_TLS_DTPOFF64	include/elf.h	1882;"	d
+R_PARISC_TLS_GD14R	include/elf.h	1872;"	d
+R_PARISC_TLS_GD21L	include/elf.h	1871;"	d
+R_PARISC_TLS_GDCALL	include/elf.h	1873;"	d
+R_PARISC_TLS_IE14R	include/elf.h	1886;"	d
+R_PARISC_TLS_IE21L	include/elf.h	1885;"	d
+R_PARISC_TLS_LDM14R	include/elf.h	1875;"	d
+R_PARISC_TLS_LDM21L	include/elf.h	1874;"	d
+R_PARISC_TLS_LDMCALL	include/elf.h	1876;"	d
+R_PARISC_TLS_LDO14R	include/elf.h	1878;"	d
+R_PARISC_TLS_LDO21L	include/elf.h	1877;"	d
+R_PARISC_TLS_LE14R	include/elf.h	1884;"	d
+R_PARISC_TLS_LE21L	include/elf.h	1883;"	d
+R_PARISC_TLS_TPREL32	include/elf.h	1887;"	d
+R_PARISC_TLS_TPREL64	include/elf.h	1888;"	d
+R_PARISC_TPREL14DR	include/elf.h	1859;"	d
+R_PARISC_TPREL14R	include/elf.h	1853;"	d
+R_PARISC_TPREL14WR	include/elf.h	1858;"	d
+R_PARISC_TPREL16DF	include/elf.h	1862;"	d
+R_PARISC_TPREL16F	include/elf.h	1860;"	d
+R_PARISC_TPREL16WF	include/elf.h	1861;"	d
+R_PARISC_TPREL21L	include/elf.h	1852;"	d
+R_PARISC_TPREL32	include/elf.h	1851;"	d
+R_PARISC_TPREL64	include/elf.h	1857;"	d
+R_PPC64_ADDR14	include/elf.h	2127;"	d
+R_PPC64_ADDR14_BRNTAKEN	include/elf.h	2129;"	d
+R_PPC64_ADDR14_BRTAKEN	include/elf.h	2128;"	d
+R_PPC64_ADDR16	include/elf.h	2123;"	d
+R_PPC64_ADDR16_DS	include/elf.h	2177;"	d
+R_PPC64_ADDR16_HA	include/elf.h	2126;"	d
+R_PPC64_ADDR16_HI	include/elf.h	2125;"	d
+R_PPC64_ADDR16_HIGHER	include/elf.h	2159;"	d
+R_PPC64_ADDR16_HIGHERA	include/elf.h	2160;"	d
+R_PPC64_ADDR16_HIGHEST	include/elf.h	2161;"	d
+R_PPC64_ADDR16_HIGHESTA	include/elf.h	2162;"	d
+R_PPC64_ADDR16_LO	include/elf.h	2124;"	d
+R_PPC64_ADDR16_LO_DS	include/elf.h	2178;"	d
+R_PPC64_ADDR24	include/elf.h	2122;"	d
+R_PPC64_ADDR30	include/elf.h	2157;"	d
+R_PPC64_ADDR32	include/elf.h	2121;"	d
+R_PPC64_ADDR64	include/elf.h	2158;"	d
+R_PPC64_COPY	include/elf.h	2139;"	d
+R_PPC64_DTPMOD64	include/elf.h	2191;"	d
+R_PPC64_DTPREL16	include/elf.h	2197;"	d
+R_PPC64_DTPREL16_DS	include/elf.h	2224;"	d
+R_PPC64_DTPREL16_HA	include/elf.h	2200;"	d
+R_PPC64_DTPREL16_HI	include/elf.h	2199;"	d
+R_PPC64_DTPREL16_HIGHER	include/elf.h	2226;"	d
+R_PPC64_DTPREL16_HIGHERA	include/elf.h	2227;"	d
+R_PPC64_DTPREL16_HIGHEST	include/elf.h	2228;"	d
+R_PPC64_DTPREL16_HIGHESTA	include/elf.h	2229;"	d
+R_PPC64_DTPREL16_LO	include/elf.h	2198;"	d
+R_PPC64_DTPREL16_LO_DS	include/elf.h	2225;"	d
+R_PPC64_DTPREL64	include/elf.h	2201;"	d
+R_PPC64_GLOB_DAT	include/elf.h	2140;"	d
+R_PPC64_GOT16	include/elf.h	2134;"	d
+R_PPC64_GOT16_DS	include/elf.h	2179;"	d
+R_PPC64_GOT16_HA	include/elf.h	2137;"	d
+R_PPC64_GOT16_HI	include/elf.h	2136;"	d
+R_PPC64_GOT16_LO	include/elf.h	2135;"	d
+R_PPC64_GOT16_LO_DS	include/elf.h	2180;"	d
+R_PPC64_GOT_DTPREL16_DS	include/elf.h	2214;"	d
+R_PPC64_GOT_DTPREL16_HA	include/elf.h	2217;"	d
+R_PPC64_GOT_DTPREL16_HI	include/elf.h	2216;"	d
+R_PPC64_GOT_DTPREL16_LO_DS	include/elf.h	2215;"	d
+R_PPC64_GOT_TLSGD16	include/elf.h	2202;"	d
+R_PPC64_GOT_TLSGD16_HA	include/elf.h	2205;"	d
+R_PPC64_GOT_TLSGD16_HI	include/elf.h	2204;"	d
+R_PPC64_GOT_TLSGD16_LO	include/elf.h	2203;"	d
+R_PPC64_GOT_TLSLD16	include/elf.h	2206;"	d
+R_PPC64_GOT_TLSLD16_HA	include/elf.h	2209;"	d
+R_PPC64_GOT_TLSLD16_HI	include/elf.h	2208;"	d
+R_PPC64_GOT_TLSLD16_LO	include/elf.h	2207;"	d
+R_PPC64_GOT_TPREL16_DS	include/elf.h	2210;"	d
+R_PPC64_GOT_TPREL16_HA	include/elf.h	2213;"	d
+R_PPC64_GOT_TPREL16_HI	include/elf.h	2212;"	d
+R_PPC64_GOT_TPREL16_LO_DS	include/elf.h	2211;"	d
+R_PPC64_IRELATIVE	include/elf.h	2233;"	d
+R_PPC64_JMP_IREL	include/elf.h	2232;"	d
+R_PPC64_JMP_SLOT	include/elf.h	2141;"	d
+R_PPC64_NONE	include/elf.h	2120;"	d
+R_PPC64_PLT16_HA	include/elf.h	2151;"	d
+R_PPC64_PLT16_HI	include/elf.h	2150;"	d
+R_PPC64_PLT16_LO	include/elf.h	2149;"	d
+R_PPC64_PLT16_LO_DS	include/elf.h	2181;"	d
+R_PPC64_PLT32	include/elf.h	2147;"	d
+R_PPC64_PLT64	include/elf.h	2165;"	d
+R_PPC64_PLTGOT16	include/elf.h	2172;"	d
+R_PPC64_PLTGOT16_DS	include/elf.h	2186;"	d
+R_PPC64_PLTGOT16_HA	include/elf.h	2175;"	d
+R_PPC64_PLTGOT16_HI	include/elf.h	2174;"	d
+R_PPC64_PLTGOT16_LO	include/elf.h	2173;"	d
+R_PPC64_PLTGOT16_LO_DS	include/elf.h	2187;"	d
+R_PPC64_PLTREL32	include/elf.h	2148;"	d
+R_PPC64_PLTREL64	include/elf.h	2166;"	d
+R_PPC64_REL14	include/elf.h	2131;"	d
+R_PPC64_REL14_BRNTAKEN	include/elf.h	2133;"	d
+R_PPC64_REL14_BRTAKEN	include/elf.h	2132;"	d
+R_PPC64_REL16	include/elf.h	2234;"	d
+R_PPC64_REL16_HA	include/elf.h	2237;"	d
+R_PPC64_REL16_HI	include/elf.h	2236;"	d
+R_PPC64_REL16_LO	include/elf.h	2235;"	d
+R_PPC64_REL24	include/elf.h	2130;"	d
+R_PPC64_REL32	include/elf.h	2146;"	d
+R_PPC64_REL64	include/elf.h	2164;"	d
+R_PPC64_RELATIVE	include/elf.h	2142;"	d
+R_PPC64_SECTOFF	include/elf.h	2153;"	d
+R_PPC64_SECTOFF_DS	include/elf.h	2182;"	d
+R_PPC64_SECTOFF_HA	include/elf.h	2156;"	d
+R_PPC64_SECTOFF_HI	include/elf.h	2155;"	d
+R_PPC64_SECTOFF_LO	include/elf.h	2154;"	d
+R_PPC64_SECTOFF_LO_DS	include/elf.h	2183;"	d
+R_PPC64_TLS	include/elf.h	2190;"	d
+R_PPC64_TOC	include/elf.h	2171;"	d
+R_PPC64_TOC16	include/elf.h	2167;"	d
+R_PPC64_TOC16_DS	include/elf.h	2184;"	d
+R_PPC64_TOC16_HA	include/elf.h	2170;"	d
+R_PPC64_TOC16_HI	include/elf.h	2169;"	d
+R_PPC64_TOC16_LO	include/elf.h	2168;"	d
+R_PPC64_TOC16_LO_DS	include/elf.h	2185;"	d
+R_PPC64_TPREL16	include/elf.h	2192;"	d
+R_PPC64_TPREL16_DS	include/elf.h	2218;"	d
+R_PPC64_TPREL16_HA	include/elf.h	2195;"	d
+R_PPC64_TPREL16_HI	include/elf.h	2194;"	d
+R_PPC64_TPREL16_HIGHER	include/elf.h	2220;"	d
+R_PPC64_TPREL16_HIGHERA	include/elf.h	2221;"	d
+R_PPC64_TPREL16_HIGHEST	include/elf.h	2222;"	d
+R_PPC64_TPREL16_HIGHESTA	include/elf.h	2223;"	d
+R_PPC64_TPREL16_LO	include/elf.h	2193;"	d
+R_PPC64_TPREL16_LO_DS	include/elf.h	2219;"	d
+R_PPC64_TPREL64	include/elf.h	2196;"	d
+R_PPC64_UADDR16	include/elf.h	2145;"	d
+R_PPC64_UADDR32	include/elf.h	2144;"	d
+R_PPC64_UADDR64	include/elf.h	2163;"	d
+R_PPC_ADDR14	include/elf.h	2014;"	d
+R_PPC_ADDR14_BRNTAKEN	include/elf.h	2016;"	d
+R_PPC_ADDR14_BRTAKEN	include/elf.h	2015;"	d
+R_PPC_ADDR16	include/elf.h	2010;"	d
+R_PPC_ADDR16_HA	include/elf.h	2013;"	d
+R_PPC_ADDR16_HI	include/elf.h	2012;"	d
+R_PPC_ADDR16_LO	include/elf.h	2011;"	d
+R_PPC_ADDR24	include/elf.h	2009;"	d
+R_PPC_ADDR32	include/elf.h	2008;"	d
+R_PPC_COPY	include/elf.h	2026;"	d
+R_PPC_DIAB_RELSDA_HA	include/elf.h	2100;"	d
+R_PPC_DIAB_RELSDA_HI	include/elf.h	2099;"	d
+R_PPC_DIAB_RELSDA_LO	include/elf.h	2098;"	d
+R_PPC_DIAB_SDA21_HA	include/elf.h	2097;"	d
+R_PPC_DIAB_SDA21_HI	include/elf.h	2096;"	d
+R_PPC_DIAB_SDA21_LO	include/elf.h	2095;"	d
+R_PPC_DTPMOD32	include/elf.h	2047;"	d
+R_PPC_DTPREL16	include/elf.h	2053;"	d
+R_PPC_DTPREL16_HA	include/elf.h	2056;"	d
+R_PPC_DTPREL16_HI	include/elf.h	2055;"	d
+R_PPC_DTPREL16_LO	include/elf.h	2054;"	d
+R_PPC_DTPREL32	include/elf.h	2057;"	d
+R_PPC_EMB_BIT_FLD	include/elf.h	2091;"	d
+R_PPC_EMB_MRKREF	include/elf.h	2086;"	d
+R_PPC_EMB_NADDR16	include/elf.h	2078;"	d
+R_PPC_EMB_NADDR16_HA	include/elf.h	2081;"	d
+R_PPC_EMB_NADDR16_HI	include/elf.h	2080;"	d
+R_PPC_EMB_NADDR16_LO	include/elf.h	2079;"	d
+R_PPC_EMB_NADDR32	include/elf.h	2077;"	d
+R_PPC_EMB_RELSDA	include/elf.h	2092;"	d
+R_PPC_EMB_RELSEC16	include/elf.h	2087;"	d
+R_PPC_EMB_RELST_HA	include/elf.h	2090;"	d
+R_PPC_EMB_RELST_HI	include/elf.h	2089;"	d
+R_PPC_EMB_RELST_LO	include/elf.h	2088;"	d
+R_PPC_EMB_SDA21	include/elf.h	2085;"	d
+R_PPC_EMB_SDA2I16	include/elf.h	2083;"	d
+R_PPC_EMB_SDA2REL	include/elf.h	2084;"	d
+R_PPC_EMB_SDAI16	include/elf.h	2082;"	d
+R_PPC_GLOB_DAT	include/elf.h	2027;"	d
+R_PPC_GOT16	include/elf.h	2021;"	d
+R_PPC_GOT16_HA	include/elf.h	2024;"	d
+R_PPC_GOT16_HI	include/elf.h	2023;"	d
+R_PPC_GOT16_LO	include/elf.h	2022;"	d
+R_PPC_GOT_DTPREL16	include/elf.h	2070;"	d
+R_PPC_GOT_DTPREL16_HA	include/elf.h	2073;"	d
+R_PPC_GOT_DTPREL16_HI	include/elf.h	2072;"	d
+R_PPC_GOT_DTPREL16_LO	include/elf.h	2071;"	d
+R_PPC_GOT_TLSGD16	include/elf.h	2058;"	d
+R_PPC_GOT_TLSGD16_HA	include/elf.h	2061;"	d
+R_PPC_GOT_TLSGD16_HI	include/elf.h	2060;"	d
+R_PPC_GOT_TLSGD16_LO	include/elf.h	2059;"	d
+R_PPC_GOT_TLSLD16	include/elf.h	2062;"	d
+R_PPC_GOT_TLSLD16_HA	include/elf.h	2065;"	d
+R_PPC_GOT_TLSLD16_HI	include/elf.h	2064;"	d
+R_PPC_GOT_TLSLD16_LO	include/elf.h	2063;"	d
+R_PPC_GOT_TPREL16	include/elf.h	2066;"	d
+R_PPC_GOT_TPREL16_HA	include/elf.h	2069;"	d
+R_PPC_GOT_TPREL16_HI	include/elf.h	2068;"	d
+R_PPC_GOT_TPREL16_LO	include/elf.h	2067;"	d
+R_PPC_IRELATIVE	include/elf.h	2103;"	d
+R_PPC_JMP_SLOT	include/elf.h	2028;"	d
+R_PPC_LOCAL24PC	include/elf.h	2030;"	d
+R_PPC_NONE	include/elf.h	2007;"	d
+R_PPC_PLT16_HA	include/elf.h	2038;"	d
+R_PPC_PLT16_HI	include/elf.h	2037;"	d
+R_PPC_PLT16_LO	include/elf.h	2036;"	d
+R_PPC_PLT32	include/elf.h	2034;"	d
+R_PPC_PLTREL24	include/elf.h	2025;"	d
+R_PPC_PLTREL32	include/elf.h	2035;"	d
+R_PPC_REL14	include/elf.h	2018;"	d
+R_PPC_REL14_BRNTAKEN	include/elf.h	2020;"	d
+R_PPC_REL14_BRTAKEN	include/elf.h	2019;"	d
+R_PPC_REL16	include/elf.h	2106;"	d
+R_PPC_REL16_HA	include/elf.h	2109;"	d
+R_PPC_REL16_HI	include/elf.h	2108;"	d
+R_PPC_REL16_LO	include/elf.h	2107;"	d
+R_PPC_REL24	include/elf.h	2017;"	d
+R_PPC_REL32	include/elf.h	2033;"	d
+R_PPC_RELATIVE	include/elf.h	2029;"	d
+R_PPC_SDAREL16	include/elf.h	2039;"	d
+R_PPC_SECTOFF	include/elf.h	2040;"	d
+R_PPC_SECTOFF_HA	include/elf.h	2043;"	d
+R_PPC_SECTOFF_HI	include/elf.h	2042;"	d
+R_PPC_SECTOFF_LO	include/elf.h	2041;"	d
+R_PPC_TLS	include/elf.h	2046;"	d
+R_PPC_TOC16	include/elf.h	2113;"	d
+R_PPC_TPREL16	include/elf.h	2048;"	d
+R_PPC_TPREL16_HA	include/elf.h	2051;"	d
+R_PPC_TPREL16_HI	include/elf.h	2050;"	d
+R_PPC_TPREL16_LO	include/elf.h	2049;"	d
+R_PPC_TPREL32	include/elf.h	2052;"	d
+R_PPC_UADDR16	include/elf.h	2032;"	d
+R_PPC_UADDR32	include/elf.h	2031;"	d
+R_SH_ALIGN	include/elf.h	2519;"	d
+R_SH_CODE	include/elf.h	2520;"	d
+R_SH_COPY	include/elf.h	2536;"	d
+R_SH_COUNT	include/elf.h	2518;"	d
+R_SH_DATA	include/elf.h	2521;"	d
+R_SH_DIR32	include/elf.h	2506;"	d
+R_SH_DIR8BP	include/elf.h	2512;"	d
+R_SH_DIR8L	include/elf.h	2514;"	d
+R_SH_DIR8W	include/elf.h	2513;"	d
+R_SH_DIR8WPL	include/elf.h	2510;"	d
+R_SH_DIR8WPN	include/elf.h	2508;"	d
+R_SH_DIR8WPZ	include/elf.h	2511;"	d
+R_SH_GLOB_DAT	include/elf.h	2537;"	d
+R_SH_GNU_VTENTRY	include/elf.h	2525;"	d
+R_SH_GNU_VTINHERIT	include/elf.h	2524;"	d
+R_SH_GOT32	include/elf.h	2534;"	d
+R_SH_GOTOFF	include/elf.h	2540;"	d
+R_SH_GOTPC	include/elf.h	2541;"	d
+R_SH_IND12W	include/elf.h	2509;"	d
+R_SH_JMP_SLOT	include/elf.h	2538;"	d
+R_SH_LABEL	include/elf.h	2522;"	d
+R_SH_NONE	include/elf.h	2505;"	d
+R_SH_NUM	include/elf.h	2543;"	d
+R_SH_PLT32	include/elf.h	2535;"	d
+R_SH_REL32	include/elf.h	2507;"	d
+R_SH_RELATIVE	include/elf.h	2539;"	d
+R_SH_SWITCH16	include/elf.h	2515;"	d
+R_SH_SWITCH32	include/elf.h	2516;"	d
+R_SH_SWITCH8	include/elf.h	2523;"	d
+R_SH_TLS_DTPMOD32	include/elf.h	2531;"	d
+R_SH_TLS_DTPOFF32	include/elf.h	2532;"	d
+R_SH_TLS_GD_32	include/elf.h	2526;"	d
+R_SH_TLS_IE_32	include/elf.h	2529;"	d
+R_SH_TLS_LDO_32	include/elf.h	2528;"	d
+R_SH_TLS_LD_32	include/elf.h	2527;"	d
+R_SH_TLS_LE_32	include/elf.h	2530;"	d
+R_SH_TLS_TPOFF32	include/elf.h	2533;"	d
+R_SH_USES	include/elf.h	2517;"	d
+R_SPARC_10	include/elf.h	1271;"	d
+R_SPARC_11	include/elf.h	1272;"	d
+R_SPARC_13	include/elf.h	1249;"	d
+R_SPARC_16	include/elf.h	1240;"	d
+R_SPARC_22	include/elf.h	1248;"	d
+R_SPARC_32	include/elf.h	1241;"	d
+R_SPARC_5	include/elf.h	1285;"	d
+R_SPARC_6	include/elf.h	1286;"	d
+R_SPARC_64	include/elf.h	1273;"	d
+R_SPARC_7	include/elf.h	1284;"	d
+R_SPARC_8	include/elf.h	1239;"	d
+R_SPARC_COPY	include/elf.h	1257;"	d
+R_SPARC_DISP16	include/elf.h	1243;"	d
+R_SPARC_DISP32	include/elf.h	1244;"	d
+R_SPARC_DISP64	include/elf.h	1287;"	d
+R_SPARC_DISP8	include/elf.h	1242;"	d
+R_SPARC_GLOB_DAT	include/elf.h	1258;"	d
+R_SPARC_GLOB_JMP	include/elf.h	1283;"	d
+R_SPARC_GNU_VTENTRY	include/elf.h	1332;"	d
+R_SPARC_GNU_VTINHERIT	include/elf.h	1331;"	d
+R_SPARC_GOT10	include/elf.h	1251;"	d
+R_SPARC_GOT13	include/elf.h	1252;"	d
+R_SPARC_GOT22	include/elf.h	1253;"	d
+R_SPARC_GOTDATA_HIX22	include/elf.h	1321;"	d
+R_SPARC_GOTDATA_LOX10	include/elf.h	1322;"	d
+R_SPARC_GOTDATA_OP	include/elf.h	1325;"	d
+R_SPARC_GOTDATA_OP_HIX22	include/elf.h	1323;"	d
+R_SPARC_GOTDATA_OP_LOX10	include/elf.h	1324;"	d
+R_SPARC_H34	include/elf.h	1326;"	d
+R_SPARC_H44	include/elf.h	1291;"	d
+R_SPARC_HH22	include/elf.h	1275;"	d
+R_SPARC_HI22	include/elf.h	1247;"	d
+R_SPARC_HIPLT22	include/elf.h	1266;"	d
+R_SPARC_HIX22	include/elf.h	1289;"	d
+R_SPARC_HM10	include/elf.h	1276;"	d
+R_SPARC_IRELATIVE	include/elf.h	1330;"	d
+R_SPARC_JMP_IREL	include/elf.h	1329;"	d
+R_SPARC_JMP_SLOT	include/elf.h	1259;"	d
+R_SPARC_L44	include/elf.h	1293;"	d
+R_SPARC_LM22	include/elf.h	1277;"	d
+R_SPARC_LO10	include/elf.h	1250;"	d
+R_SPARC_LOPLT10	include/elf.h	1267;"	d
+R_SPARC_LOX10	include/elf.h	1290;"	d
+R_SPARC_M44	include/elf.h	1292;"	d
+R_SPARC_NONE	include/elf.h	1238;"	d
+R_SPARC_NUM	include/elf.h	1335;"	d
+R_SPARC_OLO10	include/elf.h	1274;"	d
+R_SPARC_PC10	include/elf.h	1254;"	d
+R_SPARC_PC22	include/elf.h	1255;"	d
+R_SPARC_PCPLT10	include/elf.h	1270;"	d
+R_SPARC_PCPLT22	include/elf.h	1269;"	d
+R_SPARC_PCPLT32	include/elf.h	1268;"	d
+R_SPARC_PC_HH22	include/elf.h	1278;"	d
+R_SPARC_PC_HM10	include/elf.h	1279;"	d
+R_SPARC_PC_LM22	include/elf.h	1280;"	d
+R_SPARC_PLT32	include/elf.h	1265;"	d
+R_SPARC_PLT64	include/elf.h	1288;"	d
+R_SPARC_REGISTER	include/elf.h	1294;"	d
+R_SPARC_RELATIVE	include/elf.h	1260;"	d
+R_SPARC_REV32	include/elf.h	1333;"	d
+R_SPARC_SIZE32	include/elf.h	1327;"	d
+R_SPARC_SIZE64	include/elf.h	1328;"	d
+R_SPARC_TLS_DTPMOD32	include/elf.h	1315;"	d
+R_SPARC_TLS_DTPMOD64	include/elf.h	1316;"	d
+R_SPARC_TLS_DTPOFF32	include/elf.h	1317;"	d
+R_SPARC_TLS_DTPOFF64	include/elf.h	1318;"	d
+R_SPARC_TLS_GD_ADD	include/elf.h	1299;"	d
+R_SPARC_TLS_GD_CALL	include/elf.h	1300;"	d
+R_SPARC_TLS_GD_HI22	include/elf.h	1297;"	d
+R_SPARC_TLS_GD_LO10	include/elf.h	1298;"	d
+R_SPARC_TLS_IE_ADD	include/elf.h	1312;"	d
+R_SPARC_TLS_IE_HI22	include/elf.h	1308;"	d
+R_SPARC_TLS_IE_LD	include/elf.h	1310;"	d
+R_SPARC_TLS_IE_LDX	include/elf.h	1311;"	d
+R_SPARC_TLS_IE_LO10	include/elf.h	1309;"	d
+R_SPARC_TLS_LDM_ADD	include/elf.h	1303;"	d
+R_SPARC_TLS_LDM_CALL	include/elf.h	1304;"	d
+R_SPARC_TLS_LDM_HI22	include/elf.h	1301;"	d
+R_SPARC_TLS_LDM_LO10	include/elf.h	1302;"	d
+R_SPARC_TLS_LDO_ADD	include/elf.h	1307;"	d
+R_SPARC_TLS_LDO_HIX22	include/elf.h	1305;"	d
+R_SPARC_TLS_LDO_LOX10	include/elf.h	1306;"	d
+R_SPARC_TLS_LE_HIX22	include/elf.h	1313;"	d
+R_SPARC_TLS_LE_LOX10	include/elf.h	1314;"	d
+R_SPARC_TLS_TPOFF32	include/elf.h	1319;"	d
+R_SPARC_TLS_TPOFF64	include/elf.h	1320;"	d
+R_SPARC_UA16	include/elf.h	1296;"	d
+R_SPARC_UA32	include/elf.h	1261;"	d
+R_SPARC_UA64	include/elf.h	1295;"	d
+R_SPARC_WDISP16	include/elf.h	1281;"	d
+R_SPARC_WDISP19	include/elf.h	1282;"	d
+R_SPARC_WDISP22	include/elf.h	1246;"	d
+R_SPARC_WDISP30	include/elf.h	1245;"	d
+R_SPARC_WPLT30	include/elf.h	1256;"	d
+R_X86_64_16	include/elf.h	2675;"	d
+R_X86_64_32	include/elf.h	2673;"	d
+R_X86_64_32S	include/elf.h	2674;"	d
+R_X86_64_64	include/elf.h	2663;"	d
+R_X86_64_8	include/elf.h	2677;"	d
+R_X86_64_COPY	include/elf.h	2667;"	d
+R_X86_64_DTPMOD64	include/elf.h	2679;"	d
+R_X86_64_DTPOFF32	include/elf.h	2686;"	d
+R_X86_64_DTPOFF64	include/elf.h	2680;"	d
+R_X86_64_GLOB_DAT	include/elf.h	2668;"	d
+R_X86_64_GOT32	include/elf.h	2665;"	d
+R_X86_64_GOT64	include/elf.h	2694;"	d
+R_X86_64_GOTOFF64	include/elf.h	2691;"	d
+R_X86_64_GOTPC32	include/elf.h	2692;"	d
+R_X86_64_GOTPC32_TLSDESC	include/elf.h	2703;"	d
+R_X86_64_GOTPC64	include/elf.h	2697;"	d
+R_X86_64_GOTPCREL	include/elf.h	2671;"	d
+R_X86_64_GOTPCREL64	include/elf.h	2695;"	d
+R_X86_64_GOTPLT64	include/elf.h	2698;"	d
+R_X86_64_GOTTPOFF	include/elf.h	2687;"	d
+R_X86_64_IRELATIVE	include/elf.h	2707;"	d
+R_X86_64_JUMP_SLOT	include/elf.h	2669;"	d
+R_X86_64_NONE	include/elf.h	2662;"	d
+R_X86_64_NUM	include/elf.h	2709;"	d
+R_X86_64_PC16	include/elf.h	2676;"	d
+R_X86_64_PC32	include/elf.h	2664;"	d
+R_X86_64_PC64	include/elf.h	2690;"	d
+R_X86_64_PC8	include/elf.h	2678;"	d
+R_X86_64_PLT32	include/elf.h	2666;"	d
+R_X86_64_PLTOFF64	include/elf.h	2699;"	d
+R_X86_64_RELATIVE	include/elf.h	2670;"	d
+R_X86_64_SIZE32	include/elf.h	2701;"	d
+R_X86_64_SIZE64	include/elf.h	2702;"	d
+R_X86_64_TLSDESC	include/elf.h	2706;"	d
+R_X86_64_TLSDESC_CALL	include/elf.h	2704;"	d
+R_X86_64_TLSGD	include/elf.h	2682;"	d
+R_X86_64_TLSLD	include/elf.h	2684;"	d
+R_X86_64_TPOFF32	include/elf.h	2689;"	d
+R_X86_64_TPOFF64	include/elf.h	2681;"	d
+SELFMAG	include/elf.h	123;"	d
+SERVERS_KBD_H	include/servers/kbd.h	2;"	d
+SHF_ALLOC	include/elf.h	356;"	d
+SHF_ALPHA_GPREL	include/elf.h	1940;"	d
+SHF_ARM_COMDEF	include/elf.h	2288;"	d
+SHF_ARM_ENTRYSECT	include/elf.h	2287;"	d
+SHF_EXCLUDE	include/elf.h	370;"	d
+SHF_EXECINSTR	include/elf.h	357;"	d
+SHF_GROUP	include/elf.h	364;"	d
+SHF_IA_64_NORECOV	include/elf.h	2389;"	d
+SHF_IA_64_SHORT	include/elf.h	2388;"	d
+SHF_INFO_LINK	include/elf.h	360;"	d
+SHF_LINK_ORDER	include/elf.h	361;"	d
+SHF_MASKOS	include/elf.h	366;"	d
+SHF_MASKPROC	include/elf.h	367;"	d
+SHF_MERGE	include/elf.h	358;"	d
+SHF_MIPS_ADDR	include/elf.h	1440;"	d
+SHF_MIPS_GPREL	include/elf.h	1438;"	d
+SHF_MIPS_LOCAL	include/elf.h	1443;"	d
+SHF_MIPS_MERGE	include/elf.h	1439;"	d
+SHF_MIPS_NAMES	include/elf.h	1444;"	d
+SHF_MIPS_NODUPE	include/elf.h	1445;"	d
+SHF_MIPS_NOSTRIP	include/elf.h	1442;"	d
+SHF_MIPS_STRINGS	include/elf.h	1441;"	d
+SHF_ORDERED	include/elf.h	368;"	d
+SHF_OS_NONCONFORMING	include/elf.h	362;"	d
+SHF_PARISC_HUGE	include/elf.h	1768;"	d
+SHF_PARISC_SBP	include/elf.h	1769;"	d
+SHF_PARISC_SHORT	include/elf.h	1767;"	d
+SHF_STRINGS	include/elf.h	359;"	d
+SHF_TLS	include/elf.h	365;"	d
+SHF_WRITE	include/elf.h	355;"	d
+SHN_ABS	include/elf.h	309;"	d
+SHN_AFTER	include/elf.h	304;"	d
+SHN_BEFORE	include/elf.h	302;"	d
+SHN_COMMON	include/elf.h	310;"	d
+SHN_HIOS	include/elf.h	308;"	d
+SHN_HIPROC	include/elf.h	306;"	d
+SHN_HIRESERVE	include/elf.h	312;"	d
+SHN_LOOS	include/elf.h	307;"	d
+SHN_LOPROC	include/elf.h	301;"	d
+SHN_LORESERVE	include/elf.h	300;"	d
+SHN_MIPS_ACOMMON	include/elf.h	1388;"	d
+SHN_MIPS_DATA	include/elf.h	1390;"	d
+SHN_MIPS_SCOMMON	include/elf.h	1391;"	d
+SHN_MIPS_SUNDEFINED	include/elf.h	1392;"	d
+SHN_MIPS_TEXT	include/elf.h	1389;"	d
+SHN_PARISC_ANSI_COMMON	include/elf.h	1755;"	d
+SHN_PARISC_HUGE_COMMON	include/elf.h	1757;"	d
+SHN_UNDEF	include/elf.h	299;"	d
+SHN_XINDEX	include/elf.h	311;"	d
+SHT_ALPHA_DEBUG	include/elf.h	1935;"	d
+SHT_ALPHA_REGINFO	include/elf.h	1936;"	d
+SHT_ARM_ATTRIBUTES	include/elf.h	2303;"	d
+SHT_ARM_EXIDX	include/elf.h	2301;"	d
+SHT_ARM_PREEMPTMAP	include/elf.h	2302;"	d
+SHT_CHECKSUM	include/elf.h	338;"	d
+SHT_DYNAMIC	include/elf.h	322;"	d
+SHT_DYNSYM	include/elf.h	327;"	d
+SHT_FINI_ARRAY	include/elf.h	329;"	d
+SHT_GNU_ATTRIBUTES	include/elf.h	335;"	d
+SHT_GNU_HASH	include/elf.h	336;"	d
+SHT_GNU_LIBLIST	include/elf.h	337;"	d
+SHT_GNU_verdef	include/elf.h	343;"	d
+SHT_GNU_verneed	include/elf.h	344;"	d
+SHT_GNU_versym	include/elf.h	345;"	d
+SHT_GROUP	include/elf.h	331;"	d
+SHT_HASH	include/elf.h	321;"	d
+SHT_HIOS	include/elf.h	347;"	d
+SHT_HIPROC	include/elf.h	349;"	d
+SHT_HISUNW	include/elf.h	346;"	d
+SHT_HIUSER	include/elf.h	351;"	d
+SHT_IA_64_EXT	include/elf.h	2384;"	d
+SHT_IA_64_UNWIND	include/elf.h	2385;"	d
+SHT_INIT_ARRAY	include/elf.h	328;"	d
+SHT_LOOS	include/elf.h	334;"	d
+SHT_LOPROC	include/elf.h	348;"	d
+SHT_LOSUNW	include/elf.h	339;"	d
+SHT_LOUSER	include/elf.h	350;"	d
+SHT_MIPS_AUXSYM	include/elf.h	1415;"	d
+SHT_MIPS_CONFLICT	include/elf.h	1398;"	d
+SHT_MIPS_CONTENT	include/elf.h	1407;"	d
+SHT_MIPS_DEBUG	include/elf.h	1401;"	d
+SHT_MIPS_DELTACLASS	include/elf.h	1422;"	d
+SHT_MIPS_DELTADECL	include/elf.h	1424;"	d
+SHT_MIPS_DELTAINST	include/elf.h	1421;"	d
+SHT_MIPS_DELTASYM	include/elf.h	1420;"	d
+SHT_MIPS_DENSE	include/elf.h	1412;"	d
+SHT_MIPS_DWARF	include/elf.h	1423;"	d
+SHT_MIPS_EH_REGION	include/elf.h	1432;"	d
+SHT_MIPS_EVENTS	include/elf.h	1426;"	d
+SHT_MIPS_EXTSYM	include/elf.h	1411;"	d
+SHT_MIPS_FDESC	include/elf.h	1410;"	d
+SHT_MIPS_GPTAB	include/elf.h	1399;"	d
+SHT_MIPS_IFACE	include/elf.h	1406;"	d
+SHT_MIPS_LIBLIST	include/elf.h	1396;"	d
+SHT_MIPS_LINE	include/elf.h	1418;"	d
+SHT_MIPS_LOCSTR	include/elf.h	1417;"	d
+SHT_MIPS_LOCSYM	include/elf.h	1414;"	d
+SHT_MIPS_MSYM	include/elf.h	1397;"	d
+SHT_MIPS_OPTIONS	include/elf.h	1408;"	d
+SHT_MIPS_OPTSYM	include/elf.h	1416;"	d
+SHT_MIPS_PACKAGE	include/elf.h	1403;"	d
+SHT_MIPS_PACKSYM	include/elf.h	1404;"	d
+SHT_MIPS_PDESC	include/elf.h	1413;"	d
+SHT_MIPS_PDR_EXCEPTION	include/elf.h	1434;"	d
+SHT_MIPS_PIXIE	include/elf.h	1428;"	d
+SHT_MIPS_REGINFO	include/elf.h	1402;"	d
+SHT_MIPS_RELD	include/elf.h	1405;"	d
+SHT_MIPS_RFDESC	include/elf.h	1419;"	d
+SHT_MIPS_SHDR	include/elf.h	1409;"	d
+SHT_MIPS_SYMBOL_LIB	include/elf.h	1425;"	d
+SHT_MIPS_TRANSLATE	include/elf.h	1427;"	d
+SHT_MIPS_UCODE	include/elf.h	1400;"	d
+SHT_MIPS_WHIRL	include/elf.h	1431;"	d
+SHT_MIPS_XLATE	include/elf.h	1429;"	d
+SHT_MIPS_XLATE_DEBUG	include/elf.h	1430;"	d
+SHT_MIPS_XLATE_OLD	include/elf.h	1433;"	d
+SHT_NOBITS	include/elf.h	324;"	d
+SHT_NOTE	include/elf.h	323;"	d
+SHT_NULL	include/elf.h	316;"	d
+SHT_NUM	include/elf.h	333;"	d
+SHT_PARISC_DOC	include/elf.h	1763;"	d
+SHT_PARISC_EXT	include/elf.h	1761;"	d
+SHT_PARISC_UNWIND	include/elf.h	1762;"	d
+SHT_PREINIT_ARRAY	include/elf.h	330;"	d
+SHT_PROGBITS	include/elf.h	317;"	d
+SHT_REL	include/elf.h	325;"	d
+SHT_RELA	include/elf.h	320;"	d
+SHT_SHLIB	include/elf.h	326;"	d
+SHT_STRTAB	include/elf.h	319;"	d
+SHT_SUNW_COMDAT	include/elf.h	341;"	d
+SHT_SUNW_move	include/elf.h	340;"	d
+SHT_SUNW_syminfo	include/elf.h	342;"	d
+SHT_SYMTAB	include/elf.h	318;"	d
+SHT_SYMTAB_SHNDX	include/elf.h	332;"	d
+STACK_SIZE	include/i386/multiboot.h	36;"	d
+STB_GLOBAL	include/elf.h	444;"	d
+STB_GNU_UNIQUE	include/elf.h	448;"	d
+STB_HIOS	include/elf.h	449;"	d
+STB_HIPROC	include/elf.h	451;"	d
+STB_LOCAL	include/elf.h	443;"	d
+STB_LOOS	include/elf.h	447;"	d
+STB_LOPROC	include/elf.h	450;"	d
+STB_MIPS_SPLIT_COMMON	include/elf.h	1459;"	d
+STB_NUM	include/elf.h	446;"	d
+STB_WEAK	include/elf.h	445;"	d
+STN_UNDEF	include/elf.h	474;"	d
+STO_ALPHA_NOPV	include/elf.h	1943;"	d
+STO_ALPHA_STD_GPLOAD	include/elf.h	1944;"	d
+STO_MIPS_DEFAULT	include/elf.h	1451;"	d
+STO_MIPS_HIDDEN	include/elf.h	1453;"	d
+STO_MIPS_INTERNAL	include/elf.h	1452;"	d
+STO_MIPS_PLT	include/elf.h	1455;"	d
+STO_MIPS_PROTECTED	include/elf.h	1454;"	d
+STO_MIPS_SC_ALIGN_UNUSED	include/elf.h	1456;"	d
+STT_ARM_16BIT	include/elf.h	2284;"	d
+STT_ARM_TFUNC	include/elf.h	2283;"	d
+STT_COMMON	include/elf.h	460;"	d
+STT_FILE	include/elf.h	459;"	d
+STT_FUNC	include/elf.h	457;"	d
+STT_GNU_IFUNC	include/elf.h	464;"	d
+STT_HIOS	include/elf.h	465;"	d
+STT_HIPROC	include/elf.h	467;"	d
+STT_HP_OPAQUE	include/elf.h	1775;"	d
+STT_HP_STUB	include/elf.h	1776;"	d
+STT_LOOS	include/elf.h	463;"	d
+STT_LOPROC	include/elf.h	466;"	d
+STT_NOTYPE	include/elf.h	455;"	d
+STT_NUM	include/elf.h	462;"	d
+STT_OBJECT	include/elf.h	456;"	d
+STT_PARISC_MILLICODE	include/elf.h	1773;"	d
+STT_SECTION	include/elf.h	458;"	d
+STT_SPARC_REGISTER	include/elf.h	1221;"	d
+STT_TLS	include/elf.h	461;"	d
+STV_DEFAULT	include/elf.h	485;"	d
+STV_HIDDEN	include/elf.h	487;"	d
+STV_INTERNAL	include/elf.h	486;"	d
+STV_PROTECTED	include/elf.h	488;"	d
+SYMINFO_BT_LOWRESERVE	include/elf.h	416;"	d
+SYMINFO_BT_PARENT	include/elf.h	415;"	d
+SYMINFO_BT_SELF	include/elf.h	414;"	d
+SYMINFO_CURRENT	include/elf.h	426;"	d
+SYMINFO_FLG_COPY	include/elf.h	421;"	d
+SYMINFO_FLG_DIRECT	include/elf.h	419;"	d
+SYMINFO_FLG_LAZYLOAD	include/elf.h	422;"	d
+SYMINFO_FLG_PASSTHRU	include/elf.h	420;"	d
+SYMINFO_NONE	include/elf.h	425;"	d
+SYMINFO_NUM	include/elf.h	427;"	d
+SYSCALL_FUNCTION_BLOCK	include/i386/syscall.h	16;"	d
+SYSCALL_FUNCTION_KDEBUG	include/i386/syscall.h	10;"	d
+SYSCALL_FUNCTION_MAILBOX_CREATE	include/i386/syscall.h	12;"	d
+SYSCALL_FUNCTION_MAILBOX_RECEIVE	include/i386/syscall.h	14;"	d
+SYSCALL_FUNCTION_MAILBOX_SEND	include/i386/syscall.h	13;"	d
+SYSCALL_FUNCTION_MMAP	include/i386/syscall.h	11;"	d
+SYSCALL_FUNCTION_MMAP_LIST	include/i386/syscall.h	15;"	d
+SYSCALL_IO	include/i386/syscall.h	19;"	d
+SYSCALL_LINK_IRQ	include/i386/syscall.h	18;"	d
+SYSCALL_MAX_SYSCALLS	include/i386/syscall.h	8;"	d
+VER_DEF_CURRENT	include/elf.h	826;"	d
+VER_DEF_NONE	include/elf.h	825;"	d
+VER_DEF_NUM	include/elf.h	827;"	d
+VER_FLG_BASE	include/elf.h	830;"	d
+VER_FLG_WEAK	include/elf.h	831;"	d
+VER_FLG_WEAK	include/elf.h	910;"	d
+VER_NDX_ELIMINATE	include/elf.h	837;"	d
+VER_NDX_GLOBAL	include/elf.h	835;"	d
+VER_NDX_LOCAL	include/elf.h	834;"	d
+VER_NDX_LORESERVE	include/elf.h	836;"	d
+VER_NEED_CURRENT	include/elf.h	883;"	d
+VER_NEED_NONE	include/elf.h	882;"	d
+VER_NEED_NUM	include/elf.h	884;"	d
+_ELF_H	include/elf.h	22;"	d
+__anon10::r_info	include/elf.h	/^  Elf64_Xword	r_info;			\/* Relocation type and symbol index *\/$/;"	m	struct:__anon10	access:public
+__anon10::r_offset	include/elf.h	/^  Elf64_Addr	r_offset;		\/* Address *\/$/;"	m	struct:__anon10	access:public
+__anon11::r_addend	include/elf.h	/^  Elf32_Sword	r_addend;		\/* Addend *\/$/;"	m	struct:__anon11	access:public
+__anon11::r_info	include/elf.h	/^  Elf32_Word	r_info;			\/* Relocation type and symbol index *\/$/;"	m	struct:__anon11	access:public
+__anon11::r_offset	include/elf.h	/^  Elf32_Addr	r_offset;		\/* Address *\/$/;"	m	struct:__anon11	access:public
+__anon12::r_addend	include/elf.h	/^  Elf64_Sxword	r_addend;		\/* Addend *\/$/;"	m	struct:__anon12	access:public
+__anon12::r_info	include/elf.h	/^  Elf64_Xword	r_info;			\/* Relocation type and symbol index *\/$/;"	m	struct:__anon12	access:public
+__anon12::r_offset	include/elf.h	/^  Elf64_Addr	r_offset;		\/* Address *\/$/;"	m	struct:__anon12	access:public
+__anon13::p_align	include/elf.h	/^  Elf32_Word	p_align;		\/* Segment alignment *\/$/;"	m	struct:__anon13	access:public
+__anon13::p_filesz	include/elf.h	/^  Elf32_Word	p_filesz;		\/* Segment size in file *\/$/;"	m	struct:__anon13	access:public
+__anon13::p_flags	include/elf.h	/^  Elf32_Word	p_flags;		\/* Segment flags *\/$/;"	m	struct:__anon13	access:public
+__anon13::p_memsz	include/elf.h	/^  Elf32_Word	p_memsz;		\/* Segment size in memory *\/$/;"	m	struct:__anon13	access:public
+__anon13::p_offset	include/elf.h	/^  Elf32_Off	p_offset;		\/* Segment file offset *\/$/;"	m	struct:__anon13	access:public
+__anon13::p_paddr	include/elf.h	/^  Elf32_Addr	p_paddr;		\/* Segment physical address *\/$/;"	m	struct:__anon13	access:public
+__anon13::p_type	include/elf.h	/^  Elf32_Word	p_type;			\/* Segment type *\/$/;"	m	struct:__anon13	access:public
+__anon13::p_vaddr	include/elf.h	/^  Elf32_Addr	p_vaddr;		\/* Segment virtual address *\/$/;"	m	struct:__anon13	access:public
+__anon14::p_align	include/elf.h	/^  Elf64_Xword	p_align;		\/* Segment alignment *\/$/;"	m	struct:__anon14	access:public
+__anon14::p_filesz	include/elf.h	/^  Elf64_Xword	p_filesz;		\/* Segment size in file *\/$/;"	m	struct:__anon14	access:public
+__anon14::p_flags	include/elf.h	/^  Elf64_Word	p_flags;		\/* Segment flags *\/$/;"	m	struct:__anon14	access:public
+__anon14::p_memsz	include/elf.h	/^  Elf64_Xword	p_memsz;		\/* Segment size in memory *\/$/;"	m	struct:__anon14	access:public
+__anon14::p_offset	include/elf.h	/^  Elf64_Off	p_offset;		\/* Segment file offset *\/$/;"	m	struct:__anon14	access:public
+__anon14::p_paddr	include/elf.h	/^  Elf64_Addr	p_paddr;		\/* Segment physical address *\/$/;"	m	struct:__anon14	access:public
+__anon14::p_type	include/elf.h	/^  Elf64_Word	p_type;			\/* Segment type *\/$/;"	m	struct:__anon14	access:public
+__anon14::p_vaddr	include/elf.h	/^  Elf64_Addr	p_vaddr;		\/* Segment virtual address *\/$/;"	m	struct:__anon14	access:public
+__anon15::__anon16::d_ptr	include/elf.h	/^      Elf32_Addr d_ptr;			\/* Address value *\/$/;"	m	union:__anon15::__anon16	access:public
+__anon15::__anon16::d_val	include/elf.h	/^      Elf32_Word d_val;			\/* Integer value *\/$/;"	m	union:__anon15::__anon16	access:public
+__anon15::d_tag	include/elf.h	/^  Elf32_Sword	d_tag;			\/* Dynamic entry type *\/$/;"	m	struct:__anon15	access:public
+__anon15::d_un	include/elf.h	/^    } d_un;$/;"	m	struct:__anon15	typeref:union:__anon15::__anon16	access:public
+__anon17::__anon18::d_ptr	include/elf.h	/^      Elf64_Addr d_ptr;			\/* Address value *\/$/;"	m	union:__anon17::__anon18	access:public
+__anon17::__anon18::d_val	include/elf.h	/^      Elf64_Xword d_val;		\/* Integer value *\/$/;"	m	union:__anon17::__anon18	access:public
+__anon17::d_tag	include/elf.h	/^  Elf64_Sxword	d_tag;			\/* Dynamic entry type *\/$/;"	m	struct:__anon17	access:public
+__anon17::d_un	include/elf.h	/^    } d_un;$/;"	m	struct:__anon17	typeref:union:__anon17::__anon18	access:public
+__anon19::vd_aux	include/elf.h	/^  Elf32_Word	vd_aux;			\/* Offset in bytes to verdaux array *\/$/;"	m	struct:__anon19	access:public
+__anon19::vd_cnt	include/elf.h	/^  Elf32_Half	vd_cnt;			\/* Number of associated aux entries *\/$/;"	m	struct:__anon19	access:public
+__anon19::vd_flags	include/elf.h	/^  Elf32_Half	vd_flags;		\/* Version information *\/$/;"	m	struct:__anon19	access:public
+__anon19::vd_hash	include/elf.h	/^  Elf32_Word	vd_hash;		\/* Version name hash value *\/$/;"	m	struct:__anon19	access:public
+__anon19::vd_ndx	include/elf.h	/^  Elf32_Half	vd_ndx;			\/* Version Index *\/$/;"	m	struct:__anon19	access:public
+__anon19::vd_next	include/elf.h	/^  Elf32_Word	vd_next;		\/* Offset in bytes to next verdef$/;"	m	struct:__anon19	access:public
+__anon19::vd_version	include/elf.h	/^  Elf32_Half	vd_version;		\/* Version revision *\/$/;"	m	struct:__anon19	access:public
+__anon1::e_ehsize	include/elf.h	/^  Elf32_Half	e_ehsize;		\/* ELF header size in bytes *\/$/;"	m	struct:__anon1	access:public
+__anon1::e_entry	include/elf.h	/^  Elf32_Addr	e_entry;		\/* Entry point virtual address *\/$/;"	m	struct:__anon1	access:public
+__anon1::e_flags	include/elf.h	/^  Elf32_Word	e_flags;		\/* Processor-specific flags *\/$/;"	m	struct:__anon1	access:public
+__anon1::e_ident	include/elf.h	/^  unsigned char	e_ident[EI_NIDENT];	\/* Magic number and other info *\/$/;"	m	struct:__anon1	access:public
+__anon1::e_machine	include/elf.h	/^  Elf32_Half	e_machine;		\/* Architecture *\/$/;"	m	struct:__anon1	access:public
+__anon1::e_phentsize	include/elf.h	/^  Elf32_Half	e_phentsize;		\/* Program header table entry size *\/$/;"	m	struct:__anon1	access:public
+__anon1::e_phnum	include/elf.h	/^  Elf32_Half	e_phnum;		\/* Program header table entry count *\/$/;"	m	struct:__anon1	access:public
+__anon1::e_phoff	include/elf.h	/^  Elf32_Off	e_phoff;		\/* Program header table file offset *\/$/;"	m	struct:__anon1	access:public
+__anon1::e_shentsize	include/elf.h	/^  Elf32_Half	e_shentsize;		\/* Section header table entry size *\/$/;"	m	struct:__anon1	access:public
+__anon1::e_shnum	include/elf.h	/^  Elf32_Half	e_shnum;		\/* Section header table entry count *\/$/;"	m	struct:__anon1	access:public
+__anon1::e_shoff	include/elf.h	/^  Elf32_Off	e_shoff;		\/* Section header table file offset *\/$/;"	m	struct:__anon1	access:public
+__anon1::e_shstrndx	include/elf.h	/^  Elf32_Half	e_shstrndx;		\/* Section header string table index *\/$/;"	m	struct:__anon1	access:public
+__anon1::e_type	include/elf.h	/^  Elf32_Half	e_type;			\/* Object file type *\/$/;"	m	struct:__anon1	access:public
+__anon1::e_version	include/elf.h	/^  Elf32_Word	e_version;		\/* Object file version *\/$/;"	m	struct:__anon1	access:public
+__anon20::vd_aux	include/elf.h	/^  Elf64_Word	vd_aux;			\/* Offset in bytes to verdaux array *\/$/;"	m	struct:__anon20	access:public
+__anon20::vd_cnt	include/elf.h	/^  Elf64_Half	vd_cnt;			\/* Number of associated aux entries *\/$/;"	m	struct:__anon20	access:public
+__anon20::vd_flags	include/elf.h	/^  Elf64_Half	vd_flags;		\/* Version information *\/$/;"	m	struct:__anon20	access:public
+__anon20::vd_hash	include/elf.h	/^  Elf64_Word	vd_hash;		\/* Version name hash value *\/$/;"	m	struct:__anon20	access:public
+__anon20::vd_ndx	include/elf.h	/^  Elf64_Half	vd_ndx;			\/* Version Index *\/$/;"	m	struct:__anon20	access:public
+__anon20::vd_next	include/elf.h	/^  Elf64_Word	vd_next;		\/* Offset in bytes to next verdef$/;"	m	struct:__anon20	access:public
+__anon20::vd_version	include/elf.h	/^  Elf64_Half	vd_version;		\/* Version revision *\/$/;"	m	struct:__anon20	access:public
+__anon21::vda_name	include/elf.h	/^  Elf32_Word	vda_name;		\/* Version or dependency names *\/$/;"	m	struct:__anon21	access:public
+__anon21::vda_next	include/elf.h	/^  Elf32_Word	vda_next;		\/* Offset in bytes to next verdaux$/;"	m	struct:__anon21	access:public
+__anon22::vda_name	include/elf.h	/^  Elf64_Word	vda_name;		\/* Version or dependency names *\/$/;"	m	struct:__anon22	access:public
+__anon22::vda_next	include/elf.h	/^  Elf64_Word	vda_next;		\/* Offset in bytes to next verdaux$/;"	m	struct:__anon22	access:public
+__anon23::vn_aux	include/elf.h	/^  Elf32_Word	vn_aux;			\/* Offset in bytes to vernaux array *\/$/;"	m	struct:__anon23	access:public
+__anon23::vn_cnt	include/elf.h	/^  Elf32_Half	vn_cnt;			\/* Number of associated aux entries *\/$/;"	m	struct:__anon23	access:public
+__anon23::vn_file	include/elf.h	/^  Elf32_Word	vn_file;		\/* Offset of filename for this$/;"	m	struct:__anon23	access:public
+__anon23::vn_next	include/elf.h	/^  Elf32_Word	vn_next;		\/* Offset in bytes to next verneed$/;"	m	struct:__anon23	access:public
+__anon23::vn_version	include/elf.h	/^  Elf32_Half	vn_version;		\/* Version of structure *\/$/;"	m	struct:__anon23	access:public
+__anon24::vn_aux	include/elf.h	/^  Elf64_Word	vn_aux;			\/* Offset in bytes to vernaux array *\/$/;"	m	struct:__anon24	access:public
+__anon24::vn_cnt	include/elf.h	/^  Elf64_Half	vn_cnt;			\/* Number of associated aux entries *\/$/;"	m	struct:__anon24	access:public
+__anon24::vn_file	include/elf.h	/^  Elf64_Word	vn_file;		\/* Offset of filename for this$/;"	m	struct:__anon24	access:public
+__anon24::vn_next	include/elf.h	/^  Elf64_Word	vn_next;		\/* Offset in bytes to next verneed$/;"	m	struct:__anon24	access:public
+__anon24::vn_version	include/elf.h	/^  Elf64_Half	vn_version;		\/* Version of structure *\/$/;"	m	struct:__anon24	access:public
+__anon25::vna_flags	include/elf.h	/^  Elf32_Half	vna_flags;		\/* Dependency specific information *\/$/;"	m	struct:__anon25	access:public
+__anon25::vna_hash	include/elf.h	/^  Elf32_Word	vna_hash;		\/* Hash value of dependency name *\/$/;"	m	struct:__anon25	access:public
+__anon25::vna_name	include/elf.h	/^  Elf32_Word	vna_name;		\/* Dependency name string offset *\/$/;"	m	struct:__anon25	access:public
+__anon25::vna_next	include/elf.h	/^  Elf32_Word	vna_next;		\/* Offset in bytes to next vernaux$/;"	m	struct:__anon25	access:public
+__anon25::vna_other	include/elf.h	/^  Elf32_Half	vna_other;		\/* Unused *\/$/;"	m	struct:__anon25	access:public
+__anon26::vna_flags	include/elf.h	/^  Elf64_Half	vna_flags;		\/* Dependency specific information *\/$/;"	m	struct:__anon26	access:public
+__anon26::vna_hash	include/elf.h	/^  Elf64_Word	vna_hash;		\/* Hash value of dependency name *\/$/;"	m	struct:__anon26	access:public
+__anon26::vna_name	include/elf.h	/^  Elf64_Word	vna_name;		\/* Dependency name string offset *\/$/;"	m	struct:__anon26	access:public
+__anon26::vna_next	include/elf.h	/^  Elf64_Word	vna_next;		\/* Offset in bytes to next vernaux$/;"	m	struct:__anon26	access:public
+__anon26::vna_other	include/elf.h	/^  Elf64_Half	vna_other;		\/* Unused *\/$/;"	m	struct:__anon26	access:public
+__anon27::__anon28::a_val	include/elf.h	/^      uint32_t a_val;		\/* Integer value *\/$/;"	m	union:__anon27::__anon28	access:public
+__anon27::a_type	include/elf.h	/^  uint32_t a_type;		\/* Entry type *\/$/;"	m	struct:__anon27	access:public
+__anon27::a_un	include/elf.h	/^    } a_un;$/;"	m	struct:__anon27	typeref:union:__anon27::__anon28	access:public
+__anon29::__anon30::a_val	include/elf.h	/^      uint64_t a_val;		\/* Integer value *\/$/;"	m	union:__anon29::__anon30	access:public
+__anon29::a_type	include/elf.h	/^  uint64_t a_type;		\/* Entry type *\/$/;"	m	struct:__anon29	access:public
+__anon29::a_un	include/elf.h	/^    } a_un;$/;"	m	struct:__anon29	typeref:union:__anon29::__anon30	access:public
+__anon2::e_ehsize	include/elf.h	/^  Elf64_Half	e_ehsize;		\/* ELF header size in bytes *\/$/;"	m	struct:__anon2	access:public
+__anon2::e_entry	include/elf.h	/^  Elf64_Addr	e_entry;		\/* Entry point virtual address *\/$/;"	m	struct:__anon2	access:public
+__anon2::e_flags	include/elf.h	/^  Elf64_Word	e_flags;		\/* Processor-specific flags *\/$/;"	m	struct:__anon2	access:public
+__anon2::e_ident	include/elf.h	/^  unsigned char	e_ident[EI_NIDENT];	\/* Magic number and other info *\/$/;"	m	struct:__anon2	access:public
+__anon2::e_machine	include/elf.h	/^  Elf64_Half	e_machine;		\/* Architecture *\/$/;"	m	struct:__anon2	access:public
+__anon2::e_phentsize	include/elf.h	/^  Elf64_Half	e_phentsize;		\/* Program header table entry size *\/$/;"	m	struct:__anon2	access:public
+__anon2::e_phnum	include/elf.h	/^  Elf64_Half	e_phnum;		\/* Program header table entry count *\/$/;"	m	struct:__anon2	access:public
+__anon2::e_phoff	include/elf.h	/^  Elf64_Off	e_phoff;		\/* Program header table file offset *\/$/;"	m	struct:__anon2	access:public
+__anon2::e_shentsize	include/elf.h	/^  Elf64_Half	e_shentsize;		\/* Section header table entry size *\/$/;"	m	struct:__anon2	access:public
+__anon2::e_shnum	include/elf.h	/^  Elf64_Half	e_shnum;		\/* Section header table entry count *\/$/;"	m	struct:__anon2	access:public
+__anon2::e_shoff	include/elf.h	/^  Elf64_Off	e_shoff;		\/* Section header table file offset *\/$/;"	m	struct:__anon2	access:public
+__anon2::e_shstrndx	include/elf.h	/^  Elf64_Half	e_shstrndx;		\/* Section header string table index *\/$/;"	m	struct:__anon2	access:public
+__anon2::e_type	include/elf.h	/^  Elf64_Half	e_type;			\/* Object file type *\/$/;"	m	struct:__anon2	access:public
+__anon2::e_version	include/elf.h	/^  Elf64_Word	e_version;		\/* Object file version *\/$/;"	m	struct:__anon2	access:public
+__anon31::n_descsz	include/elf.h	/^  Elf32_Word n_descsz;			\/* Length of the note's descriptor.  *\/$/;"	m	struct:__anon31	access:public
+__anon31::n_namesz	include/elf.h	/^  Elf32_Word n_namesz;			\/* Length of the note's name.  *\/$/;"	m	struct:__anon31	access:public
+__anon31::n_type	include/elf.h	/^  Elf32_Word n_type;			\/* Type of the note.  *\/$/;"	m	struct:__anon31	access:public
+__anon32::n_descsz	include/elf.h	/^  Elf64_Word n_descsz;			\/* Length of the note's descriptor.  *\/$/;"	m	struct:__anon32	access:public
+__anon32::n_namesz	include/elf.h	/^  Elf64_Word n_namesz;			\/* Length of the note's name.  *\/$/;"	m	struct:__anon32	access:public
+__anon32::n_type	include/elf.h	/^  Elf64_Word n_type;			\/* Type of the note.  *\/$/;"	m	struct:__anon32	access:public
+__anon33::m_info	include/elf.h	/^  Elf32_Word m_info;		\/* Size and index.  *\/$/;"	m	struct:__anon33	access:public
+__anon33::m_poffset	include/elf.h	/^  Elf32_Word m_poffset;		\/* Symbol offset.  *\/$/;"	m	struct:__anon33	access:public
+__anon33::m_repeat	include/elf.h	/^  Elf32_Half m_repeat;		\/* Repeat count.  *\/$/;"	m	struct:__anon33	access:public
+__anon33::m_stride	include/elf.h	/^  Elf32_Half m_stride;		\/* Stride info.  *\/$/;"	m	struct:__anon33	access:public
+__anon33::m_value	include/elf.h	/^  Elf32_Xword m_value;		\/* Symbol value.  *\/$/;"	m	struct:__anon33	access:public
+__anon34::m_info	include/elf.h	/^  Elf64_Xword m_info;		\/* Size and index.  *\/$/;"	m	struct:__anon34	access:public
+__anon34::m_poffset	include/elf.h	/^  Elf64_Xword m_poffset;	\/* Symbol offset.  *\/$/;"	m	struct:__anon34	access:public
+__anon34::m_repeat	include/elf.h	/^  Elf64_Half m_repeat;		\/* Repeat count.  *\/$/;"	m	struct:__anon34	access:public
+__anon34::m_stride	include/elf.h	/^  Elf64_Half m_stride;		\/* Stride info.  *\/$/;"	m	struct:__anon34	access:public
+__anon34::m_value	include/elf.h	/^  Elf64_Xword m_value;		\/* Symbol value.  *\/$/;"	m	struct:__anon34	access:public
+__anon35::__anon36::gt_current_g_value	include/elf.h	/^      Elf32_Word gt_current_g_value;	\/* -G value used for compilation *\/$/;"	m	struct:__anon35::__anon36	access:public
+__anon35::__anon36::gt_unused	include/elf.h	/^      Elf32_Word gt_unused;		\/* Not used *\/$/;"	m	struct:__anon35::__anon36	access:public
+__anon35::__anon37::gt_bytes	include/elf.h	/^      Elf32_Word gt_bytes;		\/* This many bytes would be used *\/$/;"	m	struct:__anon35::__anon37	access:public
+__anon35::__anon37::gt_g_value	include/elf.h	/^      Elf32_Word gt_g_value;		\/* If this value were used for -G *\/$/;"	m	struct:__anon35::__anon37	access:public
+__anon35::gt_entry	include/elf.h	/^    } gt_entry;				\/* Subsequent entries in section *\/$/;"	m	union:__anon35	typeref:struct:__anon35::__anon37	access:public
+__anon35::gt_header	include/elf.h	/^    } gt_header;			\/* First entry in section *\/$/;"	m	union:__anon35	typeref:struct:__anon35::__anon36	access:public
+__anon38::ri_cprmask	include/elf.h	/^  Elf32_Word	ri_cprmask[4];		\/* Coprocessor registers used *\/$/;"	m	struct:__anon38	access:public
+__anon38::ri_gp_value	include/elf.h	/^  Elf32_Sword	ri_gp_value;		\/* $gp register value *\/$/;"	m	struct:__anon38	access:public
+__anon38::ri_gprmask	include/elf.h	/^  Elf32_Word	ri_gprmask;		\/* General registers used *\/$/;"	m	struct:__anon38	access:public
+__anon39::info	include/elf.h	/^  Elf32_Word info;		\/* Kind-specific information.  *\/$/;"	m	struct:__anon39	access:public
+__anon39::kind	include/elf.h	/^  unsigned char kind;		\/* Determines interpretation of the$/;"	m	struct:__anon39	access:public
+__anon39::section	include/elf.h	/^  Elf32_Section section;	\/* Section header index of section affected,$/;"	m	struct:__anon39	access:public
+__anon39::size	include/elf.h	/^  unsigned char size;		\/* Size of descriptor, including header.  *\/$/;"	m	struct:__anon39	access:public
+__anon3::sh_addr	include/elf.h	/^  Elf32_Addr	sh_addr;		\/* Section virtual addr at execution *\/$/;"	m	struct:__anon3	access:public
+__anon3::sh_addralign	include/elf.h	/^  Elf32_Word	sh_addralign;		\/* Section alignment *\/$/;"	m	struct:__anon3	access:public
+__anon3::sh_entsize	include/elf.h	/^  Elf32_Word	sh_entsize;		\/* Entry size if section holds table *\/$/;"	m	struct:__anon3	access:public
+__anon3::sh_flags	include/elf.h	/^  Elf32_Word	sh_flags;		\/* Section flags *\/$/;"	m	struct:__anon3	access:public
+__anon3::sh_info	include/elf.h	/^  Elf32_Word	sh_info;		\/* Additional section information *\/$/;"	m	struct:__anon3	access:public
+__anon3::sh_link	include/elf.h	/^  Elf32_Word	sh_link;		\/* Link to another section *\/$/;"	m	struct:__anon3	access:public
+__anon3::sh_name	include/elf.h	/^  Elf32_Word	sh_name;		\/* Section name (string tbl index) *\/$/;"	m	struct:__anon3	access:public
+__anon3::sh_offset	include/elf.h	/^  Elf32_Off	sh_offset;		\/* Section file offset *\/$/;"	m	struct:__anon3	access:public
+__anon3::sh_size	include/elf.h	/^  Elf32_Word	sh_size;		\/* Section size in bytes *\/$/;"	m	struct:__anon3	access:public
+__anon3::sh_type	include/elf.h	/^  Elf32_Word	sh_type;		\/* Section type *\/$/;"	m	struct:__anon3	access:public
+__anon40::hwp_flags1	include/elf.h	/^  Elf32_Word hwp_flags1;	\/* Extra flags.  *\/$/;"	m	struct:__anon40	access:public
+__anon40::hwp_flags2	include/elf.h	/^  Elf32_Word hwp_flags2;	\/* Extra flags.  *\/$/;"	m	struct:__anon40	access:public
+__anon41::l_checksum	include/elf.h	/^  Elf32_Word l_checksum;	\/* Checksum *\/$/;"	m	struct:__anon41	access:public
+__anon41::l_flags	include/elf.h	/^  Elf32_Word l_flags;		\/* Flags *\/$/;"	m	struct:__anon41	access:public
+__anon41::l_name	include/elf.h	/^  Elf32_Word l_name;		\/* Name (string table index) *\/$/;"	m	struct:__anon41	access:public
+__anon41::l_time_stamp	include/elf.h	/^  Elf32_Word l_time_stamp;	\/* Timestamp *\/$/;"	m	struct:__anon41	access:public
+__anon41::l_version	include/elf.h	/^  Elf32_Word l_version;		\/* Interface version *\/$/;"	m	struct:__anon41	access:public
+__anon42::l_checksum	include/elf.h	/^  Elf64_Word l_checksum;	\/* Checksum *\/$/;"	m	struct:__anon42	access:public
+__anon42::l_flags	include/elf.h	/^  Elf64_Word l_flags;		\/* Flags *\/$/;"	m	struct:__anon42	access:public
+__anon42::l_name	include/elf.h	/^  Elf64_Word l_name;		\/* Name (string table index) *\/$/;"	m	struct:__anon42	access:public
+__anon42::l_time_stamp	include/elf.h	/^  Elf64_Word l_time_stamp;	\/* Timestamp *\/$/;"	m	struct:__anon42	access:public
+__anon42::l_version	include/elf.h	/^  Elf64_Word l_version;		\/* Interface version *\/$/;"	m	struct:__anon42	access:public
+__anon44::cs	include/i386/interrupt.h	/^  uint4 eip, cs, eflags, useresp, ss;$/;"	m	struct:__anon44	access:public
+__anon44::ds	include/i386/interrupt.h	/^  uint4 gs, fs, es, ds;      $/;"	m	struct:__anon44	access:public
+__anon44::eax	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+__anon44::ebp	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+__anon44::ebx	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+__anon44::ecx	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+__anon44::edi	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+__anon44::edx	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+__anon44::eflags	include/i386/interrupt.h	/^  uint4 eip, cs, eflags, useresp, ss;$/;"	m	struct:__anon44	access:public
+__anon44::eip	include/i386/interrupt.h	/^  uint4 eip, cs, eflags, useresp, ss;$/;"	m	struct:__anon44	access:public
+__anon44::err_code	include/i386/interrupt.h	/^  uint4 int_no, err_code;$/;"	m	struct:__anon44	access:public
+__anon44::es	include/i386/interrupt.h	/^  uint4 gs, fs, es, ds;      $/;"	m	struct:__anon44	access:public
+__anon44::esi	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+__anon44::esp	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+__anon44::fs	include/i386/interrupt.h	/^  uint4 gs, fs, es, ds;      $/;"	m	struct:__anon44	access:public
+__anon44::gs	include/i386/interrupt.h	/^  uint4 gs, fs, es, ds;      $/;"	m	struct:__anon44	access:public
+__anon44::int_no	include/i386/interrupt.h	/^  uint4 int_no, err_code;$/;"	m	struct:__anon44	access:public
+__anon44::ss	include/i386/interrupt.h	/^  uint4 eip, cs, eflags, useresp, ss;$/;"	m	struct:__anon44	access:public
+__anon44::useresp	include/i386/interrupt.h	/^  uint4 eip, cs, eflags, useresp, ss;$/;"	m	struct:__anon44	access:public
+__anon45::offset_high	include/i386/interrupt.h	/^  uint2 offset_high;$/;"	m	struct:__anon45	access:public
+__anon45::offset_low	include/i386/interrupt.h	/^  uint2 offset_low;$/;"	m	struct:__anon45	access:public
+__anon45::selector	include/i386/interrupt.h	/^  uint2 selector;$/;"	m	struct:__anon45	access:public
+__anon45::type	include/i386/interrupt.h	/^  uint1 type;$/;"	m	struct:__anon45	access:public
+__anon45::zero	include/i386/interrupt.h	/^  uint1 zero;$/;"	m	struct:__anon45	access:public
+__anon46::base_high	include/i386/gdt.h	/^  uint1 base_high;$/;"	m	struct:__anon46	access:public
+__anon46::base_low	include/i386/gdt.h	/^  uint2 base_low;$/;"	m	struct:__anon46	access:public
+__anon46::base_middle	include/i386/gdt.h	/^  uint1 base_middle;$/;"	m	struct:__anon46	access:public
+__anon46::flags_high	include/i386/gdt.h	/^  uint1 flags_high;$/;"	m	struct:__anon46	access:public
+__anon46::flags_low	include/i386/gdt.h	/^  uint1 flags_low;$/;"	m	struct:__anon46	access:public
+__anon46::limit_low	include/i386/gdt.h	/^  uint2 limit_low;$/;"	m	struct:__anon46	access:public
+__anon47::base	include/i386/gdt.h	/^  uint4 base;$/;"	m	struct:__anon47	access:public
+__anon47::length	include/i386/gdt.h	/^  uint2 length;$/;"	m	struct:__anon47	access:public
+__anon48::cr3	include/i386/gdt.h	/^  uint4 cr3;$/;"	m	struct:__anon48	access:public
+__anon48::cs	include/i386/gdt.h	/^  uint2 cs;$/;"	m	struct:__anon48	access:public
+__anon48::cs_h	include/i386/gdt.h	/^  uint2 cs_h;$/;"	m	struct:__anon48	access:public
+__anon48::ds	include/i386/gdt.h	/^  uint2 ds;$/;"	m	struct:__anon48	access:public
+__anon48::ds_h	include/i386/gdt.h	/^  uint2 ds_h;$/;"	m	struct:__anon48	access:public
+__anon48::eax	include/i386/gdt.h	/^  uint4 eax;$/;"	m	struct:__anon48	access:public
+__anon48::ebp	include/i386/gdt.h	/^  uint4 ebp;$/;"	m	struct:__anon48	access:public
+__anon48::ebx	include/i386/gdt.h	/^  uint4 ebx;$/;"	m	struct:__anon48	access:public
+__anon48::ecx	include/i386/gdt.h	/^  uint4 ecx;$/;"	m	struct:__anon48	access:public
+__anon48::edi	include/i386/gdt.h	/^  uint4 edi;$/;"	m	struct:__anon48	access:public
+__anon48::edx	include/i386/gdt.h	/^  uint4 edx;$/;"	m	struct:__anon48	access:public
+__anon48::eflags	include/i386/gdt.h	/^  uint4 eflags;$/;"	m	struct:__anon48	access:public
+__anon48::eip	include/i386/gdt.h	/^  uint4 eip;$/;"	m	struct:__anon48	access:public
+__anon48::es	include/i386/gdt.h	/^  uint2 es;$/;"	m	struct:__anon48	access:public
+__anon48::es_h	include/i386/gdt.h	/^  uint2 es_h;$/;"	m	struct:__anon48	access:public
+__anon48::esi	include/i386/gdt.h	/^  uint4 esi;$/;"	m	struct:__anon48	access:public
+__anon48::esp	include/i386/gdt.h	/^  uint4 esp;$/;"	m	struct:__anon48	access:public
+__anon48::esp0	include/i386/gdt.h	/^  uint4 esp0;$/;"	m	struct:__anon48	access:public
+__anon48::esp1	include/i386/gdt.h	/^  uint4 esp1;$/;"	m	struct:__anon48	access:public
+__anon48::esp2	include/i386/gdt.h	/^  uint4 esp2;$/;"	m	struct:__anon48	access:public
+__anon48::fs	include/i386/gdt.h	/^  uint2 fs;$/;"	m	struct:__anon48	access:public
+__anon48::fs_h	include/i386/gdt.h	/^  uint2 fs_h;$/;"	m	struct:__anon48	access:public
+__anon48::gs	include/i386/gdt.h	/^  uint2 gs;$/;"	m	struct:__anon48	access:public
+__anon48::gs_h	include/i386/gdt.h	/^  uint2 gs_h;$/;"	m	struct:__anon48	access:public
+__anon48::iomap	include/i386/gdt.h	/^  uint2 iomap;$/;"	m	struct:__anon48	access:public
+__anon48::ldt	include/i386/gdt.h	/^  uint2 ldt;$/;"	m	struct:__anon48	access:public
+__anon48::ldt_h	include/i386/gdt.h	/^  uint2 ldt_h;$/;"	m	struct:__anon48	access:public
+__anon48::link	include/i386/gdt.h	/^  uint2 link;$/;"	m	struct:__anon48	access:public
+__anon48::link_h	include/i386/gdt.h	/^  uint2 link_h;$/;"	m	struct:__anon48	access:public
+__anon48::ss	include/i386/gdt.h	/^  uint2 ss;$/;"	m	struct:__anon48	access:public
+__anon48::ss0	include/i386/gdt.h	/^  uint2 ss0;$/;"	m	struct:__anon48	access:public
+__anon48::ss0_h	include/i386/gdt.h	/^  uint2 ss0_h;$/;"	m	struct:__anon48	access:public
+__anon48::ss1	include/i386/gdt.h	/^  uint2 ss1;$/;"	m	struct:__anon48	access:public
+__anon48::ss1_h	include/i386/gdt.h	/^  uint2 ss1_h;$/;"	m	struct:__anon48	access:public
+__anon48::ss2	include/i386/gdt.h	/^  uint2 ss2;$/;"	m	struct:__anon48	access:public
+__anon48::ss2_h	include/i386/gdt.h	/^  uint2 ss2_h;$/;"	m	struct:__anon48	access:public
+__anon48::ss_h	include/i386/gdt.h	/^  uint2 ss_h;$/;"	m	struct:__anon48	access:public
+__anon48::trap	include/i386/gdt.h	/^  uint2 trap;$/;"	m	struct:__anon48	access:public
+__anon4::sh_addr	include/elf.h	/^  Elf64_Addr	sh_addr;		\/* Section virtual addr at execution *\/$/;"	m	struct:__anon4	access:public
+__anon4::sh_addralign	include/elf.h	/^  Elf64_Xword	sh_addralign;		\/* Section alignment *\/$/;"	m	struct:__anon4	access:public
+__anon4::sh_entsize	include/elf.h	/^  Elf64_Xword	sh_entsize;		\/* Entry size if section holds table *\/$/;"	m	struct:__anon4	access:public
+__anon4::sh_flags	include/elf.h	/^  Elf64_Xword	sh_flags;		\/* Section flags *\/$/;"	m	struct:__anon4	access:public
+__anon4::sh_info	include/elf.h	/^  Elf64_Word	sh_info;		\/* Additional section information *\/$/;"	m	struct:__anon4	access:public
+__anon4::sh_link	include/elf.h	/^  Elf64_Word	sh_link;		\/* Link to another section *\/$/;"	m	struct:__anon4	access:public
+__anon4::sh_name	include/elf.h	/^  Elf64_Word	sh_name;		\/* Section name (string tbl index) *\/$/;"	m	struct:__anon4	access:public
+__anon4::sh_offset	include/elf.h	/^  Elf64_Off	sh_offset;		\/* Section file offset *\/$/;"	m	struct:__anon4	access:public
+__anon4::sh_size	include/elf.h	/^  Elf64_Xword	sh_size;		\/* Section size in bytes *\/$/;"	m	struct:__anon4	access:public
+__anon4::sh_type	include/elf.h	/^  Elf64_Word	sh_type;		\/* Section type *\/$/;"	m	struct:__anon4	access:public
+__anon51::bitmap	include/i386/physical_memory.h	/^  int * bitmap;$/;"	m	struct:__anon51	access:public
+__anon51::domain_id	include/i386/physical_memory.h	/^  int domain_id;$/;"	m	struct:__anon51	access:public
+__anon51::free_pages	include/i386/physical_memory.h	/^  int free_pages;$/;"	m	struct:__anon51	access:public
+__anon51::lock	include/i386/physical_memory.h	/^  int lock;$/;"	m	struct:__anon51	access:public
+__anon51::start_page	include/i386/physical_memory.h	/^  int start_page;$/;"	m	struct:__anon51	access:public
+__anon51::total_pages	include/i386/physical_memory.h	/^  int total_pages;$/;"	m	struct:__anon51	access:public
+__anon5::st_info	include/elf.h	/^  unsigned char	st_info;		\/* Symbol type and binding *\/$/;"	m	struct:__anon5	access:public
+__anon5::st_name	include/elf.h	/^  Elf32_Word	st_name;		\/* Symbol name (string tbl index) *\/$/;"	m	struct:__anon5	access:public
+__anon5::st_other	include/elf.h	/^  unsigned char	st_other;		\/* Symbol visibility *\/$/;"	m	struct:__anon5	access:public
+__anon5::st_shndx	include/elf.h	/^  Elf32_Section	st_shndx;		\/* Section index *\/$/;"	m	struct:__anon5	access:public
+__anon5::st_size	include/elf.h	/^  Elf32_Word	st_size;		\/* Symbol size *\/$/;"	m	struct:__anon5	access:public
+__anon5::st_value	include/elf.h	/^  Elf32_Addr	st_value;		\/* Symbol value *\/$/;"	m	struct:__anon5	access:public
+__anon6::st_info	include/elf.h	/^  unsigned char	st_info;		\/* Symbol type and binding *\/$/;"	m	struct:__anon6	access:public
+__anon6::st_name	include/elf.h	/^  Elf64_Word	st_name;		\/* Symbol name (string tbl index) *\/$/;"	m	struct:__anon6	access:public
+__anon6::st_other	include/elf.h	/^  unsigned char st_other;		\/* Symbol visibility *\/$/;"	m	struct:__anon6	access:public
+__anon6::st_shndx	include/elf.h	/^  Elf64_Section	st_shndx;		\/* Section index *\/$/;"	m	struct:__anon6	access:public
+__anon6::st_size	include/elf.h	/^  Elf64_Xword	st_size;		\/* Symbol size *\/$/;"	m	struct:__anon6	access:public
+__anon6::st_value	include/elf.h	/^  Elf64_Addr	st_value;		\/* Symbol value *\/$/;"	m	struct:__anon6	access:public
+__anon7::si_boundto	include/elf.h	/^  Elf32_Half si_boundto;		\/* Direct bindings, symbol bound to *\/$/;"	m	struct:__anon7	access:public
+__anon7::si_flags	include/elf.h	/^  Elf32_Half si_flags;			\/* Per symbol flags *\/$/;"	m	struct:__anon7	access:public
+__anon8::si_boundto	include/elf.h	/^  Elf64_Half si_boundto;		\/* Direct bindings, symbol bound to *\/$/;"	m	struct:__anon8	access:public
+__anon8::si_flags	include/elf.h	/^  Elf64_Half si_flags;			\/* Per symbol flags *\/$/;"	m	struct:__anon8	access:public
+__anon9::r_info	include/elf.h	/^  Elf32_Word	r_info;			\/* Relocation type and symbol index *\/$/;"	m	struct:__anon9	access:public
+__anon9::r_offset	include/elf.h	/^  Elf32_Addr	r_offset;		\/* Address *\/$/;"	m	struct:__anon9	access:public
+a_type	include/elf.h	/^  uint32_t a_type;		\/* Entry type *\/$/;"	m	struct:__anon27	access:public
+a_type	include/elf.h	/^  uint64_t a_type;		\/* Entry type *\/$/;"	m	struct:__anon29	access:public
+a_un	include/elf.h	/^    } a_un;$/;"	m	struct:__anon27	typeref:union:__anon27::__anon28	access:public
+a_un	include/elf.h	/^    } a_un;$/;"	m	struct:__anon29	typeref:union:__anon29::__anon30	access:public
+a_val	include/elf.h	/^      uint32_t a_val;		\/* Integer value *\/$/;"	m	union:__anon27::__anon28	access:public
+a_val	include/elf.h	/^      uint64_t a_val;		\/* Integer value *\/$/;"	m	union:__anon29::__anon30	access:public
+addr	include/i386/multiboot.h	/^  unsigned long addr;$/;"	m	struct:aout_symbol_table	access:public
+addr	include/i386/multiboot.h	/^  unsigned long addr;$/;"	m	struct:elf_section_header_table	access:public
+address_slab	i386/context.c	/^slab_entry * address_slab;$/;"	v
+address_space	include/i386/context.h	/^typedef struct address_space_t address_space;$/;"	t	typeref:struct:address_space_t
+address_space_t	include/i386/context.h	/^struct address_space_t {$/;"	s
+address_space_t::core	include/i386/context.h	/^  struct memory_region_t *core;$/;"	m	struct:address_space_t	typeref:struct:address_space_t::memory_region_t	access:public
+address_space_t::cr3	include/i386/context.h	/^  pde* cr3;$/;"	m	struct:address_space_t	access:public
+address_space_t::first	include/i386/context.h	/^  struct memory_region_t *first;$/;"	m	struct:address_space_t	typeref:struct:address_space_t::memory_region_t	access:public
+address_space_t::last	include/i386/context.h	/^  struct memory_region_t *last;$/;"	m	struct:address_space_t	typeref:struct:address_space_t::memory_region_t	access:public
+address_space_t::stack	include/i386/context.h	/^  struct memory_region_t *stack;$/;"	m	struct:address_space_t	typeref:struct:address_space_t::memory_region_t	access:public
+address_space_t::virt_cr3	include/i386/context.h	/^  pde* virt_cr3;$/;"	m	struct:address_space_t	access:public
+ak_block_on_message	include/libak.h	/^void ak_block_on_message ();$/;"	p	signature:()
+ak_block_on_message	servers/libak/syscall.c	/^void ak_block_on_message () {$/;"	f
+ak_inb	include/libak.h	/^unsigned char ak_inb (unsigned short port);$/;"	p	signature:(unsigned short port)
+ak_inb	servers/libak/syscall.c	/^unsigned char ak_inb (unsigned short port) {$/;"	f	signature:(unsigned short port)
+ak_kbd_request	include/servers/kbd.h	/^struct ak_kbd_request {$/;"	s
+ak_kbd_request::stop_delimiter	include/servers/kbd.h	/^  unsigned char stop_delimiter;$/;"	m	struct:ak_kbd_request	access:public
+ak_kbd_request::type	include/servers/kbd.h	/^  int type;$/;"	m	struct:ak_kbd_request	access:public
+ak_kbd_request_t	include/servers/kbd.h	/^typedef struct ak_kbd_request ak_kbd_request_t;$/;"	t	typeref:struct:ak_kbd_request
+ak_kbd_response	include/servers/kbd.h	/^struct ak_kbd_response {$/;"	s
+ak_kbd_response::c	include/servers/kbd.h	/^  unsigned char c;$/;"	m	struct:ak_kbd_response	access:public
+ak_kbd_response::complete	include/servers/kbd.h	/^  short complete;$/;"	m	struct:ak_kbd_response	access:public
+ak_kbd_response_t	include/servers/kbd.h	/^typedef struct ak_kbd_response ak_kbd_response_t;$/;"	t	typeref:struct:ak_kbd_response
+ak_link_irq	include/libak.h	/^void ak_link_irq (int);$/;"	p	signature:(int)
+ak_link_irq	servers/libak/syscall.c	/^void ak_link_irq (int irq) {$/;"	f	signature:(int irq)
+ak_mailbox_create	include/libak.h	/^mailbox * ak_mailbox_create (int, int);$/;"	p	signature:(int, int)
+ak_mailbox_create	servers/libak/syscall.c	/^mailbox * ak_mailbox_create (int max, int pid_filter) {$/;"	f	signature:(int max, int pid_filter)
+ak_mailbox_receive	include/libak.h	/^message * ak_mailbox_receive (mailbox *);$/;"	p	signature:(mailbox *)
+ak_mailbox_receive	servers/libak/syscall.c	/^message * ak_mailbox_receive (mailbox * m) {$/;"	f	signature:(mailbox * m)
+ak_mailbox_send	include/libak.h	/^int ak_mailbox_send (message *);$/;"	p	signature:(message *)
+ak_mailbox_send	servers/libak/syscall.c	/^int ak_mailbox_send (message * m) {$/;"	f	signature:(message * m)
+ak_outb	include/libak.h	/^void ak_outb (unsigned short port, unsigned char);$/;"	p	signature:(unsigned short port, unsigned char)
+ak_outb	servers/libak/syscall.c	/^void ak_outb (unsigned short port, unsigned char val) {$/;"	f	signature:(unsigned short port, unsigned char val)
+allocate_from_slab	i386/slab.c	/^void * allocate_from_slab(slab_entry * se) {$/;"	f	signature:(slab_entry * se)
+allocate_from_slab	include/i386/slab.h	/^void *       allocate_from_slab(slab_entry *);$/;"	p	signature:(slab_entry *)
+allocate_page	i386/physical_memory.c	/^int allocate_page (int domain) {$/;"	f	signature:(int domain)
+allocate_page	include/i386/physical_memory.h	/^int allocate_page(int domain); \/*returns page number*\/$/;"	p	signature:(int domain)
+aout_sym	include/i386/multiboot.h	/^    aout_symbol_table_t aout_sym;$/;"	m	union:multiboot_info::__anon50	access:public
+aout_symbol_table	include/i386/multiboot.h	/^typedef struct aout_symbol_table$/;"	s
+aout_symbol_table::addr	include/i386/multiboot.h	/^  unsigned long addr;$/;"	m	struct:aout_symbol_table	access:public
+aout_symbol_table::reserved	include/i386/multiboot.h	/^  unsigned long reserved;$/;"	m	struct:aout_symbol_table	access:public
+aout_symbol_table::strsize	include/i386/multiboot.h	/^  unsigned long strsize;$/;"	m	struct:aout_symbol_table	access:public
+aout_symbol_table::tabsize	include/i386/multiboot.h	/^  unsigned long tabsize;$/;"	m	struct:aout_symbol_table	access:public
+aout_symbol_table_t	include/i386/multiboot.h	/^} aout_symbol_table_t;$/;"	t	typeref:struct:aout_symbol_table
+ascii	servers/kbd.c	/^  char ascii[2];$/;"	m	struct:kmap	file:	access:public
+asciimap	servers/kbd.c	/^} asciimap[] = {$/;"	v	typeref:struct:kmap
+attributes	include/i386/context.h	/^  int attributes;$/;"	m	struct:memory_region_t	access:public
+base	include/i386/gdt.h	/^  uint4 base;$/;"	m	struct:__anon47	access:public
+base_addr_high	include/i386/multiboot.h	/^  unsigned long base_addr_high;$/;"	m	struct:memory_map	access:public
+base_addr_low	include/i386/multiboot.h	/^  unsigned long base_addr_low;$/;"	m	struct:memory_map	access:public
+base_high	include/i386/gdt.h	/^  uint1 base_high;$/;"	m	struct:__anon46	access:public
+base_low	include/i386/gdt.h	/^  uint2 base_low;$/;"	m	struct:__anon46	access:public
+base_middle	include/i386/gdt.h	/^  uint1 base_middle;$/;"	m	struct:__anon46	access:public
+begin_schedule	i386/asm_interrupts.s	/^begin_schedule:$/;"	l
+begin_schedule	include/i386/process.h	/^void begin_schedule (isr_regs *);$/;"	p	signature:(isr_regs *)
+bitmap	include/i386/physical_memory.h	/^  int * bitmap;$/;"	m	struct:__anon51	access:public
+boot_device	include/i386/multiboot.h	/^  unsigned long boot_device;$/;"	m	struct:multiboot_info	access:public
+bootvideo_cls	i386/bootvideo.c	/^void bootvideo_cls() {$/;"	f
+bootvideo_cls	include/i386/bootvideo.h	/^void bootvideo_cls();$/;"	p	signature:()
+bootvideo_printf	i386/bootvideo.c	/^void bootvideo_printf (const char *format, ...)$/;"	f	signature:(const char *format, ...)
+bootvideo_printf	include/i386/bootvideo.h	/^void bootvideo_printf (const char *format, ...);$/;"	p	signature:(const char *format, ...)
+bootvideo_putc	i386/bootvideo.c	/^void bootvideo_putc(char c) {$/;"	f	signature:(char c)
+bootvideo_putc	include/i386/bootvideo.h	/^void bootvideo_putc(char);$/;"	p	signature:(char)
+bss_end_addr	include/i386/multiboot.h	/^  unsigned long bss_end_addr;$/;"	m	struct:multiboot_header	access:public
+buf	servers/kbd.c	/^char buf[50];$/;"	v
+buf	servers/test1.c	/^char buf[100];$/;"	v
+c	include/servers/kbd.h	/^  unsigned char c;$/;"	m	struct:ak_kbd_response	access:public
+c_isr	i386/interrupt.c	/^isr_regs* c_isr(isr_regs* regs_in) {$/;"	f	signature:(isr_regs* regs_in)
+checksum	include/i386/multiboot.h	/^  unsigned long checksum;$/;"	m	struct:multiboot_header	access:public
+cmain	i386/cmain.c	/^void cmain(multiboot_info_t * mb_info, int magic) {$/;"	f	signature:(multiboot_info_t * mb_info, int magic)
+cmdline	include/i386/multiboot.h	/^  unsigned long cmdline;$/;"	m	struct:multiboot_info	access:public
+col	i386/bootvideo.c	/^int col = 0;$/;"	v
+complete	include/servers/kbd.h	/^  short complete;$/;"	m	struct:ak_kbd_response	access:public
+context	include/i386/process.h	/^struct context {$/;"	s
+context::mailboxes	include/i386/process.h	/^  struct mailbox_t * mailboxes;$/;"	m	struct:context	typeref:struct:context::mailbox_t	access:public
+context::next	include/i386/process.h	/^  struct context * next;$/;"	m	struct:context	typeref:struct:context::context	access:public
+context::pid	include/i386/process.h	/^  int pid;$/;"	m	struct:context	access:public
+context::registers	include/i386/process.h	/^  isr_regs registers;$/;"	m	struct:context	access:public
+context::space	include/i386/process.h	/^  address_space * space;$/;"	m	struct:context	access:public
+context::status	include/i386/process.h	/^  int status;$/;"	m	struct:context	access:public
+context_list	i386/process.c	/^context_t * context_list;$/;"	v
+context_print_mmap	i386/context.c	/^void context_print_mmap () {$/;"	f
+context_print_mmap	include/i386/context.h	/^void context_print_mmap ();$/;"	p	signature:()
+context_slab	i386/process.c	/^slab_entry * context_slab;$/;"	v
+context_t	include/i386/process.h	/^typedef struct context context_t;$/;"	t	typeref:struct:context
+core	include/i386/context.h	/^  struct memory_region_t *core;$/;"	m	struct:address_space_t	typeref:struct:address_space_t::memory_region_t	access:public
+cpuHasFeature	i386/cpuid.c	/^int cpuHasFeature(int feature) {$/;"	f	signature:(int feature)
+cpuHasFeature	include/i386/cpuid.h	/^int cpuHasFeature (int);$/;"	p	signature:(int)
+cr3	include/i386/context.h	/^  pde* cr3;$/;"	m	struct:address_space_t	access:public
+cr3	include/i386/gdt.h	/^  uint4 cr3;$/;"	m	struct:__anon48	access:public
+create_address_space	i386/context.c	/^address_space * create_address_space() {$/;"	f
+create_address_space	include/i386/context.h	/^address_space * create_address_space();$/;"	p	signature:()
+create_mailbox	i386/mailbox.c	/^create_mailbox (context_t * c, int size, int recv_pid) {$/;"	f	signature:(context_t * c, int size, int recv_pid)
+create_mailbox	include/i386/mailbox.h	/^mailbox * create_mailbox (context_t *, int size, int recv_pid);$/;"	p	signature:(context_t *, int size, int recv_pid)
+create_process	i386/process.c	/^int create_process(int addr, int length) {$/;"	f	signature:(int addr, int length)
+create_process	include/i386/process.h	/^int create_process(int addr, int length);$/;"	p	signature:(int addr, int length)
+create_region	i386/context.c	/^memory_region * create_region (address_space * as,$/;"	f	signature:(address_space * as, unsigned long addr, int length, memory_region_type flags, int attr, int param)
+create_region	include/i386/context.h	/^memory_region * create_region(address_space *, unsigned long addr, int length, memory_region_type flags, int attr, int param);$/;"	p	signature:(address_space *, unsigned long addr, int length, memory_region_type flags, int attr, int param)
+create_slab	i386/slab.c	/^slab_entry * create_slab (int size) {$/;"	f	signature:(int size)
+create_slab	include/i386/slab.h	/^slab_entry * create_slab(int size);$/;"	p	signature:(int size)
+cs	include/i386/gdt.h	/^  uint2 cs;$/;"	m	struct:__anon48	access:public
+cs	include/i386/interrupt.h	/^  uint4 eip, cs, eflags, useresp, ss;$/;"	m	struct:__anon44	access:public
+cs_h	include/i386/gdt.h	/^  uint2 cs_h;$/;"	m	struct:__anon48	access:public
+cur_process	i386/process.c	/^context_t * cur_process;$/;"	v
+d_ptr	include/elf.h	/^      Elf32_Addr d_ptr;			\/* Address value *\/$/;"	m	union:__anon15::__anon16	access:public
+d_ptr	include/elf.h	/^      Elf64_Addr d_ptr;			\/* Address value *\/$/;"	m	union:__anon17::__anon18	access:public
+d_tag	include/elf.h	/^  Elf32_Sword	d_tag;			\/* Dynamic entry type *\/$/;"	m	struct:__anon15	access:public
+d_tag	include/elf.h	/^  Elf64_Sxword	d_tag;			\/* Dynamic entry type *\/$/;"	m	struct:__anon17	access:public
+d_un	include/elf.h	/^    } d_un;$/;"	m	struct:__anon15	typeref:union:__anon15::__anon16	access:public
+d_un	include/elf.h	/^    } d_un;$/;"	m	struct:__anon17	typeref:union:__anon17::__anon18	access:public
+d_val	include/elf.h	/^      Elf32_Word d_val;			\/* Integer value *\/$/;"	m	union:__anon15::__anon16	access:public
+d_val	include/elf.h	/^      Elf64_Xword d_val;		\/* Integer value *\/$/;"	m	union:__anon17::__anon18	access:public
+deallocate_from_slab	include/i386/slab.h	/^void         deallocate_from_slab(slab_entry *, void *);$/;"	p	signature:(slab_entry *, void *)
+delete_slab	i386/slab.c	/^void delete_slab(slab_entry * se) {$/;"	f	signature:(slab_entry * se)
+delete_slab	include/i386/slab.h	/^void         delete_slab(slab_entry *);$/;"	p	signature:(slab_entry *)
+dest_pid	include/i386/mailbox.h	/^  int dest_pid;$/;"	m	struct:message_t	access:public
+determine_memory_region	i386/context.c	/^memory_region * determine_memory_region (address_space * as, unsigned long addr) {$/;"	f	signature:(address_space * as, unsigned long addr)
+determine_memory_region	include/i386/context.h	/^memory_region * determine_memory_region(address_space *, unsigned long address);$/;"	p	signature:(address_space *, unsigned long address)
+domain_id	include/i386/physical_memory.h	/^  int domain_id;$/;"	m	struct:__anon51	access:public
+domains	i386/physical_memory.c	/^memory_domain domains[MAX_MEMORY_DOMAINS];$/;"	v
+ds	include/i386/gdt.h	/^  uint2 ds;$/;"	m	struct:__anon48	access:public
+ds	include/i386/interrupt.h	/^  uint4 gs, fs, es, ds;      $/;"	m	struct:__anon44	access:public
+ds_h	include/i386/gdt.h	/^  uint2 ds_h;$/;"	m	struct:__anon48	access:public
+dump_slab_info	i386/slab.c	/^void dump_slab_info () {$/;"	f
+dump_slab_info	include/i386/slab.h	/^void         dump_slab_info ();$/;"	p	signature:()
+e_ehsize	include/elf.h	/^  Elf32_Half	e_ehsize;		\/* ELF header size in bytes *\/$/;"	m	struct:__anon1	access:public
+e_ehsize	include/elf.h	/^  Elf64_Half	e_ehsize;		\/* ELF header size in bytes *\/$/;"	m	struct:__anon2	access:public
+e_entry	include/elf.h	/^  Elf32_Addr	e_entry;		\/* Entry point virtual address *\/$/;"	m	struct:__anon1	access:public
+e_entry	include/elf.h	/^  Elf64_Addr	e_entry;		\/* Entry point virtual address *\/$/;"	m	struct:__anon2	access:public
+e_flags	include/elf.h	/^  Elf32_Word	e_flags;		\/* Processor-specific flags *\/$/;"	m	struct:__anon1	access:public
+e_flags	include/elf.h	/^  Elf64_Word	e_flags;		\/* Processor-specific flags *\/$/;"	m	struct:__anon2	access:public
+e_ident	include/elf.h	/^  unsigned char	e_ident[EI_NIDENT];	\/* Magic number and other info *\/$/;"	m	struct:__anon1	access:public
+e_ident	include/elf.h	/^  unsigned char	e_ident[EI_NIDENT];	\/* Magic number and other info *\/$/;"	m	struct:__anon2	access:public
+e_machine	include/elf.h	/^  Elf32_Half	e_machine;		\/* Architecture *\/$/;"	m	struct:__anon1	access:public
+e_machine	include/elf.h	/^  Elf64_Half	e_machine;		\/* Architecture *\/$/;"	m	struct:__anon2	access:public
+e_phentsize	include/elf.h	/^  Elf32_Half	e_phentsize;		\/* Program header table entry size *\/$/;"	m	struct:__anon1	access:public
+e_phentsize	include/elf.h	/^  Elf64_Half	e_phentsize;		\/* Program header table entry size *\/$/;"	m	struct:__anon2	access:public
+e_phnum	include/elf.h	/^  Elf32_Half	e_phnum;		\/* Program header table entry count *\/$/;"	m	struct:__anon1	access:public
+e_phnum	include/elf.h	/^  Elf64_Half	e_phnum;		\/* Program header table entry count *\/$/;"	m	struct:__anon2	access:public
+e_phoff	include/elf.h	/^  Elf32_Off	e_phoff;		\/* Program header table file offset *\/$/;"	m	struct:__anon1	access:public
+e_phoff	include/elf.h	/^  Elf64_Off	e_phoff;		\/* Program header table file offset *\/$/;"	m	struct:__anon2	access:public
+e_shentsize	include/elf.h	/^  Elf32_Half	e_shentsize;		\/* Section header table entry size *\/$/;"	m	struct:__anon1	access:public
+e_shentsize	include/elf.h	/^  Elf64_Half	e_shentsize;		\/* Section header table entry size *\/$/;"	m	struct:__anon2	access:public
+e_shnum	include/elf.h	/^  Elf32_Half	e_shnum;		\/* Section header table entry count *\/$/;"	m	struct:__anon1	access:public
+e_shnum	include/elf.h	/^  Elf64_Half	e_shnum;		\/* Section header table entry count *\/$/;"	m	struct:__anon2	access:public
+e_shoff	include/elf.h	/^  Elf32_Off	e_shoff;		\/* Section header table file offset *\/$/;"	m	struct:__anon1	access:public
+e_shoff	include/elf.h	/^  Elf64_Off	e_shoff;		\/* Section header table file offset *\/$/;"	m	struct:__anon2	access:public
+e_shstrndx	include/elf.h	/^  Elf32_Half	e_shstrndx;		\/* Section header string table index *\/$/;"	m	struct:__anon1	access:public
+e_shstrndx	include/elf.h	/^  Elf64_Half	e_shstrndx;		\/* Section header string table index *\/$/;"	m	struct:__anon2	access:public
+e_type	include/elf.h	/^  Elf32_Half	e_type;			\/* Object file type *\/$/;"	m	struct:__anon1	access:public
+e_type	include/elf.h	/^  Elf64_Half	e_type;			\/* Object file type *\/$/;"	m	struct:__anon2	access:public
+e_version	include/elf.h	/^  Elf32_Word	e_version;		\/* Object file version *\/$/;"	m	struct:__anon1	access:public
+e_version	include/elf.h	/^  Elf64_Word	e_version;		\/* Object file version *\/$/;"	m	struct:__anon2	access:public
+eax	include/i386/gdt.h	/^  uint4 eax;$/;"	m	struct:__anon48	access:public
+eax	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+ebp	include/i386/gdt.h	/^  uint4 ebp;$/;"	m	struct:__anon48	access:public
+ebp	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+ebx	include/i386/gdt.h	/^  uint4 ebx;$/;"	m	struct:__anon48	access:public
+ebx	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+ecx	include/i386/gdt.h	/^  uint4 ecx;$/;"	m	struct:__anon48	access:public
+ecx	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+edi	include/i386/gdt.h	/^  uint4 edi;$/;"	m	struct:__anon48	access:public
+edi	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+edx	include/i386/gdt.h	/^  uint4 edx;$/;"	m	struct:__anon48	access:public
+edx	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+eflags	include/i386/gdt.h	/^  uint4 eflags;$/;"	m	struct:__anon48	access:public
+eflags	include/i386/interrupt.h	/^  uint4 eip, cs, eflags, useresp, ss;$/;"	m	struct:__anon44	access:public
+eip	include/i386/gdt.h	/^  uint4 eip;$/;"	m	struct:__anon48	access:public
+eip	include/i386/interrupt.h	/^  uint4 eip, cs, eflags, useresp, ss;$/;"	m	struct:__anon44	access:public
+elf_sec	include/i386/multiboot.h	/^    elf_section_header_table_t elf_sec;$/;"	m	union:multiboot_info::__anon50	access:public
+elf_section_header_table	include/i386/multiboot.h	/^typedef struct elf_section_header_table$/;"	s
+elf_section_header_table::addr	include/i386/multiboot.h	/^  unsigned long addr;$/;"	m	struct:elf_section_header_table	access:public
+elf_section_header_table::num	include/i386/multiboot.h	/^  unsigned long num;$/;"	m	struct:elf_section_header_table	access:public
+elf_section_header_table::shndx	include/i386/multiboot.h	/^  unsigned long shndx;$/;"	m	struct:elf_section_header_table	access:public
+elf_section_header_table::size	include/i386/multiboot.h	/^  unsigned long size;$/;"	m	struct:elf_section_header_table	access:public
+elf_section_header_table_t	include/i386/multiboot.h	/^} elf_section_header_table_t;$/;"	t	typeref:struct:elf_section_header_table
+enable_paging	i386/paging.c	/^void enable_paging() {$/;"	f
+enable_paging	include/i386/paging.h	/^void enable_paging();$/;"	p	signature:()
+enable_syscall	i386/syscall.c	/^void enable_syscall() {$/;"	f
+enable_syscall	include/i386/syscall.h	/^void enable_syscall();$/;"	p	signature:()
+entry_addr	include/i386/multiboot.h	/^  unsigned long entry_addr;$/;"	m	struct:multiboot_header	access:public
+err_code	include/i386/interrupt.h	/^  uint4 int_no, err_code;$/;"	m	struct:__anon44	access:public
+es	include/i386/gdt.h	/^  uint2 es;$/;"	m	struct:__anon48	access:public
+es	include/i386/interrupt.h	/^  uint4 gs, fs, es, ds;      $/;"	m	struct:__anon44	access:public
+es_h	include/i386/gdt.h	/^  uint2 es_h;$/;"	m	struct:__anon48	access:public
+esi	include/i386/gdt.h	/^  uint4 esi;$/;"	m	struct:__anon48	access:public
+esi	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+esp	include/i386/gdt.h	/^  uint4 esp;$/;"	m	struct:__anon48	access:public
+esp	include/i386/interrupt.h	/^  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;$/;"	m	struct:__anon44	access:public
+esp0	include/i386/gdt.h	/^  uint4 esp0;$/;"	m	struct:__anon48	access:public
+esp1	include/i386/gdt.h	/^  uint4 esp1;$/;"	m	struct:__anon48	access:public
+esp2	include/i386/gdt.h	/^  uint4 esp2;$/;"	m	struct:__anon48	access:public
+expand_region	i386/context.c	/^int expand_region(memory_region * mr, int size) {$/;"	f	signature:(memory_region * mr, int size)
+expand_region	include/i386/context.h	/^int             expand_region(memory_region*, int size);$/;"	p	signature:(memory_region*, int size)
+first	include/i386/context.h	/^  struct memory_region_t *first;$/;"	m	struct:address_space_t	typeref:struct:address_space_t::memory_region_t	access:public
+first	include/i386/mailbox.h	/^  int first, last;$/;"	m	struct:mailbox_t	access:public
+first_free	include/i386/slab.h	/^  int first_free;$/;"	m	struct:sbuf_t	access:public
+first_free_sbuf	include/i386/slab.h	/^  sbuf * first_free_sbuf;$/;"	m	struct:slab_entry_t	access:public
+first_sbuf	include/i386/slab.h	/^  sbuf * first_sbuf; \/*Null pointer if slab doesn't exist*\/$/;"	m	struct:slab_entry_t	access:public
+flags	include/i386/multiboot.h	/^  unsigned long flags;$/;"	m	struct:multiboot_header	access:public
+flags	include/i386/multiboot.h	/^  unsigned long flags;$/;"	m	struct:multiboot_info	access:public
+flags_high	include/i386/gdt.h	/^  uint1 flags_high;$/;"	m	struct:__anon46	access:public
+flags_low	include/i386/gdt.h	/^  uint1 flags_low;$/;"	m	struct:__anon46	access:public
+free_kernel_virtual_page	i386/paging.c	/^void free_kernel_virtual_page (int addr) {$/;"	f	signature:(int addr)
+free_kernel_virtual_page	include/i386/paging.h	/^void free_kernel_virtual_page(int);$/;"	p	signature:(int)
+free_objects	include/i386/slab.h	/^  int free_objects;$/;"	m	struct:sbuf_t	access:public
+free_pages	include/i386/physical_memory.h	/^  int free_pages;$/;"	m	struct:__anon51	access:public
+fs	include/i386/gdt.h	/^  uint2 fs;$/;"	m	struct:__anon48	access:public
+fs	include/i386/interrupt.h	/^  uint4 gs, fs, es, ds;      $/;"	m	struct:__anon44	access:public
+fs_h	include/i386/gdt.h	/^  uint2 fs_h;$/;"	m	struct:__anon48	access:public
+gdt	i386/gdt.c	/^gdt_entry gdt[5 + MAX_CPUS];$/;"	v
+gdt_entry	include/i386/gdt.h	/^} __attribute__((__packed__)) gdt_entry;$/;"	t	typeref:struct:__anon46
+gdtr	include/i386/gdt.h	/^} __attribute__((__packed__)) gdtr;$/;"	t	typeref:struct:__anon47
+gdtr_entry	i386/gdt.c	/^gdtr gdtr_entry = { (uint2)(sizeof(gdt) - 1), (uint4)&gdt};$/;"	v
+get_cr3	i386/paging.c	/^pde * get_cr3() {$/;"	f
+get_cr3	include/i386/paging.h	/^pde* get_cr3();$/;"	p	signature:()
+get_current_process	i386/process.c	/^int get_current_process() {$/;"	f
+get_current_process	include/i386/process.h	/^int get_current_process();$/;"	p	signature:()
+get_kernel_page_tables	i386/paging.c	/^pte ** get_kernel_page_tables() {$/;"	f
+get_kernel_page_tables	include/i386/paging.h	/^pte ** get_kernel_page_tables();$/;"	p	signature:()
+get_mapped_kernel_virtual_page	i386/paging.c	/^unsigned long get_mapped_kernel_virtual_page (unsigned long addr) {$/;"	f	signature:(unsigned long addr)
+get_mapped_kernel_virtual_page	include/i386/paging.h	/^unsigned long get_mapped_kernel_virtual_page (unsigned long addr);$/;"	p	signature:(unsigned long addr)
+get_physical_address_from_kernel_virtual	i386/paging.c	/^int get_physical_address_from_kernel_virtual(int addr) {$/;"	f	signature:(int addr)
+get_physical_address_from_kernel_virtual	include/i386/paging.h	/^int get_physical_address_from_kernel_virtual(int);$/;"	p	signature:(int)
+get_process	i386/process.c	/^context_t * get_process(int pid) {$/;"	f	signature:(int pid)
+get_process	include/i386/process.h	/^context_t * get_process(int);$/;"	p	signature:(int)
+get_unused_kernel_virtual_page	i386/paging.c	/^int get_unused_kernel_virtual_page() {$/;"	f
+get_unused_kernel_virtual_page	include/i386/paging.h	/^int get_unused_kernel_virtual_page();$/;"	p	signature:()
+get_usable_kernel_virtual_page	i386/paging.c	/^int get_usable_kernel_virtual_page() {$/;"	f
+get_usable_kernel_virtual_page	include/i386/paging.h	/^int get_usable_kernel_virtual_page();$/;"	p	signature:()
+gs	include/i386/gdt.h	/^  uint2 gs;$/;"	m	struct:__anon48	access:public
+gs	include/i386/interrupt.h	/^  uint4 gs, fs, es, ds;      $/;"	m	struct:__anon44	access:public
+gs_h	include/i386/gdt.h	/^  uint2 gs_h;$/;"	m	struct:__anon48	access:public
+gt_bytes	include/elf.h	/^      Elf32_Word gt_bytes;		\/* This many bytes would be used *\/$/;"	m	struct:__anon35::__anon37	access:public
+gt_current_g_value	include/elf.h	/^      Elf32_Word gt_current_g_value;	\/* -G value used for compilation *\/$/;"	m	struct:__anon35::__anon36	access:public
+gt_entry	include/elf.h	/^    } gt_entry;				\/* Subsequent entries in section *\/$/;"	m	union:__anon35	typeref:struct:__anon35::__anon37	access:public
+gt_g_value	include/elf.h	/^      Elf32_Word gt_g_value;		\/* If this value were used for -G *\/$/;"	m	struct:__anon35::__anon37	access:public
+gt_header	include/elf.h	/^    } gt_header;			\/* First entry in section *\/$/;"	m	union:__anon35	typeref:struct:__anon35::__anon36	access:public
+gt_unused	include/elf.h	/^      Elf32_Word gt_unused;		\/* Not used *\/$/;"	m	struct:__anon35::__anon36	access:public
+hang	i386/start.s	/^hang:$/;"	l
+header_addr	include/i386/multiboot.h	/^  unsigned long header_addr;$/;"	m	struct:multiboot_header	access:public
+hwp_flags1	include/elf.h	/^  Elf32_Word hwp_flags1;	\/* Extra flags.  *\/$/;"	m	struct:__anon40	access:public
+hwp_flags2	include/elf.h	/^  Elf32_Word hwp_flags2;	\/* Extra flags.  *\/$/;"	m	struct:__anon40	access:public
+idt_entry	include/i386/interrupt.h	/^} __attribute__((__packed__)) idt_entry;$/;"	t	typeref:struct:__anon45
+idt_pointer	i386/interrupt.c	/^idtr      idt_pointer = {sizeof(interrupt_descriptors) - 1,$/;"	v
+idtr	include/i386/interrupt.h	/^typedef struct idtr {$/;"	s
+idtr	include/i386/interrupt.h	/^} __attribute__((__packed__)) idtr;$/;"	t	typeref:struct:idtr
+idtr::length	include/i386/interrupt.h	/^  uint2 length;$/;"	m	struct:idtr	access:public
+idtr::location	include/i386/interrupt.h	/^  uint4 location;$/;"	m	struct:idtr	access:public
+in	servers/test2.c	/^message *in;$/;"	v
+info	include/elf.h	/^  Elf32_Word info;		\/* Kind-specific information.  *\/$/;"	m	struct:__anon39	access:public
+init_address_space_system	i386/context.c	/^void init_address_space_system() {$/;"	f
+init_address_space_system	include/i386/context.h	/^void            init_address_space_system();$/;"	p	signature:()
+init_mailboxes	i386/mailbox.c	/^init_mailboxes () {$/;"	f
+init_mailboxes	include/i386/mailbox.h	/^void      init_mailboxes ();$/;"	p	signature:()
+init_slabs	i386/slab.c	/^void init_slabs() {$/;"	f
+init_slabs	include/i386/slab.h	/^void         init_slabs ();$/;"	p	signature:()
+initialize_gdt	i386/gdt.c	/^void initialize_gdt() {$/;"	f
+initialize_gdt	include/i386/gdt.h	/^void initialize_gdt();$/;"	p	signature:()
+initialize_idt	i386/interrupt.c	/^initialize_idt() {$/;"	f
+initialize_idt	include/i386/interrupt.h	/^void initialize_idt();$/;"	p	signature:()
+initialize_interrupts	i386/interrupt.c	/^initialize_interrupts() {$/;"	f
+initialize_interrupts	include/i386/interrupt.h	/^void initialize_interrupts();$/;"	p	signature:()
+initialize_kernel_paging	i386/paging.c	/^void initialize_kernel_paging() {$/;"	f
+initialize_kernel_paging	include/i386/paging.h	/^void initialize_kernel_paging();$/;"	p	signature:()
+initialize_memory	i386/physical_memory.c	/^void initialize_memory(multiboot_info_t * mb) {$/;"	f	signature:(multiboot_info_t * mb)
+initialize_memory	include/i386/physical_memory.h	/^void  initialize_memory(multiboot_info_t *);$/;"	p	signature:(multiboot_info_t *)
+initialize_scheduler	i386/process.c	/^void initialize_scheduler() {$/;"	f
+initialize_scheduler	include/i386/process.h	/^void initialize_scheduler();$/;"	p	signature:()
+inportb	i386/pic.c	/^unsigned char inportb(unsigned short port)$/;"	f	signature:(unsigned short port)
+inportb	include/i386/pic.h	/^unsigned char inportb(unsigned short port);$/;"	p	signature:(unsigned short port)
+int00	i386/asm_interrupts.s	/^int00:$/;"	l
+int01	i386/asm_interrupts.s	/^int01:$/;"	l
+int02	i386/asm_interrupts.s	/^int02:$/;"	l
+int03	i386/asm_interrupts.s	/^int03:$/;"	l
+int04	i386/asm_interrupts.s	/^int04:$/;"	l
+int05	i386/asm_interrupts.s	/^int05:$/;"	l
+int06	i386/asm_interrupts.s	/^int06:$/;"	l
+int07	i386/asm_interrupts.s	/^int07:$/;"	l
+int08	i386/asm_interrupts.s	/^int08:$/;"	l
+int09	i386/asm_interrupts.s	/^int09:$/;"	l
+int1	i386/cmain.c	/^void int1 (isr_regs * regs) {$/;"	f	signature:(isr_regs * regs)
+int1	i386/cmain.c	/^void int1 (isr_regs * regs);$/;"	p	file:	signature:(isr_regs * regs)
+int10	i386/asm_interrupts.s	/^int10:$/;"	l
+int11	i386/asm_interrupts.s	/^int11:$/;"	l
+int12	i386/asm_interrupts.s	/^int12:$/;"	l
+int13	i386/asm_interrupts.s	/^int13:$/;"	l
+int14	i386/asm_interrupts.s	/^int14:$/;"	l
+int15	i386/asm_interrupts.s	/^int15:$/;"	l
+int16	i386/asm_interrupts.s	/^int16:$/;"	l
+int17	i386/asm_interrupts.s	/^int17:$/;"	l
+int18	i386/asm_interrupts.s	/^int18:$/;"	l
+int19	i386/asm_interrupts.s	/^int19:$/;"	l
+int20	i386/asm_interrupts.s	/^int20:$/;"	l
+int21	i386/asm_interrupts.s	/^int21:$/;"	l
+int22	i386/asm_interrupts.s	/^int22:$/;"	l
+int23	i386/asm_interrupts.s	/^int23:$/;"	l
+int24	i386/asm_interrupts.s	/^int24:$/;"	l
+int25	i386/asm_interrupts.s	/^int25:$/;"	l
+int26	i386/asm_interrupts.s	/^int26:$/;"	l
+int27	i386/asm_interrupts.s	/^int27:$/;"	l
+int28	i386/asm_interrupts.s	/^int28:$/;"	l
+int29	i386/asm_interrupts.s	/^int29:$/;"	l
+int30	i386/asm_interrupts.s	/^int30:$/;"	l
+int31	i386/asm_interrupts.s	/^int31:$/;"	l
+int32	i386/asm_interrupts.s	/^int32:$/;"	l
+int33	i386/asm_interrupts.s	/^int33:$/;"	l
+int34	i386/asm_interrupts.s	/^int34:$/;"	l
+int35	i386/asm_interrupts.s	/^int35:$/;"	l
+int36	i386/asm_interrupts.s	/^int36:$/;"	l
+int37	i386/asm_interrupts.s	/^int37:$/;"	l
+int38	i386/asm_interrupts.s	/^int38:$/;"	l
+int39	i386/asm_interrupts.s	/^int39:$/;"	l
+int40	i386/asm_interrupts.s	/^int40:$/;"	l
+int41	i386/asm_interrupts.s	/^int41:$/;"	l
+int42	i386/asm_interrupts.s	/^int42:$/;"	l
+int43	i386/asm_interrupts.s	/^int43:$/;"	l
+int44	i386/asm_interrupts.s	/^int44:$/;"	l
+int45	i386/asm_interrupts.s	/^int45:$/;"	l
+int46	i386/asm_interrupts.s	/^int46:$/;"	l
+int47	i386/asm_interrupts.s	/^int47:$/;"	l
+int_hand	i386/asm_interrupts.s	/^int_hand:	$/;"	l
+int_handler	i386/interrupt.c	/^void (*int_handler[256])(isr_regs*);$/;"	v
+int_no	include/i386/interrupt.h	/^  uint4 int_no, err_code;$/;"	m	struct:__anon44	access:public
+int_to_pid	i386/interrupt.c	/^int int_to_pid[256];$/;"	v
+interrupt_descriptors	i386/interrupt.c	/^idt_entry interrupt_descriptors[MAX_INTS];$/;"	v
+intx80	i386/asm_interrupts.s	/^intx80:$/;"	l
+iomap	include/i386/gdt.h	/^  uint2 iomap;$/;"	m	struct:__anon48	access:public
+isr_regs	include/i386/interrupt.h	/^} __attribute__((__packed__)) isr_regs;$/;"	t	typeref:struct:__anon44
+itoa	i386/bootvideo.c	/^void itoa (char *buf, int base, int d)$/;"	f	signature:(char *buf, int base, int d)
+itoa	include/i386/bootvideo.h	/^void itoa (char*, int, int);$/;"	p	signature:(char*, int, int)
+itoa	include/libak.h	/^void itoa (char *, int, int);$/;"	p	signature:(char *, int, int)
+itoa	servers/libak/syscall.c	/^void itoa (char *buf, int base, int d)$/;"	f	signature:(char *buf, int base, int d)
+kernel_page_tables	i386/paging.c	/^pte * kernel_page_tables[NUM_KERNEL_PDES];$/;"	v
+kernel_pd	i386/paging.c	/^pde * kernel_pd;$/;"	v
+kernel_reenter	i386/interrupt.c	/^int kernel_reenter;$/;"	v
+kind	include/elf.h	/^  unsigned char kind;		\/* Determines interpretation of the$/;"	m	struct:__anon39	access:public
+kmap	servers/kbd.c	/^struct kmap {$/;"	s	file:
+kmap::ascii	servers/kbd.c	/^  char ascii[2];$/;"	m	struct:kmap	file:	access:public
+kpt	i386/context.c	/^pte ** kpt;$/;"	v
+l_checksum	include/elf.h	/^  Elf32_Word l_checksum;	\/* Checksum *\/$/;"	m	struct:__anon41	access:public
+l_checksum	include/elf.h	/^  Elf64_Word l_checksum;	\/* Checksum *\/$/;"	m	struct:__anon42	access:public
+l_flags	include/elf.h	/^  Elf32_Word l_flags;		\/* Flags *\/$/;"	m	struct:__anon41	access:public
+l_flags	include/elf.h	/^  Elf64_Word l_flags;		\/* Flags *\/$/;"	m	struct:__anon42	access:public
+l_name	include/elf.h	/^  Elf32_Word l_name;		\/* Name (string table index) *\/$/;"	m	struct:__anon41	access:public
+l_name	include/elf.h	/^  Elf64_Word l_name;		\/* Name (string table index) *\/$/;"	m	struct:__anon42	access:public
+l_time_stamp	include/elf.h	/^  Elf32_Word l_time_stamp;	\/* Timestamp *\/$/;"	m	struct:__anon41	access:public
+l_time_stamp	include/elf.h	/^  Elf64_Word l_time_stamp;	\/* Timestamp *\/$/;"	m	struct:__anon42	access:public
+l_version	include/elf.h	/^  Elf32_Word l_version;		\/* Interface version *\/$/;"	m	struct:__anon41	access:public
+l_version	include/elf.h	/^  Elf64_Word l_version;		\/* Interface version *\/$/;"	m	struct:__anon42	access:public
+last	include/i386/context.h	/^  struct memory_region_t *last;$/;"	m	struct:address_space_t	typeref:struct:address_space_t::memory_region_t	access:public
+last	include/i386/mailbox.h	/^  int first, last;$/;"	m	struct:mailbox_t	access:public
+ldt	include/i386/gdt.h	/^  uint2 ldt;$/;"	m	struct:__anon48	access:public
+ldt_h	include/i386/gdt.h	/^  uint2 ldt_h;$/;"	m	struct:__anon48	access:public
+length	include/i386/context.h	/^  int length;  \/*In pages*\/$/;"	m	struct:memory_region_t	access:public
+length	include/i386/gdt.h	/^  uint2 length;$/;"	m	struct:__anon47	access:public
+length	include/i386/interrupt.h	/^  uint2 length;$/;"	m	struct:idtr	access:public
+length_high	include/i386/multiboot.h	/^  unsigned long length_high;$/;"	m	struct:memory_map	access:public
+length_low	include/i386/multiboot.h	/^  unsigned long length_low;$/;"	m	struct:memory_map	access:public
+limit_low	include/i386/gdt.h	/^  uint2 limit_low;$/;"	m	struct:__anon46	access:public
+link	include/i386/gdt.h	/^  uint2 link;$/;"	m	struct:__anon48	access:public
+link_h	include/i386/gdt.h	/^  uint2 link_h;$/;"	m	struct:__anon48	access:public
+link_irq	i386/interrupt.c	/^link_irq(int irq, void (*func)(isr_regs*)) {$/;"	f	signature:(int irq, void (*func)(isr_regs*))
+link_irq	include/i386/interrupt.h	/^void link_irq(int, void(*)(isr_regs*));$/;"	p	signature:(int, void(*)(isr_regs*))
+link_irq_to_pid	i386/interrupt.c	/^link_irq_to_pid(int irq, int pid) {$/;"	f	signature:(int irq, int pid)
+link_irq_to_pid	include/i386/interrupt.h	/^void link_irq_to_pid(int, int);$/;"	p	signature:(int, int)
+load_addr	include/i386/multiboot.h	/^  unsigned long load_addr;$/;"	m	struct:multiboot_header	access:public
+load_end_addr	include/i386/multiboot.h	/^  unsigned long load_end_addr;$/;"	m	struct:multiboot_header	access:public
+load_gdt	i386/asmutil.s	/^load_gdt:$/;"	l
+load_gdt	include/i386/gdt.h	/^extern void load_gdt (gdtr*);$/;"	p	signature:(gdtr*)
+load_idt	i386/asm_interrupts.s	/^load_idt:$/;"	l
+load_idt	include/i386/interrupt.h	/^void load_idt(idtr*);$/;"	p	signature:(idtr*)
+load_module	i386/cmain.c	/^void load_module (multiboot_info_t * mb, int number) {$/;"	f	signature:(multiboot_info_t * mb, int number)
+load_module	i386/cmain.c	/^void load_module (multiboot_info_t * mb, int);$/;"	p	file:	signature:(multiboot_info_t * mb, int)
+load_tr	i386/asmutil.s	/^load_tr:$/;"	l
+load_tr	include/i386/gdt.h	/^extern void load_tr  (uint2);$/;"	p	signature:(uint2)
+location	include/i386/interrupt.h	/^  uint4 location;$/;"	m	struct:idtr	access:public
+lock	include/i386/physical_memory.h	/^  int lock;$/;"	m	struct:__anon51	access:public
+lock	include/i386/slab.h	/^  int lock;$/;"	m	struct:slab_entry_t	access:public
+m	servers/test2.c	/^message m;$/;"	v
+m_info	include/elf.h	/^  Elf32_Word m_info;		\/* Size and index.  *\/$/;"	m	struct:__anon33	access:public
+m_info	include/elf.h	/^  Elf64_Xword m_info;		\/* Size and index.  *\/$/;"	m	struct:__anon34	access:public
+m_poffset	include/elf.h	/^  Elf32_Word m_poffset;		\/* Symbol offset.  *\/$/;"	m	struct:__anon33	access:public
+m_poffset	include/elf.h	/^  Elf64_Xword m_poffset;	\/* Symbol offset.  *\/$/;"	m	struct:__anon34	access:public
+m_repeat	include/elf.h	/^  Elf32_Half m_repeat;		\/* Repeat count.  *\/$/;"	m	struct:__anon33	access:public
+m_repeat	include/elf.h	/^  Elf64_Half m_repeat;		\/* Repeat count.  *\/$/;"	m	struct:__anon34	access:public
+m_stride	include/elf.h	/^  Elf32_Half m_stride;		\/* Stride info.  *\/$/;"	m	struct:__anon33	access:public
+m_stride	include/elf.h	/^  Elf64_Half m_stride;		\/* Stride info.  *\/$/;"	m	struct:__anon34	access:public
+m_value	include/elf.h	/^  Elf32_Xword m_value;		\/* Symbol value.  *\/$/;"	m	struct:__anon33	access:public
+m_value	include/elf.h	/^  Elf64_Xword m_value;		\/* Symbol value.  *\/$/;"	m	struct:__anon34	access:public
+magic	include/i386/multiboot.h	/^  unsigned long magic;$/;"	m	struct:multiboot_header	access:public
+mailbox	include/i386/mailbox.h	/^typedef struct mailbox_t mailbox;$/;"	t	typeref:struct:mailbox_t
+mailbox	include/mailbox.h	/^struct mailbox {$/;"	s
+mailbox::pid	include/mailbox.h	/^  int pid;$/;"	m	struct:mailbox	access:public
+mailbox_t	include/i386/mailbox.h	/^struct mailbox_t {$/;"	s
+mailbox_t::first	include/i386/mailbox.h	/^  int first, last;$/;"	m	struct:mailbox_t	access:public
+mailbox_t::last	include/i386/mailbox.h	/^  int first, last;$/;"	m	struct:mailbox_t	access:public
+mailbox_t::mb_mr	include/i386/mailbox.h	/^  memory_region * mb_mr;$/;"	m	struct:mailbox_t	access:public
+mailbox_t::mutex	include/i386/mailbox.h	/^  int mutex;$/;"	m	struct:mailbox_t	access:public
+mailbox_t::next	include/i386/mailbox.h	/^  struct mailbox_t *next;$/;"	m	struct:mailbox_t	typeref:struct:mailbox_t::mailbox_t	access:public
+mailbox_t::recv_pid	include/i386/mailbox.h	/^  int recv_pid;$/;"	m	struct:mailbox_t	access:public
+mailbox_t::size	include/i386/mailbox.h	/^  int size; \/*In pages*\/$/;"	m	struct:mailbox_t	access:public
+mailboxes	include/i386/process.h	/^  struct mailbox_t * mailboxes;$/;"	m	struct:context	typeref:struct:context::mailbox_t	access:public
+mailboxes_slab	i386/mailbox.c	/^slab_entry * mailboxes_slab;$/;"	v
+map_region	include/i386/context.h	/^int             map_region(memory_region *, int phys, int length);$/;"	p	signature:(memory_region *, int phys, int length)
+map_user_region_to_physical	i386/paging.c	/^void map_user_region_to_physical (memory_region_t * mr, unsigned long phys_addr) {$/;"	f	signature:(memory_region_t * mr, unsigned long phys_addr)
+map_user_virtual_to_kernel	i386/paging.c	/^unsigned long map_user_virtual_to_kernel(context_t * c, unsigned long addr) {$/;"	f	signature:(context_t * c, unsigned long addr)
+map_user_virtual_to_kernel	include/i386/paging.h	/^unsigned long map_user_virtual_to_kernel(struct context *,$/;"	p	signature:(struct context *, unsigned long)
+mb	servers/test2.c	/^mailbox *mb;$/;"	v
+mb_mr	include/i386/mailbox.h	/^  memory_region * mb_mr;$/;"	m	struct:mailbox_t	access:public
+mcpy	servers/kbd.c	/^void mcpy (char * d, char * s, int l) {$/;"	f	signature:(char * d, char * s, int l)
+mcpy	servers/kbd.c	/^void mcpy (char * d, char * s, int l);$/;"	p	file:	signature:(char * d, char * s, int l)
+mcpy	servers/test2.c	/^void mcpy (char * d, char * s, int l) {$/;"	f	signature:(char * d, char * s, int l)
+mcpy	servers/test2.c	/^void mcpy (char * d, char * s, int l);$/;"	p	file:	signature:(char * d, char * s, int l)
+mem_lower	include/i386/multiboot.h	/^  unsigned long mem_lower;$/;"	m	struct:multiboot_info	access:public
+mem_upper	include/i386/multiboot.h	/^  unsigned long mem_upper;$/;"	m	struct:multiboot_info	access:public
+memcpy	i386/bootvideo.c	/^void memcpy(char * dst, char *src, int length) {$/;"	f	signature:(char * dst, char *src, int length)
+memcpy	include/i386/bootvideo.h	/^void memcpy(char *, char *, int);$/;"	p	signature:(char *, char *, int)
+memory_domain	include/i386/physical_memory.h	/^} memory_domain;$/;"	t	typeref:struct:__anon51
+memory_map	include/i386/multiboot.h	/^typedef struct memory_map$/;"	s
+memory_map::base_addr_high	include/i386/multiboot.h	/^  unsigned long base_addr_high;$/;"	m	struct:memory_map	access:public
+memory_map::base_addr_low	include/i386/multiboot.h	/^  unsigned long base_addr_low;$/;"	m	struct:memory_map	access:public
+memory_map::length_high	include/i386/multiboot.h	/^  unsigned long length_high;$/;"	m	struct:memory_map	access:public
+memory_map::length_low	include/i386/multiboot.h	/^  unsigned long length_low;$/;"	m	struct:memory_map	access:public
+memory_map::size	include/i386/multiboot.h	/^  unsigned long size;$/;"	m	struct:memory_map	access:public
+memory_map::type	include/i386/multiboot.h	/^  unsigned long type;$/;"	m	struct:memory_map	access:public
+memory_map_t	include/i386/multiboot.h	/^} memory_map_t;$/;"	t	typeref:struct:memory_map
+memory_region	include/i386/context.h	/^typedef struct memory_region_t memory_region;$/;"	t	typeref:struct:memory_region_t
+memory_region_t	include/i386/context.h	/^struct memory_region_t {$/;"	s
+memory_region_t::attributes	include/i386/context.h	/^  int attributes;$/;"	m	struct:memory_region_t	access:public
+memory_region_t::length	include/i386/context.h	/^  int length;  \/*In pages*\/$/;"	m	struct:memory_region_t	access:public
+memory_region_t::next	include/i386/context.h	/^  struct memory_region_t *next;$/;"	m	struct:memory_region_t	typeref:struct:memory_region_t::memory_region_t	access:public
+memory_region_t::parameter	include/i386/context.h	/^  int parameter;$/;"	m	struct:memory_region_t	access:public
+memory_region_t::parent	include/i386/context.h	/^  struct address_space_t *parent;$/;"	m	struct:memory_region_t	typeref:struct:memory_region_t::address_space_t	access:public
+memory_region_t::type	include/i386/context.h	/^  memory_region_type type;$/;"	m	struct:memory_region_t	access:public
+memory_region_t::virtual_address	include/i386/context.h	/^  unsigned long virtual_address;$/;"	m	struct:memory_region_t	access:public
+memory_region_type	include/i386/context.h	/^} memory_region_type;$/;"	t	typeref:enum:__anon49
+memset	i386/bootvideo.c	/^void memset(int * dest, int value, int length) {$/;"	f	signature:(int * dest, int value, int length)
+memset	include/i386/bootvideo.h	/^void memset(int * dest, int value, int length);$/;"	p	signature:(int * dest, int value, int length)
+message	include/i386/mailbox.h	/^typedef struct message_t message;$/;"	t	typeref:struct:message_t
+message_t	include/i386/mailbox.h	/^struct message_t {$/;"	s
+message_t::dest_pid	include/i386/mailbox.h	/^  int dest_pid;$/;"	m	struct:message_t	access:public
+message_t::payload	include/i386/mailbox.h	/^  char payload[128];$/;"	m	struct:message_t	access:public
+message_t::size	include/i386/mailbox.h	/^  short size;$/;"	m	struct:message_t	access:public
+message_t::src_pid	include/i386/mailbox.h	/^  int src_pid;$/;"	m	struct:message_t	access:public
+mmap_addr	include/i386/multiboot.h	/^  unsigned long mmap_addr;$/;"	m	struct:multiboot_info	access:public
+mmap_length	include/i386/multiboot.h	/^  unsigned long mmap_length;$/;"	m	struct:multiboot_info	access:public
+mod_end	include/i386/multiboot.h	/^  unsigned long mod_end;$/;"	m	struct:module	access:public
+mod_start	include/i386/multiboot.h	/^  unsigned long mod_start;$/;"	m	struct:module	access:public
+mod_start	servers/kbd.c	/^void mod_start () {$/;"	f
+mod_start	servers/test1.c	/^void mod_start() {$/;"	f
+mod_start	servers/test2.c	/^void mod_start() {$/;"	f
+mods_addr	include/i386/multiboot.h	/^  unsigned long mods_addr;$/;"	m	struct:multiboot_info	access:public
+mods_count	include/i386/multiboot.h	/^  unsigned long mods_count;$/;"	m	struct:multiboot_info	access:public
+module	include/i386/multiboot.h	/^typedef struct module$/;"	s
+module::mod_end	include/i386/multiboot.h	/^  unsigned long mod_end;$/;"	m	struct:module	access:public
+module::mod_start	include/i386/multiboot.h	/^  unsigned long mod_start;$/;"	m	struct:module	access:public
+module::reserved	include/i386/multiboot.h	/^  unsigned long reserved;$/;"	m	struct:module	access:public
+module::string	include/i386/multiboot.h	/^  unsigned long string;$/;"	m	struct:module	access:public
+module_t	include/i386/multiboot.h	/^} module_t;$/;"	t	typeref:struct:module
+multiboot_header	include/i386/multiboot.h	/^typedef struct multiboot_header$/;"	s
+multiboot_header::bss_end_addr	include/i386/multiboot.h	/^  unsigned long bss_end_addr;$/;"	m	struct:multiboot_header	access:public
+multiboot_header::checksum	include/i386/multiboot.h	/^  unsigned long checksum;$/;"	m	struct:multiboot_header	access:public
+multiboot_header::entry_addr	include/i386/multiboot.h	/^  unsigned long entry_addr;$/;"	m	struct:multiboot_header	access:public
+multiboot_header::flags	include/i386/multiboot.h	/^  unsigned long flags;$/;"	m	struct:multiboot_header	access:public
+multiboot_header::header_addr	include/i386/multiboot.h	/^  unsigned long header_addr;$/;"	m	struct:multiboot_header	access:public
+multiboot_header::load_addr	include/i386/multiboot.h	/^  unsigned long load_addr;$/;"	m	struct:multiboot_header	access:public
+multiboot_header::load_end_addr	include/i386/multiboot.h	/^  unsigned long load_end_addr;$/;"	m	struct:multiboot_header	access:public
+multiboot_header::magic	include/i386/multiboot.h	/^  unsigned long magic;$/;"	m	struct:multiboot_header	access:public
+multiboot_header_t	include/i386/multiboot.h	/^} multiboot_header_t;$/;"	t	typeref:struct:multiboot_header
+multiboot_info	include/i386/multiboot.h	/^typedef struct multiboot_info$/;"	s
+multiboot_info::__anon50::aout_sym	include/i386/multiboot.h	/^    aout_symbol_table_t aout_sym;$/;"	m	union:multiboot_info::__anon50	access:public
+multiboot_info::__anon50::elf_sec	include/i386/multiboot.h	/^    elf_section_header_table_t elf_sec;$/;"	m	union:multiboot_info::__anon50	access:public
+multiboot_info::boot_device	include/i386/multiboot.h	/^  unsigned long boot_device;$/;"	m	struct:multiboot_info	access:public
+multiboot_info::cmdline	include/i386/multiboot.h	/^  unsigned long cmdline;$/;"	m	struct:multiboot_info	access:public
+multiboot_info::flags	include/i386/multiboot.h	/^  unsigned long flags;$/;"	m	struct:multiboot_info	access:public
+multiboot_info::mem_lower	include/i386/multiboot.h	/^  unsigned long mem_lower;$/;"	m	struct:multiboot_info	access:public
+multiboot_info::mem_upper	include/i386/multiboot.h	/^  unsigned long mem_upper;$/;"	m	struct:multiboot_info	access:public
+multiboot_info::mmap_addr	include/i386/multiboot.h	/^  unsigned long mmap_addr;$/;"	m	struct:multiboot_info	access:public
+multiboot_info::mmap_length	include/i386/multiboot.h	/^  unsigned long mmap_length;$/;"	m	struct:multiboot_info	access:public
+multiboot_info::mods_addr	include/i386/multiboot.h	/^  unsigned long mods_addr;$/;"	m	struct:multiboot_info	access:public
+multiboot_info::mods_count	include/i386/multiboot.h	/^  unsigned long mods_count;$/;"	m	struct:multiboot_info	access:public
+multiboot_info::u	include/i386/multiboot.h	/^  } u;$/;"	m	struct:multiboot_info	typeref:union:multiboot_info::__anon50	access:public
+multiboot_info_t	include/i386/multiboot.h	/^} multiboot_info_t;$/;"	t	typeref:struct:multiboot_info
+mutex	include/i386/mailbox.h	/^  int mutex;$/;"	m	struct:mailbox_t	access:public
+n_descsz	include/elf.h	/^  Elf32_Word n_descsz;			\/* Length of the note's descriptor.  *\/$/;"	m	struct:__anon31	access:public
+n_descsz	include/elf.h	/^  Elf64_Word n_descsz;			\/* Length of the note's descriptor.  *\/$/;"	m	struct:__anon32	access:public
+n_namesz	include/elf.h	/^  Elf32_Word n_namesz;			\/* Length of the note's name.  *\/$/;"	m	struct:__anon31	access:public
+n_namesz	include/elf.h	/^  Elf64_Word n_namesz;			\/* Length of the note's name.  *\/$/;"	m	struct:__anon32	access:public
+n_type	include/elf.h	/^  Elf32_Word n_type;			\/* Type of the note.  *\/$/;"	m	struct:__anon31	access:public
+n_type	include/elf.h	/^  Elf64_Word n_type;			\/* Type of the note.  *\/$/;"	m	struct:__anon32	access:public
+next	include/i386/context.h	/^  struct memory_region_t *next;$/;"	m	struct:memory_region_t	typeref:struct:memory_region_t::memory_region_t	access:public
+next	include/i386/mailbox.h	/^  struct mailbox_t *next;$/;"	m	struct:mailbox_t	typeref:struct:mailbox_t::mailbox_t	access:public
+next	include/i386/process.h	/^  struct context * next;$/;"	m	struct:context	typeref:struct:context::context	access:public
+next	include/i386/slab.h	/^  struct sbuf_t *next;$/;"	m	struct:sbuf_t	typeref:struct:sbuf_t::sbuf_t	access:public
+next_avail_pid	i386/process.c	/^int next_avail_pid;$/;"	v
+next_message	i386/mailbox.c	/^next_message (mailbox * mb) {$/;"	f	signature:(mailbox * mb)
+next_message	include/i386/mailbox.h	/^message * next_message (mailbox *);$/;"	p	signature:(mailbox *)
+num	include/i386/multiboot.h	/^  unsigned long num;$/;"	m	struct:elf_section_header_table	access:public
+num_objects	include/i386/slab.h	/^  int num_objects;$/;"	m	struct:slab_entry_t	access:public
+offset_high	include/i386/interrupt.h	/^  uint2 offset_high;$/;"	m	struct:__anon45	access:public
+offset_low	include/i386/interrupt.h	/^  uint2 offset_low;$/;"	m	struct:__anon45	access:public
+outportb	i386/pic.c	/^void outportb(unsigned short port, unsigned char data)$/;"	f	signature:(unsigned short port, unsigned char data)
+outportb	include/i386/pic.h	/^void outportb(unsigned short port, unsigned char data);$/;"	p	signature:(unsigned short port, unsigned char data)
+p_align	include/elf.h	/^  Elf32_Word	p_align;		\/* Segment alignment *\/$/;"	m	struct:__anon13	access:public
+p_align	include/elf.h	/^  Elf64_Xword	p_align;		\/* Segment alignment *\/$/;"	m	struct:__anon14	access:public
+p_filesz	include/elf.h	/^  Elf32_Word	p_filesz;		\/* Segment size in file *\/$/;"	m	struct:__anon13	access:public
+p_filesz	include/elf.h	/^  Elf64_Xword	p_filesz;		\/* Segment size in file *\/$/;"	m	struct:__anon14	access:public
+p_flags	include/elf.h	/^  Elf32_Word	p_flags;		\/* Segment flags *\/$/;"	m	struct:__anon13	access:public
+p_flags	include/elf.h	/^  Elf64_Word	p_flags;		\/* Segment flags *\/$/;"	m	struct:__anon14	access:public
+p_memsz	include/elf.h	/^  Elf32_Word	p_memsz;		\/* Segment size in memory *\/$/;"	m	struct:__anon13	access:public
+p_memsz	include/elf.h	/^  Elf64_Xword	p_memsz;		\/* Segment size in memory *\/$/;"	m	struct:__anon14	access:public
+p_offset	include/elf.h	/^  Elf32_Off	p_offset;		\/* Segment file offset *\/$/;"	m	struct:__anon13	access:public
+p_offset	include/elf.h	/^  Elf64_Off	p_offset;		\/* Segment file offset *\/$/;"	m	struct:__anon14	access:public
+p_paddr	include/elf.h	/^  Elf32_Addr	p_paddr;		\/* Segment physical address *\/$/;"	m	struct:__anon13	access:public
+p_paddr	include/elf.h	/^  Elf64_Addr	p_paddr;		\/* Segment physical address *\/$/;"	m	struct:__anon14	access:public
+p_type	include/elf.h	/^  Elf32_Word	p_type;			\/* Segment type *\/$/;"	m	struct:__anon13	access:public
+p_type	include/elf.h	/^  Elf64_Word	p_type;			\/* Segment type *\/$/;"	m	struct:__anon14	access:public
+p_vaddr	include/elf.h	/^  Elf32_Addr	p_vaddr;		\/* Segment virtual address *\/$/;"	m	struct:__anon13	access:public
+p_vaddr	include/elf.h	/^  Elf64_Addr	p_vaddr;		\/* Segment virtual address *\/$/;"	m	struct:__anon14	access:public
+page_fault_handler	i386/paging.c	/^void page_fault_handler(isr_regs * regs) {$/;"	f	signature:(isr_regs * regs)
+page_fault_handler	include/i386/paging.h	/^void page_fault_handler(isr_regs *);$/;"	p	signature:(isr_regs *)
+parameter	include/i386/context.h	/^  int parameter;$/;"	m	struct:memory_region_t	access:public
+parent	include/i386/context.h	/^  struct address_space_t *parent;$/;"	m	struct:memory_region_t	typeref:struct:memory_region_t::address_space_t	access:public
+payload	include/i386/mailbox.h	/^  char payload[128];$/;"	m	struct:message_t	access:public
+pde	include/i386/paging.h	/^typedef int pde;$/;"	t
+picAvailable	i386/pic.c	/^int picAvailable() {$/;"	f
+picAvailable	include/i386/pic.h	/^int picAvailable();$/;"	p	signature:()
+picRemapIRQs	i386/pic.c	/^void picRemapIRQs() {$/;"	f
+picRemapIRQs	include/i386/pic.h	/^void picRemapIRQs();$/;"	p	signature:()
+pid	include/i386/process.h	/^  int pid;$/;"	m	struct:context	access:public
+pid	include/mailbox.h	/^  int pid;$/;"	m	struct:mailbox	access:public
+pte	include/i386/paging.h	/^typedef int pte;$/;"	t
+puts	include/libak.h	/^void puts (char *);$/;"	p	signature:(char *)
+puts	servers/libak/syscall.c	/^void puts(char * s) {$/;"	f	signature:(char * s)
+r	servers/test2.c	/^ak_kbd_request_t r;$/;"	v
+r_addend	include/elf.h	/^  Elf32_Sword	r_addend;		\/* Addend *\/$/;"	m	struct:__anon11	access:public
+r_addend	include/elf.h	/^  Elf64_Sxword	r_addend;		\/* Addend *\/$/;"	m	struct:__anon12	access:public
+r_info	include/elf.h	/^  Elf32_Word	r_info;			\/* Relocation type and symbol index *\/$/;"	m	struct:__anon11	access:public
+r_info	include/elf.h	/^  Elf32_Word	r_info;			\/* Relocation type and symbol index *\/$/;"	m	struct:__anon9	access:public
+r_info	include/elf.h	/^  Elf64_Xword	r_info;			\/* Relocation type and symbol index *\/$/;"	m	struct:__anon10	access:public
+r_info	include/elf.h	/^  Elf64_Xword	r_info;			\/* Relocation type and symbol index *\/$/;"	m	struct:__anon12	access:public
+r_offset	include/elf.h	/^  Elf32_Addr	r_offset;		\/* Address *\/$/;"	m	struct:__anon11	access:public
+r_offset	include/elf.h	/^  Elf32_Addr	r_offset;		\/* Address *\/$/;"	m	struct:__anon9	access:public
+r_offset	include/elf.h	/^  Elf64_Addr	r_offset;		\/* Address *\/$/;"	m	struct:__anon10	access:public
+r_offset	include/elf.h	/^  Elf64_Addr	r_offset;		\/* Address *\/$/;"	m	struct:__anon12	access:public
+re	servers/test2.c	/^ak_kbd_response_t *re;$/;"	v
+recv_pid	include/i386/mailbox.h	/^  int recv_pid;$/;"	m	struct:mailbox_t	access:public
+regions_slab	i386/context.c	/^slab_entry * regions_slab;$/;"	v
+registers	include/i386/process.h	/^  isr_regs registers;$/;"	m	struct:context	access:public
+reload_cs	i386/asmutil.s	/^reload_cs:$/;"	l
+reserved	include/i386/multiboot.h	/^  unsigned long reserved;$/;"	m	struct:aout_symbol_table	access:public
+reserved	include/i386/multiboot.h	/^  unsigned long reserved;$/;"	m	struct:module	access:public
+ri_cprmask	include/elf.h	/^  Elf32_Word	ri_cprmask[4];		\/* Coprocessor registers used *\/$/;"	m	struct:__anon38	access:public
+ri_gp_value	include/elf.h	/^  Elf32_Sword	ri_gp_value;		\/* $gp register value *\/$/;"	m	struct:__anon38	access:public
+ri_gprmask	include/elf.h	/^  Elf32_Word	ri_gprmask;		\/* General registers used *\/$/;"	m	struct:__anon38	access:public
+row	i386/bootvideo.c	/^int row = 0;$/;"	v
+sbuf	include/i386/slab.h	/^} sbuf;$/;"	t	typeref:struct:sbuf_t
+sbuf_t	include/i386/slab.h	/^typedef struct sbuf_t {$/;"	s
+sbuf_t::first_free	include/i386/slab.h	/^  int first_free;$/;"	m	struct:sbuf_t	access:public
+sbuf_t::free_objects	include/i386/slab.h	/^  int free_objects;$/;"	m	struct:sbuf_t	access:public
+sbuf_t::next	include/i386/slab.h	/^  struct sbuf_t *next;$/;"	m	struct:sbuf_t	typeref:struct:sbuf_t::sbuf_t	access:public
+schedule	i386/process.c	/^void schedule(isr_regs * regs) {$/;"	f	signature:(isr_regs * regs)
+schedule	include/i386/process.h	/^void schedule(isr_regs *);$/;"	p	signature:(isr_regs *)
+schedule_inject	i386/asm_interrupts.s	/^schedule_inject:	$/;"	l
+section	include/elf.h	/^  Elf32_Section section;	\/* Section header index of section affected,$/;"	m	struct:__anon39	access:public
+selector	include/i386/interrupt.h	/^  uint2 selector;$/;"	m	struct:__anon45	access:public
+send_message	i386/mailbox.c	/^int send_message (message * m, int kmode) {$/;"	f	signature:(message * m, int kmode)
+send_message	include/i386/mailbox.h	/^int       send_message (message *, int);$/;"	p	signature:(message *, int)
+set_cr3	i386/paging.c	/^void set_cr3(pde * pd) {$/;"	f	signature:(pde * pd)
+set_cr3	include/i386/paging.h	/^void set_cr3(pde *);$/;"	p	signature:(pde *)
+set_current_process	i386/process.c	/^void set_current_process (int pid) {$/;"	f	signature:(int pid)
+set_current_process	include/i386/process.h	/^void set_current_process (int);$/;"	p	signature:(int)
+set_gdt_entry	i386/gdt.c	/^void set_gdt_entry(int index,$/;"	f	signature:(int index, int base, int length, int flags)
+set_gdt_entry	include/i386/gdt.h	/^void set_gdt_entry(int index,$/;"	p	signature:(int index, int base, int length, int flags)
+set_idt_entry	i386/interrupt.c	/^set_idt_entry (idt_entry * entry, uint4 offset) {$/;"	f	signature:(idt_entry * entry, uint4 offset)
+set_idt_entry	include/i386/interrupt.h	/^void set_idt_entry(idt_entry*, uint4 offset);$/;"	p	signature:(idt_entry*, uint4 offset)
+set_kernel_tss_stack	i386/gdt.c	/^void set_kernel_tss_stack (void * sp) {$/;"	f	signature:(void * sp)
+set_kernel_tss_stack	include/i386/gdt.h	/^void set_kernel_tss_stack (void *);$/;"	p	signature:(void *)
+set_page_status	i386/physical_memory.c	/^void set_page_status (int d, int p, int s) {$/;"	f	signature:(int d, int p, int s)
+set_page_status	include/i386/physical_memory.h	/^void set_page_status(int domain, int pagenumber, int status); \/*1 = allocated*\/$/;"	p	signature:(int domain, int pagenumber, int status)
+set_pde	i386/paging.c	/^void set_pde( pde * p, int address, int flags) {$/;"	f	signature:( pde * p, int address, int flags)
+set_pde	include/i386/paging.h	/^void set_pde(pde *, int address, int flags);$/;"	p	signature:(pde *, int address, int flags)
+set_pte	i386/paging.c	/^void set_pte( pte * p, int address, int flags) {$/;"	f	signature:( pte * p, int address, int flags)
+set_pte	include/i386/paging.h	/^void set_pte(pte *, int address, int flags);$/;"	p	signature:(pte *, int address, int flags)
+sh_addr	include/elf.h	/^  Elf32_Addr	sh_addr;		\/* Section virtual addr at execution *\/$/;"	m	struct:__anon3	access:public
+sh_addr	include/elf.h	/^  Elf64_Addr	sh_addr;		\/* Section virtual addr at execution *\/$/;"	m	struct:__anon4	access:public
+sh_addralign	include/elf.h	/^  Elf32_Word	sh_addralign;		\/* Section alignment *\/$/;"	m	struct:__anon3	access:public
+sh_addralign	include/elf.h	/^  Elf64_Xword	sh_addralign;		\/* Section alignment *\/$/;"	m	struct:__anon4	access:public
+sh_entsize	include/elf.h	/^  Elf32_Word	sh_entsize;		\/* Entry size if section holds table *\/$/;"	m	struct:__anon3	access:public
+sh_entsize	include/elf.h	/^  Elf64_Xword	sh_entsize;		\/* Entry size if section holds table *\/$/;"	m	struct:__anon4	access:public
+sh_flags	include/elf.h	/^  Elf32_Word	sh_flags;		\/* Section flags *\/$/;"	m	struct:__anon3	access:public
+sh_flags	include/elf.h	/^  Elf64_Xword	sh_flags;		\/* Section flags *\/$/;"	m	struct:__anon4	access:public
+sh_info	include/elf.h	/^  Elf32_Word	sh_info;		\/* Additional section information *\/$/;"	m	struct:__anon3	access:public
+sh_info	include/elf.h	/^  Elf64_Word	sh_info;		\/* Additional section information *\/$/;"	m	struct:__anon4	access:public
+sh_link	include/elf.h	/^  Elf32_Word	sh_link;		\/* Link to another section *\/$/;"	m	struct:__anon3	access:public
+sh_link	include/elf.h	/^  Elf64_Word	sh_link;		\/* Link to another section *\/$/;"	m	struct:__anon4	access:public
+sh_name	include/elf.h	/^  Elf32_Word	sh_name;		\/* Section name (string tbl index) *\/$/;"	m	struct:__anon3	access:public
+sh_name	include/elf.h	/^  Elf64_Word	sh_name;		\/* Section name (string tbl index) *\/$/;"	m	struct:__anon4	access:public
+sh_offset	include/elf.h	/^  Elf32_Off	sh_offset;		\/* Section file offset *\/$/;"	m	struct:__anon3	access:public
+sh_offset	include/elf.h	/^  Elf64_Off	sh_offset;		\/* Section file offset *\/$/;"	m	struct:__anon4	access:public
+sh_size	include/elf.h	/^  Elf32_Word	sh_size;		\/* Section size in bytes *\/$/;"	m	struct:__anon3	access:public
+sh_size	include/elf.h	/^  Elf64_Xword	sh_size;		\/* Section size in bytes *\/$/;"	m	struct:__anon4	access:public
+sh_type	include/elf.h	/^  Elf32_Word	sh_type;		\/* Section type *\/$/;"	m	struct:__anon3	access:public
+sh_type	include/elf.h	/^  Elf64_Word	sh_type;		\/* Section type *\/$/;"	m	struct:__anon4	access:public
+shndx	include/i386/multiboot.h	/^  unsigned long shndx;$/;"	m	struct:elf_section_header_table	access:public
+si_boundto	include/elf.h	/^  Elf32_Half si_boundto;		\/* Direct bindings, symbol bound to *\/$/;"	m	struct:__anon7	access:public
+si_boundto	include/elf.h	/^  Elf64_Half si_boundto;		\/* Direct bindings, symbol bound to *\/$/;"	m	struct:__anon8	access:public
+si_flags	include/elf.h	/^  Elf32_Half si_flags;			\/* Per symbol flags *\/$/;"	m	struct:__anon7	access:public
+si_flags	include/elf.h	/^  Elf64_Half si_flags;			\/* Per symbol flags *\/$/;"	m	struct:__anon8	access:public
+size	include/elf.h	/^  unsigned char size;		\/* Size of descriptor, including header.  *\/$/;"	m	struct:__anon39	access:public
+size	include/i386/mailbox.h	/^  int size; \/*In pages*\/$/;"	m	struct:mailbox_t	access:public
+size	include/i386/mailbox.h	/^  short size;$/;"	m	struct:message_t	access:public
+size	include/i386/multiboot.h	/^  unsigned long size;$/;"	m	struct:elf_section_header_table	access:public
+size	include/i386/multiboot.h	/^  unsigned long size;$/;"	m	struct:memory_map	access:public
+size	include/i386/slab.h	/^  int size;$/;"	m	struct:slab_entry_t	access:public
+slab_entry	include/i386/slab.h	/^} slab_entry;$/;"	t	typeref:struct:slab_entry_t
+slab_entry_t	include/i386/slab.h	/^typedef struct slab_entry_t {$/;"	s
+slab_entry_t::first_free_sbuf	include/i386/slab.h	/^  sbuf * first_free_sbuf;$/;"	m	struct:slab_entry_t	access:public
+slab_entry_t::first_sbuf	include/i386/slab.h	/^  sbuf * first_sbuf; \/*Null pointer if slab doesn't exist*\/$/;"	m	struct:slab_entry_t	access:public
+slab_entry_t::lock	include/i386/slab.h	/^  int lock;$/;"	m	struct:slab_entry_t	access:public
+slab_entry_t::num_objects	include/i386/slab.h	/^  int num_objects;$/;"	m	struct:slab_entry_t	access:public
+slab_entry_t::size	include/i386/slab.h	/^  int size;$/;"	m	struct:slab_entry_t	access:public
+slabs	i386/slab.c	/^slab_entry slabs[MAX_SLABS];$/;"	v
+space	include/i386/process.h	/^  address_space * space;$/;"	m	struct:context	access:public
+sprintf	include/libak.h	/^void sprintf (char *, const char *, ...);$/;"	p	signature:(char *, const char *, ...)
+sprintf	servers/libak/syscall.c	/^void sprintf (char * s, const char *format, ...)$/;"	f	signature:(char * s, const char *format, ...)
+src_pid	include/i386/mailbox.h	/^  int src_pid;$/;"	m	struct:message_t	access:public
+ss	include/i386/gdt.h	/^  uint2 ss;$/;"	m	struct:__anon48	access:public
+ss	include/i386/interrupt.h	/^  uint4 eip, cs, eflags, useresp, ss;$/;"	m	struct:__anon44	access:public
+ss0	include/i386/gdt.h	/^  uint2 ss0;$/;"	m	struct:__anon48	access:public
+ss0_h	include/i386/gdt.h	/^  uint2 ss0_h;$/;"	m	struct:__anon48	access:public
+ss1	include/i386/gdt.h	/^  uint2 ss1;$/;"	m	struct:__anon48	access:public
+ss1_h	include/i386/gdt.h	/^  uint2 ss1_h;$/;"	m	struct:__anon48	access:public
+ss2	include/i386/gdt.h	/^  uint2 ss2;$/;"	m	struct:__anon48	access:public
+ss2_h	include/i386/gdt.h	/^  uint2 ss2_h;$/;"	m	struct:__anon48	access:public
+ss_h	include/i386/gdt.h	/^  uint2 ss_h;$/;"	m	struct:__anon48	access:public
+st_info	include/elf.h	/^  unsigned char	st_info;		\/* Symbol type and binding *\/$/;"	m	struct:__anon5	access:public
+st_info	include/elf.h	/^  unsigned char	st_info;		\/* Symbol type and binding *\/$/;"	m	struct:__anon6	access:public
+st_name	include/elf.h	/^  Elf32_Word	st_name;		\/* Symbol name (string tbl index) *\/$/;"	m	struct:__anon5	access:public
+st_name	include/elf.h	/^  Elf64_Word	st_name;		\/* Symbol name (string tbl index) *\/$/;"	m	struct:__anon6	access:public
+st_other	include/elf.h	/^  unsigned char	st_other;		\/* Symbol visibility *\/$/;"	m	struct:__anon5	access:public
+st_other	include/elf.h	/^  unsigned char st_other;		\/* Symbol visibility *\/$/;"	m	struct:__anon6	access:public
+st_shndx	include/elf.h	/^  Elf32_Section	st_shndx;		\/* Section index *\/$/;"	m	struct:__anon5	access:public
+st_shndx	include/elf.h	/^  Elf64_Section	st_shndx;		\/* Section index *\/$/;"	m	struct:__anon6	access:public
+st_size	include/elf.h	/^  Elf32_Word	st_size;		\/* Symbol size *\/$/;"	m	struct:__anon5	access:public
+st_size	include/elf.h	/^  Elf64_Xword	st_size;		\/* Symbol size *\/$/;"	m	struct:__anon6	access:public
+st_value	include/elf.h	/^  Elf32_Addr	st_value;		\/* Symbol value *\/$/;"	m	struct:__anon5	access:public
+st_value	include/elf.h	/^  Elf64_Addr	st_value;		\/* Symbol value *\/$/;"	m	struct:__anon6	access:public
+stack	include/i386/context.h	/^  struct memory_region_t *stack;$/;"	m	struct:address_space_t	typeref:struct:address_space_t::memory_region_t	access:public
+start	i386/start.s	/^start:$/;"	l
+start_page	include/i386/physical_memory.h	/^  int start_page;$/;"	m	struct:__anon51	access:public
+status	include/i386/process.h	/^  int status;$/;"	m	struct:context	access:public
+stop_delimiter	include/servers/kbd.h	/^  unsigned char stop_delimiter;$/;"	m	struct:ak_kbd_request	access:public
+string	include/i386/multiboot.h	/^  unsigned long string;$/;"	m	struct:module	access:public
+strsize	include/i386/multiboot.h	/^  unsigned long strsize;$/;"	m	struct:aout_symbol_table	access:public
+syscall_handler	i386/syscall.c	/^void syscall_handler(isr_regs * regs) {$/;"	f	signature:(isr_regs * regs)
+syscall_handler	include/i386/syscall.h	/^void syscall_handler(isr_regs *);$/;"	p	signature:(isr_regs *)
+tabsize	include/i386/multiboot.h	/^  unsigned long tabsize;$/;"	m	struct:aout_symbol_table	access:public
+test_and_set	i386/asmutil.s	/^test_and_set:$/;"	l
+test_and_set	include/mutex.h	/^int test_and_set (int new_value, int *lock_pointer);$/;"	p	signature:(int new_value, int *lock_pointer)
+timer_interrupt	i386/cmain.c	/^void timer_interrupt (isr_regs * regs);$/;"	p	file:	signature:(isr_regs * regs)
+timer_interrupt	i386/cmain.c	/^void timer_interrupt(isr_regs* regs) {$/;"	f	signature:(isr_regs* regs)
+total_pages	include/i386/physical_memory.h	/^  int total_pages;$/;"	m	struct:__anon51	access:public
+trap	include/i386/gdt.h	/^  uint2 trap;$/;"	m	struct:__anon48	access:public
+tss	include/i386/gdt.h	/^} __attribute__((__packed__)) tss;$/;"	t	typeref:struct:__anon48
+tss_list	i386/gdt.c	/^tss tss_list[MAX_CPUS];$/;"	v
+type	include/i386/context.h	/^  memory_region_type type;$/;"	m	struct:memory_region_t	access:public
+type	include/i386/interrupt.h	/^  uint1 type;$/;"	m	struct:__anon45	access:public
+type	include/i386/multiboot.h	/^  unsigned long type;$/;"	m	struct:memory_map	access:public
+type	include/servers/kbd.h	/^  int type;$/;"	m	struct:ak_kbd_request	access:public
+u	include/i386/multiboot.h	/^  } u;$/;"	m	struct:multiboot_info	typeref:union:multiboot_info::__anon50	access:public
+uint1	include/i386/types.h	/^typedef unsigned char uint1;$/;"	t
+uint2	include/i386/types.h	/^typedef unsigned short uint2;$/;"	t
+uint4	include/i386/types.h	/^typedef unsigned int uint4;$/;"	t
+useresp	include/i386/interrupt.h	/^  uint4 eip, cs, eflags, useresp, ss;$/;"	m	struct:__anon44	access:public
+vd_aux	include/elf.h	/^  Elf32_Word	vd_aux;			\/* Offset in bytes to verdaux array *\/$/;"	m	struct:__anon19	access:public
+vd_aux	include/elf.h	/^  Elf64_Word	vd_aux;			\/* Offset in bytes to verdaux array *\/$/;"	m	struct:__anon20	access:public
+vd_cnt	include/elf.h	/^  Elf32_Half	vd_cnt;			\/* Number of associated aux entries *\/$/;"	m	struct:__anon19	access:public
+vd_cnt	include/elf.h	/^  Elf64_Half	vd_cnt;			\/* Number of associated aux entries *\/$/;"	m	struct:__anon20	access:public
+vd_flags	include/elf.h	/^  Elf32_Half	vd_flags;		\/* Version information *\/$/;"	m	struct:__anon19	access:public
+vd_flags	include/elf.h	/^  Elf64_Half	vd_flags;		\/* Version information *\/$/;"	m	struct:__anon20	access:public
+vd_hash	include/elf.h	/^  Elf32_Word	vd_hash;		\/* Version name hash value *\/$/;"	m	struct:__anon19	access:public
+vd_hash	include/elf.h	/^  Elf64_Word	vd_hash;		\/* Version name hash value *\/$/;"	m	struct:__anon20	access:public
+vd_ndx	include/elf.h	/^  Elf32_Half	vd_ndx;			\/* Version Index *\/$/;"	m	struct:__anon19	access:public
+vd_ndx	include/elf.h	/^  Elf64_Half	vd_ndx;			\/* Version Index *\/$/;"	m	struct:__anon20	access:public
+vd_next	include/elf.h	/^  Elf32_Word	vd_next;		\/* Offset in bytes to next verdef$/;"	m	struct:__anon19	access:public
+vd_next	include/elf.h	/^  Elf64_Word	vd_next;		\/* Offset in bytes to next verdef$/;"	m	struct:__anon20	access:public
+vd_version	include/elf.h	/^  Elf32_Half	vd_version;		\/* Version revision *\/$/;"	m	struct:__anon19	access:public
+vd_version	include/elf.h	/^  Elf64_Half	vd_version;		\/* Version revision *\/$/;"	m	struct:__anon20	access:public
+vda_name	include/elf.h	/^  Elf32_Word	vda_name;		\/* Version or dependency names *\/$/;"	m	struct:__anon21	access:public
+vda_name	include/elf.h	/^  Elf64_Word	vda_name;		\/* Version or dependency names *\/$/;"	m	struct:__anon22	access:public
+vda_next	include/elf.h	/^  Elf32_Word	vda_next;		\/* Offset in bytes to next verdaux$/;"	m	struct:__anon21	access:public
+vda_next	include/elf.h	/^  Elf64_Word	vda_next;		\/* Offset in bytes to next verdaux$/;"	m	struct:__anon22	access:public
+video	i386/bootvideo.c	/^char * video = (char *)0xB8000;$/;"	v
+virt_cr3	include/i386/context.h	/^  pde* virt_cr3;$/;"	m	struct:address_space_t	access:public
+virtual_address	include/i386/context.h	/^  unsigned long virtual_address;$/;"	m	struct:memory_region_t	access:public
+vn_aux	include/elf.h	/^  Elf32_Word	vn_aux;			\/* Offset in bytes to vernaux array *\/$/;"	m	struct:__anon23	access:public
+vn_aux	include/elf.h	/^  Elf64_Word	vn_aux;			\/* Offset in bytes to vernaux array *\/$/;"	m	struct:__anon24	access:public
+vn_cnt	include/elf.h	/^  Elf32_Half	vn_cnt;			\/* Number of associated aux entries *\/$/;"	m	struct:__anon23	access:public
+vn_cnt	include/elf.h	/^  Elf64_Half	vn_cnt;			\/* Number of associated aux entries *\/$/;"	m	struct:__anon24	access:public
+vn_file	include/elf.h	/^  Elf32_Word	vn_file;		\/* Offset of filename for this$/;"	m	struct:__anon23	access:public
+vn_file	include/elf.h	/^  Elf64_Word	vn_file;		\/* Offset of filename for this$/;"	m	struct:__anon24	access:public
+vn_next	include/elf.h	/^  Elf32_Word	vn_next;		\/* Offset in bytes to next verneed$/;"	m	struct:__anon23	access:public
+vn_next	include/elf.h	/^  Elf64_Word	vn_next;		\/* Offset in bytes to next verneed$/;"	m	struct:__anon24	access:public
+vn_version	include/elf.h	/^  Elf32_Half	vn_version;		\/* Version of structure *\/$/;"	m	struct:__anon23	access:public
+vn_version	include/elf.h	/^  Elf64_Half	vn_version;		\/* Version of structure *\/$/;"	m	struct:__anon24	access:public
+vna_flags	include/elf.h	/^  Elf32_Half	vna_flags;		\/* Dependency specific information *\/$/;"	m	struct:__anon25	access:public
+vna_flags	include/elf.h	/^  Elf64_Half	vna_flags;		\/* Dependency specific information *\/$/;"	m	struct:__anon26	access:public
+vna_hash	include/elf.h	/^  Elf32_Word	vna_hash;		\/* Hash value of dependency name *\/$/;"	m	struct:__anon25	access:public
+vna_hash	include/elf.h	/^  Elf64_Word	vna_hash;		\/* Hash value of dependency name *\/$/;"	m	struct:__anon26	access:public
+vna_name	include/elf.h	/^  Elf32_Word	vna_name;		\/* Dependency name string offset *\/$/;"	m	struct:__anon25	access:public
+vna_name	include/elf.h	/^  Elf64_Word	vna_name;		\/* Dependency name string offset *\/$/;"	m	struct:__anon26	access:public
+vna_next	include/elf.h	/^  Elf32_Word	vna_next;		\/* Offset in bytes to next vernaux$/;"	m	struct:__anon25	access:public
+vna_next	include/elf.h	/^  Elf64_Word	vna_next;		\/* Offset in bytes to next vernaux$/;"	m	struct:__anon26	access:public
+vna_other	include/elf.h	/^  Elf32_Half	vna_other;		\/* Unused *\/$/;"	m	struct:__anon25	access:public
+vna_other	include/elf.h	/^  Elf64_Half	vna_other;		\/* Unused *\/$/;"	m	struct:__anon26	access:public
+zero	include/i386/interrupt.h	/^  uint1 zero;$/;"	m	struct:__anon45	access:public

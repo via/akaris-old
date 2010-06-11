@@ -1,7 +1,7 @@
 #include <i386/process.h>
 #include <i386/mailbox.h>
 #include <i386/gdt.h>
-
+#include <elf.h>
 
 slab_entry * context_slab;
 context_t * context_list;
