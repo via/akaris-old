@@ -2,9 +2,6 @@
 #define I386_PHYSICAL_MEMORY_H
 
 #include <i386/multiboot.h>
-#include <i386/bootvideo.h>
-#include <config.h>
-#include <mutex.h>
 
 
 typedef struct {

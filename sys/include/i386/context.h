@@ -1,12 +1,8 @@
 #ifndef I386_CONTEXT_H
 #define I386_CONTEXT_H
 
-#include <config.h>
-#include <i386/physical_memory.h>
-#include <i386/slab.h>
+/* Forward declarations for types*/
 #include <i386/paging.h>
-#include <i386/bootvideo.h>
-
 
 typedef enum {
   MR_TYPE_STACK,
@@ -33,40 +29,37 @@ typedef enum {
 #define MR_ATTR_RO 2
 #define MR_ATTR_PRIO_TOP 4
 
-struct memory_region_t {
+typedef struct memory_region {
   unsigned long virtual_address;
   int length;  /*In pages*/
   memory_region_type type;
   int attributes;
   int parameter;
-  struct address_space_t *parent;
-  struct memory_region_t *next;
-};
+  struct address_space *parent;
+  struct memory_region *next;
+} memory_region_t;
 
-struct address_space_t {
+typedef struct address_space {
   pde* cr3;
   pde* virt_cr3;
 
-  struct memory_region_t *first;
-  struct memory_region_t *last;
+  struct memory_region *first;
+  struct memory_region *last;
 
-  struct memory_region_t *core;
-  struct memory_region_t *stack;
+  struct memory_region *core;
+  struct memory_region *stack;
   /*  struct memory_region_t *mappings;*/
-};
-
-typedef struct memory_region_t memory_region;
-typedef struct address_space_t address_space;
+} address_space_t;
 
 void            init_address_space_system();
 
-address_space * create_address_space();
+address_space_t * create_address_space();
 
-memory_region * determine_memory_region(address_space *, unsigned long address);
-int             expand_region(memory_region*, int size);
+memory_region_t * determine_memory_region(address_space_t *, unsigned long address);
+int             expand_region(memory_region_t *, int size);
 
-memory_region * create_region(address_space *, unsigned long addr, int length, memory_region_type flags, int attr, int param);
-int             map_region(memory_region *, int phys, int length);
+memory_region_t * create_region(address_space_t *, unsigned long addr, int length, memory_region_type flags, int attr, int param);
+int             map_region(memory_region_t *, int phys, int length);
 
 void context_print_mmap ();
 

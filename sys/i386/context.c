@@ -1,45 +1,54 @@
 /*context.c*/
-#include <i386/context.h>
+#include <config.h>
+#include <i386/types.h>
+#include <i386/interrupt.h>
+#include <i386/mailbox.h>
+#include <i386/physical_memory.h>
+#include <i386/multiboot.h>
 #include <i386/process.h>
+#include <i386/paging.h>
+#include <i386/bootvideo.h>
+#include <i386/slab.h>
+#include <i386/context.h>
 
-slab_entry * address_slab;
-slab_entry * regions_slab;
+slab_entry_t * address_slab;
+slab_entry_t * regions_slab;
 
 
 pte ** kpt;
 
 void init_address_space_system() {
 
-  address_slab = create_slab(sizeof(address_space));
-  regions_slab = create_slab(sizeof(memory_region));
+  address_slab = create_slab (sizeof (address_space_t));
+  regions_slab = create_slab (sizeof (memory_region_t));
 
   
   kpt = get_kernel_page_tables();
 }
 
-address_space * create_address_space() {
+address_space_t * create_address_space() {
 
   int c;
-  address_space * as = (address_space *)allocate_from_slab(address_slab);
-  memory_region * core;
-  memory_region * stack;
-  memory_region * free;
+  address_space_t * as = (address_space_t *)allocate_from_slab(address_slab);
+  memory_region_t * core;
+  memory_region_t * stack;
+  memory_region_t * free;
 
 
   pde * pages;
 
 
-  as->first = (memory_region*)allocate_from_slab(regions_slab);
-  as->last = (memory_region*)allocate_from_slab (regions_slab);
+  as->first = (memory_region_t *)allocate_from_slab(regions_slab);
+  as->last = (memory_region_t *)allocate_from_slab (regions_slab);
   
   as->first->type = MR_TYPE_SENTINEL;
   as->first->next = as->last;
   as->last->type  = MR_TYPE_SENTINEL;
-  as->last->next = (memory_region *) 0;
+  as->last->next = (memory_region_t *) 0;
 
 
-  core = (memory_region *)allocate_from_slab(regions_slab);
-  stack= (memory_region *)allocate_from_slab(regions_slab);
+  core = (memory_region_t *)allocate_from_slab(regions_slab);
+  stack= (memory_region_t *)allocate_from_slab(regions_slab);
  
   pages = (pde*)get_usable_kernel_virtual_page();
   
@@ -70,7 +79,7 @@ address_space * create_address_space() {
   stack->parent = as;
   stack->next = core;
   
-  free = (memory_region *)allocate_from_slab(regions_slab);
+  free = (memory_region_t *)allocate_from_slab(regions_slab);
   free->virtual_address = (4096 * 1024) * NUM_KERNEL_PDES;
   free->length = (0x40000000 - ((4096 * 1024) * NUM_KERNEL_PDES)) / 4096;
   free->attributes = 0;
@@ -79,7 +88,7 @@ address_space * create_address_space() {
   free->next = stack;
   as->first->next = free;
   
-  free = (memory_region *)allocate_from_slab(regions_slab);
+  free = (memory_region_t *)allocate_from_slab(regions_slab);
   free->virtual_address = 0x40000000;
   free->length = (0x80000000 - 0x40000000) / 4096;
   free->attributes = MR_ATTR_PRIO_TOP;
@@ -90,7 +99,7 @@ address_space * create_address_space() {
   
 
   
-  free = (memory_region *)allocate_from_slab(regions_slab);
+  free = (memory_region_t *)allocate_from_slab(regions_slab);
   free->virtual_address = 0x80000000;
   free->length = (0xC0000000 - 0x80000000) / 4096;
   free->attributes = 0;
@@ -106,7 +115,7 @@ address_space * create_address_space() {
 
 }
 
-int expand_region(memory_region * mr, int size) {
+int expand_region(memory_region_t * mr, int size) {
   int oldsize = mr->length;
   int inc_amount = 1;
 
@@ -125,7 +134,7 @@ int expand_region(memory_region * mr, int size) {
     unsigned int cur_pde = (((unsigned)mr->virtual_address / PAGE_SIZE) + curpage) / 1024;
     unsigned int cur_pte = (((unsigned)mr->virtual_address / PAGE_SIZE) + curpage) % 1024;
 
-    memory_region * newrange = determine_memory_region (mr->parent, mr->virtual_address + curpage * 4096);
+    memory_region_t * newrange = determine_memory_region (mr->parent, mr->virtual_address + curpage * 4096);
     
     if (newrange->type != MR_TYPE_FREE) {
       bootvideo_printf ("Start address: %x\n", newrange);
@@ -168,9 +177,9 @@ int expand_region(memory_region * mr, int size) {
   return 0;
 }
          
-memory_region * determine_memory_region (address_space * as, unsigned long addr) {
+memory_region_t * determine_memory_region (address_space_t * as, unsigned long addr) {
   /*Traverse the mappings*/
-  memory_region * m; 
+  memory_region_t * m; 
   for (m = as->first->next; m != as->last; m = m->next) {
     if (m->type == MR_TYPE_STACK) {
       if ( (addr < m->virtual_address) &&
@@ -196,14 +205,14 @@ memory_region * determine_memory_region (address_space * as, unsigned long addr)
  * flags, attributes, and a parameter.  If addr is non-null, the memory
  * region will be created at the given virtual address, with no overlap
  * checking*/
-memory_region * create_region (address_space * as,
+memory_region_t * create_region (address_space_t * as,
              unsigned long addr,
 			       int length,
 			       memory_region_type flags, int attr,
 			       int param) {
   /*First we find a free memory region*/
-  memory_region * smallest = 0, *current;
-  memory_region * new_region;
+  memory_region_t * smallest = 0, *current;
+  memory_region_t * new_region;
   if (addr == 0) {
     for (current = as->first->next; current != as->last; current = current->next) {
       if (current->type == MR_TYPE_FREE) {
@@ -223,7 +232,7 @@ memory_region * create_region (address_space * as,
       return 0;
     }
     
-    new_region = (memory_region *)allocate_from_slab (regions_slab);
+    new_region = (memory_region_t *)allocate_from_slab (regions_slab);
     
     /*Subdivide the block*/
     if (smallest->attributes & MR_ATTR_PRIO_TOP) {
@@ -235,7 +244,7 @@ memory_region * create_region (address_space * as,
       smallest->length -= length;
     }
   } else {
-    new_region = (memory_region *)allocate_from_slab (regions_slab);
+    new_region = (memory_region_t *)allocate_from_slab (regions_slab);
     new_region->virtual_address = addr;
   }
   new_region->length = length;
@@ -256,9 +265,9 @@ memory_region * create_region (address_space * as,
 void context_print_mmap () {
   context_t * c = get_process (get_current_process ());
   
-  address_space * as = c->space;
+  address_space_t * as = c->space;
 
-  memory_region * r;
+  memory_region_t * r;
   for (r = as->first->next; r != as->last; r = r->next) {
     bootvideo_printf ("%x    %x    %s\n", r->virtual_address,
 		      r->length * 4096 + r->virtual_address,

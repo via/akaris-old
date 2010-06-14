@@ -6,14 +6,14 @@
 #include <i386/interrupt.h>
 #include <i386/cpuid.h>
 #include <i386/physical_memory.h>
+#include <i386/context.h>
 #include <i386/slab.h>
 #include <i386/paging.h>
-#include <i386/context.h>
 #include <i386/process.h>
 #include <i386/syscall.h>
 #include <i386/mailbox.h>
 
-address_space *A, *B;
+/* address_space_t *A, *B; */
 
 void timer_interrupt (isr_regs * regs);
 void int1 (isr_regs * regs);

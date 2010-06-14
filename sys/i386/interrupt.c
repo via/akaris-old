@@ -1,10 +1,13 @@
+#include <i386/types.h>
+#include <config.h>
 #include <i386/interrupt.h>
 #include <i386/bootvideo.h>
 #include <i386/mailbox.h>
+#include <i386/pic.h>
 
 idt_entry interrupt_descriptors[MAX_INTS];
 idtr      idt_pointer = {sizeof(interrupt_descriptors) - 1,
-			 (uint4) &interrupt_descriptors};
+			 (uint32) &interrupt_descriptors};
 int kernel_reenter;
 
 void (*int_handler[256])(isr_regs*);
@@ -24,7 +27,7 @@ link_irq_to_pid(int irq, int pid) {
 
 isr_regs* c_isr(isr_regs* regs_in) {
 
-  message m;
+  message_t m;
 
   if (int_handler[regs_in->int_no] != 0) {
     int_handler[regs_in->int_no](regs_in);
@@ -49,7 +52,7 @@ isr_regs* c_isr(isr_regs* regs_in) {
 
 
 void 
-set_idt_entry (idt_entry * entry, uint4 offset) {
+set_idt_entry (idt_entry * entry, uint32 offset) {
   entry->offset_low  = offset & 0xFFFF;
   entry->offset_high = (offset & 0xFFFF0000) >> 16;
   entry->zero = 0;
@@ -76,55 +79,55 @@ initialize_interrupts() {
 void 
 initialize_idt() {
   
-  set_idt_entry((interrupt_descriptors + 0), (uint4)&int00);
-  set_idt_entry((interrupt_descriptors + 1), (uint4)&int01);
-  set_idt_entry((interrupt_descriptors + 2), (uint4)&int02);
-  set_idt_entry((interrupt_descriptors + 3), (uint4)&int03);
-  set_idt_entry((interrupt_descriptors + 4), (uint4)&int04);
-  set_idt_entry((interrupt_descriptors + 5), (uint4)&int05);
-  set_idt_entry((interrupt_descriptors + 6), (uint4)&int06);
-  set_idt_entry((interrupt_descriptors + 7), (uint4)&int07);
-  set_idt_entry((interrupt_descriptors + 8), (uint4)&int08);
-  set_idt_entry((interrupt_descriptors + 9), (uint4)&int09);
-  set_idt_entry((interrupt_descriptors + 10), (uint4)&int10);
-  set_idt_entry((interrupt_descriptors + 11), (uint4)&int11);
-  set_idt_entry((interrupt_descriptors + 12), (uint4)&int12);
-  set_idt_entry((interrupt_descriptors + 13), (uint4)&int13);
-  set_idt_entry((interrupt_descriptors + 14), (uint4)&int14);
-  set_idt_entry((interrupt_descriptors + 15), (uint4)&int15);
-  set_idt_entry((interrupt_descriptors + 16), (uint4)&int16);
-  set_idt_entry((interrupt_descriptors + 17), (uint4)&int17);
-  set_idt_entry((interrupt_descriptors + 18), (uint4)&int18);
-  set_idt_entry((interrupt_descriptors + 19), (uint4)&int19);
-  set_idt_entry((interrupt_descriptors + 20), (uint4)&int20);
-  set_idt_entry((interrupt_descriptors + 21), (uint4)&int21);
-  set_idt_entry((interrupt_descriptors + 22), (uint4)&int22);
-  set_idt_entry((interrupt_descriptors + 23), (uint4)&int23);
-  set_idt_entry((interrupt_descriptors + 24), (uint4)&int24);
-  set_idt_entry((interrupt_descriptors + 25), (uint4)&int25);
-  set_idt_entry((interrupt_descriptors + 26), (uint4)&int26);
-  set_idt_entry((interrupt_descriptors + 27), (uint4)&int27);
-  set_idt_entry((interrupt_descriptors + 28), (uint4)&int28);
-  set_idt_entry((interrupt_descriptors + 29), (uint4)&int29);
-  set_idt_entry((interrupt_descriptors + 30), (uint4)&int30);
-  set_idt_entry((interrupt_descriptors + 31), (uint4)&int31);
-  set_idt_entry((interrupt_descriptors + 32), (uint4)&int32);
-  set_idt_entry((interrupt_descriptors + 33), (uint4)&int33);
-  set_idt_entry((interrupt_descriptors + 34), (uint4)&int34);
-  set_idt_entry((interrupt_descriptors + 35), (uint4)&int35);
-  set_idt_entry((interrupt_descriptors + 36), (uint4)&int36);
-  set_idt_entry((interrupt_descriptors + 37), (uint4)&int37);
-  set_idt_entry((interrupt_descriptors + 38), (uint4)&int38);
-  set_idt_entry((interrupt_descriptors + 39), (uint4)&int39);
-  set_idt_entry((interrupt_descriptors + 40), (uint4)&int40);
-  set_idt_entry((interrupt_descriptors + 41), (uint4)&int41);
-  set_idt_entry((interrupt_descriptors + 42), (uint4)&int42);
-  set_idt_entry((interrupt_descriptors + 43), (uint4)&int43);
-  set_idt_entry((interrupt_descriptors + 44), (uint4)&int44);
-  set_idt_entry((interrupt_descriptors + 45), (uint4)&int45);
-  set_idt_entry((interrupt_descriptors + 46), (uint4)&int46);
-  set_idt_entry((interrupt_descriptors + 47), (uint4)&int47);
-  set_idt_entry((interrupt_descriptors + 0x80), (uint4)&intx80);
+  set_idt_entry((interrupt_descriptors + 0), (uint32)&int00);
+  set_idt_entry((interrupt_descriptors + 1), (uint32)&int01);
+  set_idt_entry((interrupt_descriptors + 2), (uint32)&int02);
+  set_idt_entry((interrupt_descriptors + 3), (uint32)&int03);
+  set_idt_entry((interrupt_descriptors + 4), (uint32)&int04);
+  set_idt_entry((interrupt_descriptors + 5), (uint32)&int05);
+  set_idt_entry((interrupt_descriptors + 6), (uint32)&int06);
+  set_idt_entry((interrupt_descriptors + 7), (uint32)&int07);
+  set_idt_entry((interrupt_descriptors + 8), (uint32)&int08);
+  set_idt_entry((interrupt_descriptors + 9), (uint32)&int09);
+  set_idt_entry((interrupt_descriptors + 10), (uint32)&int10);
+  set_idt_entry((interrupt_descriptors + 11), (uint32)&int11);
+  set_idt_entry((interrupt_descriptors + 12), (uint32)&int12);
+  set_idt_entry((interrupt_descriptors + 13), (uint32)&int13);
+  set_idt_entry((interrupt_descriptors + 14), (uint32)&int14);
+  set_idt_entry((interrupt_descriptors + 15), (uint32)&int15);
+  set_idt_entry((interrupt_descriptors + 16), (uint32)&int16);
+  set_idt_entry((interrupt_descriptors + 17), (uint32)&int17);
+  set_idt_entry((interrupt_descriptors + 18), (uint32)&int18);
+  set_idt_entry((interrupt_descriptors + 19), (uint32)&int19);
+  set_idt_entry((interrupt_descriptors + 20), (uint32)&int20);
+  set_idt_entry((interrupt_descriptors + 21), (uint32)&int21);
+  set_idt_entry((interrupt_descriptors + 22), (uint32)&int22);
+  set_idt_entry((interrupt_descriptors + 23), (uint32)&int23);
+  set_idt_entry((interrupt_descriptors + 24), (uint32)&int24);
+  set_idt_entry((interrupt_descriptors + 25), (uint32)&int25);
+  set_idt_entry((interrupt_descriptors + 26), (uint32)&int26);
+  set_idt_entry((interrupt_descriptors + 27), (uint32)&int27);
+  set_idt_entry((interrupt_descriptors + 28), (uint32)&int28);
+  set_idt_entry((interrupt_descriptors + 29), (uint32)&int29);
+  set_idt_entry((interrupt_descriptors + 30), (uint32)&int30);
+  set_idt_entry((interrupt_descriptors + 31), (uint32)&int31);
+  set_idt_entry((interrupt_descriptors + 32), (uint32)&int32);
+  set_idt_entry((interrupt_descriptors + 33), (uint32)&int33);
+  set_idt_entry((interrupt_descriptors + 34), (uint32)&int34);
+  set_idt_entry((interrupt_descriptors + 35), (uint32)&int35);
+  set_idt_entry((interrupt_descriptors + 36), (uint32)&int36);
+  set_idt_entry((interrupt_descriptors + 37), (uint32)&int37);
+  set_idt_entry((interrupt_descriptors + 38), (uint32)&int38);
+  set_idt_entry((interrupt_descriptors + 39), (uint32)&int39);
+  set_idt_entry((interrupt_descriptors + 40), (uint32)&int40);
+  set_idt_entry((interrupt_descriptors + 41), (uint32)&int41);
+  set_idt_entry((interrupt_descriptors + 42), (uint32)&int42);
+  set_idt_entry((interrupt_descriptors + 43), (uint32)&int43);
+  set_idt_entry((interrupt_descriptors + 44), (uint32)&int44);
+  set_idt_entry((interrupt_descriptors + 45), (uint32)&int45);
+  set_idt_entry((interrupt_descriptors + 46), (uint32)&int46);
+  set_idt_entry((interrupt_descriptors + 47), (uint32)&int47);
+  set_idt_entry((interrupt_descriptors + 0x80), (uint32)&intx80);
   load_idt(&idt_pointer);
 
 }

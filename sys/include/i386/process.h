@@ -1,29 +1,27 @@
 #ifndef I386_PROCESS_H
 #define I386_PROCESS_H
 
+#include <i386/mailbox.h>
+#include <i386/interrupt.h>
 /*Process entries*/
 
-#include <i386/types.h>
-#include <i386/interrupt.h>
-#include <i386/context.h>
-#include <i386/slab.h>
 
 #define PROCESS_STATUS_RUNNING 1
 #define PROCESS_STATUS_WAITING 2
 #define PROCESS_STATUS_YIELDING 3
 
-struct mailbox_t;
+/*Forward decl*/
+struct address_space;
 
-struct context {
+typedef struct context {
   isr_regs registers;
-  address_space * space;
+  struct address_space * space;
   int pid;
   int status;
-  struct mailbox_t * mailboxes;
+  mailbox_t * mailboxes;
   struct context * next;
-};
+} context_t;
 
-typedef struct context context_t;
 
 void initialize_scheduler();
 void schedule(isr_regs *);

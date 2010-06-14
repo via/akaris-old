@@ -1,14 +1,16 @@
+#include <i386/types.h>
+#include <config.h>
 #include <i386/gdt.h>
 
 gdt_entry gdt[5 + MAX_CPUS];
-gdtr gdtr_entry = { (uint2)(sizeof(gdt) - 1), (uint4)&gdt};
+gdtr gdtr_entry = { (uint16)(sizeof(gdt) - 1), (uint32)&gdt};
 
 tss tss_list[MAX_CPUS];
 
 void set_kernel_tss_stack (void * sp) {
 
   if (sp != 0) {
-    tss_list[0].esp0 = (uint4)sp;
+    tss_list[0].esp0 = (uint32)sp;
     /*TODO: Change this to alter current cpu*/
   } else {
     tss_list[0].esp0 = ((unsigned int)stack + 0x4000);
@@ -34,7 +36,7 @@ void initialize_gdt() {
   set_gdt_entry(4, 0, 0xFFFFFFFF, GDT_USER   | GDT_DATA);
 
   for (index = 0; index < MAX_CPUS; index++) {
-    tss_list[index].esp0 = (uint4)(stack + 0x4000);
+    tss_list[index].esp0 = (uint32)(stack + 0x4000);
     tss_list[index].ss0  = INDEX_TO_DESCRIPTOR(2);
     
     set_gdt_entry(index + 5,(int) &tss_list[index], sizeof(tss) - 1, GDT_TSS);
@@ -51,11 +53,11 @@ void set_gdt_entry(int index,
 		   int length,
 		   int flags) {
 
-  gdt[index].limit_low = (uint2)(length & 0xFFFF);
-  gdt[index].base_low = (uint2)(base & 0xFFFF);
-  gdt[index].base_middle = (uint1)( (base >> 16) & 0xFF);
-  gdt[index].base_high = (uint1)( (base >> 24) & (0xFF));
-  gdt[index].flags_high = (uint1)( (length >> 16) & 0xF);
+  gdt[index].limit_low = (uint16)(length & 0xFFFF);
+  gdt[index].base_low = (uint16)(base & 0xFFFF);
+  gdt[index].base_middle = (uint8)( (base >> 16) & 0xFF);
+  gdt[index].base_high = (uint8)( (base >> 24) & (0xFF));
+  gdt[index].flags_high = (uint8)( (length >> 16) & 0xF);
   gdt[index].flags_high |= (0x80 | 0x40); /*Set Gran. and Operand Size*/
 
   if (flags & GDT_TSS) {

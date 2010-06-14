@@ -1,8 +1,11 @@
 /*paging.c*/
-
-#include <i386/paging.h>
+#include <i386/types.h>
+#include <config.h>
+#include <i386/physical_memory.h>
+#include <i386/bootvideo.h>
 #include <i386/process.h>
-
+#include <i386/paging.h>
+#include <i386/context.h>
 /*Temporary page directory for early kernel usage*/
 pde * kernel_pd;
 
@@ -86,7 +89,7 @@ void page_fault_handler(isr_regs * regs) {
   }
   context_t * context = get_process (get_current_process ());
   
-  memory_region * mr = determine_memory_region (context->space, (unsigned long) regs->eip);
+  memory_region_t * mr = determine_memory_region (context->space, (unsigned long) regs->eip);
 
   if (mr == context->space->stack) {
     bootvideo_printf ("Page fault in stack of pid %d!\n", context->pid);
@@ -104,7 +107,6 @@ void page_fault_handler(isr_regs * regs) {
     }
   }
   /*Delay loop to easily see page fault info*/
-  dump_slab_info ();
   for (address = 0; address < 200000000; ++address);
 
   
@@ -198,7 +200,7 @@ void free_kernel_virtual_page (int addr) {
  * function must be called from within the context of the process to be
  * modified.
  */
-void map_user_region_to_physical (memory_region * mr, unsigned long phys_addr) {
+void map_user_region_to_physical ( memory_region_t * mr, unsigned long phys_addr) {
   unsigned long cur_virt = mr->virtual_address;
   pde * cur_pd = mr->parent->virt_cr3;
   if ((cur_virt & 0xFFF) != 0) {/*If it doesn't start on a page boundary...*/ 
@@ -221,7 +223,7 @@ void map_user_region_to_physical (memory_region * mr, unsigned long phys_addr) {
     }    
     cur_pde_virt = (pte *) get_mapped_kernel_virtual_page (cur_pd[cur_pde] & 0xFFFFF000);
     set_pte (&cur_pde_virt[cur_pte], cur_phys, PTE_PRESENT_BIT | PTE_US_BIT | PTE_RW_BIT);
-    cur_phys += 4096;
+    cur_phys += PAGE_SIZE;
   }
 
 }

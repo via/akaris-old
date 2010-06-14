@@ -12,35 +12,29 @@
  *allocated.
  */
 
-#include <config.h>
-#include <mutex.h>
-#include <i386/physical_memory.h>
-#include <i386/paging.h>
 
-typedef struct sbuf_t {
+typedef struct sbuf {
   int free_objects;
   int first_free;
-  struct sbuf_t *next;
-  
+  struct sbuf *next;
+} sbuf_t;
 
-} sbuf;
-
-typedef struct slab_entry_t {
+typedef struct {
   int lock;
   int num_objects;
-  sbuf * first_sbuf; /*Null pointer if slab doesn't exist*/
-  sbuf * first_free_sbuf;
+  struct sbuf * first_sbuf; /*Null pointer if slab doesn't exist*/
+  struct sbuf * first_free_sbuf;
   int size;
 
-} slab_entry;
+} slab_entry_t;
 
 void         init_slabs ();
 
-slab_entry * create_slab(int size);
-void         delete_slab(slab_entry *);
+slab_entry_t * create_slab(int size);
+void         delete_slab(slab_entry_t *);
 
-void *       allocate_from_slab(slab_entry *);
-void         deallocate_from_slab(slab_entry *, void *);
+void *       allocate_from_slab(slab_entry_t *);
+void         deallocate_from_slab(slab_entry_t *, void *);
 
 void         dump_slab_info ();
 

@@ -2,7 +2,6 @@
 #define I386_INTERRUPT_H
 
 #include <i386/types.h>
-#include <i386/pic.h>
 
 #define IDT_PRESENT 0x80
 #define IDT_INTGATE 0xE
@@ -11,27 +10,27 @@
 
 extern int kernel_reenter;
 
-typedef struct  {
-  uint4 gs, fs, es, ds;      
-  uint4 edi, esi, ebp, esp, ebx, edx, ecx, eax;
-  uint4 int_no, err_code;
-  uint4 eip, cs, eflags, useresp, ss;
+typedef struct {
+  uint32 gs, fs, es, ds;      
+  uint32 edi, esi, ebp, esp, ebx, edx, ecx, eax;
+  uint32 int_no, err_code;
+  uint32 eip, cs, eflags, useresp, ss;
 } __attribute__((__packed__)) isr_regs;
 
 typedef struct {
-  uint2 offset_low;
-  uint2 selector;
-  uint1 zero;
-  uint1 type;
-  uint2 offset_high;
+  uint16 offset_low;
+  uint16 selector;
+  uint8 zero;
+  uint8 type;
+  uint16 offset_high;
 } __attribute__((__packed__)) idt_entry;
 
 typedef struct idtr {
-  uint2 length;
-  uint4 location;
+  uint16 length;
+  uint32 location;
 } __attribute__((__packed__)) idtr;
 
-void set_idt_entry(idt_entry*, uint4 offset);
+void set_idt_entry(idt_entry*, uint32 offset);
 void initialize_idt();
 void initialize_interrupts();
 void load_idt(idtr*);

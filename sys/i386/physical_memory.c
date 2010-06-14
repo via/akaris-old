@@ -12,6 +12,9 @@
 
 /*All allocations begin at 0x200000 for bitmaps*/
 
+#include <config.h>
+#include <mutex.h>
+#include <i386/bootvideo.h>
 #include <i386/physical_memory.h>
 
 memory_domain domains[MAX_MEMORY_DOMAINS];

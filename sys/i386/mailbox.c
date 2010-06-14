@@ -7,15 +7,23 @@
  * message (and will receive a null if none are ready),
  * or send_message to send a message to another PID.
  * This will return zero on failure, one on success*/
-
+                      
+#include <i386/types.h>
+#include <config.h>
+#include <i386/context.h>
+#include <mutex.h>
+#include <i386/bootvideo.h>
+#include <i386/process.h>
+#include <i386/paging.h>
+#include <i386/physical_memory.h>
 #include <i386/mailbox.h>
-
-slab_entry * mailboxes_slab;
+#include <i386/slab.h>
+slab_entry_t * mailboxes_slab;
 
 void
 init_mailboxes () {
   
-  mailboxes_slab = create_slab (sizeof (mailbox));
+  mailboxes_slab = create_slab (sizeof (mailbox_t));
   
 }
 
@@ -23,17 +31,18 @@ init_mailboxes () {
  * Create a mailbox of size 'size' in PAGE_SIZE's,
  * able to receive from PID recv_pid (or all of -1)
  */
-mailbox *
+mailbox_t *
 create_mailbox (context_t * c, int size, int recv_pid) {
 
-  memory_region * mr = create_region (c->space, 0,
+  memory_region_t * mr = create_region (c->space, 0,
               0,
 				      MR_TYPE_IPC, 
 				      MR_ATTR_RO,
 				      0);
   if (!mr) return 0;
   expand_region (mr, size / 4096 + 1);
-  mailbox * mb = (mailbox *) allocate_from_slab(mailboxes_slab);
+  mailbox_t * mb = (mailbox_t *) allocate_from_slab(mailboxes_slab);
+  
   if (!mb) {
     return 0;
   }
@@ -52,25 +61,25 @@ create_mailbox (context_t * c, int size, int recv_pid) {
 
 }
 
-message * 
-next_message (mailbox * mb) {
+message_t * 
+next_message (mailbox_t * mb) {
   
   if (test_and_set(1, &mb->mutex)) {
     bootvideo_printf ("Mailbox locked!\n");
-    return (message *) MAILBOX_ERR_LOCKED;
+    return (message_t *) MAILBOX_ERR_LOCKED;
   }
 
-  message * m;
+  message_t * m;
   if (mb->first == mb->last) {
     test_and_set (0, &mb->mutex);
-    return (message *) MAILBOX_ERR_EMPTY;
+    return (message_t *) MAILBOX_ERR_EMPTY;
   }
   if (mb->first == (mb->last + 1 % mb->size)) {
     test_and_set (0, &mb->mutex);
-    return (message *)MAILBOX_ERR_EMPTY;
+    return (message_t *)MAILBOX_ERR_EMPTY;
   }
   
-  m = &((message *)(mb->mb_mr->virtual_address))[(mb->last + 1) % mb->size];
+  m = &((message_t *)(mb->mb_mr->virtual_address))[(mb->last + 1) % mb->size];
   mb->last = (mb->last + 1) % mb->size;
 
   test_and_set (0, &mb->mutex);
@@ -79,7 +88,7 @@ next_message (mailbox * mb) {
 }
   
 
-int send_message (message * m, int kmode) {
+int send_message (message_t * m, int kmode) {
 
   /*Find the destination mailbox*/
   
@@ -87,7 +96,7 @@ int send_message (message * m, int kmode) {
   if (!c) {
     return MAILBOX_ERR_PERM;
   }
-  mailbox * mb = c->mailboxes;
+  mailbox_t * mb = c->mailboxes;
 
   if ((m->src_pid != get_current_process ()) && !kmode) {
     return MAILBOX_ERR_PERM;
@@ -116,13 +125,13 @@ int send_message (message * m, int kmode) {
     return MAILBOX_ERR_FULL;
   }
   
-  unsigned long addr = mb->mb_mr->virtual_address + mb->first * sizeof(message);
+  unsigned long addr = mb->mb_mr->virtual_address + mb->first * sizeof(message_t);
   
-  int index = mb->first % (PAGE_SIZE / sizeof(message));
+  int index = mb->first % (PAGE_SIZE / sizeof(message_t));
 
-  message * list = (message *)map_user_virtual_to_kernel (c, addr);
+  message_t * list = (message_t *)map_user_virtual_to_kernel (c, addr);
   unsigned int i;
-  for (i = 0; i < sizeof (message); ++i) {
+  for (i = 0; i < sizeof (message_t); ++i) {
     *((char*)&list[index] + i) = *((char*)m + i);
   }
 

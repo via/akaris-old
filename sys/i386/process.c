@@ -1,19 +1,71 @@
+#include <config.h>
+#include <i386/types.h>
 #include <i386/process.h>
+#include <i386/slab.h>
+#include <i386/context.h>
+#include <i386/paging.h>
+#include <i386/bootvideo.h>
 #include <i386/mailbox.h>
 #include <i386/gdt.h>
 #include <elf.h>
 
-slab_entry * context_slab;
-context_t * context_list;
+  slab_entry_t * context_slab;
+  context_t * context_list;
 
-int next_avail_pid;
-context_t * cur_process;
+  int next_avail_pid;
+  context_t * cur_process;
 
-void initialize_scheduler() {
-  context_slab = create_slab(sizeof(context_t));
-  context_list = (context_t *) 0;
-  next_avail_pid = 1;
+  void initialize_scheduler() {
+    context_slab = create_slab(sizeof(context_t));
+    context_list = (context_t *) 0;
+    next_avail_pid = 1;
+  }
+  /*! \brief Replaces current process image with a new one.
+   * 
+   * Given a current context, replaces all core and stack regions with ones
+   * created from an ELF file image in memory, including the creation of a process
+   * data section with the given environmental variables*/
+  int execve_elf (context_t * cur_process, void * elf_image, unsigned long length, const char * env) {
+    if ((cur_process == 0) ||
+        (elf_image == 0)) return 0;                 
+    if (length >= 0x20000000) {
+    bootvideo_printf ("Unsupported Length: %x\n", length);
+    return -1;
+  }
+
+  /*We need to make a fake segment before 0x40000000 and copy the elf image
+   * there so we can safely destroy all the process's memory regions */
+  memory_region_t temp;
+
+  temp.parent = cur_process->space;
+  temp.type = MR_TYPE_KERNEL;
+  temp.virtual_address = 0x20000000;
+  temp.length = (length + PAGE_SIZE) / PAGE_SIZE;
+  map_user_region_to_physical(&temp, 0); /*Make it be backed by mem*/
+  memcpy ( (void *)0x20000000, elf_image, length);
+  elf_image = (void *) 0x20000000;
+
+  Elf32_Ehdr * elf_header = (Elf32_Ehdr *) elf_image;
+  Elf32_Phdr * prg_header = (Elf32_Phdr *) ((unsigned long) elf_image + elf_header->e_phoff);
+  uint16 cur_phdr;
+
+  /*Verify the header*/
+  if ( !(elf_header->e_ident[0] == EI_MAG0) ||
+       !(elf_header->e_ident[1] == EI_MAG1) ||
+       !(elf_header->e_ident[2] == EI_MAG2) ||
+       !(elf_header->e_ident[3] == EI_MAG3) ) {
+    bootvideo_printf ("Not passed a valid ELF image\n");
+    return -1;
+  }
+
+  for (cur_phdr = 0; cur_phdr < elf_header->e_phnum; ++cur_phdr, ++prg_header) {
+   if (prg_header->p_type != PT_LOAD) continue;
+  }
+  elf_header->e_ident[0] = *env;
+  return 0;
 }
+
+  
 
 int create_process(int addr, int length) {
   context_t * new_context, *t;

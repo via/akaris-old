@@ -1,14 +1,11 @@
 #ifndef I386_PAGING_H
 #define I386_PAGING_H
 
-
-#include <config.h>
-#include <mutex.h>
-#include <i386/bootvideo.h>
+#include <i386/types.h>
 #include <i386/interrupt.h>
-#include <i386/physical_memory.h>
-
-
+/*Forward decl*/
+struct context;
+struct memory_region;
 /*PDE/PTE flag defines*/
 #define PTE_PRESENT_BIT (1 << 0)
 #define PTE_RW_BIT      (1 << 1)
@@ -23,13 +20,8 @@
 
 #define NUM_KERNEL_PDES 16
 
-typedef int pte;
-typedef int pde;
-
 void initialize_kernel_paging();
 pte ** get_kernel_page_tables();
-
-struct context;
 
 void set_pte(pte *, int address, int flags);
 void set_pde(pde *, int address, int flags);
@@ -47,7 +39,7 @@ unsigned long map_user_virtual_to_kernel(struct context *,
 					 unsigned long);
 void free_kernel_virtual_page(int);
   
-void map_user_region_to_physical (memory_region * mr, unsigned long phys_addr); 
+void map_user_region_to_physical (struct memory_region * mr, unsigned long phys_addr); 
 void page_fault_handler(isr_regs *);
 
 

@@ -1,9 +1,6 @@
 #ifndef I386_SYSCALL_H
 #define I386_SYSCALL_H
 
-#include <i386/interrupt.h>
-#include <i386/process.h>
-#include <i386/context.h>
 
 #define SYSCALL_MAX_SYSCALLS 9
 

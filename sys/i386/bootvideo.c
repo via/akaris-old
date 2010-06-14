@@ -1,3 +1,4 @@
+#include <i386/types.h>
 #include <i386/bootvideo.h>
 
 char * video = (char *)0xB8000;
