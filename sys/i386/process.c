@@ -45,6 +45,14 @@
   memcpy ( (void *)0x20000000, elf_image, length);
   elf_image = (void *) 0x20000000;
 
+  memory_region_t * cur;
+  for (cur = cur_process->space->first; cur->next != cur_process->space->last;
+      cur = cur->next) {
+    if (cur->next->type == MR_TYPE_CORE) {
+      delete_region (cur->next);
+    }
+  }
+
   Elf32_Ehdr * elf_header = (Elf32_Ehdr *) elf_image;
   Elf32_Phdr * prg_header = (Elf32_Phdr *) ((unsigned long) elf_image + elf_header->e_phoff);
   uint16 cur_phdr;
@@ -67,7 +75,7 @@
 
   
 
-int create_process(int addr, int length) {
+int create_process() {
   context_t * new_context, *t;
   new_context = (context_t*)allocate_from_slab(context_slab);
   if (context_list == 0) {
@@ -92,17 +100,9 @@ int create_process(int addr, int length) {
   new_context->registers.useresp = 0xBFFFFFF0; /*0xC0000FFF;*/
 
   new_context->space = create_address_space();
-  expand_region(new_context->space->core, length / 4096 + 1);
   expand_region(new_context->space->stack, -1);
   set_cr3(new_context->space->cr3);
 
-  char * s, * d;
-  for (d = (char *)0x40000000, s = (char*)addr;
-       (int)s < addr + length;
-       s++, d++) {
-    *d = *s;
-  }
-  
   new_context->pid = next_avail_pid;
   next_avail_pid++;
 

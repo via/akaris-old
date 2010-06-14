@@ -30,7 +30,6 @@ address_space_t * create_address_space() {
 
   int c;
   address_space_t * as = (address_space_t *)allocate_from_slab(address_slab);
-  memory_region_t * core;
   memory_region_t * stack;
   memory_region_t * free;
 
@@ -47,7 +46,6 @@ address_space_t * create_address_space() {
   as->last->next = (memory_region_t *) 0;
 
 
-  core = (memory_region_t *)allocate_from_slab(regions_slab);
   stack= (memory_region_t *)allocate_from_slab(regions_slab);
  
   pages = (pde*)get_usable_kernel_virtual_page();
@@ -62,22 +60,15 @@ address_space_t * create_address_space() {
 
   as->cr3 = (pde*)get_physical_address_from_kernel_virtual((int)pages);
   as->virt_cr3 = pages;
-  as->core = core;
   as->stack = stack;
 
-  core->virtual_address = 0x40000000;
-  core->length = 0;
-  core->type = MR_TYPE_CORE;
-  core->attributes = 0;
-  core->parent = as;
-  core->next = as->last;
 
   stack->virtual_address = 0xC0000000;
   stack->length = 0;
   stack->type = MR_TYPE_STACK;
   stack->attributes = 0;
   stack->parent = as;
-  stack->next = core;
+  stack->next = as->last;
   
   free = (memory_region_t *)allocate_from_slab(regions_slab);
   free->virtual_address = (4096 * 1024) * NUM_KERNEL_PDES;
@@ -261,6 +252,30 @@ memory_region_t * create_region (address_space_t * as,
 
 }
 
+void delete_region (memory_region_t * mr) {
+  /*In the future, a memory region can have multiple address spaces, and that
+   * will need to be taken into account. for now, the pages are just deleted */
+
+  unsigned long cur_address;
+  for (cur_address = mr->virtual_address;
+       cur_address < mr->virtual_address + mr->length * PAGE_SIZE;
+       cur_address += PAGE_SIZE) {
+    int cur_pde = (cur_address / PAGE_SIZE) / 1024;
+    int cur_pte = (cur_address / PAGE_SIZE) % 1024;
+
+    pte * cur_pd = (pte *) (mr->parent->virt_cr3[cur_pde] & 0xFFFFF000);
+    cur_pd = (pte *)get_mapped_kernel_virtual_page ((unsigned long) cur_pd);
+    unsigned long phys = cur_pd[cur_pte] & 0xFFFFF000;
+    set_page_status (0, phys / 4096, 0);
+    cur_pd[cur_pte] = 0;
+  }
+
+ memory_region_t *cur = mr->parent->first;
+ for (; cur->next != mr; cur = cur->next);
+ cur->next = mr->next; /*Delete it from the linked list*/
+ /*TODO: complete slab allocator delete functionality, and delete the entry */
+
+}
 
 void context_print_mmap () {
   context_t * c = get_process (get_current_process ());

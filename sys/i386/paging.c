@@ -94,7 +94,7 @@ void page_fault_handler(isr_regs * regs) {
   if (mr == context->space->stack) {
     bootvideo_printf ("Page fault in stack of pid %d!\n", context->pid);
     while (1); /*Kill task*/
-  } else if (mr == context->space->core) {
+  } else if (mr->type == MR_TYPE_CORE ) {
     bootvideo_printf ("Page fault in core of pid %d!\n", context->pid);
     if ( (address < context->space->stack->virtual_address +
 	  (4096 * context->space->stack->length)) && 

@@ -46,7 +46,6 @@ typedef struct address_space {
   struct memory_region *first;
   struct memory_region *last;
 
-  struct memory_region *core;
   struct memory_region *stack;
   /*  struct memory_region_t *mappings;*/
 } address_space_t;
@@ -60,7 +59,7 @@ int             expand_region(memory_region_t *, int size);
 
 memory_region_t * create_region(address_space_t *, unsigned long addr, int length, memory_region_type flags, int attr, int param);
 int             map_region(memory_region_t *, int phys, int length);
-
+void delete_region (memory_region_t *);
 void context_print_mmap ();
 
 #endif

@@ -3,9 +3,10 @@ LDFLAGS = -T linker.ld
 CC=clang
 OBJS = start.o cmain.o cpuid.o bootvideo.o asmutil.o gdt.o asm_interrupts.o interrupt.o pic.o physical_memory.o slab.o paging.o context.o process.o syscall.o mailbox.o
 
+all: default
 default: ${OBJS}
 	@ld ${LDFLAGS} -o i386.k ${OBJS}
-	@echo "[LD] ${<}"
+	@echo "[LD] i386.k"
 install:
 #	mdconfig -a -t vnode -f ../bootdisk.img
 	mount -o loop ../bootdisk.img ../../mnt
@@ -13,9 +14,10 @@ install:
 	umount ../../mnt
 	#mdconfig -d -u 0
 clean:
-	-rm *.k
-	-rm *.o
-	-rm *.lst
+	-@rm *.k 2>/dev/null
+	-@rm *.o 2>/dev/null
+	-@rm *.lst 2>/dev/null
+	@echo "[CLEAN]"
 .c.o:
 	@ ${CC} -o $@ -Wa,-a,-ad ${CFLAGS} $< > ${<}.lst
 	@echo "[CC] ${<}"

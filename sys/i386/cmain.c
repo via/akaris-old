@@ -16,7 +16,6 @@
 /* address_space_t *A, *B; */
 
 void timer_interrupt (isr_regs * regs);
-void int1 (isr_regs * regs);
 void load_module (multiboot_info_t * mb, int);
 
 void cmain(multiboot_info_t * mb_info, int magic) {
@@ -40,30 +39,29 @@ void cmain(multiboot_info_t * mb_info, int magic) {
   initialize_scheduler();
   enable_syscall();
   init_mailboxes ();
-  load_module (mb_info, 0);
-  load_module (mb_info, 1);
+  /*load_module (mb_info, 0);*/
+  /*load_module (mb_info, 1);*/
 
   link_irq(32, &timer_interrupt);
-
+/*
   set_current_process (2);
   begin_schedule(&(get_process(2)->registers));
-  
+ */ 
   while (1);
   
 }
 
 
-void int1 (isr_regs * regs) {
+void load_modules (multiboot_info_t * mb) {
+  unsigned long cur_mod;
+  for (cur_mod = 0; cur_mod < mb->mods_count; ++cur_mod) {
 
-  bootvideo_printf("From Process %d: %s\n", get_current_process(), (char*)(regs->eax));
+    module_t * m = ((module_t*)mb->mods_addr) + cur_mod;
 
-}
-void load_module (multiboot_info_t * mb, int number) {
-  module_t * m = ((module_t*)mb->mods_addr) + number;
-
-  int p = create_process((int)m->mod_start,(int)( m->mod_end - m->mod_start));
-  bootvideo_printf("Created process, pid %d\n", p);
-
+    int p = create_process();
+    execve_elf (get_process (p),(void *) m->mod_start, m->mod_start - m->mod_end, (const char *)m->string);
+    bootvideo_printf("Created process, pid %d\n", p);
+  }
 }
 
 void timer_interrupt(isr_regs* regs) {
