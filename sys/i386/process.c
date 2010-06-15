@@ -26,6 +26,7 @@
    * created from an ELF file image in memory, including the creation of a process
    * data section with the given environmental variables*/
   int execve_elf (context_t * cur_process, void * elf_image, unsigned long length, const char * env) {
+    bootvideo_printf ("elf image = %l\n", elf_image);
     if ((cur_process == 0) ||
         (elf_image == 0)) return 0;                 
     if (length >= 0x20000000) {
@@ -68,6 +69,8 @@
 
   for (cur_phdr = 0; cur_phdr < elf_header->e_phnum; ++cur_phdr, ++prg_header) {
    if (prg_header->p_type != PT_LOAD) continue;
+   bootvideo_printf ("Loading segment: Vaddr: %x Vlen %x\n",
+       prg_header->p_vaddr, prg_header->p_memsz);
   }
   elf_header->e_ident[0] = *env;
   return 0;

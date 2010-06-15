@@ -27,8 +27,8 @@ void ak_link_irq (int irq) {
 	  "int $0x80" : : "d" (irq));
 }
 
-mailbox * ak_mailbox_create (int max, int pid_filter) {
-  mailbox * m;
+mailbox_t * ak_mailbox_create (int max, int pid_filter) {
+  mailbox_t * m;
 
   __asm__("movl $3, %%eax\n"
 
@@ -42,7 +42,7 @@ void ak_block_on_message () {
 	  "int $0x80" : :);
 }
 
-int ak_mailbox_send (message * m) {
+int ak_mailbox_send (message_t * m) {
 
   int ret;
   __asm__("movl $4, %%eax\n"
@@ -50,8 +50,8 @@ int ak_mailbox_send (message * m) {
   return ret;
 }
 
-message * ak_mailbox_receive (mailbox * m) {
-  message * msg;
+message_t * ak_mailbox_receive (mailbox_t * m) {
+  message_t * msg;
   __asm__("movl $5, %%eax\n"
 	  "int $0x80" : "=d" (msg) : "d" (m));
   return msg;

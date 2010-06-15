@@ -268,10 +268,14 @@ void delete_region (memory_region_t * mr) {
     unsigned long phys = cur_pd[cur_pte] & 0xFFFFF000;
     set_page_status (0, phys / 4096, 0);
     cur_pd[cur_pte] = 0;
+    free_kernel_virtual_page ((unsigned long)cur_pd);
   }
 
  memory_region_t *cur = mr->parent->first;
- for (; cur->next != mr; cur = cur->next);
+ for (; (cur->next != mr) && (cur != mr->parent->last); cur = cur->next);
+ if (cur == mr->parent->last) {
+   return;
+ }
  cur->next = mr->next; /*Delete it from the linked list*/
  /*TODO: complete slab allocator delete functionality, and delete the entry */
 

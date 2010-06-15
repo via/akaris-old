@@ -2,9 +2,9 @@
 #include <libak.h>
 #include <servers/kbd.h>
 
-mailbox *mb;
-message m;
-message *in;
+mailbox_t *mb;
+message_t m;
+message_t *in;
 ak_kbd_request_t r;
 ak_kbd_response_t *re;
 void mcpy (char * d, char * s, int l);

@@ -76,9 +76,9 @@ void mcpy (char * d, char * s, int l);
 
 void mod_start () {
   
-  mailbox * kern = ak_mailbox_create (10, 0);
-  message * m;
-  message out;
+  mailbox_t * kern = ak_mailbox_create (10, 0);
+  message_t * m;
+  message_t out;
   ak_kbd_request_t akr;
   ak_kbd_response_t akrp;
   int dest_pid = 0;

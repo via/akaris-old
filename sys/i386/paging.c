@@ -185,7 +185,7 @@ unsigned long map_user_virtual_to_kernel(context_t * c, unsigned long addr) {
 }
 						     
   
-void free_kernel_virtual_page (int addr) {
+void free_kernel_virtual_page (unsigned long addr) {
   addr /= 4096;
   int cur_pde = addr / 1024;
   int cur_pte = addr % 1024;

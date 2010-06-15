@@ -3,8 +3,8 @@
 char buf[100];
 
 void mod_start() {
-  message *m;
-  mailbox * mb = ak_mailbox_create (10, 0);
+  message_t *m;
+  mailbox_t * mb = ak_mailbox_create (10, 0);
   
 
   

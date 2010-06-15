@@ -16,7 +16,7 @@
 /* address_space_t *A, *B; */
 
 void timer_interrupt (isr_regs * regs);
-void load_module (multiboot_info_t * mb, int);
+void load_modules (multiboot_info_t * mb);
 
 void cmain(multiboot_info_t * mb_info, int magic) {
 
@@ -41,7 +41,7 @@ void cmain(multiboot_info_t * mb_info, int magic) {
   init_mailboxes ();
   /*load_module (mb_info, 0);*/
   /*load_module (mb_info, 1);*/
-
+  load_modules (mb_info);
   link_irq(32, &timer_interrupt);
 /*
   set_current_process (2);
@@ -59,7 +59,7 @@ void load_modules (multiboot_info_t * mb) {
     module_t * m = ((module_t*)mb->mods_addr) + cur_mod;
 
     int p = create_process();
-    execve_elf (get_process (p),(void *) m->mod_start, m->mod_start - m->mod_end, (const char *)m->string);
+    execve_elf (get_process (p),(void *) m->mod_start, m->mod_end - m->mod_start, (const char *)m->string);
     bootvideo_printf("Created process, pid %d\n", p);
   }
 }

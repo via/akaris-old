@@ -111,7 +111,11 @@ void bootvideo_printf (const char *format, ...)
 	      p = buf;
 	      goto string;
 	      break;
-	      
+      case 'l':
+        itoa (buf, c, *((unsigned long *) arg++));
+        p = buf;
+        goto string;
+        break;
 	    case 's':
 	      p = *arg++;
 	      if (! p)
