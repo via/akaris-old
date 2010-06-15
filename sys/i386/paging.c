@@ -218,10 +218,12 @@ void map_user_region_to_physical ( memory_region_t * mr, unsigned long phys_addr
     }
     
     if ((cur_pd[cur_pde] & PTE_PRESENT_BIT) == 0) {
-      set_pde ( &cur_pd[cur_pde], allocate_page (0), PTE_PRESENT_BIT | 
+      set_pde ( &cur_pd[cur_pde], allocate_page (0) * PAGE_SIZE, PTE_PRESENT_BIT | 
           PTE_RW_BIT | PTE_US_BIT);
     }    
     cur_pde_virt = (pte *) get_mapped_kernel_virtual_page (cur_pd[cur_pde] & 0xFFFFF000);
+  __asm__("invlpg (%0)" : : "a" (mr->parent->cr3));
+  __asm__("invlpg (%0)" : : "a" (cur_pd[cur_pde] & 0xFFFFF000));
     set_pte (&cur_pde_virt[cur_pte], cur_phys, PTE_PRESENT_BIT | PTE_US_BIT | PTE_RW_BIT);
     cur_phys += PAGE_SIZE;
   }

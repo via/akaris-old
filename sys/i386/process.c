@@ -59,10 +59,10 @@
   uint16 cur_phdr;
 
   /*Verify the header*/
-  if ( !(elf_header->e_ident[0] == EI_MAG0) ||
-       !(elf_header->e_ident[1] == EI_MAG1) ||
-       !(elf_header->e_ident[2] == EI_MAG2) ||
-       !(elf_header->e_ident[3] == EI_MAG3) ) {
+  if ( !(elf_header->e_ident[EI_MAG0] == ELFMAG0) ||
+       !(elf_header->e_ident[EI_MAG1] == ELFMAG1) ||
+       !(elf_header->e_ident[EI_MAG2] == ELFMAG2) ||
+       !(elf_header->e_ident[EI_MAG3] == ELFMAG3) ) {
     bootvideo_printf ("Not passed a valid ELF image\n");
     return -1;
   }
@@ -71,7 +71,11 @@
    if (prg_header->p_type != PT_LOAD) continue;
    bootvideo_printf ("Loading segment: Vaddr: %x Vlen %x\n",
        prg_header->p_vaddr, prg_header->p_memsz);
+   memory_region_t * mr = create_region (cur_process->space, prg_header->p_vaddr, ((prg_header->p_memsz + PAGE_SIZE) / PAGE_SIZE), MR_TYPE_CORE, 0, 0);
+   map_user_region_to_physical (mr, 0);
+   memcpy ( (char *)prg_header->p_vaddr,(char *) ((unsigned long)elf_image + prg_header->p_offset), prg_header->p_filesz);
   }
+  cur_process->registers.eip = elf_header->e_entry;
   elf_header->e_ident[0] = *env;
   return 0;
 }

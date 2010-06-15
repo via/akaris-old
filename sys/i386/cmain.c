@@ -43,10 +43,8 @@ void cmain(multiboot_info_t * mb_info, int magic) {
   /*load_module (mb_info, 1);*/
   load_modules (mb_info);
   link_irq(32, &timer_interrupt);
-/*
   set_current_process (2);
   begin_schedule(&(get_process(2)->registers));
- */ 
   while (1);
   
 }
