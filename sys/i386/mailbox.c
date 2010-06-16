@@ -35,12 +35,12 @@ mailbox_t *
 create_mailbox (context_t * c, int size, int recv_pid) {
 
   memory_region_t * mr = create_region (c->space, 0,
-              0,
+              size / 4096 + 1,
 				      MR_TYPE_IPC, 
 				      MR_ATTR_RO,
 				      0);
+  map_user_region_to_physical (mr, 0);
   if (!mr) return 0;
-  expand_region (mr, size / 4096 + 1);
   mailbox_t * mb = (mailbox_t *) allocate_from_slab(mailboxes_slab);
   
   if (!mb) {

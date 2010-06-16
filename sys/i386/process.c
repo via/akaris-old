@@ -68,14 +68,11 @@
 
   for (cur_phdr = 0; cur_phdr < elf_header->e_phnum; ++cur_phdr, ++prg_header) {
    if (prg_header->p_type != PT_LOAD) continue;
-   bootvideo_printf ("Loading segment: Vaddr: %x Vlen %x\n",
-       prg_header->p_vaddr, prg_header->p_memsz);
    memory_region_t * mr = create_region (cur_process->space, prg_header->p_vaddr, ((prg_header->p_memsz + PAGE_SIZE) / PAGE_SIZE), MR_TYPE_CORE, 0, 0);
    map_user_region_to_physical (mr, 0);
    memcpy ( (char *)prg_header->p_vaddr,(char *) ((unsigned long)elf_image + prg_header->p_offset), prg_header->p_filesz);
   }
   cur_process->registers.eip = elf_header->e_entry;
-  bootvideo_printf ("Process loaded. MAP: \n");
   elf_header->e_ident[0] = *env;
   return 0;
 }

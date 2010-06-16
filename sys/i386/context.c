@@ -238,8 +238,6 @@ memory_region_t * create_region (address_space_t * as,
     new_region = (memory_region_t *)allocate_from_slab (regions_slab);
     new_region->virtual_address = addr;
     unsigned long stop = addr + length * PAGE_SIZE;                             
-    bootvideo_printf ("Creating from %x to %x\n",
-        addr, stop);
     for (current = as->first->next; current != as->last; current = current->next) {
       unsigned long cur_stop = current->virtual_address + current->length * PAGE_SIZE;
       /*Case 1: Complete overlap*/
@@ -250,7 +248,7 @@ memory_region_t * create_region (address_space_t * as,
         /*Case 2: right part of current overlaps region*/
       } else if ( (current->virtual_address <= addr) && (cur_stop <= stop) &&
           (cur_stop > addr)) {
-        current->length -= (stop - cur_stop) / PAGE_SIZE;
+        current->length -= (cur_stop - addr) / PAGE_SIZE;
         /*Case 3: Left part of current overlaps region*/
       } else if ( (cur_stop > stop) && (current->virtual_address >= addr) &&
           (current->virtual_address < stop)) {
