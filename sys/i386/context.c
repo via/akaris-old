@@ -193,9 +193,10 @@ memory_region_t * determine_memory_region (address_space_t * as, unsigned long a
  *
  * Given an address space, if addr is NULL it will search for a free block
  * of user address space and split it to create a region with the given
- * flags, attributes, and a parameter.  If addr is non-null, the memory
- * region will be created at the given virtual address, with no overlap
- * checking*/
+ * flags, attributes, and a parameter.  If addr is non-null, the memory region
+ * will be created at the given virtual address, with any half-overlapping
+ * regions being split, completely overlapped regions being deleted, and larger
+ * regions being split into three */
 memory_region_t * create_region (address_space_t * as,
              unsigned long addr,
 			       int length,
@@ -234,9 +235,43 @@ memory_region_t * create_region (address_space_t * as,
       smallest->virtual_address += (length * PAGE_SIZE);
       smallest->length -= length;
     }
-  } else {
+  } else { /* This is the code that executes when the desired virtual address is given*/
     new_region = (memory_region_t *)allocate_from_slab (regions_slab);
     new_region->virtual_address = addr;
+    unsigned long stop = addr + length * PAGE_SIZE;                             
+    bootvideo_printf ("Creating from %x to %x\n",
+        addr, stop);
+    for (current = as->first->next; current != as->last; current = current->next) {
+      unsigned long cur_stop = current->virtual_address + current->length * PAGE_SIZE;
+      /*Case 1: Complete overlap*/
+      if ( (current->virtual_address >= addr) && (cur_stop <= stop)) {
+        memory_region_t *newnext = current->next;
+        delete_region (current);
+        current = newnext;
+        /*Case 2: right part of current overlaps region*/
+      } else if ( (current->virtual_address <= addr) && (cur_stop <= stop) &&
+          (cur_stop > addr)) {
+        current->length -= (stop - cur_stop) / PAGE_SIZE;
+        /*Case 3: Left part of current overlaps region*/
+      } else if ( (cur_stop > stop) && (current->virtual_address >= addr) &&
+          (current->virtual_address < stop)) {
+        current->length -= (cur_stop - stop) / PAGE_SIZE;
+        current->virtual_address += (cur_stop - stop);
+        /*Case 4: Current region overlaps on both sides*/
+      } else if ( (current->virtual_address < addr) && (cur_stop > stop) ) {
+        memory_region_t *newsplit = (memory_region_t*)allocate_from_slab (regions_slab);
+        current->length = (addr - current->virtual_address) / PAGE_SIZE;
+        newsplit->attributes = current->attributes;
+        newsplit->type = current->type;
+        newsplit->parameter = current->parameter;
+        newsplit->parent = current->parent;
+        newsplit->virtual_address = stop;
+        newsplit->length = (cur_stop - stop) / PAGE_SIZE;
+        newsplit->next = current->next;
+        current->next = newsplit;
+      }
+    }
+
   }
   new_region->length = length;
   new_region->type = flags;
@@ -245,8 +280,8 @@ memory_region_t * create_region (address_space_t * as,
   new_region->parent = as;
   new_region->next = as->first->next;
   as->first->next = new_region;
-  
-  
+  bootvideo_cls ();
+  context_print_mmap (as->first->next);
   return new_region;
   
 
@@ -281,13 +316,10 @@ void delete_region (memory_region_t * mr) {
 
 }
 
-void context_print_mmap () {
-  context_t * c = get_process (get_current_process ());
+void context_print_mmap (memory_region_t *head) {
   
-  address_space_t * as = c->space;
-
   memory_region_t * r;
-  for (r = as->first->next; r != as->last; r = r->next) {
+  for (r = head; r->type != MR_TYPE_SENTINEL  ; r = r->next) {
     bootvideo_printf ("%x    %x    %s\n", r->virtual_address,
 		      r->length * 4096 + r->virtual_address,
 		      (r->type == MR_TYPE_FREE ?

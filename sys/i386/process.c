@@ -76,6 +76,7 @@
    memcpy ( (char *)prg_header->p_vaddr,(char *) ((unsigned long)elf_image + prg_header->p_offset), prg_header->p_filesz);
   }
   cur_process->registers.eip = elf_header->e_entry;
+  bootvideo_printf ("Process loaded. MAP: \n");
   elf_header->e_ident[0] = *env;
   return 0;
 }

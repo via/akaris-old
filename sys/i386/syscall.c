@@ -27,7 +27,7 @@ void syscall_handler(isr_regs * regs) {
     bootvideo_printf("%s", regs->edx);
     break;
   case SYSCALL_FUNCTION_MMAP_LIST:
-    context_print_mmap ();
+    context_print_mmap (c->space->first->next);
     break;
   case SYSCALL_FUNCTION_MAILBOX_CREATE:
     regs->edx = (int) create_mailbox (c, regs->edx, regs->ecx);
