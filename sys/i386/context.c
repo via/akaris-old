@@ -69,7 +69,7 @@ address_space_t * create_address_space() {
   stack->attributes = 0;
   stack->parent = as;
   stack->next = as->last;
-  
+#if 0 
   free = (memory_region_t *)allocate_from_slab(regions_slab);
   free->virtual_address = (4096 * 1024) * NUM_KERNEL_PDES;
   free->length = (0x40000000 - ((4096 * 1024) * NUM_KERNEL_PDES)) / 4096;
@@ -78,14 +78,14 @@ address_space_t * create_address_space() {
   free->parent = as;
   free->next = stack;
   as->first->next = free;
-  
+#endif 
   free = (memory_region_t *)allocate_from_slab(regions_slab);
   free->virtual_address = 0x40000000;
   free->length = (0x80000000 - 0x40000000) / 4096;
   free->attributes = MR_ATTR_PRIO_TOP;
   free->type = MR_TYPE_FREE;
   free->parent = as;
-  free->next = as->first->next;
+  free->next = stack;
   as->first->next = free;
   
 
@@ -223,7 +223,6 @@ memory_region_t * create_region (address_space_t * as,
       bootvideo_printf ("Unable to find available memory block!\n");
       return 0;
     }
-    
     new_region = (memory_region_t *)allocate_from_slab (regions_slab);
     
     /*Subdivide the block*/
@@ -255,8 +254,8 @@ memory_region_t * create_region (address_space_t * as,
         /*Case 3: Left part of current overlaps region*/
       } else if ( (cur_stop > stop) && (current->virtual_address >= addr) &&
           (current->virtual_address < stop)) {
-        current->length -= (cur_stop - stop) / PAGE_SIZE;
-        current->virtual_address += (cur_stop - stop);
+        current->length -= (stop - current->virtual_address) / PAGE_SIZE;
+        current->virtual_address = stop;
         /*Case 4: Current region overlaps on both sides*/
       } else if ( (current->virtual_address < addr) && (cur_stop > stop) ) {
         memory_region_t *newsplit = (memory_region_t*)allocate_from_slab (regions_slab);
@@ -280,8 +279,6 @@ memory_region_t * create_region (address_space_t * as,
   new_region->parent = as;
   new_region->next = as->first->next;
   as->first->next = new_region;
-  bootvideo_cls ();
-  context_print_mmap (as->first->next);
   return new_region;
   
 

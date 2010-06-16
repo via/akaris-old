@@ -33,7 +33,6 @@
     bootvideo_printf ("Unsupported Length: %x\n", length);
     return -1;
   }
-
   /*We need to make a fake segment before 0x40000000 and copy the elf image
    * there so we can safely destroy all the process's memory regions */
   memory_region_t temp;

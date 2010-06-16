@@ -58,7 +58,6 @@ void load_modules (multiboot_info_t * mb) {
 
     int p = create_process();
     execve_elf (get_process (p),(void *) m->mod_start, m->mod_end - m->mod_start, (const char *)m->string);
-    bootvideo_printf("Created process, pid %d\n", p);
   }
 }
 
