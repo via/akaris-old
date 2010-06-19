@@ -1,7 +1,7 @@
 #ifndef SERVERS_KBD_H
 #define SERVERS_KBD_H
 
-#define KB_ESCAPE 0x8e
+#define KB_ESCAPE 0xe0
 
 typedef enum {
   KB_REQUEST_EXCLUSIVE,

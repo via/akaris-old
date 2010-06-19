@@ -30,7 +30,7 @@ void mod_start () {
           out.src_pid = 1;
           out.dest_pid = dest_pid;
           akrp.scancode = scancode_in;
-          akrp.escape = 0;
+          akrp.escape = escape;
           memcpy (out.payload, (char*)&akrp, sizeof(akrp));
           ak_mailbox_send (&out);
           escape = 0;
