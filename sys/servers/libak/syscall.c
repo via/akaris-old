@@ -99,7 +99,16 @@ void itoa (char *buf, int base, int d)
     }
 }
 
+void memcpy (void * dst, void * src, unsigned int length) {
+  
+  char * s = (char *) src;
+  char * d = (char *) dst;
 
+  while (length) {
+    *d++ = *s++;
+    --length;
+  }
+}
 void sprintf (char * s, const char *format, ...)
 {
   char *out = s;
