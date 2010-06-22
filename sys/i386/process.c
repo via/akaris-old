@@ -5,7 +5,6 @@
 #include <i386/context.h>
 #include <i386/paging.h>
 #include <i386/bootvideo.h>
-#include <i386/mailbox.h>
 #include <i386/gdt.h>
 #include <elf.h>
 

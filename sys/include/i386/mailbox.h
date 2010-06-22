@@ -13,10 +13,7 @@ typedef struct {
  
 
 typedef struct mailbox {
-  struct mailbox *next;
-  int recv_pid;
   int size; /*In pages*/
-  struct memory_region * mb_mr;
   int first, last;
   int mutex;
 } mailbox_t;
@@ -29,9 +26,9 @@ typedef struct mailbox {
 
 
 void      init_mailboxes ();
-mailbox_t * create_mailbox (struct context *, int size, int recv_pid);
+mailbox_t * create_mailbox (struct context *, int size);
 message_t * next_message (mailbox_t *);
-int       send_message (message_t *, int);
+int       send_message (mailbox_t *, message_t *, int);
 
 
 

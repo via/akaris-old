@@ -230,5 +230,27 @@ void map_user_region_to_physical ( memory_region_t * mr, unsigned long phys_addr
 
 }
 
+void map_user_address (pde * virt_cr3, unsigned long virtaddr, unsigned long physaddr, int flags) {
 
+  unsigned long cur_pde = (virtaddr / PAGE_SIZE) / 1024;
+  unsigned long cur_pte = (virtaddr / PAGE_SIZE) % 1024;
 
+  if ((virt_cr3[cur_pde] & PTE_PRESENT_BIT) == 0) {
+    set_pde (&virt_cr3[cur_pde], allocate_page (0) * PAGE_SIZE, PTE_PRESENT_BIT | PTE_RW_BIT | PTE_US_BIT);
+  }
+
+  pte * pt = (pte *) virt_cr3[cur_pde];
+
+  set_pte (&pt[cur_pte], physaddr, flags);
+}
+
+unsigned long user_address_to_physical (address_space_t * as, unsigned long virtaddr) {
+
+  unsigned long cur_pde = (virtaddr / PAGE_SIZE) / 1024;
+  unsigned long cur_pte = (virtaddr / PAGE_SIZE) % 1024;
+
+  pte * pt = (pte *) get_mapped_kernel_virtual_page (as->virt_cr3[cur_pde] & 0xFFFFF000);
+  unsigned long phys = pt[cur_pte] & 0xFFFFF000;
+  free_kernel_virtual_page ((unsigned long)pt);
+  return phys;
+}

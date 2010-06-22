@@ -15,6 +15,15 @@
 #define SYSCALL_LINK_IRQ 8
 #define SYSCALL_IO 9
 
+typedef enum {
+  SYSCALL_KDEBUG,
+  FIFO_CREATE,
+  FIFO_WRITE,
+  FIFO_READ,
+  FIFO_BLOCK,
+  LINK_IRQ,
+  REQUEST_IO,
+} syscall_number;
 
 /*For ALL syscalls, EAX defines the function, EDX defines parameter*/
 

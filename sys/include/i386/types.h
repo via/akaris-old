@@ -1,7 +1,7 @@
 #ifndef I386_TYPES_H
 #define I386_TYPES_H
 
-
+#define NULL 0
 
 typedef unsigned int uint32;
 typedef unsigned short uint16;

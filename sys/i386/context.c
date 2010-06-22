@@ -2,7 +2,6 @@
 #include <config.h>
 #include <i386/types.h>
 #include <i386/interrupt.h>
-#include <i386/mailbox.h>
 #include <i386/physical_memory.h>
 #include <i386/multiboot.h>
 #include <i386/process.h>
@@ -69,6 +68,7 @@ address_space_t * create_address_space() {
   stack->attributes = 0;
   stack->parent = as;
   stack->next = as->last;
+  stack->sharedmem_next = stack;
 #if 0 
   free = (memory_region_t *)allocate_from_slab(regions_slab);
   free->virtual_address = (4096 * 1024) * NUM_KERNEL_PDES;
@@ -86,6 +86,7 @@ address_space_t * create_address_space() {
   free->type = MR_TYPE_FREE;
   free->parent = as;
   free->next = stack;
+  free->sharedmem_next = free;
   as->first->next = free;
   
 
@@ -96,6 +97,7 @@ address_space_t * create_address_space() {
   free->attributes = 0;
   free->type = MR_TYPE_FREE;
   free->parent = as;
+  free->sharedmem_next = free;
   free->next = as->first->next;
   as->first->next = free;
   
@@ -201,7 +203,7 @@ memory_region_t * create_region (address_space_t * as,
              unsigned long addr,
 			       int length,
 			       memory_region_type flags, int attr,
-			       int param) {
+			       unsigned long param) {
   /*First we find a free memory region*/
   memory_region_t * smallest = 0, *current;
   memory_region_t * new_region;
@@ -275,6 +277,7 @@ memory_region_t * create_region (address_space_t * as,
   new_region->attributes = attr;
   new_region->parameter = param;
   new_region->parent = as;
+  new_region->sharedmem_next = new_region;
   new_region->next = as->first->next;
   as->first->next = new_region;
   return new_region;
@@ -323,3 +326,23 @@ void context_print_mmap (memory_region_t *head) {
 
 
 }
+
+/*! \brief Creates a copy of a memory region in another address space
+ *
+ * \param destspace Address space to create the new region in
+ *
+ * \param region Region to copy
+ *
+ * \param p Set to 1 to preserve current virtual start point
+ */
+memory_region_t *
+clone_region (address_space_t * destspace, memory_region_t *region, int p) {
+
+  memory_region_t *mr = create_region (as, 0, region->length, region->type, region->attributes, region->parameter);
+  unsigned long virt;
+  for (virt = mr->virtual_address; virt < mr->virtual_address + mr->length * PAGE_SIZE; virt += PAGE_SIZE) {
+    map_user_address (as->virt_cr3, virt, user_address_to_physical (region, virt + (region->virtual_address - mr->virtual_address)));
+  }
+  return mr;
+}
+
