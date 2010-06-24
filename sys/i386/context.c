@@ -302,13 +302,12 @@ void delete_region (memory_region_t * mr) {
     free_kernel_virtual_page ((unsigned long)cur_pd);
   }
  memory_region_t *cur = mr->parent->first;
- for (; (cur->next != mr) && (cur != mr->parent->last); cur = cur->next);
+ for (; (cur != mr->parent->last) && (cur->next != mr); cur = cur->next);
  if (cur == mr->parent->last) {
    return;
  }
  cur->next = mr->next; /*Delete it from the linked list*/
- /*TODO: complete slab allocator delete functionality, and delete the entry */
-
+  deallocate_from_slab (regions_slab, mr);
 }
 
 void context_print_mmap (memory_region_t *head) {

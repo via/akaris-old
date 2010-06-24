@@ -142,11 +142,36 @@ void * allocate_from_slab(slab_entry_t * se) {
   return result;
 }
 
+/*! \brief Deallocates a previously allocated object
+ *
+ * Returns an object to the pool to be allocated again. 
+ * Does not actually return physical space to reuse. 
+ * Call slab_flush() to return free sbuf_t's.
+ *
+ * \param se Slab Entry that the object belongs to
+ * \param obj Pointer to object to return.
+ */ 
+void deallocate_from_slab (slab_entry_t * se, void * obj) {
+  /* the sbuf_t is at the beginning of the page*/
+  sbuf_t * sb = (sbuf_t *)((unsigned long)obj & 0xFFFFF000);
   
-    
+  int32 index = ((obj - (void *)sb) - sizeof (sbuf_t)) / se->size;
+  /*Now we need to add it back to the linked list of stuff*/
+  *((int32 *)obj) = sb->first_free;
+  sb->first_free = index;
+  sb->num_free_objects++;
+  se->num_objects--;
 
-
-  
-
-      
+  if (sb->num_free_objects == (PAGE_SIZE - sizeof (sbuf_t)) / se->size) {
+    sbuf_t * cur = se->partial;
+    while (cur != NULL) {
+      if (cur->next == sb) break;
+      cur = cur->next;
+    }
+    if (cur == NULL) return;
+    cur->next = sb->next;
+    sb->next = se->empty;
+    se->empty = sb;
+  }
+}
    
