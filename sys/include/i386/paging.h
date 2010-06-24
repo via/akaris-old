@@ -5,6 +5,7 @@
 #include <i386/interrupt.h>
 /*Forward decl*/
 struct context;
+struct address_space;
 struct memory_region;
 /*PDE/PTE flag defines*/
 #define PTE_PRESENT_BIT (1 << 0)
@@ -43,7 +44,7 @@ void map_user_region_to_physical (struct memory_region * mr, unsigned long phys_
 void page_fault_handler(isr_regs *);
 
 void map_user_address (pde * virt_cr3, unsigned long virtaddr, unsigned long physaddr, int flags);
-unsigned long user_address_to_physical (struct memory_region * as, unsigned long virtaddr);
+unsigned long user_address_to_physical (struct address_space * as, unsigned long virtaddr);
 
 #endif
 

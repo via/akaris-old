@@ -288,7 +288,6 @@ memory_region_t * create_region (address_space_t * as,
 void delete_region (memory_region_t * mr) {
   /*In the future, a memory region can have multiple address spaces, and that
    * will need to be taken into account. for now, the pages are just deleted */
-
   unsigned long cur_address;
   for (cur_address = mr->virtual_address;
        cur_address < mr->virtual_address + mr->length * PAGE_SIZE;
@@ -298,12 +297,10 @@ void delete_region (memory_region_t * mr) {
 
     pte * cur_pd = (pte *) (mr->parent->virt_cr3[cur_pde] & 0xFFFFF000);
     cur_pd = (pte *)get_mapped_kernel_virtual_page ((unsigned long) cur_pd);
-    unsigned long phys = cur_pd[cur_pte] & 0xFFFFF000;
-    set_page_status (0, phys / 4096, 0);
+    cur_pd[cur_pte] = 0;
     cur_pd[cur_pte] = 0;
     free_kernel_virtual_page ((unsigned long)cur_pd);
   }
-
  memory_region_t *cur = mr->parent->first;
  for (; (cur->next != mr) && (cur != mr->parent->last); cur = cur->next);
  if (cur == mr->parent->last) {
@@ -338,10 +335,11 @@ void context_print_mmap (memory_region_t *head) {
 memory_region_t *
 clone_region (address_space_t * destspace, memory_region_t *region, int p) {
 
-  memory_region_t *mr = create_region (as, 0, region->length, region->type, region->attributes, region->parameter);
+  memory_region_t *mr = create_region (destspace, 0, region->length, region->type, region->attributes, region->parameter);
   unsigned long virt;
   for (virt = mr->virtual_address; virt < mr->virtual_address + mr->length * PAGE_SIZE; virt += PAGE_SIZE) {
-    map_user_address (as->virt_cr3, virt, user_address_to_physical (region, virt + (region->virtual_address - mr->virtual_address)));
+    map_user_address (destspace->virt_cr3, virt, user_address_to_physical (region->parent, virt + (region->virtual_address - mr->virtual_address)), p);
+    /*TODO: FIX FLAGS*/
   }
   return mr;
 }

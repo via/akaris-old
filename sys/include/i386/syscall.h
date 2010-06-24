@@ -1,34 +1,32 @@
 #ifndef I386_SYSCALL_H
 #define I386_SYSCALL_H
 
-
-#define SYSCALL_MAX_SYSCALLS 9
-
-#define SYSCALL_FUNCTION_KDEBUG 1
-#define SYSCALL_FUNCTION_MMAP 2
-#define SYSCALL_FUNCTION_MAILBOX_CREATE 3
-#define SYSCALL_FUNCTION_MAILBOX_SEND 4
-#define SYSCALL_FUNCTION_MAILBOX_RECEIVE 5
-#define SYSCALL_FUNCTION_MMAP_LIST 6
-#define SYSCALL_FUNCTION_BLOCK 7
-
-#define SYSCALL_LINK_IRQ 8
-#define SYSCALL_IO 9
+#include <i386/interrupt.h>
+#include <i386/kfifo.h>
 
 typedef enum {
   SYSCALL_KDEBUG,
-  FIFO_CREATE,
-  FIFO_WRITE,
-  FIFO_READ,
-  FIFO_BLOCK,
+  FIFO_PIPE,
+  FIFO_OP,
   LINK_IRQ,
   REQUEST_IO,
 } syscall_number;
 
 /*For ALL syscalls, EAX defines the function, EDX defines parameter*/
 
-  /*Mailbox Send: EAX = 4 EDX = Message ECX = Dest PID*/
-/*Mailbox Create: EAX = 3 EDX = Max Messages ECX = PID filter*/
+typedef struct fifo_op {
+  uint32 fifo_id;
+  void * buf;
+  uint32 length;
+  enum {
+    FIFO_OP_READ,
+    FIFO_OP_WRITE,
+    FIFO_OP_BLOCK,
+  } operation;
+  uint8 num_waits;
+  uint32 waitlist[16];
+  kfifo_error err;
+} fifo_op_t;
 
 
 

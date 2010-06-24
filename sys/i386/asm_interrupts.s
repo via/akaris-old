@@ -1,241 +1,241 @@
 
-.globl int00
-.globl int01
-.globl int02
-.globl int03
-.globl int04
-.globl int05
-.globl int06
-.globl int07
-.globl int08
-.globl int09
-.globl int10
-.globl int11
-.globl int12
-.globl int13
-.globl int14
-.globl int15
-.globl int16
-.globl int17
-.globl int18
-.globl int19
-.globl int20
-.globl int21
-.globl int22
-.globl int23
-.globl int24
-.globl int25
-.globl int26
-.globl int27
-.globl int28
-.globl int29
-.globl int30
-.globl int31
-.globl int32
-.globl int33
-.globl int34
-.globl int35
-.globl int36
-.globl int37
-.globl int38
-.globl int39
-.globl int40
-.globl int41
-.globl int42
-.globl int43
-.globl int44
-.globl int45
-.globl int46
-.globl int47
+.globl intr00
+.globl intr01
+.globl intr02
+.globl intr03
+.globl intr04
+.globl intr05
+.globl intr06
+.globl intr07
+.globl intr08
+.globl intr09
+.globl intr10
+.globl intr11
+.globl intr12
+.globl intr13
+.globl intr14
+.globl intr15
+.globl intr16
+.globl intr17
+.globl intr18
+.globl intr19
+.globl intr20
+.globl intr21
+.globl intr22
+.globl intr23
+.globl intr24
+.globl intr25
+.globl intr26
+.globl intr27
+.globl intr28
+.globl intr29
+.globl intr30
+.globl intr31
+.globl intr32
+.globl intr33
+.globl intr34
+.globl intr35
+.globl intr36
+.globl intr37
+.globl intr38
+.globl intr39
+.globl intr40
+.globl intr41
+.globl intr42
+.globl intr43
+.globl intr44
+.globl intr45
+.globl intr46
+.globl intr47
 .globl intx80
 
 intx80:
 	pushl $0x0
 	pushl $0x80
 	jmp int_hand
-int00:
+intr00:
 	pushl $0
 	pushl $0
 	jmp int_hand
-int01:
+intr01:
 	pushl $0
 	pushl $1
 	jmp int_hand
-int02:
+intr02:
 	pushl $0
 	pushl $2
 	jmp int_hand
-int03:
+intr03:
 	pushl $0
 	pushl $3
 	jmp int_hand
-int04:
+intr04:
 	pushl $0
 	pushl $4
 	jmp int_hand
-int05:
+intr05:
 	pushl $0
 	pushl $5
 	jmp int_hand
-int06:
+intr06:
 	pushl $0
 	pushl $6
 	jmp int_hand
-int07:
+intr07:
 	pushl $0
 	pushl $7
 	jmp int_hand
-int08:
+intr08:
 	pushl $8
 	jmp int_hand
-int09:
+intr09:
 	pushl $0
 	pushl $9
 	jmp int_hand
-int10:
+intr10:
 	pushl $10
 	jmp int_hand
-int11:
+intr11:
 	pushl $11
 	jmp int_hand
-int12:
+intr12:
 	pushl $12
 	jmp int_hand
-int13:
+intr13:
 	pushl $13
 	jmp int_hand
-int14:
+intr14:
 	pushl $14
 	jmp int_hand
-int15:
+intr15:
 	pushl $0
 	pushl $15
 	jmp int_hand
-int16:
+intr16:
 	pushl $0
 	pushl $16
 	jmp int_hand
-int17:
+intr17:
 	pushl $17
 	jmp int_hand
-int18:
+intr18:
 	pushl $0
 	pushl $18
 	jmp int_hand
-int19:
+intr19:
 	pushl $0
 	pushl $19
 	jmp int_hand
-int20:
+intr20:
 	pushl $0
 	pushl $20
 	jmp int_hand
-int21:
+intr21:
 	pushl $0
 	pushl $21
 	jmp int_hand
-int22:
+intr22:
 	pushl $0
 	pushl $22
 	jmp int_hand
-int23:
+intr23:
 	pushl $0
 	pushl $23
 	jmp int_hand
-int24:
+intr24:
 	pushl $0
 	pushl $24
 	jmp int_hand
-int25:
+intr25:
 	pushl $0
 	pushl $25
 	jmp int_hand
-int26:
+intr26:
 	pushl $0
 	pushl $26
 	jmp int_hand
-int27:
+intr27:
 	pushl $0
 	pushl $27
 	jmp int_hand
-int28:
+intr28:
 	pushl $0
 	pushl $28
 	jmp int_hand
-int29:
+intr29:
 	pushl $0
 	pushl $29
 	jmp int_hand
-int30:
+intr30:
 	pushl $0
 	pushl $30
 	jmp int_hand
-int31:
+intr31:
 	pushl $0
 	pushl $31
 	jmp int_hand
-int32:
+intr32:
 	pushl $0
 	pushl $32
 	jmp int_hand
-int33:
+intr33:
 	pushl $0
 	pushl $33
 	jmp int_hand
-int34:
+intr34:
 	pushl $0
 	pushl $34
 	jmp int_hand
 
-int35:
+intr35:
 	pushl $0
 	pushl $35
 	jmp int_hand
-int36:
+intr36:
 	pushl $0
 	pushl $36
 	jmp int_hand
-int37:
+intr37:
 	pushl $0
 	pushl $37
 	jmp int_hand
-int38:
+intr38:
 	pushl $0
 	pushl $38
 	jmp int_hand
-int39:
+intr39:
 	pushl $0
 	pushl $39
 	jmp int_hand
-int40:
+intr40:
 	pushl $0
 	pushl $40
 	jmp int_hand
-int41:
+intr41:
 	pushl $0
 	pushl $41
 	jmp int_hand
-int42:
+intr42:
 	pushl $0
 	pushl $42
 	jmp int_hand
-int43:
+intr43:
 	pushl $0
 	pushl $43
 	jmp int_hand
-int44:
+intr44:
 	pushl $0
 	pushl $44
 	jmp int_hand
-int45:
+intr45:
 	pushl $0
 	pushl $45
 	jmp int_hand
-int46:
+intr46:
 	pushl $0
 	pushl $46
 	jmp int_hand
-int47:
+intr47:
 	pushl $0
 	pushl $47
 	jmp int_hand

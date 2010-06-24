@@ -142,8 +142,9 @@ void memset(int * dest, int value, int length) {
     *cur = value;
 }
 
-void memcpy(char * dst, char *src, int length) {
-  char *d, *s;
+void memcpy(char * dst, const char *src, int length) {
+  char *d;
+  const char *s;
 
   for (d = dst, s = src;
        (int)s < (int)src + length;

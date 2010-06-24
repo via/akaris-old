@@ -239,9 +239,10 @@ void map_user_address (pde * virt_cr3, unsigned long virtaddr, unsigned long phy
     set_pde (&virt_cr3[cur_pde], allocate_page (0) * PAGE_SIZE, PTE_PRESENT_BIT | PTE_RW_BIT | PTE_US_BIT);
   }
 
-  pte * pt = (pte *) virt_cr3[cur_pde];
+  pte * pt = (pte *) (virt_cr3[cur_pde] & 0xFFFFF000);
 
-  set_pte (&pt[cur_pte], physaddr, flags);
+  set_pte (&pt[cur_pte], physaddr, PTE_PRESENT_BIT | PTE_RW_BIT | PTE_US_BIT | flags);
+  __asm__("invlpg (%0)" : : "a" (virtaddr));
 }
 
 unsigned long user_address_to_physical (address_space_t * as, unsigned long virtaddr) {

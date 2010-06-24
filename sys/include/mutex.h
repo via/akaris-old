@@ -1,6 +1,8 @@
 #ifndef MUTEX_H
 #define MUTEX_H
 
-int test_and_set (int new_value, int *lock_pointer);
+typedef unsigned int mutex_t;
+
+int test_and_set (int new_value, mutex_t *lock_pointer);
 
 #endif

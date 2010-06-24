@@ -90,7 +90,6 @@ int create_process() {
     t->next = new_context;
   }
   new_context->next = 0;
-  new_context->mailboxes = 0;
   new_context->registers.eax = 0xDEADBEEF;
   new_context->registers.gs = 0x23;
   new_context->registers.fs = 0x23;

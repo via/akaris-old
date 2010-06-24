@@ -18,7 +18,6 @@ typedef struct context {
   struct address_space * space;
   int pid;
   int status;
-  mailbox_t * mailboxes;
   struct context * next;
 } context_t;
 

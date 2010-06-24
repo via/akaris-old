@@ -1,6 +1,8 @@
 #ifndef I386_SLAB_H
 #define I386_SLAB_H
 
+#include <mutex.h>
+#include <i386/types.h>
 /*The AK slab allocator is a very simple design:
  *A slab entry contains the address (page) of the first
  *buffer node.  It contains a link to the next page of
@@ -14,17 +16,18 @@
 
 
 typedef struct sbuf {
-  int free_objects;
-  int first_free;
+  uint32 num_free_objects;
+  int32 first_free;
   struct sbuf *next;
 } sbuf_t;
 
 typedef struct {
-  int lock;
-  int num_objects;
-  struct sbuf * first_sbuf; /*Null pointer if slab doesn't exist*/
-  struct sbuf * first_free_sbuf;
-  int size;
+  mutex_t lock;
+  uint32 num_objects;
+  sbuf_t *empty;
+  sbuf_t *partial;
+  sbuf_t *full;
+  uint32 size;
 
 } slab_entry_t;
 

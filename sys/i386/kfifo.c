@@ -11,8 +11,8 @@
 #include <i386/kfifo.h>
 
 
-static int fifo_list_mutex = 0;
-static int cur_fifo_id = 1;
+static mutex_t fifo_list_mutex = 0;
+static uint32 cur_fifo_id = 1;
 static kfifo_t * fifo_list;
 static slab_entry_t * fifo_slab;
 static slab_entry_t * acl_slab;
@@ -49,7 +49,7 @@ kfifo_error kfifo_create_fifo (uint32 *fifo_id, uint32 *recv, uint32 *send, uint
   int cur;
   kfifo_acl_entry_t *newentry;
 
-  if (test_and_set (1, &fifo_list_mutex) != 1) {
+  if (test_and_set (1, &fifo_list_mutex) ) {
     return KFIFO_ERR_LOCKED;
   }
 
@@ -123,10 +123,9 @@ kfifo_error kfifo_create_fifo (uint32 *fifo_id, uint32 *recv, uint32 *send, uint
  * \returns Error Code
  */
 kfifo_error
-kfifo_write_fifo (uint32 fifo_id, uint32 mypid, void * buf, uint32 len) {
+kfifo_write_fifo (uint32 fifo_id, uint32 mypid, const void * buf, uint32 len) {
 
-
-  if (test_and_set (1, &fifo_list_mutex) != 1) {
+  if (test_and_set (1, &fifo_list_mutex) ) {
     return KFIFO_ERR_LOCKED;
   }
 
@@ -142,21 +141,22 @@ kfifo_write_fifo (uint32 fifo_id, uint32 mypid, void * buf, uint32 len) {
 
   test_and_set (0, &fifo_list_mutex);
 
-  if (test_and_set (1, &fifo->lock) != 1) {
+  if (test_and_set (1, &fifo->lock)) {
     return KFIFO_ERR_LOCKED;
   }
 
-  if (fifo->size > len) {
+  if (fifo->size - 1 < len) {
     test_and_set (0, &fifo->lock);
     return KFIFO_ERR_BUFLEN;
   }
 
-  int cursize = (fifo->start - fifo->end);
-  if (cursize < 0) {
-    cursize += fifo->size;
-  }
+  int curfree = (fifo->start - fifo->end);
+  if (curfree < 0) {
+    curfree += fifo->size;
+  }                      
+  curfree = fifo->size - curfree - 1;
 
-  if ((unsigned) cursize < len) {
+  if ((unsigned) curfree < len) {
     test_and_set (0, &fifo->lock);
     return KFIFO_ERR_FULL;
   }
@@ -183,20 +183,21 @@ kfifo_write_fifo (uint32 fifo_id, uint32 mypid, void * buf, uint32 len) {
   }
   
   memory_region_t * mr = clone_region (get_process(mypid)->space, r_mr, 0);
+
+
   /*Write the buffer into the fifo ring buffer*/
-  if (fifo->start < fifo->end) {
+  if (fifo->size - fifo->start >= len ) {
     memcpy ((void *)mr->virtual_address + fifo->start, buf, len);            
-    fifo->start += len;
   } else {
     if (fifo->start + len > fifo->size) {
       memcpy ((void *)mr->virtual_address + fifo->start, buf, fifo->size - fifo->start);
-      memcpy ((void *)mr->virtual_address, buf + (fifo->size - fifo->start), len - (fifo->size - fifo->start));
+      memcpy ((void *)mr->virtual_address, buf + (fifo->size - fifo->start), len - (fifo->size - fifo->start)); 
     } else {
-      memcpy ((void *)mr->virtual_address + fifo->start, buf, len);
+      memcpy ((void *)mr->virtual_address + fifo->start, buf, len);                                             
     }
   }
 
-  delete_region (mr);
+  delete_region (mr); 
 
   fifo->start += len;
   if (fifo->start >= fifo->size) {
@@ -204,7 +205,6 @@ kfifo_write_fifo (uint32 fifo_id, uint32 mypid, void * buf, uint32 len) {
   }
 
   test_and_set (0, &fifo->lock);
-
   return KFIFO_SUCCESS;
 }
 
@@ -225,19 +225,73 @@ kfifo_write_fifo (uint32 fifo_id, uint32 mypid, void * buf, uint32 len) {
  */
 kfifo_error
 kfifo_read_fifo (uint32 fifo_id, uint32 mypid, void * buf, uint32 len) {
-  
-  if (test_and_set (1, &fifo_list_mutex) != 1) {
+
+  if (test_and_set (1, &fifo_list_mutex)) {
     return KFIFO_ERR_LOCKED;
   }
-
   kfifo_t *fifo = fifo_list;
   while (fifo != NULL) {
     if (fifo->fifo_id == fifo_id) break;
     fifo = fifo->next;
   }
   if (fifo == NULL) {
+    test_and_set (0, &fifo_list_mutex);
     return KFIFO_ERR_EXIST;
   }
+  
+  if (test_and_set (1, &fifo->lock)) {
+    test_and_set (0, &fifo_list_mutex);
+    return KFIFO_ERR_LOCKED;
+  }
+  test_and_set (0, &fifo_list_mutex);
+
+  /*Determine if this pid can read from this fifo*/
+  kfifo_acl_entry_t *cur = fifo->recvlist;
+  while (cur != NULL) {
+    if (cur->pid == mypid) break;
+    cur = cur->next;
+  }
+  if (cur == NULL) {
+    test_and_set (0, &fifo->lock);
+    return KFIFO_ERR_PERM;
+  }
+
+  int cursize = fifo->end - fifo->start;
+  if (cursize < 0) {
+    cursize += fifo->size;
+  }
+
+  if ((unsigned)cursize < len) {
+    test_and_set (0, &fifo->lock);
+    return KFIFO_ERR_BUFLEN;
+  }
+
+  /*Find the memory region for this fifo*/
+  memory_region_t *mr = get_process(mypid)->space->first->next;
+  while (mr->type != MR_TYPE_SENTINEL) {
+    if ( (mr->type == MR_TYPE_IPC) && (mr->parameter == fifo_id)) break;
+  }
+  if (mr->type == MR_TYPE_SENTINEL) {
+    bootvideo_printf ("Jesus, wtf happened?\n");
+    while (1);
+  }
+
+
+
+  if ( fifo->size - fifo->end >= len) {
+    memcpy (buf, (void *)( mr->virtual_address + fifo->end), len);  
+  } else {
+    memcpy (buf, (void *)( mr->virtual_address + fifo->end), fifo->size - fifo->end);                    
+    memcpy (buf + (fifo->size - fifo->end), (void *) mr->virtual_address, len - (fifo->size - fifo->end)); 
+  }
+
+  fifo->end += len;
+  if (fifo->end >= fifo->size) {
+    fifo->end -= fifo->size;
+  }
+  
+  test_and_set (0, &fifo->lock);
+
   return KFIFO_SUCCESS;
 }
 

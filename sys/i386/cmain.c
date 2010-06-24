@@ -11,8 +11,7 @@
 #include <i386/paging.h>
 #include <i386/process.h>
 #include <i386/syscall.h>
-#include <i386/mailbox.h>
-
+#include <i386/kfifo.h>
 /* address_space_t *A, *B; */
 
 void timer_interrupt (isr_regs * regs);
@@ -38,13 +37,13 @@ void cmain(multiboot_info_t * mb_info, int magic) {
   init_address_space_system();
   initialize_scheduler();
   enable_syscall();
-  init_mailboxes ();
-  /*load_module (mb_info, 0);*/
-  /*load_module (mb_info, 1);*/
+  kfifo_init ();
+  
+
   load_modules (mb_info);
   link_irq(32, &timer_interrupt);
-  set_current_process (2);
-  begin_schedule(&(get_process(2)->registers));
+  set_current_process (1);
+  begin_schedule(&(get_process(1)->registers));
   while (1);
   
 }

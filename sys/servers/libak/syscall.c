@@ -1,62 +1,35 @@
 /* Userspace syscall.h
  * Implements easy to use functions to do stuff with the kernel */
 
-#include <i386/mailbox.h>
-
+#include <i386/syscall.h>
 
 void puts(char * s) {
-  __asm__("movl $1, %%eax\n"
-	  "int $0x80" : : "d" (s));
+  __asm__("int $0x80" : :"a" (SYSCALL_KDEBUG), "d" (s));
 }
 
-void ak_outb (unsigned short port, unsigned char val) {
-  int reg = (val << 16) + port;
-  __asm__("movl $9, %%eax\n"
-	  "int $0x80" : : "d" (reg));
-}
-unsigned char ak_inb (unsigned short port) {
-  int reg = 0xFF000000 | (port);
-
-  __asm__("movl $9, %%eax\n"
-	  "int $0x80" : "=d" (reg): "d" (reg));
-  return (unsigned char)(0x000000FF & reg);
-}
-  
-void ak_link_irq (int irq) {
-  __asm__("movl $8, %%eax\n"
-	  "int $0x80" : : "d" (irq));
+void ak_pipe (uint32 *pipes) {
+  __asm__("int $0x80" :"=d" (pipes[0]), "=c" (pipes[1]) : "a" (FIFO_PIPE));
 }
 
-mailbox_t * ak_mailbox_create (int max, int pid_filter) {
-  mailbox_t * m;
-
-  __asm__("movl $3, %%eax\n"
-
-	"int $0x80" : "=d" (m) : "c" (pid_filter), "d" (max));
-  
-  return m;
+void ak_write (uint32 pipe, void * buf, uint32 length) {
+  fifo_op_t fop;
+  fop.buf = buf;
+  fop.fifo_id = pipe;
+  fop.length = length;
+  fop.operation = FIFO_OP_WRITE;
+  __asm__("int $0x80" : : "a" (FIFO_OP), "d" (&fop));
+  return;
 }
-
-void ak_block_on_message () {
-  __asm__("movl $7, %%eax\n"
-	  "int $0x80" : :);
+void ak_read (uint32 pipe, void * buf, uint32 length) {
+  fifo_op_t fop;
+  fop.buf = buf;
+  fop.fifo_id = pipe;
+  fop.length = length;
+  fop.operation = FIFO_OP_READ;
+  __asm__("int $0x80" : : "a" (FIFO_OP), "d" (&fop));
+  return;
 }
-
-int ak_mailbox_send (message_t * m) {
-
-  int ret;
-  __asm__("movl $4, %%eax\n"
-	"int $0x80" : "=d" (ret) : "d" (m));
-  return ret;
-}
-
-message_t * ak_mailbox_receive (mailbox_t * m) {
-  message_t * msg;
-  __asm__("movl $5, %%eax\n"
-	  "int $0x80" : "=d" (msg) : "d" (m));
-  return msg;
-}
-
+ 
 void itoa (char *buf, int base, int d)
 {
   char *p = buf;
