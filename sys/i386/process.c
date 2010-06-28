@@ -6,6 +6,8 @@
 #include <i386/paging.h>
 #include <i386/bootvideo.h>
 #include <i386/gdt.h>
+#include <i386/kfifo.h>
+#include <i386/physical_memory.h>
 #include <elf.h>
 
   slab_entry_t * context_slab;
@@ -13,6 +15,8 @@
 
   int next_avail_pid;
   context_t * cur_process;
+  
+  extern slab_entry_t * regions_slab;
 
   void initialize_scheduler() {
     context_slab = create_slab(sizeof(context_t));
@@ -169,4 +173,78 @@ int get_current_process() {
 
 void set_current_process (int pid) {
   cur_process = get_process ( pid );
+}
+
+/*! \brief Implements POSIX fork(). 
+ *
+ * \returns -1 if child, or the child's PID if parent
+ */
+int fork (isr_regs * regs) {
+  context_t * new_context, *t;
+  memory_region_t *newr;
+  new_context = (context_t*)allocate_from_slab(context_slab);
+  if (context_list == 0) {
+    context_list = new_context;
+  } else {
+    for (t = context_list;
+	 t->next != 0;
+	 t = t->next); /*Get to end*/
+    t->next = new_context;
+  } 
+  new_context->next = 0;
+  new_context->pid = next_avail_pid;
+  ++next_avail_pid;
+  memcpy ((void *) &new_context->registers, (void *) regs, sizeof (isr_regs));
+  new_context->registers.edx = 0;
+  new_context->space = create_address_space ();
+  for (newr = new_context->space->first->next; newr->next != new_context->space->stack; newr = newr->next);
+  newr->next = new_context->space->stack->next;
+  deallocate_from_slab (regions_slab, new_context->space->stack);
+
+  new_context->status = PROCESS_STATUS_RUNNING;
+
+  memory_region_t * mr = cur_process->space->first->next;
+  unsigned long addr;
+  while (mr->type != MR_TYPE_SENTINEL) {
+
+    switch (mr->type) {
+      case MR_TYPE_ANON:
+      case MR_TYPE_CORE:
+      case MR_TYPE_LIBRARY:
+        newr = create_region (new_context->space, mr->virtual_address, mr->length,
+            mr->type, mr->attributes, mr->parameter);
+        map_user_region_to_physical(newr, 0);
+        for (addr = newr->virtual_address; addr < newr->virtual_address + newr->length * PAGE_SIZE;
+            addr += PAGE_SIZE) {
+          void * a = (void * )map_user_virtual_to_kernel (new_context, addr);
+          memcpy (a, (void *) addr, PAGE_SIZE);
+          free_kernel_virtual_page ((unsigned long)a);
+        }
+        break;
+      case MR_TYPE_STACK:
+        newr = create_region (new_context->space, mr->virtual_address, mr->length,
+            mr->type, mr->attributes, mr->parameter);
+        for (addr = newr->virtual_address; addr < newr->virtual_address + newr->length * PAGE_SIZE;
+           addr += PAGE_SIZE) {
+          if (user_address_to_physical (cur_process->space, addr) != 0) {
+            map_user_address (new_context->space->virt_cr3, addr, allocate_page (0) * PAGE_SIZE, 0);
+            void * a = (void * )map_user_virtual_to_kernel (new_context, addr);
+            memcpy (a, (void *) addr, PAGE_SIZE);
+          }
+        } 
+        new_context->space->stack = newr;
+        break;
+      case MR_TYPE_IPC:
+        newr = clone_region (new_context->space, mr, 0);
+        kfifo_clone_fifo (newr->parameter, new_context->pid);
+        break;
+      default:
+        break;
+    }
+    kfifo_update_senders (cur_process->pid, new_context->pid);
+
+    mr = mr->next;
+  }
+  return new_context->pid;
+
 }

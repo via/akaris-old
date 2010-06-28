@@ -11,23 +11,29 @@ void ak_pipe (uint32 *pipes) {
   __asm__("int $0x80" :"=d" (pipes[0]), "=c" (pipes[1]) : "a" (FIFO_PIPE));
 }
 
-void ak_write (uint32 pipe, void * buf, uint32 length) {
+int ak_fork () {
+  int newpid;
+   __asm__("int $0x80" :"=d" (newpid) : "a" (FORK));
+   return newpid;
+}  
+
+kfifo_error ak_write (uint32 pipe, void * buf, uint32 length) {
   fifo_op_t fop;
   fop.buf = buf;
   fop.fifo_id = pipe;
   fop.length = length;
   fop.operation = FIFO_OP_WRITE;
   __asm__("int $0x80" : : "a" (FIFO_OP), "d" (&fop));
-  return;
+  return fop.err;
 }
-void ak_read (uint32 pipe, void * buf, uint32 length) {
+kfifo_error ak_read (uint32 pipe, void * buf, uint32 length) {
   fifo_op_t fop;
   fop.buf = buf;
   fop.fifo_id = pipe;
   fop.length = length;
   fop.operation = FIFO_OP_READ;
   __asm__("int $0x80" : : "a" (FIFO_OP), "d" (&fop));
-  return;
+  return fop.err;
 }
  
 void itoa (char *buf, int base, int d)

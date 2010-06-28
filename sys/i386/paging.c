@@ -98,8 +98,8 @@ void page_fault_handler(isr_regs * regs) {
     bootvideo_printf ("Page fault in core of pid %d!\n", context->pid);
     
     if (determine_memory_region (context->space, (unsigned long) address) == context->space->stack) {
-      map_user_address (context->space->virt_cr3, address & 0xFFFFF000, allocate_page (0), 0);
-      bootvideo_printf ("Added space to swap!\n");
+      map_user_address (context->space->virt_cr3, address & 0xFFFFF000, allocate_page (0) * PAGE_SIZE, 0);
+      bootvideo_printf ("Added space to swap! @ %x\n", address & 0xFFFFF000);
     }
   }
   /*Delay loop to easily see page fault info*/
@@ -226,9 +226,8 @@ void map_user_region_to_physical ( memory_region_t * mr, unsigned long phys_addr
           PTE_RW_BIT | PTE_US_BIT);
     }    
     cur_pde_virt = (pte *) get_mapped_kernel_virtual_page (cur_pd[cur_pde] & 0xFFFFF000);
-  __asm__("invlpg (%0)" : : "a" (mr->parent->cr3));
-  __asm__("invlpg (%0)" : : "a" (cur_pd[cur_pde] & 0xFFFFF000));
     set_pte (&cur_pde_virt[cur_pte], cur_phys, PTE_PRESENT_BIT | PTE_US_BIT | PTE_RW_BIT);
+    __asm__("invlpg (%0)" : : "a" (cur_pd[cur_pde] & 0xFFFFF000));
     cur_phys += PAGE_SIZE;
   }
 
@@ -253,7 +252,7 @@ unsigned long user_address_to_physical (address_space_t * as, unsigned long virt
 
   unsigned long cur_pde = (virtaddr / PAGE_SIZE) / 1024;
   unsigned long cur_pte = (virtaddr / PAGE_SIZE) % 1024;
-
+  if (as->virt_cr3[cur_pde] == 0) return 0;
   pte * pt = (pte *) get_mapped_kernel_virtual_page (as->virt_cr3[cur_pde] & 0xFFFFF000);
   unsigned long phys = pt[cur_pte] & 0xFFFFF000;
   free_kernel_virtual_page ((unsigned long)pt);

@@ -7,6 +7,7 @@
 typedef enum {
   SYSCALL_KDEBUG,
   FIFO_PIPE,
+  FORK,
   FIFO_OP,
   LINK_IRQ,
   REQUEST_IO,

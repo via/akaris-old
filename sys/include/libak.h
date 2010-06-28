@@ -13,6 +13,7 @@ void ak_outb (unsigned short port, unsigned char);
 unsigned char ak_inb (unsigned short port);
 
 void ak_pipe (uint32 *pipes);
-void ak_read (uint32 pipe, void * buf, uint32 len);
-void ak_write (uint32 pipe, void * buf, uint32 len);
+kfifo_error ak_read (uint32 pipe, void * buf, uint32 len);
+kfifo_error ak_write (uint32 pipe, void * buf, uint32 len);
+int ak_fork ();
 #endif

@@ -26,6 +26,7 @@ void initialize_scheduler();
 void schedule(isr_regs *);
 int create_process();
 int execve_elf (context_t *, void *, unsigned long, const char *);
+int fork (isr_regs *);
 context_t * get_process(int);
 void begin_schedule (isr_regs *);
 int get_current_process();

@@ -36,8 +36,8 @@ kfifo_error kfifo_create_fifo (uint32 *fifo_id, uint32 *recv, uint32 *send, uint
 kfifo_error kfifo_write_fifo (uint32 fifo_id, uint32 mypid, const void * buf, uint32 len);
 kfifo_error kfifo_read_fifo  (uint32 fifo_id, uint32 mypid, void * buf, uint32 len);
 kfifo_error kfifo_close_fifo (uint32 fifo_id, uint32 mypid);
-kfifo_error kfifo_clone_fifo (uint32 fifo_id, uint32 oldpid, uint32 newpid);
-
+kfifo_error kfifo_clone_fifo (uint32 fifo_id, uint32 newpid);
+kfifo_error kfifo_update_senders (uint32 oldpid, uint32 newpid);
 
 
 #endif

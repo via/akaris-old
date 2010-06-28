@@ -176,6 +176,7 @@ kfifo_write_fifo (uint32 fifo_id, uint32 mypid, const void * buf, uint32 len) {
   memory_region_t *r_mr = get_process(fifo->recvlist->pid)->space->first->next;
   while (r_mr->type != MR_TYPE_SENTINEL) {
     if ( (r_mr->type == MR_TYPE_IPC) && (r_mr->parameter == fifo->fifo_id)) break;
+    r_mr = r_mr->next;
   }
   if (r_mr->type == MR_TYPE_SENTINEL) {
     bootvideo_printf ("Oh god, something went awfully wrong!\n");
@@ -224,7 +225,7 @@ kfifo_write_fifo (uint32 fifo_id, uint32 mypid, const void * buf, uint32 len) {
  */
 kfifo_error
 kfifo_read_fifo (uint32 fifo_id, uint32 mypid, void * buf, uint32 len) {
-
+ 
   if (test_and_set (1, &fifo_list_mutex)) {
     return KFIFO_ERR_LOCKED;
   }
@@ -269,6 +270,7 @@ kfifo_read_fifo (uint32 fifo_id, uint32 mypid, void * buf, uint32 len) {
   memory_region_t *mr = get_process(mypid)->space->first->next;
   while (mr->type != MR_TYPE_SENTINEL) {
     if ( (mr->type == MR_TYPE_IPC) && (mr->parameter == fifo_id)) break;
+    mr = mr->next;
   }
   if (mr->type == MR_TYPE_SENTINEL) {
     bootvideo_printf ("Jesus, wtf happened?\n");
@@ -294,3 +296,62 @@ kfifo_read_fifo (uint32 fifo_id, uint32 mypid, void * buf, uint32 len) {
   return KFIFO_SUCCESS;
 }
 
+kfifo_error kfifo_clone_fifo (uint32 fifo_id, uint32 newpid) {
+  
+  if (test_and_set (1, &fifo_list_mutex)) {
+    return KFIFO_ERR_LOCKED;
+  }
+  kfifo_t *fifo = fifo_list;
+  while (fifo != NULL) {
+    if (fifo->fifo_id == fifo_id) break;
+    fifo = fifo->next;
+  }
+  if (fifo == NULL) {
+    test_and_set (0, &fifo_list_mutex);
+    return KFIFO_ERR_EXIST;
+  }
+  
+  if (test_and_set (1, &fifo->lock)) {
+    test_and_set (0, &fifo_list_mutex);
+    return KFIFO_ERR_LOCKED;
+  }
+  test_and_set (0, &fifo_list_mutex);
+
+  kfifo_acl_entry_t *newacl = allocate_from_slab (acl_slab);
+  newacl->pid = newpid;
+  newacl->next = fifo->recvlist;
+  fifo->recvlist = newacl;
+
+  test_and_set (0, &fifo->lock);
+
+  return KFIFO_SUCCESS;
+}
+ 
+kfifo_error kfifo_update_senders (uint32 oldpid, uint32 newpid) {
+
+  if (test_and_set (1, &fifo_list_mutex)) {
+    return KFIFO_ERR_LOCKED;
+  }  
+
+  kfifo_acl_entry_t *newacl = allocate_from_slab (acl_slab);
+  newacl->pid = newpid;
+
+  /*Iterate over all fifos*/
+  kfifo_t *fifo = fifo_list;
+  while (fifo != NULL) {
+
+    /*Iterate over all the senders*/
+    kfifo_acl_entry_t *curacl = fifo->sendlist;
+    while (curacl != NULL) {
+      if (curacl->pid == oldpid) {
+        newacl->next = curacl->next;
+        curacl->next = newacl;
+      }
+      curacl = curacl->next;
+    }
+
+    fifo = fifo->next;
+  }
+  test_and_set (0, &fifo_list_mutex);
+  return KFIFO_SUCCESS;
+}

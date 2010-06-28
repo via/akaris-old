@@ -34,6 +34,9 @@ void syscall_handler(isr_regs * regs) {
       outportb (0xFFFF & regs->edx, (regs->edx & 0xFF0000) >> 16);
     }
     break;
+  case FORK:
+    regs->edx = fork (regs);
+    break;
   case FIFO_PIPE:
     receives[0] = get_current_process ();
     sends[0] = get_current_process ();
