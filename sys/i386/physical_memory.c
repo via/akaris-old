@@ -108,6 +108,11 @@ int allocate_page (int domain) {
 
 }
 
+void deallocate_page(int domain, int page) {
+  set_page_status (domain, page, 0);
+  domains[0].free_pages++;
+}
+
 void set_page_status (int d, int p, int s) {
 
   while (test_and_set(1, &domains[d].lock) != 1);

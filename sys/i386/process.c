@@ -102,7 +102,6 @@ int create_process() {
   new_context->registers.useresp = 0xBFFFFFF0; /*0xC0000FFF;*/
 
   new_context->space = create_address_space();
-  expand_region(new_context->space->stack, -1);
   set_cr3(new_context->space->cr3);
 
   new_context->pid = next_avail_pid;

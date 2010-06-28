@@ -15,5 +15,6 @@ typedef struct {
 
 void  initialize_memory(multiboot_info_t *);
 int allocate_page(int domain); /*returns page number*/
+void deallocate_page(int domain, int page);
 void set_page_status(int domain, int pagenumber, int status); /*1 = allocated*/
 #endif

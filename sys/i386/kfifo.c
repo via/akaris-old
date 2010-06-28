@@ -184,7 +184,6 @@ kfifo_write_fifo (uint32 fifo_id, uint32 mypid, const void * buf, uint32 len) {
   
   memory_region_t * mr = clone_region (get_process(mypid)->space, r_mr, 0);
 
-
   /*Write the buffer into the fifo ring buffer*/
   if (fifo->size - fifo->start >= len ) {
     memcpy ((void *)mr->virtual_address + fifo->start, buf, len);            

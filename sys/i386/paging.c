@@ -96,18 +96,13 @@ void page_fault_handler(isr_regs * regs) {
     while (1); /*Kill task*/
   } else if (mr->type == MR_TYPE_CORE ) {
     bootvideo_printf ("Page fault in core of pid %d!\n", context->pid);
-    if ( (address < context->space->stack->virtual_address +
-	  (4096 * context->space->stack->length)) && 
-	 (address > context->space->stack->virtual_address + 
-	  (4096 * context->space->stack->length) - 4096)) {
-      
-      bootvideo_printf ("Offending address is below stack!\n");
-      expand_region (context->space->stack, -1);
-
+    
+    if (determine_memory_region (context->space, (unsigned long) address) == context->space->stack) {
+      map_user_address (context->space->virt_cr3, address & 0xFFFFF000, allocate_page (0), 0);
+      bootvideo_printf ("Added space to swap!\n");
     }
   }
   /*Delay loop to easily see page fault info*/
-  for (address = 0; address < 200000000; ++address);
 
   
 
@@ -193,6 +188,15 @@ void free_kernel_virtual_page (unsigned long addr) {
   kernel_page_tables[cur_pde][cur_pte] = 0;
 }
 
+/*! \brief Unallocates the physical page that virtaddr points to*/
+void free_kernel_physical_page (unsigned long virtaddr) {
+  virtaddr /= PAGE_SIZE;
+  int cur_pde = virtaddr / 1024;
+  int cur_pte = virtaddr % 1024;
+  if (virtaddr * PAGE_SIZE < 0x40000000) {
+    set_page_status (0, kernel_page_tables[cur_pde][cur_pte] & 0xFFFFF000, 0);
+  }
+}
 /*! \brief Map a userspace memory region to physical addresses.
  * 
  * Given a memory region, maps to a given physical address.  If phys_addr is

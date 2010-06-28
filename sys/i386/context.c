@@ -60,10 +60,10 @@ address_space_t * create_address_space() {
   as->cr3 = (pde*)get_physical_address_from_kernel_virtual((int)pages);
   as->virt_cr3 = pages;
   as->stack = stack;
+  as->first->next = stack;
 
-
-  stack->virtual_address = 0xC0000000;
-  stack->length = 0;
+  stack->virtual_address = 0xB0000000;
+  stack->length = 0x10000;
   stack->type = MR_TYPE_STACK;
   stack->attributes = 0;
   stack->parent = as;
@@ -77,8 +77,6 @@ address_space_t * create_address_space() {
   free->type = MR_TYPE_FREE;
   free->parent = as;
   free->next = stack;
-  as->first->next = free;
-#endif 
   free = (memory_region_t *)allocate_from_slab(regions_slab);
   free->virtual_address = 0x40000000;
   free->length = (0x80000000 - 0x40000000) / 4096;
@@ -88,12 +86,12 @@ address_space_t * create_address_space() {
   free->next = stack;
   free->sharedmem_next = free;
   as->first->next = free;
-  
+#endif
 
   
   free = (memory_region_t *)allocate_from_slab(regions_slab);
-  free->virtual_address = 0x80000000;
-  free->length = (0xC0000000 - 0x80000000) / 4096;
+  free->virtual_address = 0x40000000;
+  free->length = (0xB0000000 - 0x40000000) / 4096;
   free->attributes = 0;
   free->type = MR_TYPE_FREE;
   free->parent = as;
@@ -174,18 +172,10 @@ memory_region_t * determine_memory_region (address_space_t * as, unsigned long a
   /*Traverse the mappings*/
   memory_region_t * m; 
   for (m = as->first->next; m != as->last; m = m->next) {
-    if (m->type == MR_TYPE_STACK) {
-      if ( (addr < m->virtual_address) &&
-	   (addr >= m->virtual_address + 
-	    (4096 * m->length))) {
-	return m;
-      }
-    } else {
-      if ( (addr >= m->virtual_address) &&
-	   (addr < m->virtual_address + 
-	    (4096 * m->length))) {
-	return m;
-      }
+    if ( (addr >= m->virtual_address) &&
+       (addr < m->virtual_address + 
+        (4096 * m->length))) {
+      return m;
     }
   }
   return 0;
@@ -228,14 +218,9 @@ memory_region_t * create_region (address_space_t * as,
     new_region = (memory_region_t *)allocate_from_slab (regions_slab);
     
     /*Subdivide the block*/
-    if (smallest->attributes & MR_ATTR_PRIO_TOP) {
-      smallest->length -= length;
-      new_region->virtual_address = smallest->virtual_address + (smallest->length * PAGE_SIZE);
-    } else {
-      new_region->virtual_address = smallest->virtual_address;
-      smallest->virtual_address += (length * PAGE_SIZE);
-      smallest->length -= length;
-    }
+  smallest->length -= length;
+  new_region->virtual_address = smallest->virtual_address + (smallest->length * PAGE_SIZE);
+  
   } else { /* This is the code that executes when the desired virtual address is given*/
     new_region = (memory_region_t *)allocate_from_slab (regions_slab);
     new_region->virtual_address = addr;
@@ -297,17 +282,43 @@ void delete_region (memory_region_t * mr) {
 
     pte * cur_pd = (pte *) (mr->parent->virt_cr3[cur_pde] & 0xFFFFF000);
     cur_pd = (pte *)get_mapped_kernel_virtual_page ((unsigned long) cur_pd);
-    cur_pd[cur_pte] = 0;
-    cur_pd[cur_pte] = 0;
+   
+    if (mr->sharedmem_next == mr) { /* Not shared at all*/
+      deallocate_page (0, cur_pd[cur_pte] & 0xFFFFF000);
+    }
+    cur_pd[cur_pte] = 0; 
     free_kernel_virtual_page ((unsigned long)cur_pd);
   }
- memory_region_t *cur = mr->parent->first;
- for (; (cur != mr->parent->last) && (cur->next != mr); cur = cur->next);
- if (cur == mr->parent->last) {
-   return;
- }
- cur->next = mr->next; /*Delete it from the linked list*/
-  deallocate_from_slab (regions_slab, mr);
+
+  /* If was a shared page, remove it from the list*/
+  if (mr->sharedmem_next != mr) {
+    memory_region_t *mr2 = mr->sharedmem_next;
+    while (mr2->sharedmem_next != mr) mr2 = mr2->sharedmem_next;
+    mr2->sharedmem_next = mr->sharedmem_next;
+  }                              
+  /*Attempt merge with earlier region*/ 
+  memory_region_t *cur = determine_memory_region (mr->parent, mr->virtual_address - 1);
+  if (cur->type == MR_TYPE_FREE) {
+    cur->length += mr->length;
+    memory_region_t *counter = mr->parent->first;
+    for (; counter->next != mr; counter = counter->next);
+    counter->next = counter->next->next;
+    deallocate_from_slab (regions_slab, mr);
+    mr = cur;
+  }
+  cur = determine_memory_region (mr->parent, mr->virtual_address + PAGE_SIZE * mr->length + 1);
+  if (cur->type == MR_TYPE_FREE) {
+    mr->length += cur->length;
+    memory_region_t *counter = mr->parent->first;
+    for (; counter->next != cur; counter = counter->next);
+    counter->next = counter->next->next;
+    deallocate_from_slab (regions_slab, cur);
+  }
+
+  mr->type = MR_TYPE_FREE;
+   
+   
+
 }
 
 void context_print_mmap (memory_region_t *head) {
@@ -335,6 +346,8 @@ memory_region_t *
 clone_region (address_space_t * destspace, memory_region_t *region, int p) {
 
   memory_region_t *mr = create_region (destspace, 0, region->length, region->type, region->attributes, region->parameter);
+  mr->sharedmem_next = region->sharedmem_next;
+  region->sharedmem_next = mr;
   unsigned long virt;
   for (virt = mr->virtual_address; virt < mr->virtual_address + mr->length * PAGE_SIZE; virt += PAGE_SIZE) {
     map_user_address (destspace->virt_cr3, virt, user_address_to_physical (region->parent, virt + (region->virtual_address - mr->virtual_address)), p);
