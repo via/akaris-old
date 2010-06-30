@@ -23,6 +23,7 @@ typedef struct fifo_op {
     FIFO_OP_READ,
     FIFO_OP_WRITE,
     FIFO_OP_BLOCK,
+    FIFO_OP_CLOSE,
   } operation;
   uint8 num_waits;
   uint32 waitlist[16];

@@ -15,5 +15,6 @@ unsigned char ak_inb (unsigned short port);
 void ak_pipe (uint32 *pipes);
 kfifo_error ak_read (uint32 pipe, void * buf, uint32 len);
 kfifo_error ak_write (uint32 pipe, void * buf, uint32 len);
+kfifo_error ak_close (uint32 pipe);
 int ak_fork ();
 #endif

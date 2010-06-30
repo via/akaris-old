@@ -56,6 +56,8 @@ void syscall_handler(isr_regs * regs) {
         break;
       case FIFO_OP_BLOCK:
         break;
+      case FIFO_OP_CLOSE:
+        fop->err = kfifo_close_fifo (fop->fifo_id, get_current_process ());
     }
     break;
   default:

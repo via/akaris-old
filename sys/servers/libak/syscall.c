@@ -35,6 +35,13 @@ kfifo_error ak_read (uint32 pipe, void * buf, uint32 length) {
   __asm__("int $0x80" : : "a" (FIFO_OP), "d" (&fop));
   return fop.err;
 }
+kfifo_error ak_close (uint32 pipe) {
+  fifo_op_t fop;
+  fop.operation = FIFO_OP_CLOSE;
+  fop.fifo_id = pipe;
+  __asm__("int $0x80" : : "a" (FIFO_OP), "d" (&fop));
+  return fop.err;
+}
  
 void itoa (char *buf, int base, int d)
 {

@@ -355,3 +355,115 @@ kfifo_error kfifo_update_senders (uint32 oldpid, uint32 newpid) {
   test_and_set (0, &fifo_list_mutex);
   return KFIFO_SUCCESS;
 }
+
+/*! \brief Close a fifo from the point of view of the process.
+ *
+ * If the last sender or last receiver is deleted, the fifo is deleted.
+ *
+ * \param fifo_id Fifo to close.
+ * \param mypid Pid that is requesting the close
+ * \returns Error code
+ */
+kfifo_error kfifo_close_fifo (uint32 fifo_id, uint32 mypid) {
+
+  /*If its just a write fifo, remove our pid from the sender list
+   *If its a read fifo, delete the memory region and remove the pid.
+   */
+  if (test_and_set (1, &fifo_list_mutex)) {
+    return KFIFO_ERR_LOCKED;
+  }
+  kfifo_t *fifo = fifo_list;
+  while (fifo != NULL) {
+    if (fifo->fifo_id == fifo_id) break;
+    fifo = fifo->next;
+  } 
+  if (test_and_set (1, &fifo->lock) != 1) {
+    test_and_set (0, &fifo_list_mutex);
+    return KFIFO_ERR_LOCKED;
+  }
+
+  /*See if this pid is in this fifo's sender list*/
+  kfifo_acl_entry_t *curacl = fifo->sendlist;
+  while (curacl != NULL) {
+    if (curacl->pid == mypid) break;
+    curacl = curacl->next;
+  }
+  if (curacl == NULL) return KFIFO_ERR_PERM;
+
+  if (fifo->sendlist == curacl) { /*First entry*/
+    fifo->sendlist = fifo->sendlist->next;
+  } else {
+    kfifo_acl_entry_t *temp = fifo->sendlist;
+    while (temp->next != curacl) temp = temp->next; /*Get to entry prior to the current pid*/
+    temp->next = curacl->next;
+  }
+  deallocate_from_slab (acl_slab, curacl);
+
+  /*See if the pid is in the receive list*/
+  curacl = fifo->recvlist;
+  while (curacl != NULL) {
+    if (curacl->pid == mypid) break;
+    curacl = curacl->next;
+  }
+  if (curacl == NULL) return KFIFO_ERR_PERM;
+
+  if (fifo->recvlist == curacl) { /*First entry in list*/
+    fifo->recvlist = fifo->recvlist->next;
+  } else {
+    kfifo_acl_entry_t *temp = fifo->recvlist;
+    while (temp->next != curacl) temp = temp->next;
+    temp->next = curacl->next;
+  }
+  
+  memory_region_t *r_mr = get_process(mypid)->space->first->next;
+  while (r_mr->type != MR_TYPE_SENTINEL) {
+    if ( (r_mr->type == MR_TYPE_IPC) && (r_mr->parameter == fifo->fifo_id)) break;
+    r_mr = r_mr->next;
+  }  
+  delete_region (r_mr);
+  deallocate_from_slab (acl_slab, curacl);
+
+  if ( (fifo->recvlist == NULL ) || (fifo->sendlist == NULL)) {
+    /*One of the two lists is empty -- we should delete it*/
+    
+    /*Eliminate everything in the receive list*/
+    curacl = fifo->recvlist;
+    while (curacl != NULL) {
+      kfifo_acl_entry_t * temp = curacl->next;
+      memory_region_t *r_mr = get_process(mypid)->space->first->next;
+      while (r_mr->type != MR_TYPE_SENTINEL) {
+        if ( (r_mr->type == MR_TYPE_IPC) && (r_mr->parameter == fifo->fifo_id)) break;
+        r_mr = r_mr->next;
+      } 
+      delete_region (r_mr);
+      deallocate_from_slab (acl_slab, curacl);
+      curacl = temp;
+    }
+
+    /*Delete all the sender list*/
+    curacl = fifo->recvlist;
+    while (curacl != NULL) {
+      kfifo_acl_entry_t * temp = curacl->next;
+      deallocate_from_slab (acl_slab, curacl);
+      curacl = temp;
+    }
+
+    if (fifo_list == fifo) { /*First entry */
+      kfifo_t * temp = fifo_list->next;
+      deallocate_from_slab (fifo_slab, fifo_list);
+      fifo_list = temp;
+    } else {
+      kfifo_t * temp = fifo_list;
+      while (temp->next != fifo) temp = temp->next;
+      temp->next = temp->next->next;
+      deallocate_from_slab (fifo_slab, fifo);
+    }
+
+  } else {
+    test_and_set (0, &fifo->lock);  
+  }
+
+  test_and_set (0, &fifo_list_mutex);
+
+  return KFIFO_SUCCESS;
+}
