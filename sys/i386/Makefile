@@ -1,7 +1,7 @@
 CFLAGS = -std=c89 -O0 -g -Wall -Wextra -Werror  -nostdlib -nostartfiles -nodefaultlibs -I../include/ -c -fno-builtin
 LDFLAGS = -T linker.ld
 CC=gcc
-OBJS = start.o cmain.o cpuid.o bootvideo.o asmutil.o gdt.o asm_interrupts.o interrupt.o pic.o physical_memory.o slab.o paging.o context.o process.o syscall.o  kfifo.o
+OBJS = start.o cmain.o cpuid.o bootvideo.o asmutil.o gdt.o asm_interrupts.o interrupt.o pic.o physical_memory.o slab.o paging.o context.o process.o syscall.o  kfifo.o device_interface.o
 
 all: default
 default: ${OBJS}

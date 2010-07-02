@@ -10,6 +10,8 @@ typedef struct kfifo_acl_entry {
   struct kfifo_acl_entry *next;
 } kfifo_acl_entry_t;
 
+static const uint32 kfifo_kernel_pid = 0xFFFFFFFF;
+
 typedef struct kfifo {
   kfifo_acl_entry_t *recvlist;
   kfifo_acl_entry_t *sendlist;

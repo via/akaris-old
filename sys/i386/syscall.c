@@ -21,6 +21,7 @@ void syscall_handler(isr_regs * regs) {
   uint32 receives[] = {1, 0};
   uint32 fifos[2];   
   fifo_op_t *fop;
+  devnode_op_t *dop;
 /*  context_t * c = get_process (get_current_process ());*/
 
   switch (regs->eax) {
@@ -45,6 +46,19 @@ void syscall_handler(isr_regs * regs) {
     regs->ecx = fifos[0];
     regs->edx = fifos[1];
     break;
+  case DEVNODE_OP:
+    dop = (devnode_op_t *)regs->edx;
+    switch (dop->operation) {
+      case DEVNODE_OP_REGISTER:
+        dop->err = devnode_register (dop->devname, get_current_process ());
+        break; 
+      case DEVNODE_OP_CONNECT:
+        dop->err = devnode_connect (dop->devname, dop->fifos, get_current_process ());
+        break;
+      case DEVNODE_OP_ACCEPT:
+        dop->err = devnode_accept (dop->devname, dop->fifos, get_current_process ());
+        break;
+    }
   case FIFO_OP:
     fop = (fifo_op_t *)regs->edx;
     switch (fop->operation) {

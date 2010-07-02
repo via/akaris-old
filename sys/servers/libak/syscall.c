@@ -35,6 +35,36 @@ kfifo_error ak_read (uint32 pipe, void * buf, uint32 length) {
   __asm__("int $0x80" : : "a" (FIFO_OP), "d" (&fop));
   return fop.err;
 }
+
+dev_error
+ak_register (char * devname) {
+  devnode_op_t dop;
+  dop.operation = DEVNODE_OP_REGISTER;
+  dop.devname = devname;
+  __asm__("int $0x80" : : "a" (DEVNODE_OP), "d" (&dop));
+  return dop.err;
+}
+
+dev_error
+ak_accept ( char * devname, uint32 *fifo) {
+  devnode_op_t dop;
+  dop.operation = DEVNODE_OP_ACCEPT;
+  dop.devname = devname;
+  __asm__("int $0x80" : : "a" (DEVNODE_OP), "d" (&dop));
+  *fifo = dop.fifos[0];
+  return dop.err;
+}
+dev_error
+ak_connect (char * devname, uint32 * fifos) {
+  devnode_op_t dop;
+  dop.operation = DEVNODE_OP_CONNECT;
+  dop.devname = devname;
+  __asm__("int $0x80" : : "a" (DEVNODE_OP), "d" (&dop));
+  fifos[0] = dop.fifos[0];
+  fifos[1] = dop.fifos[1];
+  return dop.err;
+}
+
 kfifo_error ak_close (uint32 pipe) {
   fifo_op_t fop;
   fop.operation = FIFO_OP_CLOSE;

@@ -152,3 +152,47 @@ void memcpy(char * dst, const char *src, int length) {
     *d = *s;
   }
 }
+
+int strncmp (const char * n1, const char * n2, uint32 size) {
+  if (size < 1) {
+    return 0;
+  }
+  while (size) {
+    if (*n1 == '\0') {
+      if (*n2 == '\0') {
+        return 0;
+      }
+      return -1;
+    }
+    if (n2 == '\0') {
+      return 1;
+    }
+    if (*n1 > *n2) {
+      return 1;
+    } else if (*n1 < *n2) {
+      return -1;
+    }
+    ++n1;
+    ++n2;
+    --size;
+  }
+
+  if (*n1 > *n2) {
+    return 1;
+  } else if (*n2 > *n1) {
+    return -1;
+  } else {
+    return 0;
+  }
+}
+
+int
+strlen (const char * n1, uint32 len) {
+  uint32 length;
+  for (length = 0; length < len; ++length) {
+    if (n1[length] == '\0') {
+      return (length + 1);
+    }
+  }
+  return len;
+}

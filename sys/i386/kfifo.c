@@ -183,7 +183,15 @@ kfifo_write_fifo (uint32 fifo_id, uint32 mypid, const void * buf, uint32 len) {
     while (1);
   }
   
-  memory_region_t * mr = clone_region (get_process(mypid)->space, r_mr, 0);
+  /* This seems kind of hacky, consider changing it.
+   * We just need to make a copy of the receivers region for the fifo in our
+   * local address space */
+  memory_region_t * mr;
+  if (mypid != kfifo_kernel_pid) {
+    mr = clone_region (get_process(mypid)->space, r_mr, 0);
+  } else {
+    mr = clone_region (get_process (get_current_process ())->space, r_mr, 0);
+  }
 
   /*Write the buffer into the fifo ring buffer*/
   if (fifo->size - fifo->start >= len ) {
@@ -296,6 +304,11 @@ kfifo_read_fifo (uint32 fifo_id, uint32 mypid, void * buf, uint32 len) {
   return KFIFO_SUCCESS;
 }
 
+/*! \brief Make the fifo register this pid as a valid receiver
+ * \param fifo_id Fifo being cloned.
+ * \param newpid Process that will get receive access
+ * \returns fifo error
+ */
 kfifo_error kfifo_clone_fifo (uint32 fifo_id, uint32 newpid) {
   
   if (test_and_set (1, &fifo_list_mutex)) {
@@ -327,25 +340,36 @@ kfifo_error kfifo_clone_fifo (uint32 fifo_id, uint32 newpid) {
   return KFIFO_SUCCESS;
 }
  
+/*! \brief Go through all fifos and update write accesses
+ *
+ * There is probably a better way of doing this.  This goes through
+ * entries in the fifo list, and whenever it finds oldpid as a writer
+ * it will add newpid to it as well. Its slow.
+ *
+ * \param oldpic pid of original process
+ * \param newpid pid of new process
+ * \returns error
+ */
 kfifo_error kfifo_update_senders (uint32 oldpid, uint32 newpid) {
 
   if (test_and_set (1, &fifo_list_mutex)) {
     return KFIFO_ERR_LOCKED;
   }  
 
-  kfifo_acl_entry_t *newacl = allocate_from_slab (acl_slab);
-  newacl->pid = newpid;
-
+  
   /*Iterate over all fifos*/
   kfifo_t *fifo = fifo_list;
   while (fifo != NULL) {
-
+    kfifo_acl_entry_t *newacl = allocate_from_slab (acl_slab);
+    newacl->pid = newpid;
+   
     /*Iterate over all the senders*/
     kfifo_acl_entry_t *curacl = fifo->sendlist;
     while (curacl != NULL) {
       if (curacl->pid == oldpid) {
         newacl->next = curacl->next;
         curacl->next = newacl;
+        curacl = newacl;
       }
       curacl = curacl->next;
     }
@@ -377,7 +401,7 @@ kfifo_error kfifo_close_fifo (uint32 fifo_id, uint32 mypid) {
     if (fifo->fifo_id == fifo_id) break;
     fifo = fifo->next;
   } 
-  if (test_and_set (1, &fifo->lock) != 1) {
+  if (test_and_set (1, &fifo->lock)) {
     test_and_set (0, &fifo_list_mutex);
     return KFIFO_ERR_LOCKED;
   }
@@ -388,16 +412,16 @@ kfifo_error kfifo_close_fifo (uint32 fifo_id, uint32 mypid) {
     if (curacl->pid == mypid) break;
     curacl = curacl->next;
   }
-  if (curacl == NULL) return KFIFO_ERR_PERM;
-
-  if (fifo->sendlist == curacl) { /*First entry*/
-    fifo->sendlist = fifo->sendlist->next;
-  } else {
-    kfifo_acl_entry_t *temp = fifo->sendlist;
-    while (temp->next != curacl) temp = temp->next; /*Get to entry prior to the current pid*/
-    temp->next = curacl->next;
+  if (curacl != NULL) {
+    if (fifo->sendlist == curacl) { /*First entry*/
+      fifo->sendlist = fifo->sendlist->next;
+    } else {
+      kfifo_acl_entry_t *temp = fifo->sendlist;
+      while (temp->next != curacl) temp = temp->next; /*Get to entry prior to the current pid*/
+      temp->next = curacl->next;
+    }
+    deallocate_from_slab (acl_slab, curacl);
   }
-  deallocate_from_slab (acl_slab, curacl);
 
   /*See if the pid is in the receive list*/
   curacl = fifo->recvlist;
@@ -405,14 +429,14 @@ kfifo_error kfifo_close_fifo (uint32 fifo_id, uint32 mypid) {
     if (curacl->pid == mypid) break;
     curacl = curacl->next;
   }
-  if (curacl == NULL) return KFIFO_ERR_PERM;
-
-  if (fifo->recvlist == curacl) { /*First entry in list*/
-    fifo->recvlist = fifo->recvlist->next;
-  } else {
-    kfifo_acl_entry_t *temp = fifo->recvlist;
-    while (temp->next != curacl) temp = temp->next;
-    temp->next = curacl->next;
+  if (curacl != NULL) {
+    if (fifo->recvlist == curacl) { /*First entry in list*/
+      fifo->recvlist = fifo->recvlist->next;
+    } else {
+      kfifo_acl_entry_t *temp = fifo->recvlist;
+      while (temp->next != curacl) temp = temp->next;
+      temp->next = curacl->next;
+    }
   }
   
   memory_region_t *r_mr = get_process(mypid)->space->first->next;
@@ -420,7 +444,9 @@ kfifo_error kfifo_close_fifo (uint32 fifo_id, uint32 mypid) {
     if ( (r_mr->type == MR_TYPE_IPC) && (r_mr->parameter == fifo->fifo_id)) break;
     r_mr = r_mr->next;
   }  
-  delete_region (r_mr);
+  if (r_mr->type != MR_TYPE_SENTINEL) {
+    delete_region (r_mr);
+  }
   deallocate_from_slab (acl_slab, curacl);
 
   if ( (fifo->recvlist == NULL ) || (fifo->sendlist == NULL)) {

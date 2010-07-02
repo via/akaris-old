@@ -5,7 +5,7 @@
 #define NUM_ROWS 25
 
 
-
+#include <i386/types.h>
 
 
 
@@ -17,4 +17,6 @@ void itoa (char*, int, int);
 void bootvideo_printf (const char *format, ...);
 void memset(int * dest, int value, int length);
 void memcpy(char *, const char *, int);
+int strncmp (const char *, const char *, uint32);
+int strlen (const char *, uint32);
 #endif

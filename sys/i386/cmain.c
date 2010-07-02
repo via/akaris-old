@@ -12,6 +12,7 @@
 #include <i386/process.h>
 #include <i386/syscall.h>
 #include <i386/kfifo.h>
+#include <i386/device_interface.h>
 /* address_space_t *A, *B; */
 
 void timer_interrupt (isr_regs * regs);
@@ -38,6 +39,7 @@ void cmain(multiboot_info_t * mb_info, int magic) {
   initialize_scheduler();
   enable_syscall();
   kfifo_init ();
+  devnode_init ();
   
 
   load_modules (mb_info);
