@@ -70,7 +70,6 @@ devnode_connect (const char * devname, uint32 * rpipes, uint32 mypid) {
     test_and_set (0, &devlock);
     return DEV_ERR_LOCKED;
   }
-
   receivers[0] = temp->pid;
   senders[0] = mypid;
 
@@ -80,6 +79,8 @@ devnode_connect (const char * devname, uint32 * rpipes, uint32 mypid) {
 
   rpipes[0] = pipes[0];
   rpipes[1] = pipes[1];
+
+  test_and_set (0, &devlock);
 
   return DEV_SUCCESS;
 }

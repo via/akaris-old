@@ -2270,6 +2270,7 @@ a_un	include/elf.h	/^    } a_un;$/;"	m	struct:__anon27	typeref:union:__anon27::_
 a_un	include/elf.h	/^    } a_un;$/;"	m	struct:__anon29	typeref:union:__anon29::__anon30	access:public
 a_val	include/elf.h	/^      uint32_t a_val;		\/* Integer value *\/$/;"	m	union:__anon27::__anon28	access:public
 a_val	include/elf.h	/^      uint64_t a_val;		\/* Integer value *\/$/;"	m	union:__anon29::__anon30	access:public
+abuf	servers/test3.c	/^char abuf[50];$/;"	v
 accept_fifo_id	include/i386/device_interface.h	/^  uint32 accept_fifo_id;$/;"	m	struct:devnode	access:public
 acl_slab	i386/kfifo.c	/^static slab_entry_t * acl_slab;$/;"	v	file:
 addr	include/i386/multiboot.h	/^  unsigned long addr;$/;"	m	struct:aout_symbol_table	access:public
@@ -2282,8 +2283,12 @@ address_space::last	include/i386/context.h	/^  struct memory_region *last;$/;"	m
 address_space::stack	include/i386/context.h	/^  struct memory_region *stack;$/;"	m	struct:address_space	typeref:struct:address_space::memory_region	access:public
 address_space::virt_cr3	include/i386/context.h	/^  pde* virt_cr3;$/;"	m	struct:address_space	access:public
 address_space_t	include/i386/context.h	/^} address_space_t;$/;"	t	typeref:struct:address_space
+ak_accept	include/libak.h	/^dev_error  ak_accept (char *, uint32 * fifo);$/;"	p	signature:(char *, uint32 * fifo)
+ak_accept	servers/libak/syscall.c	/^ak_accept ( char * devname, uint32 *fifo) {$/;"	f	signature:( char * devname, uint32 *fifo)
 ak_close	include/libak.h	/^kfifo_error ak_close (uint32 pipe);$/;"	p	signature:(uint32 pipe)
 ak_close	servers/libak/syscall.c	/^kfifo_error ak_close (uint32 pipe) {$/;"	f	signature:(uint32 pipe)
+ak_connect	include/libak.h	/^dev_error ak_connect (char *, uint32 * fifos);$/;"	p	signature:(char *, uint32 * fifos)
+ak_connect	servers/libak/syscall.c	/^ak_connect (char * devname, uint32 * fifos) {$/;"	f	signature:(char * devname, uint32 * fifos)
 ak_fork	include/libak.h	/^int ak_fork ();$/;"	p	signature:()
 ak_fork	servers/libak/syscall.c	/^int ak_fork () {$/;"	f
 ak_inb	include/libak.h	/^unsigned char ak_inb (unsigned short port);$/;"	p	signature:(unsigned short port)
@@ -2299,6 +2304,8 @@ ak_pipe	include/libak.h	/^void ak_pipe (uint32 *pipes);$/;"	p	signature:(uint32 
 ak_pipe	servers/libak/syscall.c	/^void ak_pipe (uint32 *pipes) {$/;"	f	signature:(uint32 *pipes)
 ak_read	include/libak.h	/^kfifo_error ak_read (uint32 pipe, void * buf, uint32 len);$/;"	p	signature:(uint32 pipe, void * buf, uint32 len)
 ak_read	servers/libak/syscall.c	/^kfifo_error ak_read (uint32 pipe, void * buf, uint32 length) {$/;"	f	signature:(uint32 pipe, void * buf, uint32 length)
+ak_register	include/libak.h	/^dev_error ak_register (char *);$/;"	p	signature:(char *)
+ak_register	servers/libak/syscall.c	/^ak_register (char * devname) {$/;"	f	signature:(char * devname)
 ak_write	include/libak.h	/^kfifo_error ak_write (uint32 pipe, void * buf, uint32 len);$/;"	p	signature:(uint32 pipe, void * buf, uint32 len)
 ak_write	servers/libak/syscall.c	/^kfifo_error ak_write (uint32 pipe, void * buf, uint32 length) {$/;"	f	signature:(uint32 pipe, void * buf, uint32 length)
 allocate_from_slab	i386/slab.c	/^void * allocate_from_slab(slab_entry_t * se) {$/;"	f	signature:(slab_entry_t * se)
@@ -2334,7 +2341,7 @@ bss_end_addr	include/i386/multiboot.h	/^  unsigned long bss_end_addr;$/;"	m	stru
 buf	include/i386/syscall.h	/^  void * buf;$/;"	m	struct:fifo_op	access:public
 buf	servers/kbd.c	/^char buf[50];$/;"	v
 buf	servers/test1.c	/^char buf[100];$/;"	v
-buf	servers/test3.c	/^char buf[100];$/;"	v
+buf	servers/test3.c	/^char buf[99];$/;"	v
 buf2	servers/test3.c	/^char buf2[100];$/;"	v
 c_isr	i386/interrupt.c	/^isr_regs* c_isr(isr_regs* regs_in) {$/;"	f	signature:(isr_regs* regs_in)
 checksum	include/i386/multiboot.h	/^  unsigned long checksum;$/;"	m	struct:multiboot_header	access:public
@@ -2396,7 +2403,7 @@ dev_error	include/i386/device_interface.h	/^} dev_error;$/;"	t	typeref:enum:__an
 devlist	i386/device_interface.c	/^devnode_t * devlist;$/;"	v
 devlock	i386/device_interface.c	/^static mutex_t devlock;$/;"	v	file:
 devname	include/i386/device_interface.h	/^  char devname[64];$/;"	m	struct:devnode	access:public
-devname	include/i386/syscall.h	/^  char devname[64];$/;"	m	struct:devnode_op	access:public
+devname	include/i386/syscall.h	/^  char * devname;$/;"	m	struct:devnode_op	access:public
 devnode	include/i386/device_interface.h	/^typedef struct devnode {$/;"	s
 devnode::accept_fifo_id	include/i386/device_interface.h	/^  uint32 accept_fifo_id;$/;"	m	struct:devnode	access:public
 devnode::devname	include/i386/device_interface.h	/^  char devname[64];$/;"	m	struct:devnode	access:public
@@ -2412,7 +2419,8 @@ devnode_op	include/i386/syscall.h	/^typedef struct devnode_op {$/;"	s
 devnode_op::DEVNODE_OP_ACCEPT	include/i386/syscall.h	/^    DEVNODE_OP_ACCEPT,$/;"	e	enum:devnode_op::__anon45
 devnode_op::DEVNODE_OP_CONNECT	include/i386/syscall.h	/^    DEVNODE_OP_CONNECT,$/;"	e	enum:devnode_op::__anon45
 devnode_op::DEVNODE_OP_REGISTER	include/i386/syscall.h	/^    DEVNODE_OP_REGISTER,$/;"	e	enum:devnode_op::__anon45
-devnode_op::devname	include/i386/syscall.h	/^  char devname[64];$/;"	m	struct:devnode_op	access:public
+devnode_op::devname	include/i386/syscall.h	/^  char * devname;$/;"	m	struct:devnode_op	access:public
+devnode_op::err	include/i386/syscall.h	/^  dev_error err;$/;"	m	struct:devnode_op	access:public
 devnode_op::fifos	include/i386/syscall.h	/^  uint32 fifos[2];$/;"	m	struct:devnode_op	access:public
 devnode_op::operation	include/i386/syscall.h	/^  } operation;$/;"	m	struct:devnode_op	typeref:enum:devnode_op::__anon45	access:public
 devnode_op_t	include/i386/syscall.h	/^} devnode_op_t;$/;"	t	typeref:struct:devnode_op
@@ -2485,6 +2493,7 @@ enable_syscall	i386/syscall.c	/^void enable_syscall() {$/;"	f
 enable_syscall	include/i386/syscall.h	/^void enable_syscall();$/;"	p	signature:()
 end	include/i386/kfifo.h	/^  uint32 end;$/;"	m	struct:kfifo	access:public
 entry_addr	include/i386/multiboot.h	/^  unsigned long entry_addr;$/;"	m	struct:multiboot_header	access:public
+err	include/i386/syscall.h	/^  dev_error err;$/;"	m	struct:devnode_op	access:public
 err	include/i386/syscall.h	/^  kfifo_error err;$/;"	m	struct:fifo_op	access:public
 err_code	include/i386/interrupt.h	/^  uint32 int_no, err_code;$/;"	m	struct:__anon47	access:public
 es	include/i386/gdt.h	/^  uint16 es;$/;"	m	struct:__anon53	access:public
