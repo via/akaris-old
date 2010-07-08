@@ -2,12 +2,13 @@ CFLAGS = -std=c89 -O0 -g -Wall -Wextra -Werror  -nostdlib -nostartfiles -nodefau
 LDFLAGS = -T linker.ld
 CC=gcc
 #OBJS = test2.o test1.o kbd.o
-OBJS = test3.o
+OBJS = test3.o  kbd.o
 
 
 
 default: libak/libak.o ${OBJS}
 	ld ${LDFLAGS} -o test3.k test3.o libak/libak.o
+	ld ${LDFLAGS} -o kbd.k kbd.o libak/libak.o
 libak/libak.o:
 	(cd libak; make);
 
@@ -15,6 +16,7 @@ install:
 #	mdconfig -a -t vnode -f ../bootdisk.img
 	mount -o loop ../bootdisk.img ../../mnt
 	cp test3.k ../../mnt/
+	cp kbd.k ../../mnt/
 	umount ../../mnt
 	#mdconfig -d -u 0
 clean:

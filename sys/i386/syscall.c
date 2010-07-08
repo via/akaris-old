@@ -1,4 +1,5 @@
 /*syscall.c*/
+#include <config.h>
 #include <i386/types.h>
 #include <i386/interrupt.h>
 #include <i386/bootvideo.h>
@@ -57,6 +58,12 @@ void syscall_handler(isr_regs * regs) {
         break;
       case DEVNODE_OP_ACCEPT:
         dop->err = devnode_accept (dop->devname, dop->fifos, get_current_process ());
+        break;
+      case DEVNODE_OP_LINK_IRQ:
+        receives[0] = get_current_process ();
+        sends[0] = kfifo_kernel_pid;
+        kfifo_create_fifo (dop->fifos, receives, sends, PAGE_SIZE);
+        link_irq_to_fifo (dop->irq, dop->fifos[0]);
         break;
     }
   case FIFO_OP:

@@ -37,8 +37,10 @@ typedef struct devnode_op {
     DEVNODE_OP_REGISTER,
     DEVNODE_OP_CONNECT,
     DEVNODE_OP_ACCEPT,
+    DEVNODE_OP_LINK_IRQ,
   } operation;
   char * devname;
+  uint8 irq;
   uint32 fifos[2];
   dev_error err;
 } devnode_op_t;

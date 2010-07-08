@@ -20,4 +20,5 @@ int ak_fork ();
 dev_error ak_register (char *);
 dev_error ak_connect (char *, uint32 * fifos);
 dev_error  ak_accept (char *, uint32 * fifo);
+dev_error ak_link_irq (uint32 *fifo, uint8 irq);
 #endif

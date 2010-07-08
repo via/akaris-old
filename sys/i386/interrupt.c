@@ -2,6 +2,7 @@
 #include <config.h>
 #include <i386/interrupt.h>
 #include <i386/bootvideo.h>
+#include <i386/kfifo.h>
 #include <i386/pic.h>
 
 idt_entry interrupt_descriptors[MAX_INTS];
@@ -10,7 +11,7 @@ idtr      idt_pointer = {sizeof(interrupt_descriptors) - 1,
 int kernel_reenter;
 
 void (*int_handler[256])(isr_regs*);
-int int_to_pid[256];
+uint32 int_to_pid[256];
 
 void 
 link_irq(int irq, void (*func)(isr_regs*)) {
@@ -18,9 +19,9 @@ link_irq(int irq, void (*func)(isr_regs*)) {
 }
 
 void
-link_irq_to_pid(int irq, int pid) {
+link_irq_to_fifo (int irq, uint32 fifo) {
 
-  int_to_pid[irq] = pid;
+  int_to_pid[irq] = fifo;
 
 }
 
@@ -30,13 +31,11 @@ isr_regs* c_isr(isr_regs* regs_in) {
   if (int_handler[regs_in->int_no] != 0) {
     int_handler[regs_in->int_no](regs_in);
   }
-#if 0
-  if (int_to_pid[regs_in->int_no]) {
-    m.src_pid = -1;
-    m.dest_pid = int_to_pid[regs_in->int_no];
-    send_message (&m, 1);
+
+  /*Send a blank byte on the fifo to make it ready*/
+  if (int_to_pid[regs_in->int_no] != 0) {
+    kfifo_write_fifo (int_to_pid[regs_in->int_no], kfifo_kernel_pid, "\0", 1); 
   }
-#endif
   /*acknowledge interrupts*/
   if (regs_in->int_no >= 40) {
         outportb(0xA0, 0x20);

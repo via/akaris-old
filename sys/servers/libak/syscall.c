@@ -17,6 +17,18 @@ int ak_fork () {
    return newpid;
 }  
 
+unsigned char 
+ak_inb (unsigned short port) {
+  unsigned char out;
+  __asm__("int $0x80" : "=d" (out) : "a" (REQUEST_IO), "d" (0xFF000000 & port));  
+  return out;
+}
+
+void
+ak_outb (unsigned short port, unsigned char a) {
+  __asm__("int $0x80" : : "a" (REQUEST_IO), "d" ( (a << 16) | port));
+}
+
 kfifo_error ak_write (uint32 pipe, void * buf, uint32 length) {
   fifo_op_t fop;
   fop.buf = buf;
@@ -43,6 +55,16 @@ ak_register (char * devname) {
   dop.devname = devname;
   __asm__("int $0x80" : : "a" (DEVNODE_OP), "d" (&dop));
   return dop.err;
+}
+
+dev_error
+ak_link_irq (uint32 *fifo, uint8 irq) {
+  devnode_op_t dop;
+  dop.operation = DEVNODE_OP_LINK_IRQ;
+  dop.irq = irq;
+  __asm__("int $0x80" : : "a" (DEVNODE_OP), "d" (&dop));
+  *fifo = dop.fifos[0];
+  return DEV_SUCCESS;
 }
 
 dev_error

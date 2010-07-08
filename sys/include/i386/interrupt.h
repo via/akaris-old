@@ -35,7 +35,7 @@ void initialize_idt();
 void initialize_interrupts();
 void load_idt(idtr*);
 void link_irq(int, void(*)(isr_regs*));
-void link_irq_to_pid(int, int);
+void link_irq_to_fifo(int, uint32);
 /*Individual addresses for isrs*/
 extern void (*intr00)();
 extern void (*intr01)();

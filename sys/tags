@@ -115,6 +115,7 @@ CPUID_VENDOR_VIA	include/i386/cpuid.h	9;"	d
 DEVNODE_OP	include/i386/syscall.h	/^  DEVNODE_OP,$/;"	e	enum:__anon43
 DEVNODE_OP_ACCEPT	include/i386/syscall.h	/^    DEVNODE_OP_ACCEPT,$/;"	e	enum:devnode_op::__anon45
 DEVNODE_OP_CONNECT	include/i386/syscall.h	/^    DEVNODE_OP_CONNECT,$/;"	e	enum:devnode_op::__anon45
+DEVNODE_OP_LINK_IRQ	include/i386/syscall.h	/^    DEVNODE_OP_LINK_IRQ,$/;"	e	enum:devnode_op::__anon45
 DEVNODE_OP_REGISTER	include/i386/syscall.h	/^    DEVNODE_OP_REGISTER,$/;"	e	enum:devnode_op::__anon45
 DEV_ERR_EXIST	include/i386/device_interface.h	/^  DEV_ERR_EXIST,$/;"	e	enum:__anon55
 DEV_ERR_LOCKED	include/i386/device_interface.h	/^  DEV_ERR_LOCKED,$/;"	e	enum:__anon55
@@ -2361,6 +2362,7 @@ context_print_mmap	i386/context.c	/^void context_print_mmap (memory_region_t *he
 context_print_mmap	include/i386/context.h	/^void context_print_mmap (memory_region_t *);$/;"	p	signature:(memory_region_t *)
 context_slab	i386/process.c	/^  slab_entry_t * context_slab;$/;"	v
 context_t	include/i386/process.h	/^} context_t;$/;"	t	typeref:struct:context
+cpipe	servers/test3.c	/^uint32 cpipe[2];$/;"	v
 cpuHasFeature	i386/cpuid.c	/^int cpuHasFeature(int feature) {$/;"	f	signature:(int feature)
 cpuHasFeature	include/i386/cpuid.h	/^int cpuHasFeature (int);$/;"	p	signature:(int)
 cr3	include/i386/context.h	/^  pde* cr3;$/;"	m	struct:address_space	access:public
@@ -2418,6 +2420,7 @@ devnode_init	include/i386/device_interface.h	/^void devnode_init ();$/;"	p	signa
 devnode_op	include/i386/syscall.h	/^typedef struct devnode_op {$/;"	s
 devnode_op::DEVNODE_OP_ACCEPT	include/i386/syscall.h	/^    DEVNODE_OP_ACCEPT,$/;"	e	enum:devnode_op::__anon45
 devnode_op::DEVNODE_OP_CONNECT	include/i386/syscall.h	/^    DEVNODE_OP_CONNECT,$/;"	e	enum:devnode_op::__anon45
+devnode_op::DEVNODE_OP_LINK_IRQ	include/i386/syscall.h	/^    DEVNODE_OP_LINK_IRQ,$/;"	e	enum:devnode_op::__anon45
 devnode_op::DEVNODE_OP_REGISTER	include/i386/syscall.h	/^    DEVNODE_OP_REGISTER,$/;"	e	enum:devnode_op::__anon45
 devnode_op::devname	include/i386/syscall.h	/^  char * devname;$/;"	m	struct:devnode_op	access:public
 devnode_op::err	include/i386/syscall.h	/^  dev_error err;$/;"	m	struct:devnode_op	access:public
@@ -2616,7 +2619,7 @@ int8	include/i386/types.h	/^typedef signed char int8;$/;"	t
 int_hand	i386/asm_interrupts.s	/^int_hand:	$/;"	l
 int_handler	i386/interrupt.c	/^void (*int_handler[256])(isr_regs*);$/;"	v
 int_no	include/i386/interrupt.h	/^  uint32 int_no, err_code;$/;"	m	struct:__anon47	access:public
-int_to_pid	i386/interrupt.c	/^int int_to_pid[256];$/;"	v
+int_to_pid	i386/interrupt.c	/^uint32 int_to_pid[256];$/;"	v
 interrupt_descriptors	i386/interrupt.c	/^idt_entry interrupt_descriptors[MAX_INTS];$/;"	v
 intr00	i386/asm_interrupts.s	/^intr00:$/;"	l
 intr01	i386/asm_interrupts.s	/^intr01:$/;"	l
@@ -2734,8 +2737,8 @@ link	include/i386/gdt.h	/^  uint16 link;$/;"	m	struct:__anon53	access:public
 link_h	include/i386/gdt.h	/^  uint16 link_h;$/;"	m	struct:__anon53	access:public
 link_irq	i386/interrupt.c	/^link_irq(int irq, void (*func)(isr_regs*)) {$/;"	f	signature:(int irq, void (*func)(isr_regs*))
 link_irq	include/i386/interrupt.h	/^void link_irq(int, void(*)(isr_regs*));$/;"	p	signature:(int, void(*)(isr_regs*))
-link_irq_to_pid	i386/interrupt.c	/^link_irq_to_pid(int irq, int pid) {$/;"	f	signature:(int irq, int pid)
-link_irq_to_pid	include/i386/interrupt.h	/^void link_irq_to_pid(int, int);$/;"	p	signature:(int, int)
+link_irq_to_fifo	i386/interrupt.c	/^link_irq_to_fifo (int irq, uint32 fifo) {$/;"	f	signature:(int irq, uint32 fifo)
+link_irq_to_fifo	include/i386/interrupt.h	/^void link_irq_to_fifo(int, uint32);$/;"	p	signature:(int, uint32)
 load_addr	include/i386/multiboot.h	/^  unsigned long load_addr;$/;"	m	struct:multiboot_header	access:public
 load_end_addr	include/i386/multiboot.h	/^  unsigned long load_end_addr;$/;"	m	struct:multiboot_header	access:public
 load_gdt	i386/asmutil.s	/^load_gdt:$/;"	l
@@ -3074,7 +3077,7 @@ vda_name	include/elf.h	/^  Elf32_Word	vda_name;		\/* Version or dependency names
 vda_name	include/elf.h	/^  Elf64_Word	vda_name;		\/* Version or dependency names *\/$/;"	m	struct:__anon22	access:public
 vda_next	include/elf.h	/^  Elf32_Word	vda_next;		\/* Offset in bytes to next verdaux$/;"	m	struct:__anon21	access:public
 vda_next	include/elf.h	/^  Elf64_Word	vda_next;		\/* Offset in bytes to next verdaux$/;"	m	struct:__anon22	access:public
-video	i386/bootvideo.c	/^char * video = (char *)0xB8000;$/;"	v
+video	i386/bootvideo.c	/^static char * const video = (char *)0xB8000;$/;"	v	file:
 virt_cr3	include/i386/context.h	/^  pde* virt_cr3;$/;"	m	struct:address_space	access:public
 virtual_address	include/i386/context.h	/^  unsigned long virtual_address;$/;"	m	struct:memory_region	access:public
 vn_aux	include/elf.h	/^  Elf32_Word	vn_aux;			\/* Offset in bytes to vernaux array *\/$/;"	m	struct:__anon23	access:public
