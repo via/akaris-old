@@ -20,7 +20,7 @@ int ak_fork () {
 unsigned char 
 ak_inb (unsigned short port) {
   unsigned char out;
-  __asm__("int $0x80" : "=d" (out) : "a" (REQUEST_IO), "d" (0xFF000000 & port));  
+  __asm__("int $0x80" : "=d" (out) : "a" (REQUEST_IO), "d" (0xFF000000 | port));  
   return out;
 }
 

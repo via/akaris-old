@@ -136,6 +136,7 @@ kfifo_write_fifo (uint32 fifo_id, uint32 mypid, const void * buf, uint32 len) {
     fifo = fifo->next;
   }
   if (fifo == NULL) {
+    test_and_set (0, &fifo_list_mutex);
     return KFIFO_ERR_EXIST;
   }
 

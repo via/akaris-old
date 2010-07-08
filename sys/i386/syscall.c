@@ -22,6 +22,7 @@ void syscall_handler(isr_regs * regs) {
   uint32 receives[] = {1, 0};
   uint32 fifos[2];   
   fifo_op_t *fop;
+  kfifo_error e;
   devnode_op_t *dop;
 /*  context_t * c = get_process (get_current_process ());*/
 
@@ -62,7 +63,7 @@ void syscall_handler(isr_regs * regs) {
       case DEVNODE_OP_LINK_IRQ:
         receives[0] = get_current_process ();
         sends[0] = kfifo_kernel_pid;
-        kfifo_create_fifo (dop->fifos, receives, sends, PAGE_SIZE);
+        e = kfifo_create_fifo (dop->fifos, receives, sends, PAGE_SIZE);
         link_irq_to_fifo (dop->irq, dop->fifos[0]);
         break;
     }
@@ -79,6 +80,9 @@ void syscall_handler(isr_regs * regs) {
         break;
       case FIFO_OP_CLOSE:
         fop->err = kfifo_close_fifo (fop->fifo_id, get_current_process ());
+    }
+    if (fop->err == KFIFO_ERR_LOCKED) {
+      bootvideo_printf ("Locked when it shouldn't be!\n");
     }
     break;
   default:

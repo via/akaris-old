@@ -26,7 +26,7 @@ link_irq_to_fifo (int irq, uint32 fifo) {
 }
 
 isr_regs* c_isr(isr_regs* regs_in) {
-
+  kfifo_error e;
 
   if (int_handler[regs_in->int_no] != 0) {
     int_handler[regs_in->int_no](regs_in);
@@ -34,7 +34,10 @@ isr_regs* c_isr(isr_regs* regs_in) {
 
   /*Send a blank byte on the fifo to make it ready*/
   if (int_to_pid[regs_in->int_no] != 0) {
-    kfifo_write_fifo (int_to_pid[regs_in->int_no], kfifo_kernel_pid, "\0", 1); 
+    e = kfifo_write_fifo (int_to_pid[regs_in->int_no], kfifo_kernel_pid, "\0", 1); 
+    if (e != KFIFO_SUCCESS) {
+      bootvideo_printf ("FAILED to send\n");
+    }
   }
   /*acknowledge interrupts*/
   if (regs_in->int_no >= 40) {
