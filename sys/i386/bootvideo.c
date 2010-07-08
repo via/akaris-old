@@ -1,7 +1,7 @@
 #include <i386/types.h>
 #include <i386/bootvideo.h>
 
-char * video = (char *)0xB8000;
+static char * const video = (char *)0xB8000;
 int row = 0;
 int col = 0;
 
