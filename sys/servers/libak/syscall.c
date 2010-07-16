@@ -17,6 +17,19 @@ int ak_fork () {
    return newpid;
 }  
 
+void * ak_mmap (unsigned long phys, unsigned long size) {
+  mmap_op_t m;
+  if (phys == 0) {
+    m.operation = MMAP_OP_ANON;
+  } else {
+    m.operation = MMAP_OP_DIRECTED;
+    m.phys = phys;
+  }
+  m.size = size;
+  __asm__("int $0x80" : : "a" (REQUEST_MMAP), "d" (&m));
+  return (void *)m.virt;
+}
+
 unsigned char 
 ak_inb (unsigned short port) {
   unsigned char out;

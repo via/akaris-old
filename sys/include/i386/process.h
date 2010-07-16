@@ -3,6 +3,7 @@
 
 #include <i386/mailbox.h>
 #include <i386/interrupt.h>
+#include <i386/kqueue.h>
 /*Process entries*/
 
 
@@ -19,6 +20,7 @@ typedef struct context {
   int pid;
   int status;
   struct context * next;
+  uint32 kqueue_block;
 } context_t;
 
 

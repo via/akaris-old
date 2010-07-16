@@ -4,6 +4,7 @@
 #include <i386/types.h>
 #include <mutex.h>
 #include <i386/context.h>
+#include <i386/kqueue.h>
 
 typedef struct kfifo_acl_entry {
   uint32 pid;
@@ -21,6 +22,7 @@ typedef struct kfifo {
   mutex_t lock;
   uint32 fifo_id;
   struct kfifo * next;
+  struct kevent * ke_list;
 } kfifo_t;
 
 typedef enum {
@@ -41,6 +43,8 @@ kfifo_error kfifo_close_fifo (uint32 fifo_id, uint32 mypid);
 kfifo_error kfifo_clone_fifo (uint32 fifo_id, uint32 newpid);
 kfifo_error kfifo_update_senders (uint32 oldpid, uint32 newpid);
 
+int kfifo_add_kqueue_event (struct kevent *ke);
+int kfifo_delete_kqueue_event (struct kevent *ke);
 
 #endif
 

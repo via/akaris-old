@@ -8,6 +8,7 @@
 #include <i386/context.h>
 #include <i386/process.h>
 #include <i386/bootvideo.h>
+#include <i386/kqueue.h>
 #include <i386/kfifo.h>
 
 
@@ -61,6 +62,7 @@ kfifo_error kfifo_create_fifo (uint32 *fifo_id, uint32 *recv, uint32 *send, uint
   newfifo->start = 0;
   newfifo->end = 0;
   newfifo->lock = 0;
+  newfifo->ke_list = NULL;
   
   newfifo->recvlist = (kfifo_acl_entry_t *) allocate_from_slab (acl_slab);
   newentry = newfifo->recvlist;
@@ -214,6 +216,14 @@ kfifo_write_fifo (uint32 fifo_id, uint32 mypid, const void * buf, uint32 len) {
   }
 
   test_and_set (0, &fifo->lock);
+
+  /*Trigger any events*/
+  kevent_t * ke = fifo->ke_list;
+  while (ke != NULL) {
+    kqueue_trigger_event (ke);
+    ke = ke->next;
+  }
+
   return KFIFO_SUCCESS;
 }
 
@@ -494,3 +504,46 @@ kfifo_error kfifo_close_fifo (uint32 fifo_id, uint32 mypid) {
 
   return KFIFO_SUCCESS;
 }
+
+int
+kfifo_add_kqueue_event (struct kevent *ke) {
+
+  /*Add to the linked list for the fifo*/
+
+  kfifo_t *curfifo = fifo_list;
+  while (curfifo != NULL) {
+    if (curfifo->fifo_id == ke->ident) break;
+    curfifo = curfifo->next;
+  }
+  if (curfifo == NULL) {
+    return 1;
+  }
+  
+  ke->hook_next = curfifo->ke_list;
+  curfifo->ke_list = ke;
+
+  /*Check to see if its already triggered*/
+  switch (ke->flag) {
+    case KEVENT_FLAG_FIFO_READABLE: 
+      if (curfifo->end != curfifo->start) {
+        test_and_set (1, &ke->triggered);
+      }
+      break;
+    case KEVENT_FLAG_FIFO_WRITABLE:
+      /*Not implemented*/
+      break;
+    default:
+      break;
+  }
+
+  return 0;
+}
+
+int kfifo_delete_kqueue_event (kevent_t *ke) {
+
+  /*TODO: do*/
+  ke->triggered = 0;
+
+  return 0;
+}
+

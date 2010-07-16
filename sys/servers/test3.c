@@ -3,23 +3,19 @@
 char buf[99];
 char buf2[100];
 char abuf[50];
-int i = 0;
 uint32 pipe[2];
 uint32 cpipe[2];
-void blah () {
- while (1) {
-    sprintf (buf, "Hello World #%d\n", i);
-    ak_write (pipe[0], buf, 18);
-    ak_read (pipe[0], buf, 18);
-    puts (buf);
-    ++i;
-  }
-}       
+uint32 kbd_fifos[2];
 void mod_start () {
 
   ak_pipe (pipe);
   ak_close (pipe[1]);
 
+  volatile char * a = ak_mmap (0xB8000, 4096);
+  *(a + 8 * 160) = '&';
+  sprintf (abuf, "a = %x, *a = %d\n", a, *a);
+  puts (abuf);
+  
   int pid = ak_fork ();
   if (pid == 0) {
     puts ("Fork2\n");
@@ -28,6 +24,13 @@ void mod_start () {
     ak_accept ("os:dev:test3", &pipe[1]);
     while ((e = ak_read (pipe[1], cpipe, 8)) != 0);
     e = ak_write (cpipe[1], "Hello!\n", 7);
+
+    e = ak_connect ("os:dev:keyboard", kbd_fifos);
+    char sc;
+    while (1) {
+      while ( (e = ak_read (kbd_fifos[1], &sc, 1)) != KFIFO_SUCCESS);
+      puts ("app received keypress\n");
+    }
     while (1);
 
 
@@ -46,7 +49,6 @@ void mod_start () {
 
 
   while (1);
-  blah ();
 
 }
 

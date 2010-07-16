@@ -13,6 +13,7 @@ typedef enum {
   DEVNODE_OP,
   LINK_IRQ,
   REQUEST_IO,
+  REQUEST_MMAP,
 } syscall_number;
 
 /*For ALL syscalls, EAX defines the function, EDX defines parameter*/
@@ -44,8 +45,19 @@ typedef struct devnode_op {
   uint32 fifos[2];
   dev_error err;
 } devnode_op_t;
+               
 
-
+typedef struct mmap_op {
+  enum {
+    MMAP_OP_ANON,
+    MMAP_OP_DIRECTED,
+    MMAP_OP_FIFO,
+  } operation;
+  unsigned long virt;
+  unsigned long phys;
+  unsigned long size;
+  uint32 fifo;
+} mmap_op_t;
 
 void enable_syscall();
 void syscall_handler(isr_regs *);

@@ -24,7 +24,10 @@ void syscall_handler(isr_regs * regs) {
   fifo_op_t *fop;
   kfifo_error e;
   devnode_op_t *dop;
-/*  context_t * c = get_process (get_current_process ());*/
+  mmap_op_t *mop;
+  memory_region_t * mr;
+
+  context_t * c = get_process (get_current_process ());
 
   switch (regs->eax) {
   case SYSCALL_KDEBUG:
@@ -48,6 +51,29 @@ void syscall_handler(isr_regs * regs) {
     regs->ecx = fifos[0];
     regs->edx = fifos[1];
     break;
+  case REQUEST_MMAP:
+    mop = (mmap_op_t *) regs->edx;
+    switch (mop->operation) {
+      case MMAP_OP_ANON:
+        mr = create_region (c->space, 0, (mop->size + PAGE_SIZE - 1) / PAGE_SIZE, 
+            MR_TYPE_ANON, 0, 0);
+        map_user_region_to_physical (mr, 0);
+        mop->virt = mr->virtual_address;
+        break;
+      case MMAP_OP_DIRECTED:
+        mr = create_region (c->space, 0, (mop->size + PAGE_SIZE - 1) / PAGE_SIZE,
+            MR_TYPE_CORE, 0, 0);
+        map_user_region_to_physical (mr, mop->phys);
+        mop->virt = mr->virtual_address;
+        break;
+      case MMAP_OP_FIFO:
+        /* Not yet implemented */
+        break;
+    }
+    break;
+
+
+
   case DEVNODE_OP:
     dop = (devnode_op_t *)regs->edx;
     switch (dop->operation) {
