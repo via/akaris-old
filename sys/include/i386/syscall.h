@@ -4,6 +4,7 @@
 #include <i386/interrupt.h>
 #include <i386/kfifo.h>
 #include <i386/device_interface.h>
+#include <i386/kqueue.h>
 
 typedef enum {
   SYSCALL_KDEBUG,
@@ -11,6 +12,7 @@ typedef enum {
   FORK,
   FIFO_OP,
   DEVNODE_OP,
+  KQUEUE_OP,
   LINK_IRQ,
   REQUEST_IO,
   REQUEST_MMAP,
@@ -45,7 +47,26 @@ typedef struct devnode_op {
   uint32 fifos[2];
   dev_error err;
 } devnode_op_t;
-               
+
+typedef struct kqueue_event {
+  kevent_filter_t filter;
+  kevent_flag_t flag;
+  uint32 ident;
+} kqueue_event_t;
+
+typedef struct kqueue_op {
+  enum {
+    KQUEUE_OP_CREATE,
+    KQUEUE_OP_EVENT,
+    KQUEUE_OP_POLL,
+    KQUEUE_OP_BLOCK,
+  } operation;
+  uint32 kqueue_id;
+  kqueue_error err;
+  struct kqueue_event newevent;
+  struct kqueue_event *changedevents;
+  uint32 max_events;
+} kqueue_op_t;
 
 typedef struct mmap_op {
   enum {

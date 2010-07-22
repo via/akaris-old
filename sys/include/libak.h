@@ -22,4 +22,7 @@ dev_error ak_connect (char *, uint32 * fifos);
 dev_error  ak_accept (char *, uint32 * fifo);
 dev_error ak_link_irq (uint32 *fifo, uint8 irq);
 void * ak_mmap (unsigned long phys, unsigned long size);
+kqueue_error ak_kqueue_create (uint32 *id);
+kqueue_error ak_kqueue_event (uint32 kid, uint32 id, kevent_filter_t filter, kevent_flag_t flag);
+kqueue_error ak_kqueue_block (uint32 id);
 #endif

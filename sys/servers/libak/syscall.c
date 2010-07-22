@@ -70,6 +70,36 @@ ak_register (char * devname) {
   return dop.err;
 }
 
+kqueue_error
+ak_kqueue_create (uint32 * id) {
+  kqueue_op_t kop;
+  kop.operation = KQUEUE_OP_CREATE;
+  __asm__("int $0x80" : : "a" (KQUEUE_OP), "d" (&kop));
+  *id = kop.kqueue_id;
+  return kop.err;
+}
+
+kqueue_error ak_kqueue_event (uint32 kid, uint32 ident, kevent_filter_t filter, kevent_flag_t flag) {
+ kqueue_op_t kop;
+ kop.operation = KQUEUE_OP_EVENT;
+ kop.kqueue_id = kid;
+ kop.newevent.filter = filter;
+ kop.newevent.flag = flag;
+ kop.newevent.ident = ident;
+ 
+ __asm__("int $0x80" : : "a" (KQUEUE_OP), "d" (&kop));
+ return kop.err;
+}
+
+kqueue_error
+ak_kqueue_block (uint32 id) {
+  kqueue_op_t kop;
+  kop.operation = KQUEUE_OP_BLOCK;
+  kop.kqueue_id = id;
+  __asm__("int $0x80" : : "a" (KQUEUE_OP), "d" (&kop));
+  return kop.err;
+}
+
 dev_error
 ak_link_irq (uint32 *fifo, uint8 irq) {
   devnode_op_t dop;

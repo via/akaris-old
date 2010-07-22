@@ -1,6 +1,7 @@
 #ifndef I386_PROCESS_H
 #define I386_PROCESS_H
 
+#include <i386/types.h>
 #include <i386/mailbox.h>
 #include <i386/interrupt.h>
 #include <i386/kqueue.h>
@@ -17,7 +18,7 @@ struct address_space;
 typedef struct context {
   isr_regs registers;
   struct address_space * space;
-  int pid;
+  uint32 pid;
   int status;
   struct context * next;
   uint32 kqueue_block;
@@ -29,8 +30,8 @@ void schedule(isr_regs *);
 int create_process();
 int execve_elf (context_t *, void *, unsigned long, const char *);
 int fork (isr_regs *);
-context_t * get_process(int);
+context_t * get_process(uint32);
 void begin_schedule (isr_regs *);
-int get_current_process();
+uint32 get_current_process();
 void set_current_process (int);
 #endif

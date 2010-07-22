@@ -15,15 +15,17 @@
 #include <config.h>
 #include <i386/types.h>
 #include <i386/slab.h>
+#include <i386/interrupt.h>
 #include <i386/process.h>
 #include <i386/context.h>
 #include <i386/kfifo.h>
 #include <i386/kqueue.h>
+#include <i386/syscall.h>
 
 static slab_entry_t * kqueue_slab;
 static slab_entry_t * kevent_slab;
 
-static mutex_t kqueue_lock; /*TODO: Big locks suck cock*/
+static mutex_t kqueue_lock; /*TODO: Big locks suck cocks*/
 static kqueue_t * kqueue_list;
 static uint32 next_kqueue_id = 1;
 
@@ -40,7 +42,6 @@ initialize_kqueues () {
   kqueue_slab = create_slab (sizeof (kqueue_t));
   kevent_slab = create_slab (sizeof (kevent_t));
 
-  next_kqueue_id = 0;
 
 }
 
@@ -161,8 +162,83 @@ kqueue_trigger_event (kevent_t * ke) {
   curproc = get_process (ke->parent->pid);
 
   ke->triggered = 1;
+  if ((curproc->status == PROCESS_STATUS_WAITING) &&
+      (curproc->kqueue_block == ke->parent->kqueue_id)) {
+    curproc->status = PROCESS_STATUS_RUNNING;
+  }
   
 
 
 }
 
+void
+kqueue_untrigger_event (kevent_t * ke) {
+  ke->triggered = 0;
+}
+
+kqueue_error
+kqueue_block (uint32 kqueue_id, isr_regs *regs) {
+
+  context_t * curproc = get_process (get_current_process());
+  kevent_t * curevent;
+  kqueue_t * curkq;
+  uint32 level = 0;
+
+  for (curkq = kqueue_list; curkq != NULL; curkq = curkq->next) {
+    if (curkq->kqueue_id == kqueue_id) break;
+  }
+  if (curkq == NULL) {
+    return KQUEUE_ERR_EXIST;
+  }
+  if (curkq->pid != curproc->pid) {
+    return KQUEUE_ERR_PERM;
+  }
+
+  /*Reset all triggers to 0. CHANGE THIS*/
+  for (curevent = curkq->event_list; curevent != NULL; curevent = curevent->next) {
+    if (test_and_set (0, &curevent->triggered) == 1) {
+      level = 1;
+    }
+  }
+
+  if (level == 1) {
+    return KQUEUE_SUCCESS;
+  } else {
+
+    curproc->kqueue_block = kqueue_id;
+    curproc->status = PROCESS_STATUS_WAITING;
+    schedule (regs);
+    return KQUEUE_SUCCESS;
+  }
+}
+
+kqueue_error kqueue_poll (uint32 kq, kevent_t *changelist, uint32 *nchanges) {
+
+  uint32 curchange = 0;
+  kevent_t * curevent;
+  kqueue_t * curkq;
+
+  for (curkq = kqueue_list; curkq != NULL; curkq = curkq->next) {
+    if (curkq->kqueue_id == kq) break;
+  }
+  if (curkq == NULL) {
+    return KQUEUE_ERR_EXIST;
+  }
+  if (curkq->pid != get_current_process ()) {
+    return KQUEUE_ERR_PERM;
+  }
+
+  for (curevent = curkq->event_list; curevent != NULL; curevent = curevent->next) {
+    if (curevent->triggered) {
+      changelist[curchange].filter = curevent->filter;
+      changelist[curchange].flag = curevent->flag;
+      changelist[curchange].ident = curevent->ident;
+      curchange++;
+    }
+    if (curchange >= *nchanges) {
+      break;
+    }
+  }
+  *nchanges = curchange;
+  return KQUEUE_SUCCESS;
+}

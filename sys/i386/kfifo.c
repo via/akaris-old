@@ -220,7 +220,11 @@ kfifo_write_fifo (uint32 fifo_id, uint32 mypid, const void * buf, uint32 len) {
   /*Trigger any events*/
   kevent_t * ke = fifo->ke_list;
   while (ke != NULL) {
-    kqueue_trigger_event (ke);
+    if (ke->flag == KEVENT_FLAG_FIFO_READABLE) {
+      kqueue_trigger_event (ke);
+    } else if (ke->flag == KEVENT_FLAG_FIFO_WRITABLE) {
+      /*TODO: Do something.*/
+    }
     ke = ke->next;
   }
 
@@ -310,6 +314,20 @@ kfifo_read_fifo (uint32 fifo_id, uint32 mypid, void * buf, uint32 len) {
     fifo->end -= fifo->size;
   }
   
+  /*Trigger any events*/
+  kevent_t * ke = fifo->ke_list;
+  while (ke != NULL) {
+    if (ke->flag == KEVENT_FLAG_FIFO_READABLE) {
+      if (fifo->start == fifo->end) {
+        kqueue_untrigger_event (ke);
+      }
+    } else if (ke->flag == KEVENT_FLAG_FIFO_WRITABLE) {
+      /*TODO: Do something.*/
+    }
+    ke = ke->next;
+  }
+   
+
   test_and_set (0, &fifo->lock);
 
   return KFIFO_SUCCESS;

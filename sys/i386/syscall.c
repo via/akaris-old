@@ -25,6 +25,7 @@ void syscall_handler(isr_regs * regs) {
   kfifo_error e;
   devnode_op_t *dop;
   mmap_op_t *mop;
+  kqueue_op_t *kop;
   memory_region_t * mr;
 
   context_t * c = get_process (get_current_process ());
@@ -93,6 +94,24 @@ void syscall_handler(isr_regs * regs) {
         link_irq_to_fifo (dop->irq, dop->fifos[0]);
         break;
     }
+    break;
+  case KQUEUE_OP:
+    kop = (kqueue_op_t *)regs->edx;
+    switch (kop->operation) {
+      case KQUEUE_OP_CREATE:
+        kop->err = create_kqueue (&kop->kqueue_id, c->pid);
+        break;
+      case KQUEUE_OP_EVENT:
+        kop->err = kqueue_event (kop->kqueue_id, c->pid, kop->newevent.ident, 
+            kop->newevent.filter, kop->newevent.flag); 
+        break;
+      case KQUEUE_OP_BLOCK:
+        kop->err = kqueue_block (kop->kqueue_id, regs);
+        break;
+      default:
+        break;
+    }
+    break;
   case FIFO_OP:
     fop = (fifo_op_t *)regs->edx;
     switch (fop->operation) {

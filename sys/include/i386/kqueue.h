@@ -3,6 +3,8 @@
 
 #include <i386/types.h>
 #include <mutex.h>
+#include <i386/interrupt.h>
+
 
 typedef enum {
   KQUEUE_SUCCESS,
@@ -57,8 +59,10 @@ void initialize_kqueues();
 kqueue_error create_kqueue (uint32 *, uint32 mypid);
 kqueue_error kqueue_event (uint32 kqueue_id, uint32 mypid, uint32 ident, kevent_filter_t filter,
     kevent_flag_t flag);
-kqueue_error kqueue_block (uint32 kqueue_id, kevent_t *changelist, uint32 num_changes);
+kqueue_error kqueue_block (uint32 kqueue_id, isr_regs *regs);
+kqueue_error kqueue_poll (uint32 kqueue_id, kevent_t *, uint32 *max_changes);
 void kqueue_trigger_event (kevent_t *);
+void kqueue_untrigger_event (kevent_t *);
 
 
 #endif

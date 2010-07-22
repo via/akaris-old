@@ -6,7 +6,7 @@ OBJS = start.o cmain.o cpuid.o bootvideo.o asmutil.o gdt.o asm_interrupts.o inte
 all: default
 default: ${OBJS}
 	@ld ${LDFLAGS} -o i386.k ${OBJS}
-	@echo "[LD] i386.k"
+	@echo " [LD] i386.k"
 install:
 #	mdconfig -a -t vnode -f ../bootdisk.img
 	mount -o loop ../bootdisk.img ../../mnt
@@ -17,10 +17,10 @@ clean:
 	-@rm *.k 2>/dev/null
 	-@rm *.o 2>/dev/null
 	-@rm *.lst 2>/dev/null
-	@echo "[CLEAN]"
+	@echo " [CLEAN]"
 .c.o:
 	@ ${CC} -o $@ -Wa,-a,-ad ${CFLAGS} $< > ${<}.lst
-	@echo "[CC] ${<}"
+	@echo " [CC] ${@}"
 .s.o:
 	@ ${CC} -o $@ -Wa,-a,-ad  ${CFLAGS} $< > ${<}.lst
-	@echo "[AS] ${<}"
+	@echo " [AS] ${@}"

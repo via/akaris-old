@@ -116,7 +116,7 @@ int create_process() {
   return new_context->pid;
 }
 
-context_t * get_process(int pid) {
+context_t * get_process(uint32 pid) {
   if (context_list == 0)
     return (context_t*) 0;
 
@@ -167,7 +167,7 @@ void schedule(isr_regs * regs) {
   set_cr3(cur_process->space->cr3);
 }
 
-int get_current_process() {
+uint32 get_current_process() {
   return cur_process->pid;
 }
 
