@@ -2,9 +2,9 @@
 #define I386_SYSCALL_H
 
 #include <i386/interrupt.h>
-#include <i386/kfifo.h>
-#include <i386/device_interface.h>
-#include <i386/kqueue.h>
+#include <common/kfifo.h>
+#include <common/device_interface.h>
+#include <common/kqueue.h>
 
 typedef enum {
   SYSCALL_KDEBUG,

@@ -1,4 +1,4 @@
-#include <i386/types.h>
+#include <common/types.h>
 #include <config.h>
 #include <i386/gdt.h>
 

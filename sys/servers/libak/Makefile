@@ -1,9 +1,10 @@
 CFLAGS = -std=c89 -O0 -g -Wall -Wextra -Werror  -nostdlib -nostartfiles -nodefaultlibs -I../../include/ -c -fno-builtin
-CC=gcc
+CC=i686-elf-gcc
+LD=i686-elf-ld
 OBJS = syscall.o
 
 default: ${OBJS}
-	@ld ${LDFLAGS} -o libak.o ${OBJS} -r
+	@${LD} ${LDFLAGS} -o libak.o ${OBJS} -r
 	@echo "[LD] libak.o"
 
 clean:

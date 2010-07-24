@@ -1,10 +1,12 @@
 #include <config.h>
 #include <mutex.h>
-#include <i386/types.h>
+#include <common/types.h>
+#include <common/slab.h>
+
+#ifdef I386
 #include <i386/bootvideo.h>
 #include <i386/paging.h>
-#include <i386/slab.h>
-
+#endif
 
 
 slab_entry_t slabs[MAX_SLABS];

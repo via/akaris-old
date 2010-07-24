@@ -1,7 +1,7 @@
 #ifndef I386_PAGING_H
 #define I386_PAGING_H
 
-#include <i386/types.h>
+#include <common/types.h>
 #include <i386/interrupt.h>
 /*Forward decl*/
 struct context;

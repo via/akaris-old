@@ -1,7 +1,7 @@
 #ifndef I386_GDT_H
 #define I386_GDT_H
 
-#include <i386/types.h>
+#include <common/types.h>
 
 #define GDT_SYSTEM 0x1
 #define GDT_USER   0x2

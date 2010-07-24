@@ -1,8 +1,8 @@
-#include <i386/types.h>
+#include <common/types.h>
 #include <config.h>
 #include <i386/interrupt.h>
 #include <i386/bootvideo.h>
-#include <i386/kfifo.h>
+#include <common/kfifo.h>
 #include <i386/pic.h>
 
 idt_entry interrupt_descriptors[MAX_INTS];

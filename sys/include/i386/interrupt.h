@@ -1,7 +1,7 @@
 #ifndef I386_INTERRUPT_H
 #define I386_INTERRUPT_H
 
-#include <i386/types.h>
+#include <common/types.h>
 
 #define IDT_PRESENT 0x80
 #define IDT_INTGATE 0xE

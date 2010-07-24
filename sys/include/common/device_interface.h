@@ -1,8 +1,8 @@
 #ifndef I386_DEVICE_INTERFACE_H
 #define I386_DEVICE_INTERFACE_H
 
-#include <i386/types.h>
-#include <i386/kfifo.h>
+#include <common/types.h>
+#include <common/kfifo.h>
 
 typedef struct devnode {
   uint32 pid;

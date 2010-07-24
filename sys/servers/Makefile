@@ -1,14 +1,15 @@
 CFLAGS = -std=c89 -O0 -g -Wall -Wextra -Werror  -nostdlib -nostartfiles -nodefaultlibs -I../include/ -c -fno-builtin
 LDFLAGS = -T linker.ld
-CC=gcc
+CC=i686-elf-gcc
+LD=i686-elf-ld
 #OBJS = test2.o test1.o kbd.o
 OBJS = test3.o  kbd.o
 
 
 
 default: libak/libak.o ${OBJS}
-	ld ${LDFLAGS} -o test3.k test3.o libak/libak.o
-	ld ${LDFLAGS} -o kbd.k kbd.o libak/libak.o
+	${LD} ${LDFLAGS} -o test3.k test3.o libak/libak.o
+	${LD} ${LDFLAGS} -o kbd.k kbd.o libak/libak.o
 libak/libak.o:
 	(cd libak; make);
 

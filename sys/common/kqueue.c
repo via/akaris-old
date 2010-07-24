@@ -13,14 +13,17 @@
 
 #include <mutex.h>
 #include <config.h>
-#include <i386/types.h>
-#include <i386/slab.h>
+#include <common/types.h>
+#include <common/slab.h>
+#include <common/process.h>
+#include <common/kfifo.h>
+#include <common/kqueue.h>
+
+#ifdef I386
 #include <i386/interrupt.h>
-#include <i386/process.h>
 #include <i386/context.h>
-#include <i386/kfifo.h>
-#include <i386/kqueue.h>
 #include <i386/syscall.h>
+#endif
 
 static slab_entry_t * kqueue_slab;
 static slab_entry_t * kevent_slab;

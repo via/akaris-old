@@ -2,15 +2,16 @@
  * fifos.  This is the new main method of IPC in akaris. */
 #include <mutex.h>
 #include <config.h>
-#include <i386/types.h>
-#include <i386/slab.h>
+#include <common/types.h>
+#include <common/slab.h>
+#include <common/process.h>
+#include <common/kqueue.h>
+#include <common/kfifo.h>
+#ifdef I386
 #include <i386/paging.h>
 #include <i386/context.h>
-#include <i386/process.h>
 #include <i386/bootvideo.h>
-#include <i386/kqueue.h>
-#include <i386/kfifo.h>
-
+#endif
 
 static mutex_t fifo_list_mutex = 0;
 static uint32 cur_fifo_id = 1;

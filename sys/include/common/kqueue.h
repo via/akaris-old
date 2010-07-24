@@ -1,9 +1,12 @@
 #ifndef I386_KQUEUE_H
 #define I386_KQUEUE_H
 
-#include <i386/types.h>
+#include <common/types.h>
 #include <mutex.h>
+
+#ifdef I386
 #include <i386/interrupt.h>
+#endif
 
 
 typedef enum {

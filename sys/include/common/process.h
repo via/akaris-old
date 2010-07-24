@@ -1,10 +1,12 @@
 #ifndef I386_PROCESS_H
 #define I386_PROCESS_H
 
-#include <i386/types.h>
-#include <i386/mailbox.h>
+#include <common/types.h>
+#include <common/kqueue.h>
+
+#ifdef I386
 #include <i386/interrupt.h>
-#include <i386/kqueue.h>
+#endif
 /*Process entries*/
 
 

@@ -4,11 +4,16 @@
 
 #include <config.h>
 #include <mutex.h>
-#include <i386/types.h>
+#ifdef I386
 #include <i386/bootvideo.h>
-#include <i386/slab.h>
-#include <i386/kfifo.h>
-#include <i386/device_interface.h>
+#endif
+#ifdef X86_64
+
+#endif
+#include <common/types.h>
+#include <common/slab.h>
+#include <common/kfifo.h>
+#include <common/device_interface.h>
 
 static mutex_t devlock;
 devnode_t * devlist;

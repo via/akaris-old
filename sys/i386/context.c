@@ -1,13 +1,13 @@
 /*context.c*/
 #include <config.h>
-#include <i386/types.h>
+#include <common/types.h>
 #include <i386/interrupt.h>
 #include <i386/physical_memory.h>
 #include <i386/multiboot.h>
-#include <i386/process.h>
+#include <common/process.h>
 #include <i386/paging.h>
 #include <i386/bootvideo.h>
-#include <i386/slab.h>
+#include <common/slab.h>
 #include <i386/context.h>
 
 slab_entry_t * address_slab;

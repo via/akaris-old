@@ -1,13 +1,13 @@
 /*syscall.c*/
 #include <config.h>
-#include <i386/types.h>
+#include <common/types.h>
 #include <i386/interrupt.h>
 #include <i386/bootvideo.h>
 #include <i386/context.h>
-#include <i386/process.h>
+#include <common/process.h>
 #include <i386/syscall.h>
 #include <i386/pic.h>
-#include <i386/kfifo.h>
+#include <common/kfifo.h>
 void enable_syscall() {
 
   link_irq(0x80, &syscall_handler);

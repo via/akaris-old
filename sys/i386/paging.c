@@ -1,9 +1,9 @@
 /*paging.c*/
-#include <i386/types.h>
+#include <common/types.h>
 #include <config.h>
 #include <i386/physical_memory.h>
 #include <i386/bootvideo.h>
-#include <i386/process.h>
+#include <common/process.h>
 #include <i386/paging.h>
 #include <i386/context.h>
 /*Temporary page directory for early kernel usage*/

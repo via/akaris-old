@@ -5,7 +5,7 @@
 #define NUM_ROWS 25
 
 
-#include <i386/types.h>
+#include <common/types.h>
 
 
 

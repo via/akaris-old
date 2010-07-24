@@ -2,7 +2,7 @@
 #define I386_SLAB_H
 
 #include <mutex.h>
-#include <i386/types.h>
+#include <common/types.h>
 /*The AK slab allocator is a very simple design:
  *A slab entry contains the address (page) of the first
  *buffer node.  It contains a link to the next page of

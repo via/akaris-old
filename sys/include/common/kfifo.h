@@ -1,10 +1,13 @@
 #ifndef I386_KFIFO_H
 #define I386_KFIFO_H
 
-#include <i386/types.h>
+#include <common/types.h>
+#include <common/kqueue.h>
 #include <mutex.h>
+
+#ifdef I386
 #include <i386/context.h>
-#include <i386/kqueue.h>
+#endif
 
 typedef struct kfifo_acl_entry {
   uint32 pid;

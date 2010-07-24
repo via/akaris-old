@@ -1,14 +1,17 @@
 #include <config.h>
-#include <i386/types.h>
-#include <i386/process.h>
-#include <i386/slab.h>
+#include <common/types.h>
+#include <common/process.h>
+#include <common/slab.h>
+#include <common/kfifo.h>
+#include <elf.h>
+
+#ifdef I386
 #include <i386/context.h>
 #include <i386/paging.h>
 #include <i386/bootvideo.h>
 #include <i386/gdt.h>
-#include <i386/kfifo.h>
 #include <i386/physical_memory.h>
-#include <elf.h>
+#endif
 
   slab_entry_t * context_slab;
   context_t * context_list;

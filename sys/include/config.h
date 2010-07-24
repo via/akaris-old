@@ -2,6 +2,7 @@
 #define CONFIG_H
 
 #define I386
+/*#define X86_64*/
 #define PAGE_SIZE 4096
 
 #define MAX_CPUS 2
