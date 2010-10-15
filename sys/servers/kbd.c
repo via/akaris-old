@@ -1,6 +1,6 @@
 #include <libak.h>
 #include <servers/kbd.h>
-#include <i386/kqueue.h>
+#include <common/kqueue.h>
 
 char buf[50];
 

@@ -29,6 +29,7 @@ clean:
 	-@rm */*.k 2>/dev/null
 	-@rm */*.o 2>/dev/null
 	-@rm */*.lst 2>/dev/null
+	(cd servers; make clean)
 	@echo " [CLEAN]"
 .c.o:
 	@ ${CC} -o $@ -Wa,-a,-ad ${CFLAGS} $< > ${<}.lst
