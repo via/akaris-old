@@ -3,6 +3,7 @@
 
 #include <config.h>
 #include <common/types.h>
+#include <config.h>
 #include <mutex.h>
 
 #ifdef I386
