@@ -9,9 +9,7 @@ I386_OBJS = i386/start.o i386/cmain.o i386/cpuid.o i386/bootvideo.o i386/asmutil
 X86_64_OBJS = x86_64/start.o x86_64/cmain.o
 
 all: i386
-default: ${OBJS}
-	@${LD} ${LDFLAGS} -o i386.k ${OBJS}
-	@echo " [LD] i386.k"
+
 .PHONY : servers
 servers:
 	(cd servers; make)
@@ -29,6 +27,7 @@ clean:
 	-@rm */*.k 2>/dev/null
 	-@rm */*.o 2>/dev/null
 	-@rm */*.lst 2>/dev/null
+	(cd servers; make clean)
 	@echo " [CLEAN]"
 .c.o:
 	@ ${CC} -o $@ -Wa,-a,-ad ${CFLAGS} $< > ${<}.lst

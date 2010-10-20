@@ -1,8 +1,8 @@
 #ifndef LIBAK_H
 #define LIBAK_H
 
-#include <i386/kfifo.h>
-#include <i386/device_interface.h>
+#include <common/kfifo.h>
+#include <common/device_interface.h>
 void puts (char *);
 void itoa (char *, int, int);
 void sprintf (char *, const char *, ...);

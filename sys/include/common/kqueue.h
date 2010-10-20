@@ -1,6 +1,7 @@
 #ifndef I386_KQUEUE_H
 #define I386_KQUEUE_H
 
+#include <config.h>
 #include <common/types.h>
 #include <mutex.h>
 
