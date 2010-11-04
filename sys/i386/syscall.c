@@ -108,6 +108,9 @@ void syscall_handler(isr_regs * regs) {
       case KQUEUE_OP_BLOCK:
         kop->err = kqueue_block (kop->kqueue_id, regs);
         break;
+      case KQUEUE_OP_POLL:
+        kop->err = kqueue_poll (kop->kqueue_id, kop->changedevents, &kop->max_events);
+        break;
       default:
         break;
     }

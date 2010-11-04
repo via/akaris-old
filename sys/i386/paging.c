@@ -100,10 +100,11 @@ void page_fault_handler(isr_regs * regs) {
     if (determine_memory_region (context->space, (unsigned long) address) == context->space->stack) {
       map_user_address (context->space->virt_cr3, address & 0xFFFFF000, allocate_page (0) * PAGE_SIZE, 0);
       bootvideo_printf ("Added space to swap! @ %x\n", address & 0xFFFFF000);
+    } else {
+      while (1);
     }
   }
   /*Delay loop to easily see page fault info*/
-
   
 
 }

@@ -1,4 +1,4 @@
-CFLAGS = -std=c89 -O0 -g -Wall -Wextra -Werror  -nostdlib -nostartfiles -nodefaultlibs -I../include/ -c -fno-builtin
+CFLAGS = -std=c89 -O0 -g -Wall -Wextra   -nostdlib -nostartfiles -nodefaultlibs -I../include/ -c -fno-builtin
 LDFLAGS = -T linker.ld
 CC=i686-elf-gcc
 LD=i686-elf-ld

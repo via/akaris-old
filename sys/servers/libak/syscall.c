@@ -92,12 +92,25 @@ kqueue_error ak_kqueue_event (uint32 kid, uint32 ident, kevent_filter_t filter, 
 }
 
 kqueue_error
+ak_kqueue_poll (uint32 id, uint32 *nevents, struct kevent *eventlist) {
+  kqueue_op_t kop;
+  kop.operation = KQUEUE_OP_POLL;
+  kop.kqueue_id = id;
+  kop.max_events = *nevents;
+  kop.changedevents = eventlist;
+  __asm__ ("int $0x80" : : "a" (KQUEUE_OP), "d" (&kop));
+  *nevents = kop.max_events;
+  return kop.err;
+}
+
+
+kqueue_error
 ak_kqueue_block (uint32 id) {
   kqueue_op_t kop;
   kop.operation = KQUEUE_OP_BLOCK;
   kop.kqueue_id = id;
   __asm__("int $0x80" : : "a" (KQUEUE_OP), "d" (&kop));
-  return kop.err;
+  return kop.err; 
 }
 
 dev_error

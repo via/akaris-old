@@ -241,6 +241,7 @@ intr47:
 	jmp int_hand
 .globl begin_schedule
 .globl load_idt
+.globl schedule_inject
 load_idt:
 	mov 4(%esp), %eax
 	lidt (%eax)
