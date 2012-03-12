@@ -8,7 +8,7 @@ COMMON_OBJS = common/slab.o common/process.o common/kfifo.o common/device_interf
 I386_OBJS = i386/start.o i386/cmain.o i386/cpuid.o i386/bootvideo.o i386/asmutil.o i386/gdt.o i386/asm_interrupts.o i386/interrupt.o i386/pic.o i386/physical_memory.o i386/paging.o i386/context.o i386/syscall.o
 X86_64_OBJS = x86_64/start.o x86_64/cmain.o
 
-all: i386
+all: i386 servers
 
 .PHONY : servers
 servers:
