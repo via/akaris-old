@@ -1,4 +1,4 @@
-CFLAGS = -std=c89 -O0 -g -Wall -Wextra -Werror  -nostdlib -nostartfiles -nodefaultlibs -Iinclude/ -c -fno-builtin 
+CFLAGS = -std=c89 -O0 -g -Wall -Wextra -Werror -nostdlib -nostartfiles -nodefaultlibs -Iinclude/ -c -fno-builtin 
 LDFLAGS = -T linker.ld
 LD=i686-elf-ld
 CC=i686-elf-gcc
@@ -9,7 +9,9 @@ I386_OBJS = i386/start.o i386/cmain.o i386/cpuid.o i386/bootvideo.o i386/asmutil
 X86_64_OBJS = x86_64/start.o x86_64/cmain.o
 
 all: i386 servers
-
+default: ${OBJS}
+	@${LD} ${LDFLAGS} -o i386.k ${OBJS}
+	@echo " [LD] i386.k"
 .PHONY : servers
 servers:
 	(cd servers; make)

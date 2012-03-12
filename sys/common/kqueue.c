@@ -181,7 +181,6 @@ kqueue_untrigger_event (kevent_t * ke) {
 
 kqueue_error
 kqueue_block (uint32 kqueue_id, isr_regs *regs) {
-
   context_t * curproc = get_process (get_current_process());
   kevent_t * curevent;
   kqueue_t * curkq;
@@ -197,9 +196,8 @@ kqueue_block (uint32 kqueue_id, isr_regs *regs) {
     return KQUEUE_ERR_PERM;
   }
 
-  /*Reset all triggers to 0. CHANGE THIS*/
   for (curevent = curkq->event_list; curevent != NULL; curevent = curevent->next) {
-    if (test_and_set (0, &curevent->triggered) == 1) {
+    if (curevent->triggered == 1) {
       level = 1;
     }
   }
@@ -210,6 +208,10 @@ kqueue_block (uint32 kqueue_id, isr_regs *regs) {
 
     curproc->kqueue_block = kqueue_id;
     curproc->status = PROCESS_STATUS_WAITING;
+    
+    if (regs->ebp == 0) {
+      while (1);
+    }
     schedule (regs);
     return KQUEUE_SUCCESS;
   }
@@ -236,6 +238,7 @@ kqueue_error kqueue_poll (uint32 kq, kevent_t *changelist, uint32 *nchanges) {
       changelist[curchange].filter = curevent->filter;
       changelist[curchange].flag = curevent->flag;
       changelist[curchange].ident = curevent->ident;
+      curevent->triggered = 0;
       curchange++;
     }
     if (curchange >= *nchanges) {
@@ -245,3 +248,4 @@ kqueue_error kqueue_poll (uint32 kq, kevent_t *changelist, uint32 *nchanges) {
   *nchanges = curchange;
   return KQUEUE_SUCCESS;
 }
+

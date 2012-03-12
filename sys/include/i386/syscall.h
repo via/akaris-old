@@ -48,11 +48,13 @@ typedef struct devnode_op {
   dev_error err;
 } devnode_op_t;
 
+/*
 typedef struct kqueue_event {
   kevent_filter_t filter;
   kevent_flag_t flag;
   uint32 ident;
 } kqueue_event_t;
+*/
 
 typedef struct kqueue_op {
   enum {
@@ -63,8 +65,8 @@ typedef struct kqueue_op {
   } operation;
   uint32 kqueue_id;
   kqueue_error err;
-  struct kqueue_event newevent;
-  struct kqueue_event *changedevents;
+  struct kevent newevent;
+  struct kevent *changedevents;
   uint32 max_events;
 } kqueue_op_t;
 

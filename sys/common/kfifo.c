@@ -226,7 +226,7 @@ kfifo_write_fifo (uint32 fifo_id, uint32 mypid, const void * buf, uint32 len) {
     } else if (ke->flag == KEVENT_FLAG_FIFO_WRITABLE) {
       /*TODO: Do something.*/
     }
-    ke = ke->next;
+    ke = ke->hook_next;
   }
 
   return KFIFO_SUCCESS;
